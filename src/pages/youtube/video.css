@@ -1,0 +1,49 @@
+/* video.css */
+
+.videoPopup {
+
+    /* Adjust this value based on the height of your header or other elements *
+    width: 100%;
+    height: calc(100% - 80px); /* Adjust the height to fit the remaining space */
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.opacityLayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: 10%;
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.videoPlayer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 90%; /* Adjust the maximum width as needed */
+    max-height: 90%; /* Adjust the maximum height as needed */
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer; /* Show pointer cursor on hover */
+    color: #fff; /* White color */
+    background-color: #000; /* Black background */
+    padding: 8px 12px;
+    border-radius: 4px; /* Rounded corners */
+}
+
+.closeBtn:hover {
+    background-color: #555; /* Darker background color on hover */
+}
