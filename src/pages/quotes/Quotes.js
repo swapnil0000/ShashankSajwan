@@ -1,9 +1,14 @@
-import React from 'react';
-import { Card, CardContent, Container, Grid, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Button, Card, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Testimonial from './Testimonial';
+import "../quotes/testisStyle.css"
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 const Quotes = () => {
+  const [startIndex, setStartIndex] = useState(0);
+  const cardsPerPage = 3;
   const data = [
     {
       id: 1,
@@ -31,60 +36,57 @@ const Quotes = () => {
       }
   ];
 
-  const chunkArray = (array, chunkSize) => {
-    const chunkedArray = [];
-    for (let i = 0; i < array.length; i += chunkSize) {
-      chunkedArray.push(array.slice(i, i + chunkSize));
-    }
-    return chunkedArray;
+  const handleNext = () => {
+    setStartIndex((prevIndex) => (prevIndex + cardsPerPage >= data.length ? 0 : prevIndex + cardsPerPage));
   };
 
-  const chunkedData = chunkArray(data, 3); // Split data into chunks of 3
+  const handlePrev = () => {
+    setStartIndex((prevIndex) => (prevIndex - cardsPerPage < 0 ? data.length - cardsPerPage : prevIndex - cardsPerPage));
+  };
 
   return (
-    <Container sx={{marginTop:'20px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'
-  }}>
-      <Typography variant='h2'>Quotes</Typography>
-      <Carousel
-        autoFocus={true}
-        autoPlay={false}
-        showArrows={true}
-        showStatus={false}
-        infiniteLoop={true}
-        showIndicators={true}
-        showThumbs={false}
-        useKeyboardArrows={true}
-        axis='horizontal'
-        width='890px' // Ensure horizontal scrolling
-      >
-        {chunkedData.map((chunk, index) => (
-          <Grid key={index} container spacing={1} justifyContent="center">
-            {chunk.map((ele) => (
-              <Grid item lg={4} md={4} key={ele.id}>
-                <Card sx={{
-                  display: 'flex',
-                  color:'white',
-                  backgroundColor:'#00022e',
-                  flexDirection: 'row',
-                  width: '250px',
-                  height: '200px',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
-                  margin:'40px'
-                }}>
-                  <CardContent >
-                    <Typography variant='caption'>
-                    {ele.value}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
+    <>
+    <Container>
+      <Typography sx={{marginTop:'10px'}} variant="h2" align="center" gutterBottom>
+        Quotes
+      </Typography>
+      <Grid sx={{
+
+      }} container spacing={2}>
+        {data.slice(startIndex, startIndex + cardsPerPage).map(card => (
+          <Grid key={card.id} item xs={12} sm={6} md={4} lg={4}>
+          <div class="testimonial">
+          <span class="open quote">“</span>
+          <div class="image">
+              <div class="clip"></div>
+          </div>
+          <p>{card.value}</p>
+          <div class="source">		
+              <span>Shashank Sajwan</span>
+          </div>
+          <span class="close quote">”</span>
+      </div>
           </Grid>
         ))}
-      </Carousel>
-    </Container>
+      </Grid>
+      <Button
+        onClick={handlePrev}
+        startIcon={<ArrowBack />}
+        sx={{ marginRight: 1,backgroundColor:'#00022e' ,color:'white' , margin:'10px' }}
+      >
+        Previous
+      </Button>
+      <Button
+      disableElevation
+      disableRipple
+        sx={{backgroundColor:'#00022e' ,color:'white' , margin:'10px' }}
+        onClick={handleNext}
+        endIcon={<ArrowForward />}
+      >
+        Next
+      </Button>
+      </Container>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Grid, Typography, Link, Box, Button, Stack, Divider } from '@mui/material';
 import logo from "../assets/shashank.PNG"
 import Icon from './Icon/Icon';
+import { useNavigate } from 'react-router-dom';
 
 // <footer  style={{ backgroundColor: '#1b2b3a', padding: '48px 0', marginTop: '48px',color:'white' }}>
 // <Container maxWidth="lg"  sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'space-around '}}>
@@ -82,40 +83,59 @@ import Icon from './Icon/Icon';
 // </Container>
 // </footer>
 const Footer = () => {
+  const navigate=useNavigate();
   return (
-    <Box sx={{ backgroundColor: 'black',color:'white',height:'250px' }}>
-      <Container sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around',gap:'100px'}}>
-        <Box sx={{marginTop:'30px',display:'flex',flexDirection:'column',alignItems:'center'}}>
-         <Typography variant='h4'>Quick Link</Typography>
-         <Divider  sx={{border:'1px solid white',width:'100px'}}/>
-         <Stack sx={{marginTop:'10px'}} direction='column'>
+    <Box sx={{ backgroundColor: '#212529',color:'white',height:'330px',marginTop:'20px' , width:'100%'}}>
+      <Container>
+        <Box sx={{display:'flex',flexDirection:'column',alignItems:'center'}}>
 
-         <Button sx={{color:'white',textTransform:'none',fontSize:'15px'}}>Home</Button>
-         <Button sx={{color:'white',textTransform:'none',fontSize:'15px'}}>Blog</Button>
-         <Button sx={{color:'white',textTransform:'none',fontSize:'15px'}}>Contact</Button>
-         <Button sx={{color:'white',textTransform:'none',fontSize:'15px'}}>About</Button>
-         </Stack>
-        </Box>
-        <Box sx={{marginTop:'30px',display:'flex',flexDirection:'column',alignItems:'center'}}>
-           <Typography variant='h4'>Legal</Typography>
-           <Divider  sx={{border:'1px solid white',width:'100px'}}/>
-           <Stack sx={{marginTop:'10px'}} direction='column'>
-           <Button sx={{color:'white',textTransform:'none',fontSize:'15px'}}>Terms & Conditions</Button>
-           <Button sx={{color:'white',textTransform:'none',fontSize:'15px'}}>Privacy Policy</Button>
-           <Button sx={{color:'white',textTransform:'none',fontSize:'15px'}}>Cookies Policy</Button>
-           <Button sx={{color:'white',textTransform:'none',fontSize:'15px'}}>Privacy Policy</Button>
-
-           </Stack>
-        </Box>
-        <Box sx={{marginTop:'30px',display:'flex',flexDirection:'column',alignItems:'center'}}>
-         <Typography variant='h4'>Social Media</Typography>
-         <Divider  sx={{border:'1px solid white',width:'100px'}}/>
-         <Box sx={{width:'20px'}}>
-         <Icon/>
-
+         <Box>
+          <Typography fontFamily='lato' sx={{margin:'15px'}} variant='h3'>Your Vision, My Direction</Typography>
          </Box>
 
+
+         <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around',width:'100%'}}>
+
+          <Box sx={{display:'flex',flexDirection:'column'}}>
+           <Typography>Shashank Sajwan</Typography>
+           <Typography>Best UPSC Coaching in Dehradun</Typography>
+          </Box>
+          
+          <Box sx={{display:'flex',flexDirection:'row',gap:'30px'}}>
+
+           <Box>
+            <Typography sx={{marginBottom:'3px'}}>PAGES</Typography>
+            <Box sx={{display:'flex',flexDirection:'column'}}>
+            <Button onClick={()=>navigate("/")} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Home</Button>
+            <Button onClick={()=>navigate("/notes")}  sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Material</Button>
+            <Button onClick={()=>navigate("/about")}  sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >About</Button>
+            <Button onClick={()=>navigate("/contact")}  sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Contact</Button>
+            <Button onClick={()=>navigate("/blogs")}  sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Blogs</Button>
+            </Box>
+           </Box>
+
+           <Box sx={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+            <Typography sx={{marginBottom:'10px'}}>COMPANY</Typography>
+            <Box sx={{display:'flex',flexDirection:'column'}}>
+            <Button  onClick={()=>{navigate('/terms')}} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Term and Conditions</Button>
+            <Button onClick={()=>{navigate('/faqs')}} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >FAQs</Button>
+            <Button onClick={()=>{navigate('/refund')}} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Refund Policy</Button>
+           <Button onClick={()=>{navigate('/private')}} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Private Policy</Button>
+           </Box>
+           </Box>
+
+
+          </Box>
+
+
          </Box>
+         <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around',width:'100%'}}>
+           <Typography fontSize='10px'>©  All rights reserved Shashank Sajwan.</Typography>
+           <Box >
+            <Icon/>
+           </Box>
+          </Box>
+        </Box>
       </Container>
     </Box>
   )

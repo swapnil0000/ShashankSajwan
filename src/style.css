@@ -19,16 +19,16 @@ a{
     position: relative;
     text-decoration: none;
     font-family: roboto;
-    color: #000;
-    font-size: 18px;
+    color: #e9e1e1;
+    font-size: 16px;
     letter-spacing: 0.5px;
     padding: 0 10px;
 }
 a:after{
     content: "";
     position: absolute;
-    background-color: #000;
-    height: 3px;
+    background-color: #cebcbc;
+    height: 1.5px;
     width: 0;
     left: 0;
     bottom: -10px;
@@ -37,8 +37,8 @@ a:after{
 
 }
 a:hover{
-    color: #00022e;
-    font-weight: 500;
+    color: #9e9ea4;
+    font-weight: 400;
 }
 a:hover:after{
     width: 100%;

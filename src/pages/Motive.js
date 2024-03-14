@@ -4,7 +4,7 @@ import React from 'react'
 const Motive = () => {
   return (
      <Container>
-      <Box sx={{margin:'50px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
+      <Box sx={{margin:'50px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',backgroundColor:"EEEEFF"}}>
        <Typography variant='h2'>Motive & Company Details</Typography>
      
        <Divider sx={{border:'1px solid black',width:'100%',marginTop:'10px'}}/>
