@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import "../youtube/video.css";
-import { Container, Typography } from "@mui/material";
+import { Container, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 // https://youtu.be/TMWikPFCCfQ?si=RybZVxH0KiuXTXnD
 // https://youtu.be/HbcHQBsQTAI?si=m6Ow9HkIj8eLZNXs
 // https://youtu.be/v5DnIVwvAbY?si=avOs_9cE89ZI4tU4
@@ -10,25 +10,32 @@ import { Container, Typography } from "@mui/material";
 // https://youtu.be/zD_5-nqBT-k?si=rWEfwNRIh_NzpO8D
 
 const Youtube = () => {
+    const theme=useTheme();
+    const isMobileView=useMediaQuery(theme.breakpoints.down("md"))
     const youtubelink=[{
       id:1,
-      link:"https://youtu.be/HbcHQBsQTAI?si=m6Ow9HkIj8eLZNXs"
+      value:'Game changer for UPSC CSE aspirants (best)',
+      link:"https://www.youtube.com/watch?v=HbcHQBsQTAI"
     },
     {
       id:2,
-      link:"https://youtu.be/HbcHQBsQTAI?si=m6Ow9HkIj8eLZNXs"
+      value:'Mistakes aspirants do during preparation (best)',
+      link:"https://www.youtube.com/watch?v=d4aegXqxE-U"
     },
     {
       id:3,
-      link:"https://youtu.be/HbcHQBsQTAI?si=m6Ow9HkIj8eLZNXs"
+      value:'UPSC prelims syllabus analysis',
+      link:"https://www.youtube.com/watch?v=gmXMDbwt_so"
     },
     {
       id:4,
-      link:"https://youtu.be/HbcHQBsQTAI?si=m6Ow9HkIj8eLZNXs"
+      value:'CSE exam pattern',
+      link:"https://www.youtube.com/watch?v=81Af345gor0"
     },
     {
       id:5,
-      link:"https://youtu.be/oROOSZz6RjE?si=okfUOE97qsTt0Nh6"
+      value:'Important ias exam books',
+      link:"https://www.youtube.com/watch?v=kBnZHlYfhPg"
     },
   
   ]
@@ -38,11 +45,13 @@ const Youtube = () => {
     };
     return (
       <Container sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
-        <Typography sx={{marginTop:'80px'}}  variant="h2">Recent Youtube Video</Typography>
+        <Typography sx={{marginTop:'80px',fontSize:isMobileView?"30px":"50px"}}>Recent Youtube Video</Typography>
         <div className={`videoPopup ${show ? "visible" : ""}`}>
             <div className="opacityLayer" onClick={hidePopup}></div>
             <div className="videoPlayer">
-             {youtubelink.map((ele)=>(
+            <Grid container spacing={2}>
+            {youtubelink.map((ele)=>(
+              <Grid  sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}} item lg={3} md={4} sm={6} xs={12} >
               <ReactPlayer
               id={ele.id}
               url={ele.link}
@@ -50,9 +59,11 @@ const Youtube = () => {
               width="100%"
               height="100%"
               playing={show}
-
           />
+          <Typography>{ele.value}</Typography>
+          </Grid>
              ))}
+            </Grid>
 
             </div>
         </div>

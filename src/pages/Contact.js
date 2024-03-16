@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Button, Container, Divider, TextField, Typography } from '@mui/material'
+import { Box, Button, Container, Divider, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { FlexCenterColoum } from '../common';
 
     
@@ -51,6 +51,8 @@ import { FlexCenterColoum } from '../common';
 
 
 const Contact = () => {
+  const theme=useTheme();
+  const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
   const [contactDetails, setContactDetails] = useState({
     name: '',
     email: '',
@@ -66,15 +68,15 @@ const Contact = () => {
   };
   return (
      <Container sx={{display:'flex',flexDirection:'column',marginTop:'100px'}}>
-      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',color:'white',height:'100px',width:'100%',marginTop:'10px',backgroundColor:'#212529'}}>
+      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',color:'black',height:'100px',width:{xs:'100%'},marginTop:'10px'}}>
        <Typography variant='h2'>Contact Us</Typography>
        <Typography sx={{fontSize:'13px'}}>If you have any questions regarding programs, 
        facilities or suggestions to make, feel free to give us a call or fill out the form below.</Typography>
       </Box>
       <Box sx={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-      <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',width:'900px',height:'500px',marginTop:'20px',justifyContent:'space-between',boxShadow:'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px'}}>
+      <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',width:{lg:'100%',xs:'450px'},marginTop:'20px',justifyContent:'space-between',boxShadow:'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px'}}>
 
-       <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',width:'50%',backgroundColor:'#212529',height:'100%',color:'white'}}>
+       <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',width:isMobileView?"100%":"50%",height:'100%' ,backgroundColor:'#212529',color:'white',marginBottom:'20px'}}>
          <Typography sx={{marginTop:'40px'}} fontSize='40px'>Contact Information</Typography>
          <Box sx={{display:'flex', alignItems:'center',gap:'10px',marginTop:'30px'}}>
          <Typography variant='h5'>Address : </Typography>

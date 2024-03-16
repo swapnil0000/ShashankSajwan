@@ -12,7 +12,7 @@ const About = () => {
   return (
     <Container >
    
-     <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',marginTop:'80px'}}>
+     <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',marginTop:'40px'}}>
      <Typography fontFamily='lato' sx={{marginTop:'20px'}} variant='h1'>Our Mission</Typography>
 
      <Typography  sx={{marginTop:'20px'}} variant='h6'>UPSC CSE, according to me is not an ordinary exam. It tests your limits, not only mental strength but also physical strength. 
@@ -44,13 +44,13 @@ const About = () => {
       <Box sx={{backgroundColor:'transparent'}}>
       <Avatar  sx={{ width: {lg:250 , md:150 , sm:100,xs:50}, height: {lg:250 , md:150 , sm:100,xs:50} }} src={photo}/>
       </Box>
-      <Typography  fontFamily='lato'  variant='h3' sx={{margin:'10px'}}>Shashank Sajwan </Typography>
+      <Typography  fontFamily='lato' sx={{margin:'10px',fontSize:{lg:'35px',md:'25px',sm:'26px',xs:'25px'}}}>Shashank Sajwan </Typography>
      </Box>
      </Box>
      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',marginTop:'20px'}}>
-     <Typography fontFamily='lato' variant='h2'>Our Startup Journey</Typography>
+     <Typography fontFamily='lato' sx={{fontSize:{lg:'40px',md:'40px',sm:'30px',xs:'25px'}}}>Our Startup Journey</Typography>
 
-     <Typography  sx={{marginTop:'20px'}} variant='h6'>Hi my name is Shashank Sajwan, from Uttarakhand. I have done my graduation in Physics Hons. From Delhi University and Post-Graduation in Public Administration from IGNOU. When I
+     <Typography  sx={{marginTop:'20px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}} variant='h6'>Hi my name is Shashank Sajwan, from Uttarakhand. I have done my graduation in Physics Hons. From Delhi University and Post-Graduation in Public Administration from IGNOU. When I
      was in my graduation, I decided that I want to prepare for UPSC and after it I began it.  
      During my alluring journey, I found that many of the Aspirants who are preparing for this exam are not having any guidance and their preparation is also disguised. In this exam, Patience, Dedication and good guidance is important. If one is having all the weapons prepared before the fight, then they can win the battle. But when I got to see that students are having these issues in their preparation, I decided to share my experience with them so that they can tackle their upcoming problems without any mess. Therefore, I made an Instagram Page and I started    
      to share my views, thoughts, experience which I have gained in my UPSC journey. And luckily, I found that the people are loving it, it is helping the Aspirants in many ways and because of your love and support, today we have crossed a milestone of 186k followers on Instagram & 5 lakh on YouTube. 

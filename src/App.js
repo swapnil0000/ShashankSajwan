@@ -14,16 +14,29 @@ import TermAndCondition from './pages/Policy/TermAndCondition';
 import Refund from './pages/Policy/Refund';
 import Private from './pages/Policy/Private';
 import Faqs from './pages/Policy/Faqs';
+import Popup from './components/popup/Popup';
+import { useEffect, useState } from 'react';
 
-function App() {
+function App() 
+{
+
+  const [showPopup, setShowPopup] = useState(true);
+
+  // useEffect hook with an empty dependency array runs once after the initial render
+  useEffect(() => {
+    // Set showPopup to true when the component mounts
+    setShowPopup(true);
+  }, []);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
   const theme=useTheme();
-
   return (
     
      <BrowserRouter>
-       
+     {showPopup && <Popup onClose={handleClosePopup} />}
        <Header/>
-       
        <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/notes' element={<Notes/>}/>

@@ -1,4 +1,4 @@
-import { Container, Typography, Grid, Card, CardContent, CardMedia, Button } from '@mui/material';
+import { Container, Typography, Grid, Card, CardContent, CardMedia, Button, useTheme, useMediaQuery } from '@mui/material';
 import React, { useState } from 'react';
 import { ArrowBack, ArrowForward } from '@mui/icons-material';
 import course1 from "../Courseprovide/course1.png"
@@ -12,6 +12,8 @@ import quotes6 from "./quotes6.png"
 
 
 const Blogs = () => {
+  const theme=useTheme();
+  const isMobileView=useMediaQuery(theme.breakpoints.down("md"))
   const [startIndex, setStartIndex] = useState(0);
   const cardsPerPage = 3;
   const data = [
@@ -70,7 +72,7 @@ const Blogs = () => {
 
       }} container spacing={2}>
         {data.slice(startIndex, startIndex + cardsPerPage).map(card => (
-          <Grid key={card.id} item xs={12} sm={6} md={4} lg={4}>
+          <Grid sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center'}} key={card.id} item xs={12} sm={6} md={4} lg={4}>
             <Card sx={{ maxWidth: 330 , height:'300px'}}>
               <CardMedia
                 component="img"

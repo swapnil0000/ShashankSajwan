@@ -15,7 +15,8 @@ const Icon = () => {
     <li>
       <a href="#"><i class="fab fa-linkedin-in icon"></i></a></li>
     <li>
-      <a href="#"><i class="fab fa-google-plus-g icon"></i></a></li>
+      <a href="#"><i class="fab fa-google-plus-g icon"></i></a>
+    </li>
   </ul>
   </Box>
   )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Card, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, Container, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Testimonial from './Testimonial';
@@ -7,6 +7,8 @@ import "../quotes/testisStyle.css"
 import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 const Quotes = () => {
+  const theme=useTheme();
+  const isMobileView=useMediaQuery(theme.breakpoints.down("md"))
   const [startIndex, setStartIndex] = useState(0);
   const cardsPerPage = 3;
   const data = [
@@ -46,47 +48,49 @@ const Quotes = () => {
 
   return (
     <>
-    <Container>
-      <Typography sx={{marginTop:'10px'}} variant="h2" align="center" gutterBottom>
-        Quotes
-      </Typography>
-      <Grid sx={{
-
-      }} container spacing={2}>
-        {data.slice(startIndex, startIndex + cardsPerPage).map(card => (
-          <Grid key={card.id} item xs={12} sm={6} md={4} lg={4}>
+    <Container >
+  <Box sx={{ display: 'flex', flexDirection: 'column',alignItems:'center',  justifyContent: 'center' }}>
+    <Typography sx={{ marginTop: '10px' }} variant="h2"  gutterBottom>
+      Quotes
+    </Typography>
+    <Grid container spacing={2} sx={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center', justifyContent: 'center' }}> {/* Added sx prop to the Grid container */}
+      {data.slice(startIndex, startIndex + cardsPerPage).map(card => (
+        <Grid key={card.id} item xs={12} sm={6} md={4} lg={4}>
           <div class="testimonial">
-          <span class="open quote">“</span>
-          <div class="image">
+            <span class="open quote">“</span>
+            <div class="image">
               <div class="clip"></div>
-          </div>
-          <p>{card.value}</p>
-          <div class="source">		
+            </div>
+            <p>{card.value}</p>
+            <div class="source">
               <span>Shashank Sajwan</span>
+            </div>
+            <span class="close quote">”</span>
           </div>
-          <span class="close quote">”</span>
-      </div>
-          </Grid>
-        ))}
-      </Grid>
-      <Button
-        onClick={handlePrev}
-        startIcon={<ArrowBack />}
-        sx={{ marginRight: 1,backgroundColor:'#00022e' ,color:'white' , margin:'10px' }}
-      >
-        Previous
-      </Button>
-      <Button
+        </Grid>
+      ))}
+    </Grid>
+    <Box>
+    <Button
+      onClick={handlePrev}
+      startIcon={<ArrowBack />}
+      sx={{ marginRight: 1, backgroundColor: '#00022e', color: 'white', margin: '10px' , width: { xs: '120px', sm: '150px', md: '170px', lg:'200px'}}}
+    >
+      Previous
+    </Button>
+    <Button
       disableElevation
       disableRipple
-        sx={{backgroundColor:'#00022e' ,color:'white' , margin:'10px' }}
-        onClick={handleNext}
-        endIcon={<ArrowForward />}
-      >
-        Next
-      </Button>
-      </Container>
-    </>
+      sx={{ backgroundColor: '#00022e', color: 'white', margin: '10px', width: { xs: '120px', sm: '150px', md: '170px', lg:'200px'} }}
+      onClick={handleNext}
+      endIcon={<ArrowForward />}
+    >
+      Next
+    </Button>
+    </Box>
+  </Box>
+</Container>
+</>
   );
 };
 
