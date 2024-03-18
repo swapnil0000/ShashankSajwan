@@ -1,36 +1,69 @@
-import { Box, Button, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
-import React from 'react'
-import author  from "../../assets/author.webp"
+import { Box, Button, Container, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
+import React, { useState } from 'react'
+import author from "../../assets/author.webp"
 import "./authorstyle.css"
 import Icon from '../../components/Icon/Icon'
 const Author = () => {
-   const theme=useTheme();
-   const isMobileView=useMediaQuery(theme.breakpoints.down("md"))
+  const [contactDetails, setContactDetails] = useState({
+    name: '',
+    email: '',
+    mobileNo: '',
+    message:''
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setContactDetails({
+      ...contactDetails,
+      [name]: value
+    });
+  };
+  const theme = useTheme();
+  const isMobileView = useMediaQuery(theme.breakpoints.down("sm"))
   return (
-    <Container sx={{marginTop:'40px'}}>
-       <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:isMobileView?"center":"null",justifyContent:'center'}}>
+    <Container sx={{ marginTop: '40px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center' }}>
+       <Typography sx={{fontWeight:'700',fontSize:isMobileView?"25px":"40px",display:'flex',alignItems:'center',marginBottom:'10px'}}>CONTACT US</Typography>
+      <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", alignItems:"center", justifyContent: 'space-around' }}>
 
-         <img style={{width:'250px',height:'250px',borderRadius:'50%',marginRight:'20px',display:'flex'}} src={author} alt='Shashank Sajwan'/>
+        <img style={{ width: '270px', height: '270px', borderRadius: '50%', marginRight: '20px', display: 'flex' }} src={author} alt='Shashank Sajwan' />
 
-         <Box sx={{display:'flex',alignItems:'center',flexDirection:'column',marginTop:'10px'}}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} >
+          
+          <TextField
+            style={{ width: '350px', borderRadius: '3px', marginBottom: '20px', marginTop: '1px' }}
+            name="name"
+            label="Name"
+            variant='standard'
+            value={contactDetails.name}
+            onChange={handleChange}
+          />
 
-         <Typography sx={{marginTop:'20px',fontSize:isMobileView?"15px":"15px",alignItems:'center'}} > 
-         UPSC is a marathon so be patient and be consistent. My biggest mistake was
-         not being consistent.<Box sx={{display:'inline',color:'#00022e',fontWeight:'600'}}> "Thoda thoda padho but daily padho"</Box>. Don't take a big jump,
-         just take smaller steps and move ahead. And most important thing never take big gaps and always be in touch with studies be it online, offline or just reading newspaper.
-         At times we don't like studying, in that case you can either watch quick revision
-         videos on Youtube or simply just revise your notes. <Box sx={{display:'inline',color:'#00022e',fontWeight:'600'}}>
-         "THE MOMENT YOU GET INTO THE COMFORT ZONE, YOU WILL LOSE GRIP OF YOUR PREPARATION AND IT CAN COST YOU ONE WHOLE YEAR"
-         </Box> (telling based on my personal experience). One small mistake
-         can really throw you out of the competition. Just make a plan, follow it and time to
-         time update it as per your need. Don't follow others blindly, listen to everyone and
-         add things as per requirement. Believe in yourself and you will definitely achieve it.
-         ALL THE VERY BEST :)
-         </Typography> 
-         <Button sx={{  marginTop:'30px'}} variant='contained'>Read More</Button>
-          <Icon/>
-         </Box>
-       </Box>
+          <TextField
+            sx={{ width: '350px', borderRadius: '3px' }}
+            name="email"
+            label="Email"
+            value={contactDetails.email}
+            onChange={handleChange}
+            variant='standard'
+          />
+
+          <TextField
+            style={{ width: '350px', borderRadius: '3px', margin: '20px' }}
+            name="mobileNo"
+            label="Mobile No"
+            variant='standard'
+            value={contactDetails.mobileNo}
+            onChange={handleChange} />
+
+          <TextField
+            style={{ width: '350px', borderRadius: '3px' }}
+            name="message"
+            label="Message"
+            value={contactDetails.place}
+            onChange={handleChange}
+            variant='standard' />
+          <Button sx={{ backgroundColor: '#f0750f', marginTop: '20px',color:'white',fontWeight:'600' }} variant='contained'>Submit</Button>
+        </Box>
+      </Box>
     </Container>
   )
 }

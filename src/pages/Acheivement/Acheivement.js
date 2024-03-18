@@ -56,22 +56,50 @@ import "../Acheivement/style.css";
 
 // export default Achievement;
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { Box, Container, Divider, Typography, useMediaQuery, useTheme } from '@mui/material';
 import "../../components/Icon/icons.css"
 import DoneIcon from '@mui/icons-material/Done';
 
 const Acheivement = () => {
+
+  const words = ['At Josh Talk', 'Most Viewed Video']; // Array of words
+let currentIndex = 0; // Index to keep track of the current word
+
+// Function to change the word
+function changeWord() {
+  const wordElement = document.getElementById('word');
+  wordElement.textContent = words[currentIndex]; // Set the content to the current word
+  currentIndex = (currentIndex + 1) % words.length; // Increment index and loop back to 0 if it exceeds array length
+}
+
+// Call changeWord every second
+setInterval(changeWord, 3000);
+
+const [count,setCount]=useState(1);
+const [instaCount,setInstaCount]=useState(1);
+const [telegramCount,setTelegramCount]=useState(1);
+
+useEffect(()=>{
+    if(count!==600)
+    setInterval(setCount(count+1),50) 
+    if(instaCount!==182)
+    setInterval(setInstaCount(instaCount+1),50);
+    if(telegramCount!==124)
+    setInterval(setTelegramCount(telegramCount+1),50)
+})
+
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down('sm'));
   const isTabletView=useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Container>
       <Box sx={{ width: '100%', margin: '0 auto', marginBottom: '100px',marginTop:'10px',display:'flex',alignItems:'center' ,flexDirection:"column" }}>
-        <Typography sx={{fontSize:{lg:'40px',md:'35px',sm:'25px',xs:'22px',fontWeight:'700'},}} align="center" gutterBottom>
+        <Typography id="word" sx={{fontSize:isMobileView?"25px":"40px",fontWeight:'700',opacity:1,transition:'opacity 0.5s ease'}} align="center" gutterBottom>
           WE AT JOSH TALKS
         </Typography>
+    
         <Box
           sx={{
             display: 'flex',
@@ -80,7 +108,7 @@ const Acheivement = () => {
             alignItems:'center'
           }}
         >
-          <Box sx={{ width: isMobileView ? '100%' : '50%', marginBottom: isMobileView ? '20px' : 'null' }}>
+          <Box sx={{ width: isMobileView ? '100%' : '60%', marginBottom: isMobileView ? '20px' : 'null' }}>
             <ReactPlayer
               url="https://youtu.be/2h3V2g58Whg?si=7HLu17W0pangSE5a"
               width="100%"
@@ -92,7 +120,7 @@ const Acheivement = () => {
           sx={{
             width: isMobileView ? '100%' : 'calc(40% - 20px)',
             marginTop: '20px',
-            marginLeft: isMobileView ? '0' : '20px',
+            marginLeft: isMobileView ? '0' : '28px',
             animation:'fadeInUp 0.5s ease-out forwards',
             fontSize:{sm:'13px',md:'20px'} // Animation for mobile view
           }}>
@@ -128,27 +156,37 @@ const Acheivement = () => {
         </Box>
         <Box sx={{marginTop:'20px',display:'flex',flexDirection:isMobileView?"row":'row',alignItems:'center',justifyContent:'center',backgroundColor:'#212529',color:'white',width:isTabletView?"100%":"100%",height:'100px',borderRadius:'10px'}}>
            <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%'}}>
-             <Box sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center'}}>
-               <Typography variant="h6">YouTube</Typography>
-               <Typography sx={{fontWeight:600}}>600K +</Typography>
-               <Typography variant="h6 ">subcribers</Typography>
+             <Box sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center', transition: 'transform 0.3s', // Add transition for smooth effect
+             '&:hover': {
+                 transform: 'scale(1.2)', // Apply zoom effect on hover
+             },}}>
+               <Typography variant="h5">YouTube</Typography>
+               <Typography sx={{fontWeight:600,color:'#f0750f'}}>{count}K +</Typography>
+               <Typography variant="h5">Subcribers</Typography>
+
              </Box>
            </Box>
            <Divider orientation="vertical" sx={{border:'2px solid white'}}/>
-           <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%'}}>
+           <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%', transition: 'transform 0.3s', // Add transition for smooth effect
+           '&:hover': {
+               transform: 'scale(1.2)', // Apply zoom effect on hover
+           },}}>
            <Box sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center'}}>
-             <Typography variant="h6">Instagram</Typography>
-             <Typography sx={{fontWeight:600}}>100K +</Typography>
-             <Typography variant="h6">Followers</Typography>
+             <Typography variant="h5">Instagram</Typography>
+             <Typography sx={{fontWeight:700,color:'#f0750f'}}>{instaCount}K +</Typography>
+             <Typography variant="h5">Followers</Typography>
            </Box>
          </Box>
          <Divider orientation="vertical" sx={{border:'2px solid white'}}/>
 
-         <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%'}}>
+         <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%', transition: 'transform 0.3s', // Add transition for smooth effect
+         '&:hover': {
+             transform: 'scale(1.2)', // Apply zoom effect on hover
+         },}}>
              <Box sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center'}}>
-               <Typography variant="h6">Telegram</Typography>
-               <Typography sx={{fontWeight:600}}>50K +</Typography>
-               <Typography variant="h6">Followers</Typography>
+               <Typography variant="h5">Telegram</Typography>
+               <Typography sx={{fontWeight:600,color:'#f0750f'}}>{telegramCount}K +</Typography>
+               <Typography variant="h5">Followers</Typography>
              </Box>
            </Box>
         </Box>

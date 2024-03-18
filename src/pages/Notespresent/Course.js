@@ -101,24 +101,25 @@ import pyq from "../../assets/pyq.jpg"
 // }
 
 // export default Course
-import { Container, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Container, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
 import "../Notespresent/notesStyle.css"
 const Course = () => {
   const theme=useTheme();
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Container sx={{display:'flex',flexDirection:isMobileView?"column":"row"}}>
-    <div class="wrapper">
-    <div class="card">
-          <img style={{width:'100%',objectFit:'contain'}} src={ncert}/>
-        <div class="info">
+    <Container sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}}>
+    <Typography sx={{fontWeight:'700',fontSize:isMobileView?"25px":"40px",marginBottom:'10px'}}>NOTES PROVIDED</Typography>
+    <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',justifyContent:'center',width:'100%'}}>
+    <div style={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',justifyContent:'center',gap:'10px'}} class="wrapper">
+    <div style={{marginBottom:isMobileView?"40px":"null"}} class="card">
+    <img style={{width:'100%',objectFit:'cover'}} src={pyq}/>        <div class="info">
             <h1 >Ncert Notes</h1>
             <button>Read More</button>
         </div>
     </div>
 
-    <div class="card">
+    <div style={{marginBottom:isMobileView?"40px":"null"}}  class="card">
         <img style={{width:'100%',objectFit:'cover'}} src={pyq}/>
         <div class="info">
             <h1>Road</h1>
@@ -127,15 +128,15 @@ const Course = () => {
         </div>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1503249023995-51b0f3778ccf?auto=format&fit=crop&w=311&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"/>
-        <div class="info">
+    <div style={{marginBottom:isMobileView?"40px":"null"}}  class="card">
+    <img style={{width:'100%',objectFit:'cover'}} src={pyq}/>        <div class="info">
             <h1>Protester</h1>
             <p>Protesters voice their concerns, demanding change and standing up for what they believe is right.</p>
             <button>Read More</button>
         </div>
     </div>
 </div>
+</Box>
     </Container>
   )
 }

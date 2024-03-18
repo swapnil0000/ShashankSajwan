@@ -4,7 +4,6 @@ import Header from './components/Header';
 import Top from './components/Top';
 import Home from './pages/Home';
 import {BrowserRouter, Route, Routes} from "react-router-dom"
-import Notes from './pages/Notes/Notes';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
 import About from './pages/about/About';
@@ -16,38 +15,25 @@ import Private from './pages/Policy/Private';
 import Faqs from './pages/Policy/Faqs';
 import Popup from './components/popup/Popup';
 import { useEffect, useState } from 'react';
+import Material from './pages/Materials/Material';
 
 function App() 
 {
-
-  const [showPopup, setShowPopup] = useState(true);
-
-  // useEffect hook with an empty dependency array runs once after the initial render
-  useEffect(() => {
-    // Set showPopup to true when the component mounts
-    setShowPopup(true);
-  }, []);
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
-  const theme=useTheme();
+ 
   return (
     
      <BrowserRouter>
-     {showPopup && <Popup onClose={handleClosePopup} />}
        <Header/>
        <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/notes' element={<Notes/>}/>
         <Route path='/about' element={<About/>}/>
+        <Route path='/material' element={<Material/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/terms' element={<TermAndCondition/>}/>
         <Route path='/refund' element={<Refund/>}/>
         <Route path='/private' element={<Private/>}/>
         <Route path='/faqs' element={<Faqs/>}/>
-
        </Routes> 
        <Footer/>
      </BrowserRouter>

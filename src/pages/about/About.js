@@ -1,4 +1,4 @@
-import { Avatar, Box, Container, Divider, Stack, Typography, useTheme } from '@mui/material'
+import { Avatar, Box, Container, Divider, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
 import img from "../about/aboutBanner.png"
 import member1 from "../about/member1.png"
@@ -9,11 +9,12 @@ import photo from "../../assets/shashankimage.webp"
 import Footer from '../../components/Footer'
 const About = () => {
   const theme=useTheme();
+  const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Container >
    
-     <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',marginTop:'40px'}}>
-     <Typography fontFamily='lato' sx={{marginTop:'20px'}} variant='h1'>Our Mission</Typography>
+     <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',marginTop:'140px'}}>
+     <Typography fontFamily='lato' sx={{marginTop:'20px',fontSize:isMobileView?"25px":"40px"}} variant='h1'>Our Mission</Typography>
 
      <Typography  sx={{marginTop:'20px'}} variant='h6'>UPSC CSE, according to me is not an ordinary exam. It tests your limits, not only mental strength but also physical strength. 
      It tests your overall personality. For me an aspirant’s overall development is a must in order to achieve success in this exam. During my long UPSC journey I had many ups and downs. 

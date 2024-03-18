@@ -47,21 +47,33 @@ const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
     {isMobileView && (
       <AppBar sx={{ position: 'fixed', backgroundColor: '#212529',boxShadow:'none',height:'100px' }}>
       <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',height:'100px',width:'100%'}}>      
-        <Drawer
-          anchor="top"
-          open={openMenu}
-          onClose={handleClose}
-          sx={{backgroundColor:"#212529"}}
-        >
-          <List  onClick={handleMenuClick} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around',backgroundColor:'#212529' }}>
-          <Link  style={{marginBottom:'10px'}} to="/">Home</Link>
-          <Link  style={{marginBottom:'10px'}} to="/notes">Notes</Link>
-          <Link  style={{marginBottom:'10px'}} to="/about">About</Link>
-          <Link  style={{marginBottom:'10px'}} to="/blogs">Blogs</Link>
-          <Link  style={{marginBottom:'10px'}} to="/contact">Contact</Link>
-          {/* Add more menu items as needed */}
-        </List>
-        </Drawer>
+      <Drawer
+      anchor="left"
+      open={openMenu}
+      onClose={handleClose}
+      sx={{ width: '100vw' ,  "& .MuiPaper-root": {
+        width: '100vw' }}} // Set width to full viewport width
+    >
+      <List
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center', // Center items vertically
+          alignItems: 'center', // Center items horizontally
+          height: '100vh', // Set height to full viewport height
+          backgroundColor: '#212529',
+          padding: '0', // Remove default padding
+        }}
+      >
+        <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/">Home</Link>
+        <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/notes">Notes</Link>
+        <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/about">About</Link>
+        <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/blogs">Blogs</Link>
+        <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/contact">Contact</Link>
+        {/* Add more menu items as needed */}
+      </List>
+    </Drawer>
+    
         <img
           style={{ cursor: 'pointer' }}
           onClick={() => { navigate("/") }}
@@ -70,8 +82,8 @@ const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
           src={logo}
           alt='logo'
         />
-         <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between'}}>
-         <Typography sx={{fontWeight:'700',fontSize:isSmallView?"20px":"30px"}}>SHASHANK SAJWAN</Typography>
+         <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',height:'100px'}}>
+         <Typography sx={{fontWeight:'700',fontSize:isMobileView?"20px":"30px"}}>SHASHANK SAJWAN</Typography>
          <Typography sx={{fontSize:isSmallView?"15px":'20px'}}>Your Vision, My direction</Typography>
          </Box>
          
@@ -82,25 +94,23 @@ const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
         </AppBar>
     )}
     {!isMobileView &&
-      <AppBar sx={{ position: 'fixed', backgroundColor: '#212529',boxShadow:'none' , height:'130px'}}>
-      <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',height:'150px'}}>
+      <AppBar sx={{ position: 'fixed', backgroundColor: '#212529',boxShadow:'none' , height:'130px',width:'100%'}}>
+      <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',height:'130px',width:'100%'}}>
       <Floating />
-        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',gap:'20px'}}>
-          <img onClick={()=>{navigate("/")}} style={{ width: '100px', contain: 'cover' }} src={logo} alt='logo' />
+        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',gap:'10px'}}>
+          <img onClick={()=>{navigate("/")}} style={{ width: '90px', contain: 'cover' }} src={logo} alt='logo' />
           <Box sx={{display:'flex',flexDirection:"column"}}>
-           <Typography sx={{fontWeight:'700',fontSize:isTabletView?"20px":"30px"}}>SHASHANK SAJWAN</Typography>
-           <Typography sx={{display:'flex',alignItems:'center',flexDirection:'row',justifyContent:'center',fontSize:'20px'}} variant='h6'>Your Vision, My Direction</Typography>
+           <Typography sx={{fontWeight:'700',fontSize:isTabletView?"20px":"27px"}}>SHASHANK SAJWAN</Typography>
+           <Typography sx={{display:'flex',alignItems:'center',flexDirection:'row',justifyContent:'center',fontSize:'17px'}} variant='h6'>Your Vision, My Direction</Typography>
           </Box>
         </Box>
-        <Box>
-          <Stack direction="row"  sx={{ display: 'flex', flexDirection: 'revert-layer', color: 'black',alignItems:'center' }}>  
+        <Box sx={{marginTop:'30px'}}>
+          <Stack direction="row"  sx={{ display: 'flex', color: 'black',marginTop:'30px',marginRight:'25px' }}>  
             <a>
              <Link to='/'>Home</Link>
             </a>
-            <a >
-              <Link style={{display:'flex',flexDirection:'row',alignItems:'center'}} to='/notes'>
-              Notes <ArrowDropDownIcon/>
-              </Link>
+            <a>
+             <Link to='/material'>Material</Link>
             </a>
             <a>
              <Link to='/about'>About</Link>
@@ -115,11 +125,11 @@ const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
         </Box>
         <Box sx={{display:"flex",flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'10px'}}>
           <Box sx={{display:'flex',flexDirection:'row',gap:'10px'}}>
-          <Button sx={{backgroundColor:'white',width:'200px'}}>Admission/Enquiry</Button>
+          <Button sx={{backgroundColor:'#f0750f',width:'170px',color:'white'}}>Admission/Enquiry</Button>
           </Box>
           <Box sx={{display:'flex',flexDirection:'row',gap:'10px',alignItems:'center',width:'20px',justifyContent:"center",marginTop:'5px'}}>
           <CallIcon sx={{color:'#e9e1e1'}}/>
-          <Typography  sx={{color:'#e9e1e1',fontSize:'20px'}} variant='h6'> 6386455982</Typography>
+          <Typography  sx={{color:'#e9e1e1',fontSize:'18px'}} variant='h6'>6386455982</Typography>
           </Box>
         </Box>
       </Toolbar>

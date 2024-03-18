@@ -9,7 +9,7 @@ import { Box, Container } from '@mui/material';
 
 const Carousels = () => {
   return (
-    <Container sx={{ borderRadius: '10px', marginTop: '60px' }}>
+    <Container sx={{ borderRadius: '10px', marginTop: '140px' }}>
       <Box sx={{ borderRadius: '20px', overflow: 'hidden' }}>
         <Carousel
           borderRadius={10}

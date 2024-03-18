@@ -10,6 +10,7 @@ import GTranslateIcon from '@mui/icons-material/GTranslate';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import gsap from 'gsap';
 const CourseProvide = () => {
   const [startIndex, setStartIndex] = useState(0);
@@ -79,69 +80,69 @@ const CourseProvide = () => {
     setStartIndex((prevIndex) => (prevIndex - cardsPerPage < 0 ? data.length - cardsPerPage : prevIndex - cardsPerPage));
   };
   const theme=useTheme();
-  const isMobileView=useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallMobile=useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Container sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}} ref={cardRef}>
-      <Typography  sx={{fontWeight:'700',fontSize:'40px'}} align="center" gutterBottom>
+      <Typography  sx={{fontWeight:'700',fontSize:isSmallMobile?"25px":"40px"}} align="center" gutterBottom>
         COURSES PROVIDED
       </Typography>
-      <Box  sx={{width:'80%',height:'450px',boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',borderRadius:'20px'}}>
-       <Box sx={{display:'flex',flexDirection:'row',justifyContent:'space-between',margin:'10px'}}>
+      <Box  sx={{width:'80%',height:'auto',boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',borderRadius:'20px'}}>
+       <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",justifyContent:'space-between',margin:'10px'}}>
+       {
+         isMobileView &&        <img style={{width:!isMobileView?"25%":"auto",height:'20%',borderRadius:'13px'}} src={general} alt='generla'/>         
+       }
+
 
        <Box>
        <Typography sx={{margin:'10px',fontSize:'25px',fontWeight:'600'}}>UPSC Full-Fledged Preparation</Typography>
-       <Typography sx={{margin:'8px',marginTop:'40px'}} variant='h6'>In this program, you will get Full Fledged Preparation including with proper mentorship and guidance with all the materials.</Typography>
+       <Typography sx={{margin:'8px',marginTop:'40px'}} variant='h5'>In this program, you will get Full-Fledged Preparation including with proper mentorship and guidance with all the materials.</Typography>
 
-       <Box sx={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
-          <Box sx={{margin:'10px',alignItems:'center'}}>
-            <Typography sx={{display:'flex',margin:'5px',gap:'5px', alignItems:'center'}}>
+       <Box sx={{display:'flex',flexDirection:isSmallMobile?"column":'row',justifyContent:'space-between'}}>
+          <Box sx={{margin:'10px',display:'flex',flexDirection:'column',fontSize:'15px'}}>
+            <Typography sx={{display:'flex',margin:'10px',gap:'5px',fontSize:isMobileView?"15px":'20px',fontSize:'17px'}}>
               <DateRangeIcon/>
                2 Years Access
             </Typography>
-            <Typography sx={{display:'flex',margin:'5px',gap:'5px', alignItems:'center'}}>            <AdminPanelSettingsIcon/>
+            <Typography sx={{display:'flex',margin:'10px',gap:'5px',fontSize:isMobileView?"15px":'20px',fontSize:'17px'}}>           
+             <AdminPanelSettingsIcon/>
               Proper Mentorship/Guidance
             </Typography>
-            <Typography sx={{display:'flex',margin:'5px',gap:'5px', alignItems:'center'}}>          <MenuBookIcon/>
+            <Typography sx={{display:'flex',margin:'10px',gap:'5px',fontSize:isMobileView?"15px":'20px',fontSize:'17px'}}>       
+               <MenuBookIcon/>
                Full Course Completion 
         </Typography>
           </Box>
 
-          <Box  sx={{margin:'10px',alignItems:'center'}}>
-          <Typography sx={{display:'flex',margin:'5px',gap:'5px', alignItems:'center'}}>              <GTranslateIcon/>
+          <Box  sx={{margin:'10px',display:'flex',flexDirection:'column'}}>
+          <Typography sx={{display:'flex',margin:'10px',gap:'5px',fontSize:isMobileView?"15px":'20px',fontSize:'17px'}}>              <GTranslateIcon/>
               English Medium
             </Typography>
-            <Typography sx={{display:'flex',margin:'5px',gap:'5px', alignItems:'center'}}>            <LiveTvIcon/>
+            <Typography sx={{display:'flex',margin:'10px',gap:'5px',fontSize:isMobileView?"15px":'20px',fontSize:'17px'}}>            <SpeakerNotesIcon/>
               All Micro-Topics covered with lectures and notes
            </Typography>
-           <Typography sx={{display:'flex',margin:'5px',gap:'5px', alignItems:'center'}}>            <LiveTvIcon/>
+           <Typography sx={{display:'flex',margin:'10px',gap:'5px',fontSize:isMobileView?"15px":'20px',fontSize:'17px'}}>            <LiveTvIcon/>
             Live Interaction/Doubt Sessions
          </Typography>
           </Box>
           
       </Box>
-
        </Box>  
-       <img style={{width:'350px',borderRadius:'13px'}} src={general} alt='generla'/>
+       {
+          !isMobileView && <img style={{width:!isMobileView?"25%":"auto",height:'25%',borderRadius:'13px'}} src={general} alt='generla'/>
+       }
+
        </Box>
 
 
       <Box sx={{display:'flex',flexDirection:'column',width:'100%',alignItems:'center',justifyContent:'center'}} >
       <Divider sx={{width:'95%',marginTop:'20px',border:'0.5px solid black'}}/>
-       <Box sx={{marginTop:'20px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around',width:'100%'}}>
-         <Box>
-         <Typography>17 March 2024</Typography>
-         <Typography>04 February 2024</Typography>
-         </Box>
-         <Box>
-         <Typography>03 March 2024</Typography>
-         <Typography>04 January 2024</Typography>
-         </Box>
-         <Box>
-         <Typography>04 February 2024</Typography>
-         </Box>
+       <Box sx={{marginTop:'10px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around',width:'100%'}}>
+     
+       
         </Box>
-        <Button sx={{marginTop:'50px',display:'flex',alignItems:'center',justifyContent:'center'}} variant='contained'>Buy Now</Button>
+        <Button sx={{top:'50%',display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#f0750f',color:'whitesmoke'}} variant='contained'>Buy Now</Button>
       </Box>
       </Box>
     </Container>

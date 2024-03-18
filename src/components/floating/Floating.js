@@ -25,7 +25,7 @@ export default function Floating() {
     <Box sx={{ position:'fixed',bottom:'0px',right:'0px' }}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        sx={{ position: 'absolute', bottom: 16, right: 16 , color:'lightblue'
+        sx={{ position: 'absolute', bottom: 16, right: 16 , color:'#f0750f'
     }}
         icon={<SpeedDialIcon  />}
       >

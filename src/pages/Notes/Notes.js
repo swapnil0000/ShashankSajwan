@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import "../Notes/notesstyle.css";
-import Acheivement from '../Acheivement/Acheivement';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { Box } from '@mui/material';
 
-const Notes = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
+export default function Notes() {
+ 
 
   return (
-    <div >
-     ookkok
+    <div>
+      <Box sx={{width:'100%',height:'100%',backgroundColor:'pink'}}>
+       pkpk
+      </Box>
     </div>
   );
-};
-
-export default Notes;
+}

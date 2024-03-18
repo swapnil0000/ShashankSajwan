@@ -64,7 +64,7 @@ const Blogs = () => {
   };
 
   return (
-    <Container sx={{marginTop:'100px'}}>
+    <Container sx={{marginTop:'140px'}}>
       <Typography variant="h2" align="center" gutterBottom>
         Blogs
       </Typography>
