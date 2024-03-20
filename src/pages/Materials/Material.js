@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Button, Container, Grid, Paper } from '@mui/material';
-import notes from "../Materials/noteslogo.css"
+import notes from "../Materials/noteslogo.webp"
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -82,12 +82,12 @@ export default function VerticalTabs() {
         },
       }}
     >
-      <Paper elevation={4} />
-      <Paper elevation={4} />
-      <Paper elevation={4} />
-      <Paper elevation={4} />
-      <Paper elevation={4} />
-      <Paper elevation={4} />
+      <Paper elevation={4} ><img style={{width:'100px',backgroundColor:'transparent',display:'flex',justifyContent:'center'}} src={notes}/></Paper>
+      <Paper elevation={4}><img style={{width:'100px',backgroundColor:'transparent',display:'flex',justifyContent:'center'}} src={notes}/></Paper>
+      <Paper elevation={4}><img style={{width:'100px',backgroundColor:'transparent',display:'flex',justifyContent:'center'}}  src={notes}/></Paper>
+      <Paper elevation={4} ><img style={{width:'100px',backgroundColor:'transparent',display:'flex',justifyContent:'center'}} src={notes}/></Paper>
+      <Paper elevation={4} ><img style={{width:'100px',backgroundColor:'transparent',display:'flex',justifyContent:'center'}} src={notes}/></Paper>
+      <Paper elevation={4} ><img style={{width:'100px',backgroundColor:'transparent',display:'flex',justifyContent:'center'}} src={notes}/></Paper>
     </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
