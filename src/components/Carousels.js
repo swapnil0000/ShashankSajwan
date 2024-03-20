@@ -16,7 +16,7 @@ const Carousels = () => {
           autoFocus={false}
           autoPlay={true}
           width='100%'
-          dynamicHeight={150} // Adjust the height as needed
+          dynamicHeight={170} // Adjust the height as needed
           showStatus={false}
           infiniteLoop={true}
           showIndicators={true}

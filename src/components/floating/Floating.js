@@ -22,7 +22,7 @@ const actions = [
 
 export default function Floating() {
   return (
-    <Box sx={{ position:'fixed',bottom:'0px',right:'0px' }}>
+    <Box sx={{ position:'fixed',bottom:'240px',right:'0px' }}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
         sx={{ position: 'absolute', bottom: 16, right: 16 , color:'#f0750f'

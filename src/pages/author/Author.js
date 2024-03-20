@@ -18,7 +18,7 @@ const Author = () => {
     });
   };
   const theme = useTheme();
-  const isMobileView = useMediaQuery(theme.breakpoints.down("sm"))
+  const isMobileView = useMediaQuery(theme.breakpoints.down("md"))
   return (
     <Container sx={{ marginTop: '40px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center' }}>
        <Typography sx={{fontWeight:'700',fontSize:isMobileView?"25px":"40px",display:'flex',alignItems:'center',marginBottom:'10px'}}>CONTACT US</Typography>

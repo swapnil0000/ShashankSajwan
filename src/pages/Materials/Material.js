@@ -1,85 +1,222 @@
-import { Box, Container, Paper, Typography } from '@mui/material'
-import React from 'react'
-import ncert from "../Materials/ncert.jpg"
-const Material = () => {
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { Button, Container, Grid, Paper } from '@mui/material';
+import notes from "../Materials/noteslogo.css"
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
+  };
+}
+
+export default function VerticalTabs() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <Container>
-     <Box sx={{display:'flex',flexDirection:'column',width:'100%',height:'800px',marginTop:'140px'}}>
+    <Box
+      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height:'500px', marginTop:'150px',flexDirection:'row',alignItems:'center',justifyContent:'space-between' ,width:'100%'}}
+    >
+      <Tabs
+        
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        sx={{ borderRight: 1, borderColor: 'divider',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',height:'500px',margin:"20px",marginLeft:'30px',marginBottom:'20px' ,padding:'60px'}}
+      >
+        <Tab label="Economical " {...a11yProps(0)} >
+         <Button>Economical</Button>
+        </Tab>
+        <Tab label="Polity " {...a11yProps(1)} />
+        <Tab label="Geography " {...a11yProps(2)} />
+        <Tab label="History " {...a11yProps(3)} />
 
-      <Box>
-      <Typography sx={{fontSize:'40px',fontWeight:'700'}}>
-      Material Provided
-     </Typography>
-     <Typography sx={{fontSize:'20px',fontWeight:'400',marginTop:'30px'}}>
-        Unlock the Power of Knowledge: Explore Our Current Affairs, Toppers' Insights, Quick Revision, Smart Quizzes, and Infographics and more!
-     </Typography>
-      </Box>
-     
-      <Box>
+      </Tabs>
+      <TabPanel value={value} index={0}>
       <Box
       sx={{
-
-        padding:'40px',
         display: 'flex',
         flexWrap: 'wrap',
-        flexDirection:'row',
         alignItems:'center',
-        margin:'20px',
-        justifyContent:'space-around',
+        justifyContent:'center',
         '& > :not(style)': {
           m: 1,
-          width: 180,
-          height: 180,
+          width: 200,
+          height: 150,
         },
       }}
     >
-      <Paper sx={{display:'flex',flexDirection:'column',alignItems:'center',transition: 'transform 0.3s', // Add transition for smooth effect
-                            '&:hover': {
-                                transform: 'scale(1.1)', // Apply zoom effect on hover
-                            },}} elevation= {1}>
-      <img style={{width:'50px'}} src={ncert}/>
-      <Typography sx={{fontWeight:'600',fontSize:'15px'}}>NCERT NOTES</Typography>
-      <Typography sx={{fontSize:'13px',marginTop:'10px',textAlign:'center'}}>Summarized notes based on NCERT textbooks, often used as foundational material.</Typography>
-      </Paper>
-      <Paper sx={{display:'flex',flexDirection:'column',alignItems:'center',transition: 'transform 0.3s', // Add transition for smooth effect
-                            '&:hover': {
-                                transform: 'scale(1.1)', // Apply zoom effect on hover
-                            }}} elevation= {1} >
-      <img style={{width:'50px'}} src={ncert}/>
-      <Typography sx={{fontWeight:'600',fontSize:'15px'}}>PYQ NOTES</Typography>
-      <Typography sx={{fontSize:'13px',marginTop:'10px',textAlign:'center'}}>Notes based on previous years' question papers (PYQs), useful for understanding exam patterns and topics.</Typography>
-      </Paper>
-      <Paper sx={{display:'flex',flexDirection:'column',alignItems:'center',transition: 'transform 0.3s', // Add transition for smooth effect
-                            '&:hover': {
-                                transform: 'scale(1.1)', // Apply zoom effect on hover
-                            }}} elevation= {1} >
-      <img style={{width:'50px'}} src={ncert}/>
-      <Typography sx={{fontWeight:'600',fontSize:'15px'}}>MONTHLY MAGAZINE</Typography>
-      <Typography sx={{fontSize:'13px',marginTop:'10px',textAlign:'center'}}>Periodical publications covering current affairs and important events relevant to the exam.</Typography>
-      </Paper>
-      <Paper sx={{display:'flex',flexDirection:'column',alignItems:'center',transition: 'transform 0.3s', // Add transition for smooth effect
-                            '&:hover': {
-                                transform: 'scale(1.1)', // Apply zoom effect on hover
-                            }}} elevation= {1} >
-      <img style={{width:'50px'}} src={ncert}/>
-      <Typography sx={{fontWeight:'600',fontSize:'15px'}}>NEWSPAPER NOTES</Typography>
-      <Typography sx={{fontSize:'13px',marginTop:'10px',textAlign:'center'}}> Condensed summaries or analyses of newspaper articles, aiding in current affairs preparation.</Typography>
-      </Paper>
-      <Paper sx={{display:'flex',flexDirection:'column',alignItems:'center',transition: 'transform 0.3s', // Add transition for smooth effect
-                            '&:hover': {
-                                transform: 'scale(1.1)', // Apply zoom effect on hover
-                            }}} elevation= {1} >
-      <img style={{width:'50px'}} src={ncert}/>
-      <Typography sx={{fontWeight:'600',fontSize:'15px'}}>TEST ( COMING SOON )</Typography>
-      <Typography sx={{fontSize:'13px',marginTop:'10px',textAlign:'center'}}>Announcement of upcoming mock tests or practice exams for aspirants.</Typography>
-      </Paper>
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
     </Box>
-      </Box>
-     
-       
-     </Box> 
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+      <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems:'center',
+        justifyContent:'center',
+        '& > :not(style)': {
+          m: 1,
+          width: 200,
+          height: 150,
+        },
+      }}
+    >
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+    </Box>      </TabPanel>
+      <TabPanel value={value} index={2}>
+      <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems:'center',
+        justifyContent:'center',
+        '& > :not(style)': {
+          m: 1,
+          width: 200,
+          height: 150,
+        },
+      }}
+    >
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+    </Box>      </TabPanel>
+      <TabPanel value={value} index={3}>
+      <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems:'center',
+        justifyContent:'center',
+        '& > :not(style)': {
+          m: 1,
+          width: 200,
+          height: 150,
+        },
+      }}
+    >
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+    </Box>      </TabPanel>
+      <TabPanel value={value} index={4}>
+      <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems:'center',
+        justifyContent:'center',
+        '& > :not(style)': {
+          m: 1,
+          width: 200,
+          height: 150,
+        },
+      }}
+    >
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+    </Box>      </TabPanel>
+      <TabPanel value={value} index={5}>
+      <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems:'center',
+        justifyContent:'center',
+        '& > :not(style)': {
+          m: 1,
+          width: 200,
+          height: 150,
+        },
+      }}
+    >
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+    </Box>      </TabPanel>
+      <TabPanel value={value} index={6}>
+      <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems:'center',
+        justifyContent:'center',
+        '& > :not(style)': {
+          m: 1,
+          width: 200,
+          height: 150,
+        },
+      }}
+    >
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+      <Paper elevation={4} />
+    </Box>      </TabPanel>
+    </Box>
     </Container>
-  )
+  );
 }
-
-export default Material

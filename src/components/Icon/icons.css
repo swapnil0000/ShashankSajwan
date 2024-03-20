@@ -5,7 +5,7 @@ ul{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
   
@@ -14,14 +14,16 @@ ul{
   }
   
   ul li a {
-    width:40px;
+    width:42px;
     height: 40px;
     background-color: #212529;
     text-align: center;
-    line-height: 40px;
+    line-height: 38px;
     font-size:18px;
+    right: 10px;
     margin: 0 10px;
     display: block;
+    align-items: center;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
@@ -45,7 +47,8 @@ ul{
     content: "";
     position: absolute;
     top: 100%;
-    left: 0;
+    left:0;
+    right: 12%;
     width: 100%;
     height: 100%;
     background: #f00;
@@ -58,17 +61,17 @@ ul{
   }
   
   ul li:nth-child(1) a:before{
-    background: #3b5999;
+    background: #f00;
   }
   
   ul li:nth-child(2) a:before{
-    background: #e80e0e;
+    background: #0e952d;
   }
   
   ul li:nth-child(3) a:before {
-    background: #e80e0e;
+    background: #0077b5;
   }
   
   ul li:nth-child(4) a:before {
-    background: #0077b5;
+    background: rgb(231, 3, 79);
   }

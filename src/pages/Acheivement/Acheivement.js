@@ -64,18 +64,7 @@ import DoneIcon from '@mui/icons-material/Done';
 
 const Acheivement = () => {
 
-  const words = ['At Josh Talk', 'Most Viewed Video']; // Array of words
-let currentIndex = 0; // Index to keep track of the current word
 
-// Function to change the word
-function changeWord() {
-  const wordElement = document.getElementById('word');
-  wordElement.textContent = words[currentIndex]; // Set the content to the current word
-  currentIndex = (currentIndex + 1) % words.length; // Increment index and loop back to 0 if it exceeds array length
-}
-
-// Call changeWord every second
-setInterval(changeWord, 3000);
 
 const [count,setCount]=useState(1);
 const [instaCount,setInstaCount]=useState(1);
@@ -83,11 +72,11 @@ const [telegramCount,setTelegramCount]=useState(1);
 
 useEffect(()=>{
     if(count!==600)
-    setInterval(setCount(count+1),50) 
+    setInterval(setCount(count+1),100) 
     if(instaCount!==182)
-    setInterval(setInstaCount(instaCount+1),50);
+    setInterval(setInstaCount(instaCount+1),2000);
     if(telegramCount!==124)
-    setInterval(setTelegramCount(telegramCount+1),50)
+    setInterval(setTelegramCount(telegramCount+1),2000)
 })
 
   const theme = useTheme();
@@ -95,9 +84,9 @@ useEffect(()=>{
   const isTabletView=useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Container>
-      <Box sx={{ width: '100%', margin: '0 auto', marginBottom: '100px',marginTop:'10px',display:'flex',alignItems:'center' ,flexDirection:"column" }}>
+      <Box sx={{ width: '100%', margin: '0 auto', marginBottom: '100px',marginTop:'10px',display:'flex' ,flexDirection:"column" }}>
         <Typography id="word" sx={{fontSize:isMobileView?"25px":"40px",fontWeight:'700',opacity:1,transition:'opacity 0.5s ease'}} align="center" gutterBottom>
-          WE AT JOSH TALKS
+          OUR JOSH TALKS SESSION
         </Typography>
     
         <Box
@@ -126,7 +115,7 @@ useEffect(()=>{
           }}>
           <Typography sx={{display:'flex',flexDirection:'row',gap:'5px',marginBottom:'10px'}}>
           <DoneIcon/>
-        Shashank Sajwan's speech on Josh Talks YouTube tackles UPSC aspirants' trials.
+        Shashank Sir's speech on Josh Talks YouTube tackles UPSC aspirants' trials.
         </Typography>
 
         <Typography sx={{display:'flex',flexDirection:'row',marginBottom:'10px',gap:'5px'}}> 
@@ -135,7 +124,7 @@ useEffect(()=>{
         </Typography>
         <Typography sx={{display:'flex',flexDirection:'row',marginBottom:'10px',gap:'5px'}}>  
         <DoneIcon/>
-                 Sajwan's insights illuminate aspirants' struggles, offering actionable solutions.
+                 His insights illuminate aspirants' struggles, offering actionable solutions.
         </Typography>
         <Typography sx={{display:'flex',flexDirection:'row',marginBottom:'10px',gap:'5px'}}> 
         <DoneIcon/>
@@ -145,7 +134,7 @@ useEffect(()=>{
         <Typography sx={{display:'flex',flexDirection:'row',marginBottom:'10px',gap:'5px'}}> 
         <DoneIcon/>
     
-              Sajwan provides hope and direction to those on the challenging journey.
+              He provides hope and direction to those on the challenging journey.
         </Typography>
         <Typography sx={{display:'flex',flexDirection:'row',marginBottom:'10px',gap:'5px'}}>   
         <DoneIcon/>

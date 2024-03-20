@@ -22,7 +22,7 @@ a{
     color: #e9e1e1;
     font-size: 20px;
     letter-spacing: 0.5px;
-    padding: 0 10px;
+    padding: 0 6px;
 }
 a:after{
     content: "";

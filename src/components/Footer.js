@@ -1,15 +1,16 @@
 import React from 'react';
-import { Container, Grid, Typography, Link, Box, Button, Stack, Divider, useTheme, useMediaQuery } from '@mui/material';
+import { Container, Grid, Typography,  Box, Button, Stack, Divider, useTheme, useMediaQuery } from '@mui/material';
 import logo from "../assets/shashank.PNG"
 import Icon from './Icon/Icon';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import  { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import logos from "../assets/shashank.PNG"
 
 
 const Footer = () => {
   const theme=useTheme();
-  const isMobileView=useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
   // const cardRef = useRef(null);
 
   // useEffect(() => {
@@ -47,43 +48,58 @@ const Footer = () => {
 
   const navigate=useNavigate();
   return (
-    <Box  sx={{ backgroundColor: '#212529',color:'white',bottom:0,marginTop:'20px' , width:'100%'}}>
+    <Box  sx={{ backgroundColor: '#212529',color:'white',bottom:0,marginTop:'20px' ,height:isMobileView?"800px":"270px", width:'100%'}}>
       <Container>
-        <Box sx={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-
-         <Box>
-          <Typography fontFamily='lato' sx={{margin:'15px',fontSize:isMobileView?"25px":"30px"}} variant='h3'>Your Vision, My Direction</Typography>
-         </Box>
 
 
-         <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',justifyContent:'space-around',width:'100%'}}>
+         <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',justifyContent:'space-evenly',width:'100%',bottom:0}}>
 
           
           
-          <Box sx={{display:'flex',flexDirection:'row',gap:'140px',marginTop:'20px',marginBottom:'20px'}}>
 
-           <Box sx={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-            <Typography sx={{marginBottom:'5',fontSize:'30px',marginTop:'15px',fontWeight:'700',color:'#f0750f'}}>COMPANY</Typography>
+           <Box sx={{display:'flex',flexDirection:'column',width:'80%'}}>
+            <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",gap:'20px',justifyContent:'space-between',width:'100%',marginTop:'40px'}}>
+
+              <Box sx={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+                 <img style={{width:'130px'}} src={logos} alt=''/>
+              </Box>
+
+             <Box sx={{display:'flex',flexDirection:"row",justifyContent:'space-between',gap:'80px'}}>
+
+             <Box sx={{display:'flex',flexDirection:'column' }}>
+             <Typography  onClick={()=>navigate("/")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Home</Typography>
+             <Typography  onClick={()=>navigate("/private")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Privacy Policy</Typography>
+             <Typography   onClick={()=>navigate("/terms")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Terms & Conditions</Typography>
+             <Typography onClick={()=>navigate("/refund")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Refund Policy</Typography>
+             </Box>
+
             <Box sx={{display:'flex',flexDirection:'column'}}>
-            <Button  onClick={()=>{navigate('/terms')}} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Term & Conditions</Button>
-            <Button onClick={()=>{navigate('/faqs')}} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >FAQs</Button>
-            <Button onClick={()=>{navigate('/refund')}} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Refund Policy</Button>
-           <Button onClick={()=>{navigate('/private')}} sx={{fontSize:'12px',cursor:'pointer',textTransform:'none',color:'white'}} >Private Policy</Button>
-           </Box>
+  
+            <Typography onClick={()=>navigate("/material")}  sx={{color:'white',margin:'2.5px'}}>Study Material</Typography>
+      
+            <Typography onClick={()=>navigate("/")}  sx={{color:'white',margin:'2.5px'}}>Courses</Typography>
+     
+            <Typography onClick={()=>navigate("/faqs")}  sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>FAQs</Typography>
+          
+            </Box>
+
+             </Box>
+
+              <Box  sx={{display:'flex',flexDirection:'column',alignItems:isMobileView?"center":"null",justifyContent:'center'}}>
+                <Typography>Connect With Us</Typography>
+                <Icon/>
+                <Typography>For Career and Business:</Typography>
+                <Typography>ask.iasmentor@gmail.com</Typography>
+              </Box>
            </Box>
 
 
           </Box>
 
 
-         </Box>
-         <Box sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'space-around',width:'100%'}}>
-           <Typography fontSize='10px'>©  All rights reserved Shashank Sajwan.</Typography>
-           <Box >
-            <Icon/>
-           </Box>
-          </Box>
         </Box>
+        <Typography fontSize='15px' sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop:'35px'}}>©  All rights reserved Shashank Sajwan.</Typography>
+
       </Container>
     </Box>
   )

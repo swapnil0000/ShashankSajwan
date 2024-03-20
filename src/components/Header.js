@@ -8,6 +8,18 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Floating from './floating/Floating';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import XIcon from '@mui/icons-material/X';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import EmailIcon from '@mui/icons-material/Email';
+import email from "../assets/gmail.png"
+import mail from "../assets/mail.png"
+import telegram from "../assets/telegram.png"
+import twitter from "../assets/twitter.png"
+import insta from "../assets/insta.png"
+import youtube from "../assets/youtube.png"
 const Header = () => 
 {
   const MenuItemLink = ({ to, children, onClick }) => {
@@ -42,11 +54,27 @@ const handleLoginClick = () => {
 };
 const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
 
+    const handleCourseClick = () => {
+     const courseSection = document.getElementById('course');
+      if (courseSection) {
+      const yOffset = -70; // Adjust this value as needed
+      const y = courseSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+     }};
+
+    const handleVideoClick = () => {
+      const courseSection = document.getElementById('videos');
+       if (courseSection) {
+        const yOffset = -70; // Adjust this value as needed
+        const y = courseSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+       }};
+
   return (
     <>
     {isMobileView && (
       <AppBar sx={{ position: 'fixed', backgroundColor: '#212529',boxShadow:'none',height:'100px' }}>
-      <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',height:'100px',width:'100%'}}>      
+      <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around',height:'100px',width:'100%'}}>      
       <Drawer
       anchor="left"
       open={openMenu}
@@ -77,15 +105,12 @@ const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
         <img
           style={{ cursor: 'pointer' }}
           onClick={() => { navigate("/") }}
-          width="70px"
+          width={isMobileView?"60px":"70px"}
           
           src={logo}
           alt='logo'
         />
-         <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',height:'100px'}}>
-         <Typography sx={{fontWeight:'700',fontSize:isMobileView?"20px":"30px"}}>SHASHANK SAJWAN</Typography>
-         <Typography sx={{fontSize:isSmallView?"15px":'20px'}}>Your Vision, My direction</Typography>
-         </Box>
+        
          
         <IconButton color="inherit" aria-label="menu" onClick={handleMenuClick}>
           {openMenu ? <CloseIcon /> : <MenuIcon />}
@@ -94,43 +119,47 @@ const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
         </AppBar>
     )}
     {!isMobileView &&
-      <AppBar sx={{ position: 'fixed', backgroundColor: '#212529',boxShadow:'none' , height:'130px',width:'100%'}}>
+      <AppBar sx={{ position: 'fixed', backgroundColor: '#212529',boxShadow:'none' , height:'110px',width:'100%'}}>
       <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',height:'130px',width:'100%'}}>
       <Floating />
-        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',gap:'10px'}}>
-          <img onClick={()=>{navigate("/")}} style={{ width: '90px', contain: 'cover' }} src={logo} alt='logo' />
+        
+        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',gap:'6px'}}>
+          <img onClick={()=>{navigate("/")}} style={{ width: '99px', contain: 'cover' }} src={logo} alt='logo' />
           <Box sx={{display:'flex',flexDirection:"column"}}>
-           <Typography sx={{fontWeight:'700',fontSize:isTabletView?"20px":"27px"}}>SHASHANK SAJWAN</Typography>
-           <Typography sx={{display:'flex',alignItems:'center',flexDirection:'row',justifyContent:'center',fontSize:'17px'}} variant='h6'>Your Vision, My Direction</Typography>
+           <Typography sx={{fontWeight:'700',fontSize:isTabletView?"20px":"20px"}}>SHASHANK SAJWAN</Typography>
+           <Typography sx={{display:'flex',alignItems:'center',flexDirection:'row',justifyContent:'center',fontSize:'15px'}} variant='h6'>Your Vision, My Direction</Typography>
+           <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'11px',marginTop:'5px'}}>
+             <img style={{width:'20px'}} src={youtube}/>
+             <img  style={{width:'20px'}} src={telegram}/>
+             <img  style={{width:'20px'}} src={insta}/>
+
+             <img  style={{width:'20px'}} src={twitter}/>
+          </Box>
           </Box>
         </Box>
         <Box sx={{marginTop:'30px'}}>
-          <Stack direction="row"  sx={{ display: 'flex', color: 'black',marginTop:'30px',marginRight:'25px' }}>  
-            <a>
+          <Stack direction="row"  sx={{ display: 'flex', color: 'black',marginTop:'25px',marginRight:'25px' ,gap:'10px'}}>  
+          
              <Link to='/'>Home</Link>
-            </a>
-            <a>
-             <Link to='/material'>Material</Link>
-            </a>
-            <a>
-             <Link to='/about'>About</Link>
-            </a>
-            <a>
-             <Link to='/contact'>Contact</Link>
-            </a>
-            <a>
-             <Link to='/blogs'>Blog</Link>
-            </a>
+            
+             <Link to='/material'>Notes</Link>
+            <Link onClick={handleCourseClick}>Course</Link> {/* Navigate to course section in home */}
+            <Link onClick={handleVideoClick}>Videos</Link> {/* Navigate to course section in home */}
+            <Link to='/about'>About</Link>
+          
+            <Link  to='/contact'>Contact</Link>
           </Stack>
         </Box>
-        <Box sx={{display:"flex",flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'10px'}}>
-          <Box sx={{display:'flex',flexDirection:'row',gap:'10px'}}>
-          <Button sx={{backgroundColor:'#f0750f',width:'170px',color:'white'}}>Admission/Enquiry</Button>
+        <Box sx={{display:"flex",flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
+          <Box sx={{display:'flex',alignItems:'center',justifyContent:'start',marginRight:'55px',gap:'10px'}}>
+          <WhatsAppIcon sx={{color:'lightgreen',fontWeight:'700'}}/>
+          <Typography sx={{color:'white',fontSize:"15px"}}>+91 6386455982</Typography>  
           </Box>
-          <Box sx={{display:'flex',flexDirection:'row',gap:'10px',alignItems:'center',width:'20px',justifyContent:"center",marginTop:'5px'}}>
-          <CallIcon sx={{color:'#e9e1e1'}}/>
-          <Typography  sx={{color:'#e9e1e1',fontSize:'18px'}} variant='h6'>6386455982</Typography>
+          <Box sx={{display:'flex',flexDirection:'row',gap:'10px',marginTop:'5px'}}>
+           <img style={{width:'18px'}} src={email}/>
+          <Typography sx={{color:'white',fontSize:"14px",textTransform:'lowercase'}}>ask.iasmentor@gmail.com</Typography>  
           </Box>
+           
         </Box>
       </Toolbar>
     </AppBar>

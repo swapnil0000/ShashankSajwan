@@ -5,7 +5,7 @@ import study from "../Choose/study.png";
 import trackrecord from "../Choose/trackrecord.png";
 import experience from "../Choose/experience.png";
 import  { useEffect, useRef } from 'react';
-
+import FiberManualRecordRoundedIcon from '@mui/icons-material/FiberManualRecordRounded';
 import dct from "../Choose/dct.png"
 import ffp from "../Choose/ffp.png"
 import pt from "../Choose/pt.png"
@@ -16,8 +16,8 @@ import gsap from 'gsap';
 const Choose = () => 
 {
   const theme=useTheme();
-  const isMobileView=useMediaQuery(theme.breakpoints.down("sm"))
-  const isTabletView=useMediaQuery(theme.breakpoints.down("md"));
+  const isMobileView=useMediaQuery(theme.breakpoints.down("md"))
+  const isTabletView=useMediaQuery(theme.breakpoints.down("sm"));
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -55,87 +55,98 @@ const Choose = () =>
       id: 1,
       img: dct,
       title: 'Direct Contact With Sir',
-      value: 'Throughout your UPSC preparation journey, Shashank Sajwan Sir will provide direct support, addressing every query from prelims to mains and interviews. His guidance via WhatsApp and calls ensures thorough assistance at every step of your endeavor. '
+      value: 'Shashank Sajwan Sir offers direct support for UPSC prep, handling queries from prelims to interviews.',
+      value1:"Guidance is provided via WhatsApp and calls, ensuring comprehensive assistance.",
+      value2:"Students receive thorough help throughout their UPSC journey under his mentorship."
     },
     {
       id: 2,
       img: wtp,
       title: 'We Track Your Progress',
-      value: "After we provide weekly targets aspirants are requested to send their weekly report to sir. Our dedicated team will closely monitor your UPSC journey, providing guidance through tests, live classes, module assessments, and personalized calls. We're committed to supporting your progress every step of the way.",
+      value: "After we provide weekly targets aspirants are requested to send their weekly report to sir.",
+      value1:"Our dedicated team will closely monitor your UPSC journey, providing guidance through tests, live classes, module assessments, and personalized calls.",
+      value2:"We're committed to supporting your progress every step of the way."
     },
     {
       id: 3,
       img: wmp,
       title: 'Weekly Micro Targets ',
-      value: "In India, we've launched a pioneering initiative emphasizing weekly targets. Through a meticulously crafted module, micro weekly goals are allocated, fostering better assessment and preparation. This approach aims to enhance your readiness through structured milestones, ensuring progress and efficacy.",
+      value: "In India, we've launched a pioneering initiative emphasizing weekly targets.",
+      value1:"Through a meticulously crafted module, micro weekly goals are allocated, fostering better assessment and preparation.",
+      value2:"This approach aims to enhance your readiness through structured milestones, ensuring progress and efficacy."
     },
     {
       id: 4,
       img: tma,
       title: 'Test Marks Assessment',
-      value: " Weekly test marks submission assessment ensures continuous progress tracking, optimizing your learning journey. Aspirants send their weekly test scores directly to sir for regular feedback of their performance. These regular evaluations offer invaluable insights, guiding you towards improvement and success.."
+      value:"Weekly test marks submission assessment ensures continuous progress tracking, optimizing your learning journey.",
+      value1:'Aspirants send their weekly test scores directly to sir for regular feedback of their performance.',
+      value2:'These regular evaluations offer invaluable insights, guiding you towards improvement and success.'
     },
     {
       id: 5,
       img: pt,
-      title: 'Course Ends, Personal Touch Remains.',
-      value: "The key highlight of this program is its personal connection with Shashank Sajwan sir. Even after the course concludes, the personal touch continues. Access to his guidance remains available, ensuring ongoing support and mentorship for an extended period."},
+      title: 'Course Ends, Personal Touch Remains',
+      value: "The key highlight of this program is its personal connection with Shashank Saiwan sir.",
+      value1:'Even after the course concludes, the personal touch continues.',
+      value2:"Access to his guidance remains available, ensuring ongoing support and mentorship for an extended period."
+    },
       {
         id: 6,
         img: ffp,
         title: 'Full-Fledged Preparation',
-        value: "Introducing a pioneering platform for CSE Aspirants, providing comprehensive preparation with meticulous guidance. Our innovative initiative covers GS, CSAT, Current Affairs, Syllabus Understanding, PYQ Analysis, Weekly Tests, Answer writing, and exhaustive lectures & notes."
+        value: "Introducing a pioneering platform for CSE Aspirants, providing comprehensive preparation with meticulous guidance.",
+        value1:'Our innovative initiative covers GS, CSAT, Current Affairs, Syllabus Understanding, PYQ Analysis, Weekly Tests, Answer writing, and exhaustive lectures & notes.',
+        value2:'Its a holistic solution empowering aspirants with the tools to excel.'
       },
   ];
 
 
   return (
-    <Container
-    ref={cardRef}
-    sx={{
-      backgroundColor: '#fbfbf9',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}
-  >
+    <Container ref={cardRef}>
     <Box
       sx={{
         display: 'flex',
         flexDirection: isMobileView ? 'column' : 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         width: '100%',
-        margin: '30px'
       }}
     >
-      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}}>
-        <Typography sx={{fontSize:isMobileView?"25px":"40px",fontWeight:'500'}}>WHY  US!</Typography>
+      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:isMobileView?"100px":"10px"}}>
+        <Typography sx={{fontSize:isMobileView?"25px":"40px",fontWeight:'700'}}>OUR UNIQUE FEATURES</Typography>
       </Box>
     </Box>
-    <Grid sx={{display:'flex',flexDirection:'row', }} container spacing={3}>
+    <Grid sx={{display:'flex',flexDirection:'row', width:'100%',marginTop:'20px'}} container spacing={1}>
       {
         choosedata.map((ele) => (
-          <Grid    item lg={4} md={4} sm={6} xs={12} key={ele.id}>
+          <Grid    item lg={4} md={6} sm={6} xs={12} key={ele.id}>
             <Box
               sx={{
                 display: 'flex',
-                height:'260px',
+                height:'300px',
                 flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
+    
                 '& > :not(style)': {
                   width: '100%',
-                  maxWidth: 400, // Max width for lg and md breakpoints
+                  maxWidth: "500px", // Max width for lg and md breakpoints
                 },
               }}
             >
-              <Paper sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center',justifyContent:'center',width:'400px',margin:'auto',height:'270px' }} elevation={3}>
-                <img style={{ width: '140px'}} src={ele.img} alt={ele.title} />
-                <Box sx={{display:"flex",flexDirection:'column'}}>
-                <Typography sx={{textAlign:'center'}} variant='h5'>{ele.title}</Typography>
-                <Typography  sx={{ margin:'5px', fontSize:isTabletView?"12px":"11px",textAlign:'center'}} >{ele.value}</Typography>
+              <Paper sx={{ display: 'flex', flexDirection: 'row',alignItems:'center',width:'470px'
+             }} elevation={3}>
+                <img style={{ width: '100px',height:'100px',marginRight:'19px',margin:'10px'}} src={ele.img} alt={ele.title} />
+                <Box sx={{display:"flex",flexDirection:'column',height:'230px'}}>
+                
+                <Typography sx={{fontSize:'20px',display:'flex',marginRight:'10px',fontWeight:'600'}} >{ele.title}</Typography>
+                <Box sx={{display:"flex",flexDirection:'column',alignItems:'center'}}>
+                 <ul  style={{margin:'10px',display:'flex',flexDirection:'column'}} >
+                  <li style={{listStyle:'circle',fontSize:isMobileView?"11px":"13px",fontFamily:'roboto'}}>{ele.value}</li>
+                  <li style={{listStyle:'circle',fontSize:isMobileView?"11px":"13px",fontFamily:'roboto'}}>{ele.value1}</li>
+                  <li style={{listStyle:'circle',fontSize:isMobileView?"11px":"13px",fontFamily:'roboto'}}>{ele.value2}</li>
+
+                 </ul>
+                </Box>
+              
                 </Box>
               </Paper>
             </Box>

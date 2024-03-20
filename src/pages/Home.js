@@ -15,7 +15,7 @@ import Careers from './Careers/Careers'
 const Home = () => {
   
   return (
-
+     
     <>
        <Carousels/>
        <Motive/>
@@ -23,8 +23,7 @@ const Home = () => {
        <Acheivement/>
        <CourseProvide/>
        <Course/>
-      <CarouseYoutube/>
-      <Careers/>
+       <CarouseYoutube/>
        <Author/>
     </>
   )

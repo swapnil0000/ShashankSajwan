@@ -54,7 +54,7 @@ const CarouseYoutube = () => {
 
     return (
         <Container>
-            <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:'80px'}}>
+            <Box id="videos" sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:'80px'}}>
             <Typography sx={{ display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontWeight:'700',fontSize:isMobileView?"25px":"40px",marginBottom:'20px'}}>MOST VIEWED VIDEOS</Typography>
                 <Carousel
                     showIndicators={true}
@@ -68,11 +68,11 @@ const CarouseYoutube = () => {
                     containerClass="carousel-container"
                 >
                     {youtubelink.map((ele) => (
-                        <div  className="video-wrapper" style={{borderRadius:'10px',width:'100%',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'350px'}}>
+                        <div  className="video-wrapper" style={{borderRadius:'10px',width:'100%',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'220px'}}>
 
-                        <Card sx={{ maxWidth: 500,gap:'10px',height:'240px' }}>
+                        <Card sx={{ maxWidth: 450,height:'200px' }}>
                         <CardMedia
-                          sx={{ height: 190 ,width:'350px', display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}
+                          sx={{ height: 190 ,width:'350px', display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',marginTop:'10px',borderRadius:'10px'}}
                           
                         > 
                         <ReactPlayer
@@ -80,6 +80,7 @@ const CarouseYoutube = () => {
                         id={ele.id}
                             url={ele.link}
                             controls
+                            
                             width="90%"
                             height="230px"
                             playing={show}
@@ -88,11 +89,6 @@ const CarouseYoutube = () => {
 
                         </CardMedia>
             
-                        <CardContent sx={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                        <Divider orientation='horizontal' sx={{border:'1px solid black',width:'90%',display:'flex',flexDirection:'row',alignItems:'center',justifySelf:'center'}} />
-
-                        <Button sx={{border:'none',display:'flex',alignItems:'center',justifyContent:'center',width:'100%',fontWeight:'600',fontSize:'15px'}} variant='outlined'>{ele.value}</Button>
-                        </CardContent>
                       </Card>
                         </div>
                             

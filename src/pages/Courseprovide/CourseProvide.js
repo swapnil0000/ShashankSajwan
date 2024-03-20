@@ -13,8 +13,6 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import gsap from 'gsap';
 const CourseProvide = () => {
-  const [startIndex, setStartIndex] = useState(0);
-  const cardsPerPage = 3;
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -72,26 +70,21 @@ const CourseProvide = () => {
     // },
   ];
 
-  const handleNext = () => {
-    setStartIndex((prevIndex) => (prevIndex + cardsPerPage >= data.length ? 0 : prevIndex + cardsPerPage));
-  };
-
-  const handlePrev = () => {
-    setStartIndex((prevIndex) => (prevIndex - cardsPerPage < 0 ? data.length - cardsPerPage : prevIndex - cardsPerPage));
-  };
+ 
   const theme=useTheme();
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
   const isSmallMobile=useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Container sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}} ref={cardRef}>
-      <Typography  sx={{fontWeight:'700',fontSize:isSmallMobile?"25px":"40px"}} align="center" gutterBottom>
+    <Container sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}} ref={cardRef}>
+      <Typography  id="course"  sx={{fontWeight:'700',fontSize:isSmallMobile?"25px":"40px"}} align="center" gutterBottom>
         COURSES PROVIDED
       </Typography>
-      <Box  sx={{width:'80%',height:'auto',boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',borderRadius:'20px'}}>
-       <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",justifyContent:'space-between',margin:'10px'}}>
+      <Box  sx={{width:'90%',height:'auto',boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',borderRadius:'20px'}}>
+       <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",justifyContent:'space-between'}}>
        {
-         isMobileView &&        <img style={{width:!isMobileView?"25%":"auto",height:'20%',borderRadius:'13px'}} src={general} alt='generla'/>         
+         
+        isMobileView &&        <img style={{width:!isMobileView?"23%":"auto",height:'20%',borderRadius:'13px'}} src={general} alt='generla'/>         
        }
 
 
@@ -142,7 +135,7 @@ const CourseProvide = () => {
      
        
         </Box>
-        <Button sx={{top:'50%',display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#f0750f',color:'whitesmoke'}} variant='contained'>Buy Now</Button>
+        <Button sx={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#f0750f',color:'whitesmoke',marginBottom:'11px'}} variant='contained'>ENROLL Now</Button>
       </Box>
       </Box>
     </Container>
