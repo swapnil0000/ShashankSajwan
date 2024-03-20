@@ -49,7 +49,7 @@ export default function VerticalTabs() {
   return (
     <Container>
     <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height:'500px', marginTop:'150px',flexDirection:'row',alignItems:'center',justifyContent:'space-between' ,width:'100%'}}
+      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height:'500px', marginTop:'150px',flexDirection:'row',alignItems:'center',justifyContent:'space-between' }}
     >
       <Tabs
         
@@ -58,7 +58,7 @@ export default function VerticalTabs() {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',height:'500px',margin:"20px",marginLeft:'30px',marginBottom:'20px' ,padding:'60px'}}
+        sx={{ borderRight: 1, borderColor: 'divider',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',height:'600px',margin:"20px",marginLeft:'30px',marginBottom:'20px' ,padding:'60px'}}
       >
         <Tab label="Economical " {...a11yProps(0)} >
          <Button>Economical</Button>
