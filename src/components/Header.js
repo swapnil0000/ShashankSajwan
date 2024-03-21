@@ -74,7 +74,7 @@ const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
     <>
     {isMobileView && (
       <AppBar sx={{ position: 'fixed', backgroundColor: '#212529',boxShadow:'none',height:'100px' }}>
-      <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around',height:'100px',width:'100%'}}>      
+      <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',height:'100px',width:'100%'}}>      
       <Drawer
       anchor="left"
       open={openMenu}
@@ -94,7 +94,7 @@ const isTabletView=useMediaQuery(theme.breakpoints.down("lg"))
         }}
       >
         <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/">Home</Link>
-        <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/notes">Notes</Link>
+        <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/material">Notes</Link>
         <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/about">About</Link>
         <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/blogs">Blogs</Link>
         <Link onClick={handleClose} style={{ marginBottom: '20px' , fontSize:'30px'}} to="/contact">Contact</Link>

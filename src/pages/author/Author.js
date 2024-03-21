@@ -19,6 +19,7 @@ const Author = () => {
   };
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"))
+  const isSmallMobileView = useMediaQuery(theme.breakpoints.down("sm"))
   return (
     <Container sx={{ marginTop: '40px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center' }}>
        <Typography sx={{fontWeight:'700',fontSize:isMobileView?"25px":"40px",display:'flex',alignItems:'center',marginBottom:'10px'}}>CONTACT US</Typography>
@@ -29,7 +30,7 @@ const Author = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} >
           
           <TextField
-            style={{ width: '350px', borderRadius: '3px', marginBottom: '20px', marginTop: '1px' }}
+            style={{ width:isSmallMobileView?"250px":"300px", borderRadius: '3px', marginBottom: '20px', marginTop: '1px' }}
             name="name"
             label="Name"
             variant='standard'
@@ -38,7 +39,7 @@ const Author = () => {
           />
 
           <TextField
-            sx={{ width: '350px', borderRadius: '3px' }}
+            sx={{width:isSmallMobileView?"250px":"300px", borderRadius: '3px' }}
             name="email"
             label="Email"
             value={contactDetails.email}
@@ -47,7 +48,7 @@ const Author = () => {
           />
 
           <TextField
-            style={{ width: '350px', borderRadius: '3px', margin: '20px' }}
+            style={{ width:isSmallMobileView?"250px":"300px", borderRadius: '3px', margin: '20px' }}
             name="mobileNo"
             label="Mobile No"
             variant='standard'
@@ -55,7 +56,7 @@ const Author = () => {
             onChange={handleChange} />
 
           <TextField
-            style={{ width: '350px', borderRadius: '3px' }}
+            style={{width:isSmallMobileView?"250px":"300px", borderRadius: '3px' }}
             name="message"
             label="Message"
             value={contactDetails.place}

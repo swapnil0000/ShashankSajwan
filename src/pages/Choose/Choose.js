@@ -17,37 +17,9 @@ const Choose = () =>
 {
   const theme=useTheme();
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"))
-  const isTabletView=useMediaQuery(theme.breakpoints.down("sm"));
-  const cardRef = useRef(null);
+  const isSmallMobileView=useMediaQuery(theme.breakpoints.down("sm"));
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateIn();
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 } // Adjust this threshold as needed
-    );
-
-    observer.observe(cardRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const animateIn = () => {
-    gsap.to(cardRef.current, {
-      y: '-50px',
-      opacity: 1,
-      duration: .5,
-      ease: 'power4.out',
-    });
-  };
+ 
 
 
   const choosedata = [
@@ -103,7 +75,7 @@ const Choose = () =>
 
 
   return (
-    <Container ref={cardRef}>
+    <Container >
     <Box
       sx={{
         display: 'flex',
@@ -112,11 +84,11 @@ const Choose = () =>
         width: '100%',
       }}
     >
-      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:isMobileView?"100px":"10px"}}>
+      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:isMobileView?"80px":"10px"}}>
         <Typography sx={{fontSize:isMobileView?"25px":"40px",fontWeight:'700'}}>OUR UNIQUE FEATURES</Typography>
       </Box>
     </Box>
-    <Grid sx={{display:'flex',flexDirection:'row', width:'100%',marginTop:'20px'}} container spacing={1}>
+    <Grid sx={{display:'flex',flexDirection:'row', width:'100%',marginTop:'15px'}} container spacing={1}>
       {
         choosedata.map((ele) => (
           <Grid    item lg={4} md={6} sm={6} xs={12} key={ele.id}>
@@ -137,7 +109,7 @@ const Choose = () =>
                 <img style={{ width: '100px',height:'100px',marginRight:'19px',margin:'10px'}} src={ele.img} alt={ele.title} />
                 <Box sx={{display:"flex",flexDirection:'column',height:'230px'}}>
                 
-                <Typography sx={{fontSize:'20px',display:'flex',marginRight:'10px',fontWeight:'600'}} >{ele.title}</Typography>
+                <Typography sx={{fontSize:isSmallMobileView?'15px':'20px',display:'flex',marginRight:'10px',fontWeight:'600'}} >{ele.title}</Typography>
                 <Box sx={{display:"flex",flexDirection:'column',alignItems:'center'}}>
                  <ul  style={{margin:'10px',display:'flex',flexDirection:'column'}} >
                   <li style={{listStyle:'circle',fontSize:isMobileView?"11px":"13px",fontFamily:'roboto'}}>{ele.value}</li>

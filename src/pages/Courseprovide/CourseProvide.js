@@ -77,10 +77,10 @@ const CourseProvide = () => {
 
   return (
     <Container sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}} ref={cardRef}>
-      <Typography  id="course"  sx={{fontWeight:'700',fontSize:isSmallMobile?"25px":"40px"}} align="center" gutterBottom>
+      <Typography  id="course"  sx={{fontWeight:'700',fontSize:isSmallMobile?"20px":"40px"}} align="center" gutterBottom>
         COURSES PROVIDED
       </Typography>
-      <Box  sx={{width:'90%',height:'auto',boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',borderRadius:'20px'}}>
+      <Box  sx={{width:'90%',height:'auto',marginTop:'15px',boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',borderRadius:'20px'}}>
        <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",justifyContent:'space-between'}}>
        {
          

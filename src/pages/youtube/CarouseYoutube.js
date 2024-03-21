@@ -55,7 +55,7 @@ const CarouseYoutube = () => {
     return (
         <Container>
             <Box id="videos" sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:'80px'}}>
-            <Typography sx={{ display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontWeight:'700',fontSize:isMobileView?"25px":"40px",marginBottom:'20px'}}>MOST VIEWED VIDEOS</Typography>
+            <Typography sx={{ display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontWeight:'700',fontSize:isMobileView?"25px":"40px",marginBottom:'15px'}}>MOST VIEWED VIDEOS</Typography>
                 <Carousel
                     showIndicators={true}
                     responsive={responsive}

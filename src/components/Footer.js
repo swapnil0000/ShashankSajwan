@@ -48,7 +48,7 @@ const Footer = () => {
 
   const navigate=useNavigate();
   return (
-    <Box  sx={{ backgroundColor: '#212529',color:'white',bottom:0,marginTop:'20px' ,height:isMobileView?"800px":"270px", width:'100%'}}>
+    <Box  sx={{ backgroundColor: '#212529',color:'white',bottom:0,marginTop:'20px' ,height:isMobileView?"650px":"270px", width:'100%'}}>
       <Container>
 
 

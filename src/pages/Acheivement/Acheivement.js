@@ -84,8 +84,8 @@ useEffect(()=>{
   const isTabletView=useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Container>
-      <Box sx={{ width: '100%', margin: '0 auto', marginBottom: '100px',marginTop:'10px',display:'flex' ,flexDirection:"column" }}>
-        <Typography id="word" sx={{fontSize:isMobileView?"25px":"40px",fontWeight:'700',opacity:1,transition:'opacity 0.5s ease'}} align="center" gutterBottom>
+      <Box sx={{ width: '100%', margin: '0 auto', marginBottom: '100px',marginTop:'40px',display:'flex' ,flexDirection:"column" }}>
+        <Typography id="word" sx={{fontSize:isMobileView?"20px":"40px",fontWeight:'700',opacity:1,transition:'opacity 0.5s ease'}} align="center" gutterBottom>
           OUR JOSH TALKS SESSION
         </Typography>
     
@@ -108,7 +108,7 @@ useEffect(()=>{
           <Box variant="h6"
           sx={{
             width: isMobileView ? '100%' : 'calc(40% - 20px)',
-            marginTop: '20px',
+            marginTop: '15px',
             marginLeft: isMobileView ? '0' : '28px',
             animation:'fadeInUp 0.5s ease-out forwards',
             fontSize:{sm:'13px',md:'20px'} // Animation for mobile view
