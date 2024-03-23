@@ -1,9 +1,15 @@
 import { Box, Container, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 
 const TermAndCondition = () => {
+  const {pathname}=useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
-    <Container sx={{marginTop:'80px'}}>
+    <Container sx={{marginTop:'110px'}}>
     <Box sx={{display:'flex',flexDirection:'column',marginTop:'20px'}}>
       <Typography variant='h2'>Terms Of Use</Typography>
 

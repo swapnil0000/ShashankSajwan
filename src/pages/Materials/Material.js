@@ -80,10 +80,10 @@ const Material=() =>{
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"))
 
   return (
-    <Container>
-    <Typography sx={{marginTop:'140px',display:'flex',flexDirection:'row',justifyContent:'center',fontSize:'40px',fontWeight:'600'}}>NCERT NOTES</Typography>
+    <Box>
+    <Typography sx={{marginTop:'110px',display:'flex',flexDirection:'row',justifyContent:'center',fontSize:'40px',fontWeight:'600'}}>NCERT NOTES</Typography>
     <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex',marginBottom:isMobileView?'10px':'200px',display:'flex',flexDirection:isMobileView?"column":'row',justifyContent:'space-between',width:'100%' }}
+      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex',marginBottom:isMobileView?'10px':'200px',display:'flex',flexDirection:isMobileView?"column":'row',justifyContent:'space-evenly',width:'100%' }}
     >
       <Tabs
         orientation={isMobileView?"horizontal":'vertical'}
@@ -91,30 +91,34 @@ const Material=() =>{
         onChange={handleChange}
         variant="scrollable"
         aria-label="Vertical tabs example"
-        sx={{height:isMobileView?"180px":"600px",marginLeft:'10px' ,padding:'10px',width:isMobileView?"100%":"400px",display:'flex',alignItems:'center',justifyContent:'center'}}
+        sx={{height:isMobileView?"180px":"600px",marginLeft:'10px' ,padding:'10px',width:isMobileView?"100%":"500px",display:'flex',alignItems:'center',justifyContent:'center', backgroundColor:'#212529',borderRadius:'10px'}}
       >
-      <Tab label="Polity" {...a11yProps(0)} sx={{ bgcolor: value === 0 ? 'lightblue' : 'transparent',fontWeight:'600',color:'black' }} />
-      <Tab label="Economical" {...a11yProps(1)} sx={{ bgcolor: value === 1 ? 'lightblue' : 'transparent' ,color:'black'}} />
-      <Tab label="History" {...a11yProps(2)} sx={{ bgcolor: value === 2 ? 'lightblue' : 'transparent',color:'black' }} />
-      <Tab label="Geography" {...a11yProps(3)} sx={{ bgcolor: value === 3 ? 'lightblue' : 'transparent' ,color:'black'}} />
+      <Tab label="Polity" {...a11yProps(0)} sx={{ bgcolor: value === 0 ? 'lightblue' : 'white',fontWeight:'600',color:'black',marginBottom:'20px',borderRadius:'8px',width:'200px' ,marginTop:'10px'}} />
+      <Tab label="Economical" {...a11yProps(1)} sx={{ bgcolor: value === 1 ? 'lightblue' : 'white' ,color:'black',marginBottom:'20px',borderRadius:'8px',width:'200px' }} />
+      <Tab label="History" {...a11yProps(2)} sx={{ bgcolor: value === 2 ? 'lightblue' : 'white',color:'black',marginBottom:'20px'  ,borderRadius:'8px',width:'200px'}} />
+      <Tab label="Geography" {...a11yProps(3)} sx={{ bgcolor: value === 3 ? 'lightblue' : 'white' ,color:'black',marginBottom:'20px',borderRadius:'8px',width:'200px' }} />
       </Tabs>
-      <TabPanel value={value}  index={0}>
-      <Grid container >
+     <Box sx={{marginLeft:'10px',borderRadius:'10px'}}>
+      <TabPanel value={value}  index={0} >
+      <Grid container  >
         {data.map(item => (
-          <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-          <Paper  elevation={1} sx={{ m: 1, width: 200, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}}>
-          <img style={{ width: '90px', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
-          <Button variant='text' >Download</Button>
+          <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
+          <Paper  sx={{  width: 300, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',margin:'5px',transition: 'transform 0.2s', // Add transition for smooth effect
+          '&:hover': {
+             border:'2px solid #212529', // Apply zoom effect on hover
+          }}}>
+          <img style={{ width: '90px', backgroundColor: 'grey' , marginBottom:'10px'}} src={item.img} />
+          <Button variant='text'>Download</Button>
         </Paper>
           </Grid>
         ))}
       </Grid>
       </TabPanel>
       <TabPanel value={value}  index={1}>
-      <Grid container >
+      <Grid container sx={{gap:'10px'}}  >
         {data.map(item => (
-          <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-          <Paper  elevation={1} sx={{ m: 1, width: 200, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}}>
+          <Grid sx={{gap:'10px'}} key={item.id} item xs={12} sm={6} md={4} lg={3}>
+          <Paper  sx={{ m: 1, width: 200, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',gap:'10px'}}>
           <img style={{ width: '90px', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
           <Button variant='text' >Download</Button>
         </Paper>
@@ -122,6 +126,7 @@ const Material=() =>{
         ))}
       </Grid>
       </TabPanel>
+      </Box>
       <TabPanel value={value}  index={2}>
       <Grid container >
         {data.map(item => (
@@ -158,7 +163,7 @@ const Material=() =>{
       </Grid>
     </TabPanel>
     </Box>
-    </Container>
+    </Box>
   );
 }
 

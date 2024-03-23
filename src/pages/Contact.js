@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, Container, Divider, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { FlexCenterColoum } from '../common';
 
@@ -53,6 +53,7 @@ import { FlexCenterColoum } from '../common';
 import map from "../assets/contact.png"
 import MailIcon from '@mui/icons-material/Mail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import { useLocation } from 'react-router-dom';
 const Contact = () => {
   const theme=useTheme();
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
@@ -70,6 +71,11 @@ const Contact = () => {
       [name]: value
     });
   };
+  const {pathname}=useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
      <Container sx={{display:'flex',flexDirection:'column',marginTop:'100px',alignItems:'center',justifyContent:'center'}}>
      

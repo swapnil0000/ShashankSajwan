@@ -1,9 +1,15 @@
 import { Box, Container, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const Private = () => {
+  const {pathname}=useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
-   <Container sx={{marginTop:'80px'}}>
+   <Container sx={{marginTop:'120px'}}>
     <Box sx={{display:'flex',flexDirection:'column',marginTop:'20px'}}>
       <Typography variant='h2'>Privacy Policy</Typography>
       <Typography sx={{marginTop:'20px'}} variant='h6'>This platform is owned by Shashank Sajwan, operating under the name of Shashank Sajwan. 

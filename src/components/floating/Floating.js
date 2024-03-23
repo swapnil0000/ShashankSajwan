@@ -11,11 +11,10 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import EmailIcon from '@mui/icons-material/Email';
 const actions = [
   { icon: <WhatsAppIcon />, name: 'Whatsapp' },
-  { icon: <FacebookIcon />, name: 'Facebok' },
   { icon: <InstagramIcon />, name: 'Instagram' },
   { icon: <XIcon />, name: 'Twitter' },
   { icon: <TelegramIcon />, name: 'Telegram' },
-  { icon: <EmailIcon />, name: 'Email' },
+ 
 
 
 ];
@@ -25,13 +24,13 @@ export default function Floating() {
     <Box sx={{ position:'fixed',bottom:'240px',right:'0px' }}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        sx={{ position: 'absolute', bottom: 16, right: 16 , color:'#f0750f'
+        sx={{ position: 'fixed', bottom: 16, right: 16 , color:'#f0750f'
     }}
         icon={<SpeedDialIcon  />}
       >
         {actions.map((action) => (
           <SpeedDialAction
-            sx={{backgroundColor:'lightblue'}}
+            sx={{backgroundColor:'GrayText'}}
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}

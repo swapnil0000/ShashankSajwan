@@ -77,7 +77,7 @@ const CourseProvide = () => {
 
   return (
     <Container sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}} ref={cardRef}>
-      <Typography  id="course"  sx={{fontWeight:'700',fontSize:isSmallMobile?"20px":"40px"}} align="center" gutterBottom>
+      <Typography  id="course"  sx={{fontWeight:'700',fontSize:isSmallMobile?"20px":"40px"}} align="center">
         COURSES PROVIDED
       </Typography>
       <Box  sx={{width:'90%',height:'auto',marginTop:'15px',boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',borderRadius:'20px'}}>
@@ -135,7 +135,7 @@ const CourseProvide = () => {
      
        
         </Box>
-        <Button sx={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#f0750f',color:'whitesmoke',marginBottom:'11px'}} variant='contained'>ENROLL Now</Button>
+        <Button sx={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#f0750f',color:'whitesmoke',marginBottom:'11px'}} variant='contained'>Coming Soon</Button>
       </Box>
       </Box>
     </Container>

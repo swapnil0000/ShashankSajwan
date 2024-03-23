@@ -1,17 +1,24 @@
 import React from 'react'
 import "../Icon/icons.css"
-import { Box } from '@mui/material'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
 const Icon = () => {
+  const theme=useTheme();
+  const isMobileView=useMediaQuery(theme.breakpoints.down("lg"));
+  const handleEmail = () => {
+    const recipientEmail = 'swapnilsrivastava1999@gmail.com';
+    const mailtoUrl = `mailto:${recipientEmail}`;
+    window.open(mailtoUrl, '_blank');
+  };
   return (
-    <Box >
-    <ul>
+    <>
+    <ul >
     <li>
     <a href="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS"  target="_blank">
       <i class="fab fa-youtube icon"></i>
     </a>
   </li>
   <li>
-      <a href="ask.iasmentor@gmail.com" target='_blank'><i class="fab fa-google-plus-g icon"></i></a>
+      <a onClick={handleEmail} target='_blank'><i class="fab fa-google-plus-g icon"></i></a>
     </li>
     <li>
     <a href="https://t.me/iasips_mentor" target='_blank'>
@@ -24,7 +31,7 @@ const Icon = () => {
   </a>
     </li>
   </ul>
-  </Box>
+  </>
   )
 }
 

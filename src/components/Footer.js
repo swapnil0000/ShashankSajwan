@@ -69,15 +69,15 @@ const Footer = () => {
              <Box sx={{display:'flex',flexDirection:'column' }}>
              <Typography  onClick={()=>navigate("/")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Home</Typography>
              <Typography  onClick={()=>navigate("/private")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Privacy Policy</Typography>
-             <Typography   onClick={()=>navigate("/terms")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Terms & Conditions</Typography>
+             <Typography   onClick={()=>navigate("/terms")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>T&C</Typography>
              <Typography onClick={()=>navigate("/refund")} sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Refund Policy</Typography>
              </Box>
 
             <Box sx={{display:'flex',flexDirection:'column'}}>
   
-            <Typography onClick={()=>navigate("/material")}  sx={{color:'white',margin:'2.5px'}}>Study Material</Typography>
+            <Typography onClick={()=>navigate("/material")}  sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Resources</Typography>
       
-            <Typography onClick={()=>navigate("/")}  sx={{color:'white',margin:'2.5px'}}>Courses</Typography>
+            <Typography onClick={()=>navigate("/")}  sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>Courses</Typography>
      
             <Typography onClick={()=>navigate("/faqs")}  sx={{color:'white',margin:'2.5px',cursor:'pointer'}}>FAQs</Typography>
           
@@ -88,7 +88,7 @@ const Footer = () => {
               <Box  sx={{display:'flex',flexDirection:'column',alignItems:isMobileView?"center":"null",justifyContent:'center'}}>
                 <Typography>Connect With Us</Typography>
                 <Icon/>
-                <Typography>For Career and Business:</Typography>
+                <Typography>For Career and Opportunity:</Typography>
                 <Typography>ask.iasmentor@gmail.com</Typography>
               </Box>
            </Box>

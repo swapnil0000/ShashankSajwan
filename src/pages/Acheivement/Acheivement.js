@@ -61,6 +61,9 @@ import ReactPlayer from 'react-player/youtube';
 import { Box, Container, Divider, Typography, useMediaQuery, useTheme } from '@mui/material';
 import "../../components/Icon/icons.css"
 import DoneIcon from '@mui/icons-material/Done';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TelegramIcon from '@mui/icons-material/Telegram';
 
 const Acheivement = () => {
 
@@ -84,7 +87,7 @@ useEffect(()=>{
   const isTabletView=useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Container>
-      <Box sx={{ width: '100%', margin: '0 auto', marginBottom: '100px',marginTop:'40px',display:'flex' ,flexDirection:"column" }}>
+      <Box sx={{ width: '100%', margin: '0 auto', marginBottom: '100px',marginTop:'50px',display:'flex' ,flexDirection:"column" ,alignItems:'center',justifyContent:'center'}}>
         <Typography id="word" sx={{fontSize:isMobileView?"20px":"40px",fontWeight:'700',opacity:1,transition:'opacity 0.5s ease'}} align="center" gutterBottom>
           OUR JOSH TALKS SESSION
         </Typography>
@@ -101,7 +104,7 @@ useEffect(()=>{
             <ReactPlayer
               url="https://youtu.be/2h3V2g58Whg?si=7HLu17W0pangSE5a"
               width="100%"
-              style={{ marginTop:'25px',alignItems:'center',overflow:'hidden',borderRadius:'20px'}}
+              style={{ marginTop:'2px',alignItems:'center',overflow:'hidden',borderRadius:'20px'}}
               height={isTabletView ? '200px' : '330px'}
             />
           </Box>
@@ -143,40 +146,61 @@ useEffect(()=>{
         </Typography>
         </Box>
         </Box>
-        <Box sx={{marginTop:'20px',display:'flex',flexDirection:isMobileView?"row":'row',alignItems:'center',justifyContent:'center',backgroundColor:'#212529',color:'white',width:isTabletView?"100%":"100%",height:'100px',borderRadius:'10px'}}>
-           <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%'}}>
-             <Box sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center', transition: 'transform 0.3s', // Add transition for smooth effect
-             '&:hover': {
-                 transform: 'scale(1.2)', // Apply zoom effect on hover
-             },}}>
-               <Typography variant="h5">YouTube</Typography>
-               <Typography sx={{fontWeight:600,color:'#f0750f'}}>{count}K +</Typography>
-               <Typography variant="h5">Subcribers</Typography>
 
-             </Box>
-           </Box>
-           <Divider orientation="vertical" sx={{border:'2px solid white'}}/>
-           <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%', transition: 'transform 0.3s', // Add transition for smooth effect
+        <Box sx={{marginTop:'20px',display:'flex',flexDirection:isMobileView?"column":"row",backgroundColor:'#212529',color:'white',width:isMobileView?"70%":"100%",height:isMobileView?"350px":"110px",borderRadius:'30px'}}>
+
+        <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",backgroundColor:'#212529',color:'white',width:isMobileView?"100%":"100%",height:isMobileView?"350px":"110px",borderRadius:'30px'}}>
+
+           <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%',height:'100%',marginBottom:isMobileView?"5px":"0px",transition: 'transform 0.3s', // Add transition for smooth effect
            '&:hover': {
                transform: 'scale(1.2)', // Apply zoom effect on hover
            },}}>
-           <Box sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center'}}>
-             <Typography variant="h5">Instagram</Typography>
-             <Typography sx={{fontWeight:700,color:'#f0750f'}}>{instaCount}K +</Typography>
-             <Typography variant="h5">Followers</Typography>
+
+             <Box sx={{display:'flex',flexDirection:"column"}}>
+               <Typography  sx={{fontSize:'17px'}}>YouTube</Typography>
+               <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{count}K +</Typography>
+               <Typography  sx={{fontSize:isMobileView?"15px":'17px'}}>Subcribers</Typography>
+             </Box>
+
+             <Box>
+               <YouTubeIcon  sx={{fontSize:'50px',fontWeight:'700'}}/>
+              </Box>
+
+           </Box>
+
+           <Box sx={{ width:isMobileView?'100%':"3px", height: isMobileView?"4px":"100%", backgroundColor: 'white', borderRight: '3px solid white' }} />
+
+          
+           <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',marginBottom:isMobileView?"5px":"0px",justifyContent:'center',gap:'28px',width:'100%',height:'100%', transition: 'transform 0.3s', // Add transition for smooth effect
+           '&:hover': {
+               transform: 'scale(1.2)', // Apply zoom effect on hover
+           },}}>
+           <Box sx={{display:'flex',flexDirection:"column"}}>
+             <Typography sx={{fontSize:'17px'}}>Instagram</Typography>
+             <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{instaCount}K +</Typography>
+             <Typography sx={{fontSize:isMobileView?"15px":'17px'}}>Followers</Typography>
+           </Box>
+           <Box>
+             <InstagramIcon sx={{fontSize:'50px',fontWeight:'700'}}/>
            </Box>
          </Box>
-         <Divider orientation="vertical" sx={{border:'2px solid white'}}/>
+         <Box sx={{ width:isMobileView?'100%':"3px", height: isMobileView?"4px":"100%", backgroundColor: 'white', borderRight: '3px solid white' }} />
 
-         <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'30px',width:'100%', transition: 'transform 0.3s', // Add transition for smooth effect
+         <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',marginBottom:isMobileView?"5px":"0px",justifyContent:'center',gap:'30px',width:'100%',height:'100%', transition: 'transform 0.3s', // Add transition for smooth effect
          '&:hover': {
              transform: 'scale(1.2)', // Apply zoom effect on hover
          },}}>
-             <Box sx={{display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center'}}>
-               <Typography variant="h5">Telegram</Typography>
-               <Typography sx={{fontWeight:600,color:'#f0750f'}}>{telegramCount}K +</Typography>
-               <Typography variant="h5">Followers</Typography>
+             <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'40px'}}>
+             <Box sx={{ display:'flex',flexDirection:'column',}}>
+               <Typography sx={{fontSize:'17px'}}>Telegram</Typography>
+               <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{telegramCount}K +</Typography>
+               <Typography sx={{fontSize:isMobileView?"15px":'17px'}}>Followers</Typography>
+               </Box>
+               <Box >
+                 <TelegramIcon sx={{fontSize:'50px',fontWeight:'700'}}/>
+               </Box>
              </Box>
+           </Box>
            </Box>
         </Box>
         </Box>

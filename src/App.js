@@ -16,6 +16,7 @@ import Faqs from './pages/Policy/Faqs';
 import Popup from './components/popup/Popup';
 import { useEffect, useState } from 'react';
 import Material from './pages/Materials/Material';
+import Notes from './pages/Notes/Notes';
 
 function App() 
 {
@@ -23,6 +24,7 @@ function App()
   return (
     
      <BrowserRouter>
+   
        <Header/>
        <Routes>
         <Route path='/' element={<Home/>}/>

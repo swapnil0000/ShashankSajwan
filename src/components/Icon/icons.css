@@ -3,15 +3,9 @@
 ul{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
     margin-top: 10px;
     margin-bottom: 20px;
 }
-  
-  ul li {
-    list-style: none;
-  }
   
   ul li a {
     width:42px;

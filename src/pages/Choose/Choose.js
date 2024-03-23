@@ -58,7 +58,7 @@ const Choose = () =>
     {
       id: 5,
       img: pt,
-      title: 'Course Ends, Personal Touch Remains',
+      title: ' Personal Touch Remains',
       value: "The key highlight of this program is its personal connection with Shashank Saiwan sir.",
       value1:'Even after the course concludes, the personal touch continues.',
       value2:"Access to his guidance remains available, ensuring ongoing support and mentorship for an extended period."
@@ -84,7 +84,7 @@ const Choose = () =>
         width: '100%',
       }}
     >
-      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:isMobileView?"80px":"10px"}}>
+      <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:isMobileView?"15px":"10px"}}>
         <Typography sx={{fontSize:isMobileView?"25px":"40px",fontWeight:'700'}}>OUR UNIQUE FEATURES</Typography>
       </Box>
     </Box>
@@ -95,7 +95,7 @@ const Choose = () =>
             <Box
               sx={{
                 display: 'flex',
-                height:'300px',
+                height:{md:'270px',sm:'250px',xs:'230px',lg:'300px'},
                 flexDirection: 'row',
     
                 '& > :not(style)': {
@@ -104,14 +104,15 @@ const Choose = () =>
                 },
               }}
             >
-              <Paper sx={{ display: 'flex', flexDirection: 'row',alignItems:'center',width:'470px'
+              <Paper sx={{ display: 'flex', flexDirection: 'column',width:'470px'
              }} elevation={3}>
-                <img style={{ width: '100px',height:'100px',marginRight:'19px',margin:'10px'}} src={ele.img} alt={ele.title} />
-                <Box sx={{display:"flex",flexDirection:'column',height:'230px'}}>
-                
-                <Typography sx={{fontSize:isSmallMobileView?'15px':'20px',display:'flex',marginRight:'10px',fontWeight:'600'}} >{ele.title}</Typography>
-                <Box sx={{display:"flex",flexDirection:'column',alignItems:'center'}}>
-                 <ul  style={{margin:'10px',display:'flex',flexDirection:'column'}} >
+             <Typography sx={{fontSize:{lg:'21px',md:'20px',sm:'19px'},display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'600',marginTop:'10px'}} >{ele.title}</Typography>
+
+                <Box sx={{display:"flex",flexDirection:'row',height:'200px'}}>
+                <img style={{ width: '100px',height:'100px',marginRight:'10px',margin:'10px'}} src={ele.img} alt={ele.title} />
+
+                <Box sx={{marginTop:'5px'}}>
+                 <ul  style={{display:'flex',flexDirection:'column'}} >
                   <li style={{listStyle:'circle',fontSize:isMobileView?"11px":"13px",fontFamily:'roboto'}}>{ele.value}</li>
                   <li style={{listStyle:'circle',fontSize:isMobileView?"11px":"13px",fontFamily:'roboto'}}>{ele.value1}</li>
                   <li style={{listStyle:'circle',fontSize:isMobileView?"11px":"13px",fontFamily:'roboto'}}>{ele.value2}</li>

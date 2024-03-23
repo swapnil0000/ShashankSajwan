@@ -1,21 +1,23 @@
 import { Avatar, Box, Container, Divider, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
-import React from 'react'
-import img from "../about/aboutBanner.png"
-import member1 from "../about/member1.png"
-import member2 from "../about/member2.png"
-import member3 from "../about/member3.png"
-import member4 from "../about/member4.png"
-import photo from "../../assets/shashankimage.webp"
+import React, { useEffect } from 'react'
 import Footer from '../../components/Footer'
-import aboutphoto from "../about/aboutphoto.jpg"
+import aboutphoto from "../about/sir.png"
 import telegram from "../../assets/telegram.png"
 import twitter from "../../assets/twitter.png"
 import insta from "../../assets/insta.png"
 import youtube from "../../assets/youtube.png"
 import ChevronRightSharpIcon from '@mui/icons-material/ChevronRightSharp';
+import { useLocation, useNavigate } from 'react-router-dom'
 const About = () => {
   const theme=useTheme();
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
+
+  const {pathname}=useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+   const navigate=useNavigate();
   return (
     <Container >
      {!isMobileView && (
@@ -71,16 +73,19 @@ const About = () => {
       
 
        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
-       <img style={{width:'32px'}} src={youtube}/>
+       <img  style={{width:'40px',cursor:'pointer'}} src={youtube}/>
        <Typography>iasips_mentor</Typography>
        </Box>
        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
-       <img  style={{width:'32px'}} src={telegram}/>
+       <img  style={{width:'40px',cursor:'pointer'}} src={telegram}/>
        <Typography>iasips_mentor</Typography>
+
        </Box>
        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
-       <img  style={{width:'32px'}} src={insta}/>
+       <img   style={{width:'40px',cursor:'pointer'}} src={insta}/>
        <Typography>iasips_mentor</Typography>
+
+ 
        </Box>
 
 
@@ -137,7 +142,7 @@ const About = () => {
        <Typography sx={{display:'flex',alignItems:'center',fontSize:'15px'}}><ChevronRightSharpIcon style={{color:'green'}}/>Most viewed session on Josh Talks</Typography>
         </Box>
 
-         <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-around',gap:'11px',marginTop:'50px',width:'100%'}}>
+         <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around',gap:'11px',marginTop:'50px',width:'100%'}}>
 
       
        
@@ -145,15 +150,12 @@ const About = () => {
 
          <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
          <img style={{width:'32px'}} src={youtube}/>
-         <Typography>iasips_mentor</Typography>
          </Box>
          <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
          <img  style={{width:'32px'}} src={telegram}/>
-         <Typography>iasips_mentor</Typography>
          </Box>
          <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
          <img  style={{width:'32px'}} src={insta}/>
-         <Typography>iasips_mentor</Typography>
          </Box>
   
   
