@@ -29,7 +29,7 @@ function App()
        <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
-        <Route path='/material' element={<Material/>}/>
+        <Route path='/ncert' element={<Material/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/terms' element={<TermAndCondition/>}/>

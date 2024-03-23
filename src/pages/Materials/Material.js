@@ -81,7 +81,7 @@ const Material=() =>{
 
   return (
     <Box>
-    <Typography sx={{marginTop:'110px',display:'flex',flexDirection:'row',justifyContent:'center',fontSize:'40px',fontWeight:'600'}}>NCERT NOTES</Typography>
+    <Typography sx={{marginTop:'120px',display:'flex',flexDirection:'row',justifyContent:'center',fontSize:'40px',fontWeight:'600'}}>NCERT NOTES</Typography>
     <Box
       sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex',marginBottom:isMobileView?'10px':'200px',display:'flex',flexDirection:isMobileView?"column":'row',justifyContent:'space-evenly',width:'100%' }}
     >
@@ -105,7 +105,7 @@ const Material=() =>{
           <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
           <Paper  sx={{  width: 300, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',margin:'5px',transition: 'transform 0.2s', // Add transition for smooth effect
           '&:hover': {
-             border:'2px solid #212529', // Apply zoom effect on hover
+          transform:'scale(1.05)', // Apply zoom effect on hover
           }}}>
           <img style={{ width: '90px', backgroundColor: 'grey' , marginBottom:'10px'}} src={item.img} />
           <Button variant='text'>Download</Button>
@@ -117,10 +117,13 @@ const Material=() =>{
       <TabPanel value={value}  index={1}>
       <Grid container sx={{gap:'10px'}}  >
         {data.map(item => (
-          <Grid sx={{gap:'10px'}} key={item.id} item xs={12} sm={6} md={4} lg={3}>
-          <Paper  sx={{ m: 1, width: 200, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',gap:'10px'}}>
-          <img style={{ width: '90px', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
-          <Button variant='text' >Download</Button>
+          <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
+          <Paper  sx={{  width: 300, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',margin:'5px',transition: 'transform 0.2s', // Add transition for smooth effect
+          '&:hover': {
+          transform:'scale(1.05)', // Apply zoom effect on hover
+          }}}>
+          <img style={{ width: '90px', backgroundColor: 'grey' , marginBottom:'10px'}} src={item.img} />
+          <Button variant='text'>Download</Button>
         </Paper>
           </Grid>
         ))}
@@ -130,10 +133,13 @@ const Material=() =>{
       <TabPanel value={value}  index={2}>
       <Grid container >
         {data.map(item => (
-          <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-          <Paper  elevation={1} sx={{ m: 1, width: 200, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}}>
-          <img style={{ width: '90px', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
-          <Button variant='text' >Download</Button>
+          <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
+          <Paper  sx={{  width: 300, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',margin:'5px',transition: 'transform 0.2s', // Add transition for smooth effect
+          '&:hover': {
+          transform:'scale(1.05)', // Apply zoom effect on hover
+          }}}>
+          <img style={{ width: '90px', backgroundColor: 'grey' , marginBottom:'10px'}} src={item.img} />
+          <Button variant='text'>Download</Button>
         </Paper>
           </Grid>
         ))}
@@ -142,10 +148,13 @@ const Material=() =>{
       <TabPanel value={value}  index={3}>
       <Grid container >
         {data.map(item => (
-          <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-          <Paper  elevation={1} sx={{ m: 1, width: 200, height: 180, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}}>
-          <img style={{ width: '90px', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
-          <Button variant='text' >Download</Button>
+          <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
+          <Paper  sx={{  width: 300, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',margin:'5px',transition: 'transform 0.2s', // Add transition for smooth effect
+          '&:hover': {
+          transform:'scale(1.05)', // Apply zoom effect on hover
+          }}}>
+          <img style={{ width: '90px', backgroundColor: 'grey' , marginBottom:'10px'}} src={item.img} />
+          <Button variant='text'>Download</Button>
         </Paper>
           </Grid>
         ))}
@@ -154,10 +163,14 @@ const Material=() =>{
     <TabPanel value={value} index={4}>
       <Grid container >
         {data.map(item => (
-          <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-            <Paper elevation={4} sx={{ m: 1, width: 180, height: 150 }}>
-              <img style={{ width: '100px', backgroundColor: 'transparent' }} src={item.img} />
-            </Paper>
+          <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
+          <Paper  sx={{  width: 300, height: 150, display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',margin:'5px',transition: 'transform 0.2s', // Add transition for smooth effect
+          '&:hover': {
+          transform:'scale(1.05)', // Apply zoom effect on hover
+          }}}>
+          <img style={{ width: '90px', backgroundColor: 'grey' , marginBottom:'10px'}} src={item.img} />
+          <Button variant='text'>Download</Button>
+        </Paper>
           </Grid>
         ))}
       </Grid>

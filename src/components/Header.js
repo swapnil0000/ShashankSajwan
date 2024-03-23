@@ -101,6 +101,11 @@ const Header = () => {
     setAnchorEl(!anchorEl)
    }
 
+   const handleOpenNotes=()=>{
+    navigate('/ncert')
+    setAnchorEl(!anchorEl)
+   }
+
   return (
     <>
       {isMobileView && (
@@ -157,6 +162,7 @@ const Header = () => {
               <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
                 backgroundColor: 'orange', // Change the background color on hover
               },}}>
+              
               <MenuItem onClick={handleMenuClose}>Ncert Notes</MenuItem>
               </Typography>
               <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
@@ -280,39 +286,43 @@ const Header = () => {
                     onClose={handleMenuClose}
                     MenuListProps={{
                       'aria-labelledby': 'basic-button',
-                      sx: { flexDirection: 'column' , fontWeight:'600'}, // Set the direction to column
+                      sx: { flexDirection: 'column' , fontWeight:'600',backgroundColor:'#212529'}, // Set the direction to column
                     }}
                   >
                   <Box sx={{display:'flex',flexDirection:'column',fontWeight:'600'}}>
-                  <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                    backgroundColor: 'orange', // Change the background color on hover
+                  <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
+                    backgroundColor: 'orangered' // Change the background color on hover
                   },}}>
-                  <MenuItem onClick={handleMenuClose}>Ncert Notes</MenuItem>
+                  <MenuItem onClick={handleOpenNotes} sx={{fontSize:'15px'}} >Ncert Notes
+                  
+                  </MenuItem>
+                   
+                  
                   </Typography>
-                  <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                    backgroundColor: 'orange', // Change the background color on hover
+                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                    backgroundColor: 'orangered' // Change the background color on hover
                   },}}>
-                  <MenuItem onClick={handleMenuClose}>Pyq Notes</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Pyq Notes</MenuItem>
                   </Typography>
-                  <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                    backgroundColor: 'orange', // Change the background color on hover
+                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                    backgroundColor: 'orangered'// Change the background color on hover
                   },}}>
-                  <MenuItem onClick={handleMenuClose}>Paper Notes</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Paper Notes</MenuItem>
                   </Typography>
-                  <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                    backgroundColor: 'orange', // Change the background color on hover
+                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                    backgroundColor:'orangered'// Change the background color on hover
                   },}}>
-                  <MenuItem onClick={handleMenuClose}>Test(Coming Soon)</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Test(Coming Soon)</MenuItem>
                   </Typography>
-                  <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                    backgroundColor: 'orange', // Change the background color on hover
+                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                    backgroundColor:'orangered' // Change the background color on hover
                   },}}>
-                  <MenuItem onClick={handleMenuClose}>Tips & Tricks</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Tips & Tricks</MenuItem>
                   </Typography>          
-                  <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                    backgroundColor: 'orange', // Change the background color on hover
+                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                    backgroundColor: 'orangered', // Change the background color on hover
                   },}}>
-                  <MenuItem onClick={handleMenuClose}>Monthly Magazine</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Monthly Magazine</MenuItem>
                   </Typography>
                   </Box>
                 </Menu>
