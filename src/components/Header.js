@@ -16,6 +16,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
 import email from "../assets/gmail.png"
 import mail from "../assets/mail.png"
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import telegram from "../assets/telegram.png"
 import twitter from "../assets/twitter.png"
 import insta from "../assets/insta.png"
@@ -103,6 +104,29 @@ const Header = () => {
 
    const handleOpenNotes=()=>{
     navigate('/ncert')
+    setAnchorEl(!anchorEl)
+   }
+
+   const handleSyllabus=()=>{
+    navigate('/syllabus')
+    setAnchorEl(!anchorEl)
+   }
+   const handlePyqs=()=>{
+    navigate('/pyqs')
+    setAnchorEl(!anchorEl)
+
+   }
+   const handleGeneral=()=>{
+    navigate('/general')
+    setAnchorEl(!anchorEl)
+   }
+   const handleOptional=()=>{
+    navigate('/optional')
+    setAnchorEl(!anchorEl)
+   }
+
+   const handleNews=()=>{
+    navigate('/newsnotes')
     setAnchorEl(!anchorEl)
    }
 
@@ -277,7 +301,8 @@ const Header = () => {
                     aria-expanded={openMenuTable ? 'true' : undefined}
                     onClick={handleClick}
                   >
-                    Material
+                    Resources
+                    <ExpandMoreIcon sx={{color:'white'}}/>
                   </Link>
                   <Menu
                     id="basic-menu"
@@ -302,27 +327,28 @@ const Header = () => {
                   <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
                     backgroundColor: 'orangered' // Change the background color on hover
                   },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Pyq Notes</MenuItem>
+                  <MenuItem onClick={handleSyllabus} sx={{fontSize:'15px'}}>Syllabus</MenuItem>
                   </Typography>
                   <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
                     backgroundColor: 'orangered'// Change the background color on hover
                   },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Paper Notes</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handlePyqs}>PYQs</MenuItem>
                   </Typography>
                   <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
                     backgroundColor:'orangered'// Change the background color on hover
                   },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Test(Coming Soon)</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handleGeneral}>General Studies</MenuItem>
                   </Typography>
                   <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
                     backgroundColor:'orangered' // Change the background color on hover
                   },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Tips & Tricks</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handleOptional}>Optional</MenuItem>
                   </Typography>          
                   <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
                     backgroundColor: 'orangered', // Change the background color on hover
                   },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handleMenuClose}>Monthly Magazine</MenuItem>
+                  <MenuItem sx={{fontSize:'15px'}} onClick={handleNews}>Newspaper Notes</MenuItem>
+              
                   </Typography>
                   </Box>
                 </Menu>
@@ -332,7 +358,7 @@ const Header = () => {
                
              
                 <Link onClick={handleCourseClick}>Course</Link> {/* Navigate to course section in home */}
-                <Link onClick={handleVideoClick}>Videos</Link> {/* Navigate to course section in home */}
+                <Link to='/videos'>Videos</Link> {/* Navigattoe to course section in home */}
                 <Link to='/about'>About</Link>
 
                 <Link to='/contact'>Contact</Link>
@@ -341,9 +367,9 @@ const Header = () => {
             <Box sx={{ display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <Box onClick={handleWhatsapp} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', marginRight: '55px', gap: '10px', cursor: 'pointer' }}>
                 <WhatsAppIcon sx={{ color: 'lightgreen', fontWeight: '700' }} />
-                <Typography sx={{ color: 'white', fontSize: "15px" }}>+91 6386455982</Typography>
+                <Typography sx={{ color: 'white', fontSize: "15px" }}>+91 7060748896</Typography>
               </Box>
-              <Box onClick={handleEmail} sx={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '5px', cursor: 'pointer' }}>
+              <Box onClick={handleEmail} sx={{ display: 'flex', flexDirection: 'row', gap: '12px', marginTop: '5px', cursor: 'pointer' }}>
                 <img style={{ width: '18px' }} src={email} />
                 <Typography sx={{ color: 'white', fontSize: "14px", textTransform: 'lowercase' }}>ask.iasmentor@gmail.com</Typography>
               </Box>

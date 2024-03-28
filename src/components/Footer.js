@@ -48,7 +48,7 @@ const Footer = () => {
 
   const navigate=useNavigate();
   return (
-    <Box  sx={{ backgroundColor: '#212529',color:'white',bottom:0,marginTop:'20px' ,height:isMobileView?"650px":"270px", width:'100%'}}>
+    <Box  sx={{ backgroundColor: '#212529',color:'white',bottom:0,marginTop:'20px' ,height:isMobileView?"650px":"270px", width:'100%',position:'relative'}}>
       <Container>
 
 
@@ -87,6 +87,7 @@ const Footer = () => {
 
               <Box  sx={{display:'flex',flexDirection:'column',alignItems:isMobileView?"center":"null",justifyContent:'center'}}>
                 <Typography>Connect With Us</Typography>
+                
                 <Icon/>
                 <Typography>For Career and Opportunity:</Typography>
                 <Typography>ask.iasmentor@gmail.com</Typography>

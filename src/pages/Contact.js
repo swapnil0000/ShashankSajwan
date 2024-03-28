@@ -54,6 +54,7 @@ import map from "../assets/contact.png"
 import MailIcon from '@mui/icons-material/Mail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useLocation } from 'react-router-dom';
+import Test from '../Test';
 const Contact = () => {
   const theme=useTheme();
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
@@ -77,7 +78,7 @@ const Contact = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return (
-     <Container sx={{display:'flex',flexDirection:'column',marginTop:'100px',alignItems:'center',justifyContent:'center'}}>
+     <Box sx={{display:'flex',flexDirection:'column',marginTop:'100px',alignItems:'center',justifyContent:'center'}}>
      
       <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%'}}>
        <Typography sx={{fontSize:'50px',fontWeight:'700',marginTop:isMobileView?"":"60px",display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>Contact Us</Typography>
@@ -157,7 +158,7 @@ const Contact = () => {
       <Box sx={{display:'flex',flexDirection:isSmallMobileView?"column":"row",alignItems:'center',justifyContent:'center',gap:isSmallMobileView?"5px":"30px"}}>
        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
         <LocalPhoneIcon/>
-        <Typography> +91 6386455982</Typography>
+        <Typography> +91 7060748896</Typography>
        </Box>
        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
        <MailIcon/>
@@ -165,7 +166,7 @@ const Contact = () => {
       </Box>
      
       </Box>
-     </Container>
+     </Box>
   )
 }
 

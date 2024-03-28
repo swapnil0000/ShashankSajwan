@@ -95,7 +95,7 @@ const Choose = () =>
             <Box
               sx={{
                 display: 'flex',
-                height:{md:'270px',sm:'250px',xs:'230px',lg:'300px'},
+                height:{md:'250px',sm:'290px',xs:'270px',lg:'300px'},
                 flexDirection: 'row',
     
                 '& > :not(style)': {
@@ -104,7 +104,7 @@ const Choose = () =>
                 },
               }}
             >
-              <Paper sx={{ display: 'flex', flexDirection: 'column',width:'470px'
+              <Paper sx={{ display: 'flex', flexDirection: 'column',width:'40px'
              }} elevation={3}>
              <Typography sx={{fontSize:{lg:'21px',md:'20px',sm:'19px'},display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'600',marginTop:'10px'}} >{ele.title}</Typography>
 

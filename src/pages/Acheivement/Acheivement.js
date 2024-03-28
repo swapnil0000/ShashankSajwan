@@ -156,15 +156,16 @@ useEffect(()=>{
                transform: 'scale(1.2)', // Apply zoom effect on hover
            },}}>
 
+           <Box>
+           <YouTubeIcon  sx={{fontSize:'50px',fontWeight:'700'}}/>
+          </Box>
+
              <Box sx={{display:'flex',flexDirection:"column"}}>
-               <Typography  sx={{fontSize:'17px'}}>YouTube</Typography>
-               <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{count}K +</Typography>
+               <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{count}K+</Typography>
                <Typography  sx={{fontSize:isMobileView?"15px":'17px'}}>Subcribers</Typography>
              </Box>
 
-             <Box>
-               <YouTubeIcon  sx={{fontSize:'50px',fontWeight:'700'}}/>
-              </Box>
+            
 
            </Box>
 
@@ -175,14 +176,14 @@ useEffect(()=>{
            '&:hover': {
                transform: 'scale(1.2)', // Apply zoom effect on hover
            },}}>
+           <Box>
+           <InstagramIcon sx={{fontSize:'50px',fontWeight:'700'}}/>
+         </Box>
            <Box sx={{display:'flex',flexDirection:"column"}}>
-             <Typography sx={{fontSize:'17px'}}>Instagram</Typography>
-             <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{instaCount}K +</Typography>
+             <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{instaCount}K+</Typography>
              <Typography sx={{fontSize:isMobileView?"15px":'17px'}}>Followers</Typography>
            </Box>
-           <Box>
-             <InstagramIcon sx={{fontSize:'50px',fontWeight:'700'}}/>
-           </Box>
+          
          </Box>
          <Box sx={{ width:isMobileView?'100%':"3px", height: isMobileView?"4px":"100%", backgroundColor: 'white', borderRight: '3px solid white' }} />
 
@@ -191,14 +192,15 @@ useEffect(()=>{
              transform: 'scale(1.2)', // Apply zoom effect on hover
          },}}>
              <Box sx={{display:'flex',flexDirection:"row",alignItems:'center',justifyContent:'center',gap:'40px'}}>
+             <Box >
+             <TelegramIcon sx={{fontSize:'50px',fontWeight:'700'}}/>
+           </Box>
              <Box sx={{ display:'flex',flexDirection:'column',}}>
-               <Typography sx={{fontSize:'17px'}}>Telegram</Typography>
-               <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{telegramCount}K +</Typography>
+             
+               <Typography sx={{fontWeight:700,fontSize:'30px',color:'#f0750f'}}>{telegramCount}K+</Typography>
                <Typography sx={{fontSize:isMobileView?"15px":'17px'}}>Followers</Typography>
                </Box>
-               <Box >
-                 <TelegramIcon sx={{fontSize:'50px',fontWeight:'700'}}/>
-               </Box>
+             
              </Box>
            </Box>
            </Box>

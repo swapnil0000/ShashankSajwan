@@ -34,7 +34,7 @@ const About = () => {
        <Typography  sx={{marginTop:'10px'}}>As Shashank embarks on this new journey, his commitment to empowering aspirants remains unwavering.</Typography>
         </Box>
       <Box>
-       <img style={{width:'300px',marginTop:'10px',borderRadius:'50%'}} src={aboutphoto}/>
+       <img style={{width:'350px',marginTop:'10px',borderRadius:'50%'}} src={aboutphoto}/>
       </Box>
 
       </Box>
@@ -74,8 +74,9 @@ const About = () => {
 
        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
        <img  style={{width:'40px',cursor:'pointer'}} src={youtube}/>
-       <Typography>iasips_mentor</Typography>
+       <Typography>Shashank Sajwan</Typography>
        </Box>
+       
        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
        <img  style={{width:'40px',cursor:'pointer'}} src={telegram}/>
        <Typography>iasips_mentor</Typography>
@@ -84,8 +85,6 @@ const About = () => {
        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
        <img   style={{width:'40px',cursor:'pointer'}} src={insta}/>
        <Typography>iasips_mentor</Typography>
-
- 
        </Box>
 
 

@@ -11,6 +11,8 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
+import coursephoto from "../../assets/banner3.jpg"
+
 import gsap from 'gsap';
 const CourseProvide = () => {
   const cardRef = useRef(null);
@@ -123,7 +125,7 @@ const CourseProvide = () => {
       </Box>
        </Box>  
        {
-          !isMobileView && <img style={{width:!isMobileView?"25%":"auto",height:'25%',borderRadius:'13px'}} src={general} alt='generla'/>
+          !isMobileView && <img style={{width:!isMobileView?"25%":"auto",height:'25%',borderRadius:'13px'}} src={coursephoto} alt='generla'/>
        }
 
        </Box>
