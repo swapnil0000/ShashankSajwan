@@ -15,7 +15,7 @@ const Motive = () => {
       <Box sx={{display:'flex',marginTop:isMobileView?"20px":"40px",flexDirection:isSmallMobileView?"column":"row",alignItems:isSmallMobileView?"center":"null",justifyContent:isSmallMobileView?"center":"null",backgroundColor:"EEEEFF",gap:'30px',width:'100%',height:{lg:'300px',md:'280px',sm:'250px'}}}>
        
       <Box sx={{display:'flex',flexDirection:'column'}}>
-      <img style={{width:isMobileView?"280px":"350px",borderRadius:'20px',display:'flex',flexDirection:'row'}} src={photo} alt='photo'/>
+      <img style={{width:isMobileView?"auto":"350px",borderRadius:'20px',display:'flex',flexDirection:'row',height:'200px'}} src={photo} alt='photo'/>
     </Box>
         <Box sx={{display:'flex',flexDirection:'column'}} >
          <Typography sx={{fontWeight:'700',fontSize:{lg:"30px",md:"30px",sm:'25px',xs:'24px'}}}>From <span style={{color:'#f0750f'}}> Director's Pen </span></Typography>

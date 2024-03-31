@@ -4,6 +4,13 @@ import ncert from "../../assets/ncert.jpg"
 // import tips from "../assets/tips.jpg"
 // import newsnotes from "../assets/newsnotes.jpg"
 import pyq from "../../assets/pyq.jpg"
+import noteslogo from "../Notespresent/NOTESLOGO.jpg"
+import newslogo from "../Notespresent/newsnotes.jpg"
+import pyqslogo from "../Notespresent/pyqnotes.jpg"
+import notes from "../Notespresent/ncert.jpg"
+
+
+
 // import test from "../assets/test.jpg"
 // import current from "../assets/currentaffairs.png"
 // const Course = () => {
@@ -112,31 +119,34 @@ const Course = () => {
     <Typography sx={{fontWeight:'700',fontSize:isMobileView?"25px":"40px",marginBottom:'10px'}}>NOTES PROVIDED</Typography>
     <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',justifyContent:'center',width:'100%'}}>
     <div style={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',justifyContent:'center',gap:'10px'}} class="wrapper">
-    <div style={{marginBottom:isMobileView?"40px":"null"}} class="card">
-    <img style={{width:'100%',objectFit:'cover'}} src={pyq}/>        <div class="info">
+    <div style={{}} class="card">
+    <img style={{width:'100%'}} src={noteslogo}/>
+
+          <div class="info">
             <h1 >Ncert Notes</h1>
-            <button>Read More</button>
+            <button>Open</button>
         </div>
     </div>
 
-    <div style={{marginBottom:isMobileView?"40px":"null"}}  class="card">
-        <img style={{width:'100%',objectFit:'cover'}} src={pyq}/>
-        <div class="info">
-            <h1>Road</h1>
-            <p>Roads pave the way for journeys, connecting destinations and weaving the fabric of travel.</p>
-            <button>Read More</button>
-        </div>
+    <div style={{ }} className="card">
+    <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={pyqslogo} alt="PYQ's Notes" />
+    <div className="info">
+        <h1>PYQ's Notes</h1>
+        <button>Open</button>
     </div>
+</div>
 
-    <div style={{marginBottom:isMobileView?"40px":"null"}}  class="card">
-    <img style={{width:'100%',objectFit:'cover'}} src={pyq}/>        <div class="info">
-            <h1>Protester</h1>
-            <p>Protesters voice their concerns, demanding change and standing up for what they believe is right.</p>
-            <button>Read More</button>
+
+    <div style={{}}  class="card">
+    <img style={{width:'100%',objectFit:'cover',height:'100%'}} src={newslogo}/>
+    <div class="info">
+            <h1>NewsPaper Notes</h1>
+            <button>Open</button>
         </div>
     </div>
 </div>
 </Box>
+   
     </Container>
   )
 }

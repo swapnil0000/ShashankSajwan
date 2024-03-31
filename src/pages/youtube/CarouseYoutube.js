@@ -70,7 +70,7 @@ const CarouseYoutube = () => {
                     {youtubelink.map((ele) => (
                         <div  className="video-wrapper" style={{borderRadius:'10px',width:'100%',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'220px'}}>
 
-                        <Card sx={{ maxWidth: 450,height:'200px',backgroundColor:'transparent',boxShadow:'none' }}>
+                        <Card sx={{ maxWidth: 450,height:'200px',backgroundColor:'transparent',boxShadow:'none' ,  }}>
                         <CardMedia
                           sx={{ height: 190 ,width:'350px', display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',marginTop:'10px',borderRadius:'10px'}}
                           
@@ -81,7 +81,7 @@ const CarouseYoutube = () => {
                             url={ele.link}
                             controls
                             
-                            width="90%"
+                            width="100%"
                             height="230px"
                             playing={show}
                             className="video-player"

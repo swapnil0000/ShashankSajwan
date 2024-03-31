@@ -97,12 +97,17 @@ const Choose = () =>
                 display: 'flex',
                 height:{md:'250px',sm:'290px',xs:'270px',lg:'300px'},
                 flexDirection: 'row',
-    
+               
+                boxShadow: '5px rgba(110, 159, 182, 0.5)',
+                borderRadius:'4px',
                 '& > :not(style)': {
                   width: '100%',
                   maxWidth: "500px", // Max width for lg and md breakpoints
-                },
-              }}
+                },transition: 'transform 0.2s', // Add transition for smooth effect
+                  '&:hover': {
+                  transform:'scale(1.01)',
+                   // Apply zoom effect on hover
+              }}}
             >
               <Paper sx={{ display: 'flex', flexDirection: 'column',width:'40px'
              }} elevation={3}>

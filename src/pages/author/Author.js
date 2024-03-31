@@ -2,6 +2,7 @@ import { Box, Button, Container, TextField, Typography, useMediaQuery, useTheme 
 import React, { useState } from 'react'
 import author from "../../assets/author.webp"
 import "./authorstyle.css"
+import axios from "axios"
 import Icon from '../../components/Icon/Icon'
 const Author = () => {
   const [contactDetails, setContactDetails] = useState({
@@ -16,6 +17,22 @@ const Author = () => {
       ...contactDetails,
       [name]: value
     });
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/send-email', contactDetails);
+      alert('Email sent successfully!');
+      setContactDetails({
+        name: '',
+        email: '',
+        mobileNo: '',
+        message: ''
+      }); // Resetting form fields
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to send email. Please try again later.');
+    }
   };
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"))
@@ -56,13 +73,14 @@ const Author = () => {
             onChange={handleChange} />
 
           <TextField
-            style={{width:isSmallMobileView?"250px":"300px", borderRadius: '3px' }}
+            style={{width:isSmallMobileView?"250px":"300px", borderRadius: '3px',  }}
             name="message"
             label="Message"
-            value={contactDetails.place}
+            variant='standard'
+            value={contactDetails.message}
             onChange={handleChange}
-            variant='standard' />
-          <Button sx={{ backgroundColor: '#f0750f', marginTop: '20px',color:'white',fontWeight:'600' }} variant='contained'>Submit</Button>
+            />
+          <Button onClick={handleSubmit} sx={{ backgroundColor: '#f0750f', marginTop: '20px',color:'white',fontWeight:'600' }} variant='contained'>Submit</Button>
         </Box>
       </Box>
     </Container>

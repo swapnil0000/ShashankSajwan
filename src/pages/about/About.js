@@ -18,6 +18,15 @@ const About = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
    const navigate=useNavigate();
+   const redirectToInstagram = () => {
+    window.open('https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i/');
+  };
+  const redirectToTelegram = () => {
+    window.open('https://t.me/iasips_mentor/');
+  };
+  const redirectToYoutube = () => {
+    window.open('https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS/');
+  };
   return (
     <Container >
      {!isMobileView && (
@@ -25,13 +34,13 @@ const About = () => {
       <Box sx={{display:'flex',flexDirection:'row',width:'100%',alignItems:'center'}} >
        <Box>
        <Typography sx={{fontSize:'50px',fontWeight:'700'}}>Our Director</Typography>
-       <Typography sx={{marginTop:'10px'}}>Shashank Sajwan, originally from Uttarakhand, pursued Physics Hons. from Delhi University, followed by a Post-Graduation in Public Administration from IGNOU. His passion for UPSC emerged during his undergraduate years, and post-graduation, he dedicated himself to this pursuit.
+       <Typography sx={{marginTop:'10px',textAlign:'justify',hyphens:'inherit'}}>Shashank Sajwan, originally from Uttarakhand, pursued Physics Hons. from Delhi University, followed by a Post-Graduation in Public Administration from IGNOU. His passion for UPSC emerged during his undergraduate years, and post-graduation, he dedicated himself to this pursuit.
 
        </Typography>
-       <Typography sx={{marginTop:'10px'}}>Recognizing the challenges faced by UPSC aspirants lacking proper guidance, Shashank decided to share his insights via Instagram, garnering immense support and reaching over 1 million followers and subscribers across various platforms. Now, at www.shashanksajwan.com, aspirants can find comprehensive resources including mentorship and mock exams, streamlining their preparation process.
+       <Typography sx={{marginTop:'10px',textAlign:'justify',hyphens:'inherit'}}>Recognizing the challenges faced by UPSC aspirants lacking proper guidance, Shashank decided to share his insights via Instagram, garnering immense support and reaching over 1 million followers and subscribers across various platforms. Now, at www.shashanksajwan.com, aspirants can find comprehensive resources including mentorship and mock exams, streamlining their preparation process.
 
        </Typography>
-       <Typography  sx={{marginTop:'10px'}}>As Shashank embarks on this new journey, his commitment to empowering aspirants remains unwavering.</Typography>
+       <Typography  sx={{marginTop:'10px',textAlign:'justify',hyphens:'inherit'}}>As Shashank embarks on this new journey, his commitment to empowering aspirants remains unwavering.</Typography>
         </Box>
       <Box>
        <img style={{width:'350px',marginTop:'10px',borderRadius:'50%'}} src={aboutphoto}/>
@@ -42,7 +51,7 @@ const About = () => {
       <Box>
       <Typography sx={{marginTop:'40px',fontSize:'50px',fontWeight:'700'}}>Our Vision</Typography>
 
-      <Typography sx={{marginTop:'10px'}}>From the outset of our Academy, our mission has been centered on delivering high-quality education at accessible rates. We deeply grasp the significance of mentorship and tailored guidance in this field. 
+      <Typography sx={{marginTop:'10px',textAlign:'justify',hyphens:'inherit'}}>From the outset of our Academy, our mission has been centered on delivering high-quality education at accessible rates. We deeply grasp the significance of mentorship and tailored guidance in this field. 
       Therefore, leveraging our esteemed educators, we strive to offer individualized mentorship, a factor that has consistently contributed to students achieving commendable positions in civil services examinations.</Typography>
       <Typography sx={{display:'flex',alignItems:'center',marginTop:'10px'}}><ChevronRightSharpIcon style={{color:'green'}}/> Cost-effectiveness</Typography>
       <Typography sx={{display:'flex',alignItems:'center'}}><ChevronRightSharpIcon style={{color:'green'}}/>Customized Education</Typography>
@@ -53,12 +62,12 @@ const About = () => {
 
       <Box>
        <Typography sx={{marginTop:'40px',fontSize:'50px',fontWeight:'700'}}>Our Team</Typography>
-       <Typography>Our team comprises highly educated and experienced professionals, with several faculty members having undergone the interview process themselves. Our collective aim is to deliver the utmost quality education to our students, prioritizing excellence in every aspect of our teaching approach. With a wealth of knowledge and expertise, we are committed to nurturing the academic growth and success of our students.</Typography>
+       <Typography sx={{textAlign:'justify',hyphens:'inherit'}}>Our team comprises highly educated and experienced professionals, with several faculty members having undergone the interview process themselves. Our collective aim is to deliver the utmost quality education to our students, prioritizing excellence in every aspect of our teaching approach. With a wealth of knowledge and expertise, we are committed to nurturing the academic growth and success of our students.</Typography>
       </Box>
 
       <Box>
         <Typography sx={{marginTop:'40px',fontSize:'50px',fontWeight:'700'}}>Our Achievements</Typography>
-        <Typography >We take pride in being recognized as the most innovative YouTube channel and academy throughout India. Shashank Sir stands as the most sought-after mentor for UPSC CSE in the country. Pioneering successful mentorship programs, we strive to revolutionize the education landscape, setting new standards of excellence and achievement.
+        <Typography sx={{textAlign:'justify',hyphens:'inherit'}} >We take pride in being recognized as the most innovative YouTube channel and academy throughout India. Shashank Sir stands as the most sought-after mentor for UPSC CSE in the country. Pioneering successful mentorship programs, we strive to revolutionize the education landscape, setting new standards of excellence and achievement.
         </Typography>
         <Typography sx={{display:'flex',alignItems:'center',marginTop:'10px'}}><ChevronRightSharpIcon style={{color:'green'}}/>Mentored more than 1 Lakh aspirants 
         </Typography>
@@ -72,19 +81,19 @@ const About = () => {
        
       
 
-       <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
+       <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px',transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' },cursor:'pointer'}}>
        <img  style={{width:'40px',cursor:'pointer'}} src={youtube}/>
-       <Typography>Shashank Sajwan</Typography>
+       <Typography  sx={{cursor:'pointer'}} onClick={redirectToYoutube}>Shashank Sajwan</Typography>
        </Box>
        
-       <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
+       <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px',transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' },cursor:'pointer'}}>
        <img  style={{width:'40px',cursor:'pointer'}} src={telegram}/>
-       <Typography>iasips_mentor</Typography>
+       <Typography  sx={{cursor:'pointer'}} onClick={redirectToTelegram}>iasips_mentor</Typography>
 
        </Box>
-       <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
+       <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px',transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' },cursor:'pointer'}}>
        <img   style={{width:'40px',cursor:'pointer'}} src={insta}/>
-       <Typography>iasips_mentor</Typography>
+       <Typography sx={{cursor:'pointer'}} onClick={redirectToInstagram} >iasips_mentor</Typography>
        </Box>
 
 
@@ -97,27 +106,27 @@ const About = () => {
      {isMobileView && (
           <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',width:'100%',marginTop:'130px'}} >
          <Box sx={{display:'flex',flexDirection:'column',width:'100%',alignItems:'center'}} >
-         <Typography sx={{fontSize:'40px',fontWeight:'700'}}>Our Director</Typography>
+         <Typography sx={{fontSize:'25px',fontWeight:'700'}}>Our Director</Typography>
          <Box>
-         <img style={{width:'300px',marginTop:'10px',borderRadius:'50%'}} src={aboutphoto}/>
+         <img style={{width:'300px',borderRadius:'50%'}} src={aboutphoto}/>
         </Box>
           <Box>
-          <Typography sx={{marginTop:'10px',fontSize:'15px'}}>Shashank Sajwan, originally from Uttarakhand, pursued Physics Hons. from Delhi University, followed by a Post-Graduation in Public Administration from IGNOU. His passion for UPSC emerged during his undergraduate years, and post-graduation, he dedicated himself to this pursuit.
+          <Typography sx={{fontSize:'15px',textAlign:'justify',hyphens:'auto'}}>Shashank Sajwan, originally from Uttarakhand, pursued Physics Hons. from Delhi University, followed by a Post-Graduation in Public Administration from IGNOU. His passion for UPSC emerged during his undergraduate years, and post-graduation, he dedicated himself to this pursuit.
 
           </Typography>
-          <Typography sx={{marginTop:'10px',fontSize:'15px'}}>Recognizing the challenges faced by UPSC aspirants lacking proper guidance, Shashank decided to share his insights via Instagram, garnering immense support and reaching over 1 million followers and subscribers across various platforms. Now, at www.shashanksajwan.com, aspirants can find comprehensive resources including mentorship and mock exams, streamlining their preparation process.
+          <Typography sx={{marginTop:'7px',fontSize:'15px',textAlign:'justify',hyphens:'auto'}}>Recognizing the challenges faced by UPSC aspirants lacking proper guidance, Shashank decided to share his insights via Instagram, garnering immense support and reaching over 1 million followers and subscribers across various platforms. Now, at www.shashanksajwan.com, aspirants can find comprehensive resources including mentorship and mock exams, streamlining their preparation process.
 
           </Typography>
-          <Typography  sx={{marginTop:'10px',fontSize:'15px'}}>As Shashank embarks on this new journey, his commitment to empowering aspirants remains unwavering.</Typography>
+          <Typography  sx={{marginTop:'7px',fontSize:'15px',textAlign:'justify',hyphens:'auto'}}>As Shashank embarks on this new journey, his commitment to empowering aspirants remains unwavering.</Typography>
            </Box>
         
 
          </Box>
             
          <Box>
-         <Typography sx={{marginTop:'40px',fontSize:'40px',fontWeight:'700',display:'flex',alignItems:'center',justifyContent:'center'}}>Our Vision</Typography>
+         <Typography sx={{marginTop:'15px',fontSize:'25px',fontWeight:'700',display:'flex',alignItems:'center',justifyContent:'center'}}>Our Vision</Typography>
 
-         <Typography sx={{marginTop:'10px',fontSize:'15px'}}>From the outset of our Academy, our mission has been centered on delivering high-quality education at accessible rates. We deeply grasp the significance of mentorship and tailored guidance in this field. 
+         <Typography sx={{marginTop:'10px',fontSize:'15px',textAlign:'justify',hyphens:'auto'}}>From the outset of our Academy, our mission has been centered on delivering high-quality education at accessible rates. We deeply grasp the significance of mentorship and tailored guidance in this field. 
          Therefore, leveraging our esteemed educators, we strive to offer individualized mentorship, a factor that has consistently contributed to students achieving commendable positions in civil services examinations.</Typography>
          <Typography sx={{display:'flex',alignItems:'center',fontSize:'15px',marginTop:'10px'}}><ChevronRightSharpIcon style={{color:'green'}}/> Cost-effectiveness</Typography>
          <Typography sx={{display:'flex',alignItems:'center',fontSize:'15px'}}><ChevronRightSharpIcon style={{color:'green'}}/>Customized Education</Typography>
@@ -127,13 +136,13 @@ const About = () => {
          </Box>
 
          <Box>
-          <Typography sx={{marginTop:'40px',fontSize:'40px',fontWeight:'700',display:'flex',alignItems:'center',justifyContent:'center'}}>Our Team</Typography>
-          <Typography sx={{display:'flex',alignItems:'center',fontSize:'15px'}}>Our team comprises highly educated and experienced professionals, with several faculty members having undergone the interview process themselves. Our collective aim is to deliver the utmost quality education to our students, prioritizing excellence in every aspect of our teaching approach. With a wealth of knowledge and expertise, we are committed to nurturing the academic growth and success of our students.</Typography>
+          <Typography sx={{marginTop:'15px',fontSize:'25px',fontWeight:'700',display:'flex',alignItems:'center',justifyContent:'center'}}>Our Team</Typography>
+          <Typography sx={{display:'flex',alignItems:'center',fontSize:'15px',marginTop:'15px',textAlign:'justify',hyphens:'auto'}}>Our team comprises highly educated and experienced professionals, with several faculty members having undergone the interview process themselves. Our collective aim is to deliver the utmost quality education to our students, prioritizing excellence in every aspect of our teaching approach. With a wealth of knowledge and expertise, we are committed to nurturing the academic growth and success of our students.</Typography>
          </Box>
 
          <Box>
-         <Typography sx={{marginTop:'40px',fontSize:'40px',fontWeight:'700',display:'flex',alignItems:'center',justifyContent:'center'}}>Our Achievements</Typography>
-         <Typography sx={{display:'flex',alignItems:'center',fontSize:'15px'}} >We take pride in being recognized as the most innovative YouTube channel and academy throughout India. Shashank Sir stands as the most sought-after mentor for UPSC CSE in the country. Pioneering successful mentorship programs, we strive to revolutionize the education landscape, setting new standards of excellence and achievement.
+         <Typography sx={{marginTop:'40px',fontSize:'25px',fontWeight:'700',display:'flex',alignItems:'center',justifyContent:'center'}}>Our Achievements</Typography>
+         <Typography sx={{display:'flex',alignItems:'center',fontSize:'15px',marginTop:'15px',textAlign:'justify',hyphens:'auto'}} >We take pride in being recognized as the most innovative YouTube channel and academy throughout India. Shashank Sir stands as the most sought-after mentor for UPSC CSE in the country. Pioneering successful mentorship programs, we strive to revolutionize the education landscape, setting new standards of excellence and achievement.
          </Typography>
          <Typography sx={{display:'flex',alignItems:'center',marginTop:'10px',fontSize:'15px'}}><ChevronRightSharpIcon style={{color:'green'}}/>Mentored more than 1 Lakh aspirants 
          </Typography>

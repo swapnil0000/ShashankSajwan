@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Container, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { AppBar, Box, Button, Container, Divider, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import logo from "../assets/shashank.PNG"
 import CallIcon from '@mui/icons-material/Call';
@@ -30,7 +30,7 @@ const Header = () => {
     window.open(whatsappUrl, '_blank');
   };
   const handleEmail = () => {
-    const recipientEmail = 'swapnilsrivastava1999@gmail.com';
+    const recipientEmail = 'ask.iasmentor@gmail.com';
     const mailtoUrl = `mailto:${recipientEmail}`;
     window.open(mailtoUrl, '_blank');
   };
@@ -105,29 +105,40 @@ const Header = () => {
    const handleOpenNotes=()=>{
     navigate('/ncert')
     setAnchorEl(!anchorEl)
+    setOpenMenu(!openMenu)
    }
 
    const handleSyllabus=()=>{
     navigate('/syllabus')
     setAnchorEl(!anchorEl)
+    setOpenMenu(!openMenu)
+
    }
    const handlePyqs=()=>{
     navigate('/pyqs')
     setAnchorEl(!anchorEl)
+    setOpenMenu(!openMenu)
+
 
    }
    const handleGeneral=()=>{
     navigate('/general')
     setAnchorEl(!anchorEl)
+    setOpenMenu(!openMenu)
+
    }
    const handleOptional=()=>{
     navigate('/optional')
     setAnchorEl(!anchorEl)
+    setOpenMenu(!openMenu)
+
    }
 
    const handleNews=()=>{
     navigate('/newsnotes')
     setAnchorEl(!anchorEl)
+    setOpenMenu(!openMenu)
+
    }
 
   return (
@@ -136,14 +147,14 @@ const Header = () => {
         <AppBar sx={{ position: 'fixed', backgroundColor: '#212529', boxShadow: 'none', height: '100px' }}>
           <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: '100px', width: '100%' }}>
             <Drawer
-              anchor="left"
+              anchor="top"
               open={openMenu}
               onClose={handleClose}
-              sx={{ width: '100vw', "& .MuiPaper-root": { width: '100vw' } }} // Set width to full viewport width
+              sx={{ width: '50vw', "& .MuiPaper-root": { width: '100vw',height:'400px' } }} // Set width to full viewport width
             >
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', paddingRight: '40px' }}>
-                <IconButton onClick={handleClose} sx={{ color: 'red' }}>
-                  <CloseIcon /> {/* Assume CloseIcon is imported */}
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end',backgroundColor:'#212529' }}>
+                <IconButton onClick={handleClose} sx={{ color: 'white',fontSize:'30px', }}>
+                  <CloseIcon  sx={{fontSize:'40px',fontWeight:'600',margin:'20px'}}/> {/* Assume CloseIcon is imported */}
                 </IconButton>
               </Box>
 
@@ -158,67 +169,83 @@ const Header = () => {
                   padding: '0', // Remove default padding
                 }}
               >
-                <Link onClick={handleClose} style={{ marginBottom: '20px', fontSize: '30px' }} to="/">Home</Link>
 
-                <div>
-                <Link
-                id="basic-button"
-                variant='text'
-                sx={{color:'white',textTransform:'none'}}
-                aria-controls={openMenuTable ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={openMenuTable ? 'true' : undefined}
-                onClick={handleClick}
-              >
-                Material
-              </Link>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={openMenuTable}
-                onClose={handleMenuClose}
-                MenuListProps={{
-                  'aria-labelledby': 'basic-button',
-                  sx: { flexDirection: 'column' , fontWeight:'600'}, // Set the direction to column
-                }}
-              >
-              <Box sx={{display:'flex',flexDirection:'column',fontWeight:'600'}}>
-              <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                backgroundColor: 'orange', // Change the background color on hover
-              },}}>
-              
-              <MenuItem onClick={handleMenuClose}>Ncert Notes</MenuItem>
-              </Typography>
-              <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                backgroundColor: 'orange', // Change the background color on hover
-              },}}>
-              <MenuItem onClick={handleMenuClose}>Pyq Notes</MenuItem>
-              </Typography>
-              <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                backgroundColor: 'orange', // Change the background color on hover
-              },}}>
-              <MenuItem onClick={handleMenuClose}>Paper Notes</MenuItem>
-              </Typography>
-              <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                backgroundColor: 'orange', // Change the background color on hover
-              },}}>
-              <MenuItem onClick={handleMenuClose}>Test(Coming Soon)</MenuItem>
-              </Typography>
-              <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                backgroundColor: 'orange', // Change the background color on hover
-              },}}>
-              <MenuItem onClick={handleMenuClose}>Tips & Tricks</MenuItem>
-              </Typography>          
-              <Typography sx={{textTransform:'none',backgroundColor:'lightskyblue',margin:"1px",  '&:hover': {
-                backgroundColor: 'orange', // Change the background color on hover
-              },}}>
-              <MenuItem onClick={handleMenuClose}>Monthly Magazine</MenuItem>
-              </Typography>
-              </Box>
-            </Menu>
-          </div>                <Link onClick={handleClose} style={{ marginBottom: '20px', fontSize: '30px' }} to="/about">About</Link>
-                <Link onClick={handleClose} style={{ marginBottom: '20px', fontSize: '30px' }} to="/blogs">Blogs</Link>
-                <Link onClick={handleClose} style={{ marginBottom: '20px', fontSize: '30px' }} to="/contact">Contact</Link>
+                <Link onClick={handleClose} style={{  fontSize: '30px' }} to="/">Home</Link>
+                <Divider orientation='horizontal' sx={{width:'50%',color:'orange',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+
+                <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
+              <Link
+              id="basic-button"
+              variant='text'
+              sx={{color:'white',textTransform:'none'}}
+              aria-controls={openMenuTable ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={openMenuTable ? 'true' : undefined}
+              onClick={handleClick}
+              style={{fontSize:'30px'}}
+            >
+              Resources
+              <ExpandMoreIcon sx={{color:'white'}}/>
+            </Link>
+            <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={openMenuTable}
+            onClose={handleMenuClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+              sx: { flexDirection: 'column' , fontWeight:'600',backgroundColor:'#212529'}, // Set the direction to column
+            }}
+          >
+          <Box sx={{display:'flex',flexDirection:'column',fontWeight:'600'}}>
+          <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
+            backgroundColor: 'orangered' // Change the background color on hover
+          },}}>
+          <MenuItem onClick={handleOpenNotes}  sx={{fontSize:'15px'}} >Ncert Notes
+          
+          </MenuItem>
+           
+          
+          </Typography>
+          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+            backgroundColor: 'orangered' // Change the background color on hover
+          },}}>
+          <MenuItem onClick={handleSyllabus} sx={{fontSize:'15px'}}>Syllabus</MenuItem>
+          </Typography>
+          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+            backgroundColor: 'orangered'// Change the background color on hover
+          },}}>
+          <MenuItem sx={{fontSize:'15px'}} onClick={handlePyqs}>PYQs</MenuItem>
+          </Typography>
+          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+            backgroundColor:'orangered'// Change the background color on hover
+          },}}>
+          <MenuItem sx={{fontSize:'15px'}} onClick={handleGeneral}>General Studies</MenuItem>
+          </Typography>
+          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+            backgroundColor:'orangered' // Change the background color on hover
+          },}}>
+          <MenuItem sx={{fontSize:'15px'}} onClick={handleOptional}>Optional</MenuItem>
+          </Typography>          
+          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+            backgroundColor: 'orangered', // Change the background color on hover
+          },}}>
+          <MenuItem sx={{fontSize:'15px'}} onClick={handleNews}>Newspaper Notes</MenuItem>
+      
+          </Typography>
+          </Box>
+        </Menu>
+          </div> 
+          <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+  
+          <Link onClick={handleClose} style={{  fontSize: '30px' }} to="/courses">Course</Link>     
+          <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+
+                  <Link onClick={handleClose} style={{ fontSize: '30px' }} to="/about">About</Link>
+                  <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+
+                <Link onClick={handleClose} style={{ fontSize: '30px' }} to="/contact">Contact</Link>
+
                 {/* Add more menu items as needed */}
               </List>
             </Drawer>
@@ -357,7 +384,7 @@ const Header = () => {
                 }
                
              
-                <Link onClick={handleCourseClick}>Course</Link> {/* Navigate to course section in home */}
+                <Link to='/courses'>Course</Link> {/* Navigate to course section in home */}
                 <Link to='/videos'>Videos</Link> {/* Navigattoe to course section in home */}
                 <Link to='/about'>About</Link>
 

@@ -37,20 +37,20 @@ const Videos = () => {
     return (
         <Container sx={{ marginTop: '120px' }}>
            <Typography sx={{fontSize:'40px',fontWeight:'700',display:'flex',flexDirection:'column',alignItems:'center',marginTop:'10px',marginBottom:'20px'}}>Most Popular Videos</Typography>
-            <Box>
+            <Box sx={{marginBottom:'40px'}}>
                 <Grid container spacing={2}>
                     {videos.map((video) => (
-                        <Grid item key={video.id} xs={12} sm={6} md={4}>
+                        <Grid item key={video.id} xs={12} sm={6} md={3}>
                             <Box>
                                 <ReactPlayer
                                     style={{
                                         alignItems: 'center',
                                         overflow: 'hidden',
-                                        borderRadius: '20px',
+                                        borderRadius: '10px',
                                         marginBottom: '10px',
                                         width: '100%',
                                         backgroundColor: 'pink',
-                                        height: '500px'
+                                        height: '600px'
                                     }}
                                     url={video.link}
                                     controls

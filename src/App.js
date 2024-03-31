@@ -24,6 +24,8 @@ import General from './pages/GeneralStudies/General';
 import Optional from './pages/about/optional/Optional';
 import NewsNotes from './pages/Newspaper/NewsNotes';
 import Test from './Test';
+import CourseSection from './pages/CourseSection/CourseSection';
+import FAQs from './pages/FAQs/FAQs';
 
 function App() 
 {
@@ -35,6 +37,7 @@ function App()
            <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/about' element={<About/>}/>
+            
             <Route path='/ncert' element={<Material/>}/>
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/blogs' element={<Blogs/>}/>
@@ -42,7 +45,8 @@ function App()
             <Route path='/terms' element={<TermAndCondition/>}/>
             <Route path='/refund' element={<Refund/>}/>
             <Route path='/private' element={<Private/>}/>
-            <Route path='/faqs' element={<Faqs/>}/>
+            <Route path='/faqs' element={<FAQs/>}/>
+            <Route path='/courses' element={<CourseSection/>}/>
             <Route path='/syllabus' element={<Syllabus/>}/>
             <Route path='/pyqs' element={<Pyqs/>}/>
             <Route path='general' element={<General/>}/>

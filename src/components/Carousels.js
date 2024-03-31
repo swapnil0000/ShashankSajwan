@@ -34,7 +34,11 @@ const Carousels = () => {
 ]
 const theme=useTheme();
 const isMobileView=useMediaQuery(theme.breakpoints.down('sm'))
-  return (   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style={{ maxHeight: '800px', marginTop: '120px' }}>
+  return (
+   
+     <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}} >
+     <Box sx={{width:'90%'}}>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style={{ maxHeight: '700px', marginTop: '120px' }}>
   <div class="carousel-indicators">
     <button style={{ color: 'red',fontSize:'100px' }} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -45,16 +49,16 @@ const isMobileView=useMediaQuery(theme.breakpoints.down('sm'))
   </div>
   <div class="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
     <div class="carousel-item active">
-      <img style={{ width: '100%', maxHeight: '600px' }}  src={banner5} class="d-block w-100" alt="..."/>
+      <img style={{ width: '100%', maxHeight: '500px' }}  src={banner5} class="d-block w-100" alt="..."/>
     </div>
     <div class="carousel-item active">
-      <img style={{ width: '100%', maxHeight: '600px' }}  src={banner2} class="d-block w-100" alt="..."/>
+      <img style={{ width: '100%', maxHeight: '500px' }}  src={banner2} class="d-block w-100" alt="..."/>
     </div>
     <div  class="carousel-item">
-      <img style={{ width: '100%', maxHeight: '600px' }} src={banner3} class="d-block w-100" alt="..."/>
+      <img style={{ width: '100%', maxHeight: '500px' }} src={banner3} class="d-block w-100" alt="..."/>
     </div>
     <div class="carousel-item">
-      <img style={{ width: '100%', maxHeight: '600px' }}  src={banner4} class="d-block w-100" alt="..."/>
+      <img style={{ width: '100%', maxHeight: '500px' }}  src={banner4} class="d-block w-100" alt="..."/>
     </div>
   </div>
   <button style={{ color: 'red',fontSize:'100px' }} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -66,6 +70,8 @@ const isMobileView=useMediaQuery(theme.breakpoints.down('sm'))
       <span className="visually-hidden">Next</span>
       </button>
 </div>
+</Box> 
+</Box>
 
   );
 }

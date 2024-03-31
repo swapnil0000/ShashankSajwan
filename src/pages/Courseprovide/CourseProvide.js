@@ -86,7 +86,7 @@ const CourseProvide = () => {
        <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",justifyContent:'space-between'}}>
        {
          
-        isMobileView &&        <img style={{width:!isMobileView?"23%":"auto",height:'20%',borderRadius:'13px'}} src={general} alt='generla'/>         
+        isMobileView &&        <img style={{width:!isMobileView?"23%":"auto",height:'20%',borderRadius:'13px'}} src={coursephoto} alt='generla'/>         
        }
 
 
