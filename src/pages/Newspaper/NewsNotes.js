@@ -5,12 +5,10 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Button, Container, Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
-import class6 from "../Materials/class6.webp"
-import class7 from "../Materials/class7.webp"
 
-import class8 from "../Materials/class8.webp"
-import noteslogo from "../Materials/notesicon.png"
-import class9 from "../Materials/class9.png"
+
+import history from "../Materials/history.jpg"
+
 import { useLocation, useNavigate } from 'react-router-dom';
 import Test from '../../Test';
 
@@ -54,37 +52,37 @@ const NewsNotes = () => {
   const data = [
     {
       id: 1,
-      img: noteslogo,
+      img: history,
       val: 'Historical events for class 6.'
     },
     {
       id: 2,
-      img: noteslogo,
+      img: history,
       val: 'Historical events for class 7.'
     },
     {
       id: 3,
-      img: noteslogo,
+      img: history,
       val: 'Historical events for class 8.'
     },
     {
       id: 4,
-      img: noteslogo,
+      img: history,
       val: 'Historical events for class 9.'
     },
     {
       id: 5,
-      img: noteslogo,
+      img: history,
       val: 'Historical events for class 10.'
     },
     {
       id: 6,
-      img: noteslogo,
+      img: history,
       val: 'Historical events for class 11.'
     },
     {
       id: 7,
-      img: noteslogo,
+      img: history,
       val: 'Historical events for class 12.'
     }
   ];
@@ -186,8 +184,7 @@ const NewsNotes = () => {
                       },
                     }}
                   >
-                    <img style={{ width: '50px', backgroundColor: 'transparent', marginBottom: '10px' }} src={item.img} alt={item.img} />
-                    <Typography sx={{ fontWeight: '600', margin: '5px' }}>{item.val}</Typography>
+                    <img style={{ width: '100%', backgroundColor: 'transparent', marginBottom: '10px' }} src={item.img} alt={item.img} />
                   </Paper>
                 </Grid>
               ))}
@@ -201,13 +198,43 @@ const NewsNotes = () => {
                   '&:hover': {
                   transform:'scale(1.05)', // Apply zoom effect on hover
                   }}}>
-                    <img style={{ width: '50px', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
-                    <Typography sx={{fontWeight:'600',margin:'5px'}}>{item.val}</Typography>
+                    <img style={{ width: '100%', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
+                   
                   </Paper>
                 </Grid>
               ))}
             </Grid>
           </TabPanel>
+          <TabPanel value={value} index={2}>
+          <Grid container  >
+            {data.map(item => (
+              <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
+                <Paper  sx={{  width: 300, height: 150, display:'flex',flexDirection:'column',margin:'5px',transition: 'transform 0.2s', // Add transition for smooth effect
+                '&:hover': {
+                transform:'scale(1.05)', // Apply zoom effect on hover
+                }}}>
+                  <img style={{ width: '100%', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
+                 
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+        <Grid container  >
+          {data.map(item => (
+            <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
+              <Paper  sx={{  width: 300, height: 150, display:'flex',flexDirection:'column',margin:'5px',transition: 'transform 0.2s', // Add transition for smooth effect
+              '&:hover': {
+              transform:'scale(1.05)', // Apply zoom effect on hover
+              }}}>
+                <img style={{ width: '100%', backgroundColor: 'transparent' , marginBottom:'10px'}} src={item.img} />
+               
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      </TabPanel>
         </Box>
       </Box>
     </Box>

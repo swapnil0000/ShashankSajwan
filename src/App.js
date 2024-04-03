@@ -7,16 +7,10 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
 import About from './pages/about/About';
-import Floating from './components/floating/Floating';
-import Blogs from './pages/dailyBlogs/Blogs';
 import TermAndCondition from './pages/Policy/TermAndCondition';
 import Refund from './pages/Policy/Refund';
 import Private from './pages/Policy/Private';
-import Faqs from './pages/Policy/Faqs';
-import Popup from './components/popup/Popup';
-import { useEffect, useState } from 'react';
 import Material from './pages/Materials/Material';
-import Notes from './pages/Notes/Notes';
 import Videos from './pages/Videos/Videos';
 import Syllabus from './pages/syllabus/Syllabus';
 import Pyqs from './pages/Pyqs/Pyqs';
@@ -37,10 +31,8 @@ function App()
            <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/about' element={<About/>}/>
-            
             <Route path='/ncert' element={<Material/>}/>
             <Route path='/contact' element={<Contact/>}/>
-            <Route path='/blogs' element={<Blogs/>}/>
             <Route path='/videos' element={<Videos/>}/>
             <Route path='/terms' element={<TermAndCondition/>}/>
             <Route path='/refund' element={<Refund/>}/>

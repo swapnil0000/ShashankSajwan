@@ -1,27 +1,19 @@
-import { AppBar, Box, Button, Container, Divider, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import logo from "../assets/shashank.PNG"
-import CallIcon from '@mui/icons-material/Call';
 import "../style.css"
 import { Link, useNavigate } from 'react-router-dom';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Floating from './floating/Floating';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import EmailIcon from '@mui/icons-material/Email';
 import email from "../assets/gmail.png"
-import mail from "../assets/mail.png"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import telegram from "../assets/telegram.png"
 import twitter from "../assets/twitter.png"
 import insta from "../assets/insta.png"
 import youtube from "../assets/youtube.png"
-import Notes from '../pages/Notes/Notes';
 const Header = () => {
   const handleWhatsapp = () => {
     // Replace '1234567890' with the phone number you want to send the message to
@@ -61,9 +53,6 @@ const Header = () => {
     setOpenMenu(!openMenu);
   };
 
-  const handleLoginClick = () => {
-    setOpen(false);
-  };
   const isTabletView = useMediaQuery(theme.breakpoints.down("lg"))
 
   const handleCourseClick = () => {
@@ -93,7 +82,7 @@ const Header = () => {
   };
 
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(false);
   const openMenuTable = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -150,7 +139,7 @@ const Header = () => {
               anchor="top"
               open={openMenu}
               onClose={handleClose}
-              sx={{ width: '50vw', "& .MuiPaper-root": { width: '100vw',height:'400px' } }} // Set width to full viewport width
+              sx={{ width: '50vw', "& .MuiPaper-root": { width: '100vw',height:'500px' } }} // Set width to full viewport width
             >
               <Box sx={{ display: 'flex', justifyContent: 'flex-end',backgroundColor:'#212529' }}>
                 <IconButton onClick={handleClose} sx={{ color: 'white',fontSize:'30px', }}>
@@ -236,6 +225,8 @@ const Header = () => {
           </Box>
         </Menu>
           </div> 
+          <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+          <Link onClick={handleClose} style={{  fontSize: '30px' }} to="/videos">Videos</Link>   
           <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
   
           <Link onClick={handleClose} style={{  fontSize: '30px' }} to="/courses">Course</Link>     

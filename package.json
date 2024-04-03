@@ -20,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
+    "react-lazy-load-image-component": "^1.6.0",
     "react-multi-carousel": "^2.8.4",
     "react-player": "^2.15.1",
     "react-responsive-carousel": "^3.2.22",
