@@ -25,16 +25,16 @@ const Carousels = () => {
           </div>
           <div class="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
             <div class="carousel-item active">
-              <img style={{ width: '100%',height:isMobileView?"220px":"500px"}} src={banner1} alt="..." />
+              <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner1} alt="..." />
             </div>
             <div class="carousel-item active">
-            <img style={{ width: '100%',height:isMobileView?"220px":"500px"}} src={banner3} alt="..." />
+            <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner3} alt="..." />
           </div>
             <div class="carousel-item active">
-            <img style={{ width: '100%',height:isMobileView?"220px":"500px"}} src={banner4} alt="..." />
+            <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner4} alt="..." />
           </div>
           <div class="carousel-item active">
-          <img style={{ width: '100%',height:isMobileView?"220px":"500px"}} src={banner5} alt="..." />
+          <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner5} alt="..." />
         </div>
           </div>
           <button style={{ color: 'red', fontSize: '100px' }} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

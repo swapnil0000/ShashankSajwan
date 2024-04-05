@@ -20,40 +20,86 @@ const Videos = () => {
         },
         {
             id: 3,
+            link: 'https://www.youtube.com/watch?v=MS_vuWUDRj0',
+            val:'My UPSC CSE journey mistakes'
+            
+        },
+        {
+            id: 4,
             link: 'https://www.youtube.com/watch?v=mX4nHl2LDmk',
             val:'All about CSAT'
         },
         {
-            id: 4,
+            id: 5,
+            link: 'https://www.youtube.com/watch?v=81Af345gor0',
+            val:'IAS exam pattern'
+        },
+        {
+            id: 6,
             link: 'https://www.youtube.com/watch?v=590IoW54OXU',
             val:'Prelims syllabus analysis            '
         },
         {
-            id: 5,
+            id: 7,
             link: 'https://www.youtube.com/watch?v=4LwUI3_kBtU',
             val:'How to read newspaper?            '
         },
         {
-            id: 6,
+            id: 8,
+            link: 'https://www.youtube.com/watch?v=l3J50LCh31k',
+            val:'English improvement tips'
+        },
+        {
+            id: 9,
             link: 'https://www.youtube.com/watch?v=c1Kj0nvG6n8',
             val:'Time management for aspirants'
+        },
+        {
+            id: 10,
+            link: 'https://www.youtube.com/watch?v=tQMQmtcb1G4',
+            val:'For school students '
+        },
+        {
+            id: 11,
+            link: 'https://www.youtube.com/watch?v=RwkX6ThaM_8',
+            val:'Optional selection strategy'
+        },
+        {
+            id: 12,
+            link: 'https://www.youtube.com/watch?v=zigTkDzCdvo',
+            val:' How to read NCERTs?'
+        },
+        {
+            id: 13,
+            link: 'https://www.youtube.com/watch?v=tI7qhKQGcnE',
+            val:' Biggest mistake during preparation'
+        },
+        {
+            id: 14,
+            link: 'https://www.youtube.com/watch?v=_IkGnczXwck',
+            val:' Important UPSC CSE subjects '
+        },
+        {
+            id: 15,
+            link: 'https://www.youtube.com/watch?v=0BQPGWAKfNU',
+            val:'Answer writing tips'
         },
 
     ];
 
     const half = [
         {
-            id: 7,
+            id: 16,
             link: 'https://youtu.be/HbcHQBsQTAI?si=u6ZfIIx57mi4Z2WW',
             val:'Game changer for UPSC CSE aspirants'
         },
         {
-            id: 8,
+            id: 17,
             link: 'https://www.youtube.com/watch?v=d4aegXqxE-U',
             val:'Mistakes during preparation'
         },
         {
-            id: 9,
+            id: 18,
             link: 'https://www.youtube.com/watch?v=vGRYeiFf2YU',
             val:'Social media addiction'
         },
