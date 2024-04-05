@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import "../Materials/material.css"
 import { Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Test from '../../Test';
@@ -96,52 +97,52 @@ const Material = () => {
   ];
 
   const data = [
-    { id: 1, img: history1, val: 'Historical events for class 6.' },
-    { id: 2, img: history2, val: 'Historical events for class 7.' },
-    { id: 3, img: history3, val: 'Historical events for class 8.' },
-    { id: 4, img: history4, val: 'Historical events for class 9.' },
-    { id: 5, img: history5, val: 'Historical events for class 10.' },
-    { id: 6, img: history6, val: 'Historical events for class 11.' },
-    { id: 7, img: history7, val: 'Historical events for class 12.' },
-    { id: 8, img: history8, val: 'Historical events for class 12.' }
+    { id: 1, img: history1,link:'https://drive.google.com/file/d/1YXMopEQtziDNgLOpriUybkqNbUAMnQ5k/view' },
+    { id: 2, img: history2,link:'https://drive.google.com/file/d/1KtbLDSFtVSAjSfTJgIQRKzvNJezJQUuw/view'  },
+    { id: 3, img: history3,link:'https://drive.google.com/file/d/1OXS4O1NioCwHpuHFCM8f_NdE6_UGHwuB/view'  },
+    { id: 4, img: history4,link:'https://drive.google.com/file/d/1FAdJbnnFeGOlv1QXUZj2rWthHX3A1GPB/view'  },
+    { id: 5, img: history5,link:'https://drive.google.com/file/d/1pwyzg3HjKTxlEppU6jHb9qT3c9ytUotO/view'  },
+    { id: 6, img: history6,link:'https://drive.google.com/file/d/1yN9Lpfk53Z1ua04nRcRirh0eSLMG_em6/view'  },
+    { id: 7, img: history7,link:'https://drive.google.com/file/d/13apu2vvbKivWsKFKCoapTb-AYr41W5fI/view'  },
+    { id: 8, img: history8,link:'https://drive.google.com/file/d/1bimdy7USu1nFafd6GtPeZoF4yuMbWAF1/view'  }
   ];
 
   const dataPolitical = [
-    { id: 1, img: polity1, val: 'Historical events for class 6.' },
-    { id: 2, img: polity2, val: 'Historical events for class 7.' },
-    { id: 3, img: polity3, val: 'Historical events for class 8.' },
-    { id: 4, img: polity4, val: 'Historical events for class 9.' },
-    { id: 5, img: polity5, val: 'Historical events for class 10.' },
-    { id: 6, img: polity6, val: 'Historical events for class 11.' },
-    { id: 7, img: polity7, val: 'Historical events for class 12.' },
-    { id: 8, img: polity8, val: 'Historical events for class 12.' },
-    { id: 9, img: polity9, val: 'Historical events for class 12.' }
+    { id: 1, img: polity1,link:'https://drive.google.com/file/d/17ABh13RgIl_e7On4eCObLhWx_xZeqeuk/view' },
+    { id: 2, img: polity2,link:'https://drive.google.com/file/d/1PKPUTF_p0ur97u73StDgjtaIx0roUdA2/view' },
+    { id: 3, img: polity3,link:"https://drive.google.com/file/d/1JIWBjVZGpl9m0VCgIsfl4efx1sMVAd7w/view" },
+    { id: 4, img: polity4,link:"https://drive.google.com/file/d/1KhSabRYBXI_gJHR0xOXHAu47yUoCu93Q/view"  },
+    { id: 5, img: polity5,link:"https://drive.google.com/file/d/1E1YUL6xSofeKWX4zwxZ1kohH2-ffJbXR/view" },
+    { id: 6, img: polity6,link:"https://drive.google.com/file/d/1FmxsmmlOk9Tq_9v8DLOk0rkx_mJKfEEL/view" },
+    { id: 7, img: polity7,link:"https://drive.google.com/file/d/1o6UCIwzwTQzNPqstlqJT2tp1xF6bcJFV/view"  },
+    { id: 8, img: polity8,link:"https://drive.google.com/file/d/1L46pBWXppgnAfN7-mrofMyLASKeGdit1/view"  },
+    { id: 9, img: polity9,link:"https://drive.google.com/file/d/147LyBhH72o-J4f0bx5Lc8TsbwWguBM_i/view" }
   ];
 
   const dataGeo = [
-    { id: 1, img: geo1, val: 'Historical events for class 6.' },
-    { id: 2, img: geo2, val: 'Historical events for class 7.' },
-    { id: 3, img: geo3, val: 'Historical events for class 8.' },
-    { id: 4, img: geo4, val: 'Historical events for class 9.' },
-    { id: 5, img: geo5, val: 'Historical events for class 10.' },
-    { id: 6, img: geo6, val: 'Historical events for class 11.' },
-    { id: 7, img: geo7, val: 'Historical events for class 12.' },
-    { id: 8, img: geo8, val: 'Historical events for class 12.' },
-    { id: 9, img: geo9, val: 'Historical events for class 12.' }
+    { id: 1, img: geo1,link:"https://drive.google.com/file/d/1fmgr5M3INl3G8JIkenLH9RG77yZSztmG/view" },
+    { id: 2, img: geo2,link:"https://drive.google.com/file/d/1T8Vk8roEMfc3chNRd66FHnF_ZNlKDvvP/view" },
+    { id: 3, img: geo3,link:"https://drive.google.com/file/d/1zHskN8KkOz1a58xMgQsu_-LldJ65EET2/view" },
+    { id: 4, img: geo4,link:"https://drive.google.com/file/d/1nbXkVU9uDnxLrTNqAEwtH81INeu3_e5D/view" },
+    { id: 5, img: geo5,link:"https://drive.google.com/file/d/1fbr6s58r-y2U_Rqy42lD9xqt_XZsXgUb/view"},
+    { id: 6, img: geo6,link:"https://drive.google.com/file/d/1sRMxSEjiLf0AFh3RnoydCnSEcgx95a68/view" },
+    { id: 7, img: geo7,link:"https://drive.google.com/file/d/1DWwk5UGvRpOuckz-gGOMCULPFjGhet-m/view" },
+    { id: 8, img: geo8,link:"https://drive.google.com/file/d/1YsqqCS1bspSbWRwNSbYuSgLbmcvlVYkp/view" },
+    { id: 9, img: geo9,link:"https://drive.google.com/file/d/1mL-nTIYyFz_qkheESuauArDrTTsAX8UD/view" }
   ];
 
   const dataEco = [
-    { id: 1, img: eco1, val: 'Historical events for class 6.' },
-    { id: 2, img: eco2, val: 'Historical events for class 7.' },
-    { id: 3, img: eco3, val: 'Historical events for class 8.' },
-    { id: 4, img: eco4, val: 'Historical events for class 9.' }
+    { id: 1, img: eco1,link:"https://drive.google.com/file/d/15DmCzWzNGSK4sIEc5AH7b7tNqj4LP5vJ/view" },
+    { id: 2, img: eco2,link:"https://drive.google.com/file/d/1hGPPYLc6bPiP9fXycTBUrl731mJX7jKY/view" },
+    { id: 3, img: eco3,link:"https://drive.google.com/file/d/1NC_32WlU-pV1uiIFlnXmYcxDtfmtzANT/view" },
+    { id: 4, img: eco4,link:"https://drive.google.com/file/d/1OOJO5SaGZBeuuT4yUaaapo3uMpJ9JAZK/view" }
   ];
 
   const dataSocio = [
-    { id: 1, img: soc1, val: 'Historical events for class 6.' },
-    { id: 2, img: soc2, val: 'Historical events for class 7.' },
-    { id: 3, img: soc3, val: 'Historical events for class 8.' },
-    { id: 4, img: soc4, val: 'Historical events for class 9.' }
+    { id: 1, img: soc1,link:'https://drive.google.com/file/d/19l7GsMcEkTTCg2XjzMG_6saiGgW8lP40/view' },
+    { id: 2, img: soc2,link:'https://drive.google.com/file/d/1gjwbOyfH4W-MbR1XATblCzHZ9EI9zbAp/view' },
+    { id: 3, img: soc3,link:'https://drive.google.com/file/d/1VNiO157pkHU_jSQ2iKzx_kYx79a5tYUK/view' },
+    { id: 4, img: soc4,link:'https://drive.google.com/file/d/10xQ-8eIEW5KNi1B8YAg0EpFja2nPpzxA/view' }
   ];
   const a11yProps = (index) => {
     return {
@@ -155,8 +156,11 @@ const Material = () => {
     <Grid container>
       {data.map(item => (
         <Grid key={item.id} item xs={12} sm={6} md={6} lg={4}>
+       
           <Paper sx={{ width: 250, height: 140, display: 'flex', flexDirection: 'column', margin: '5px', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.05)' } }}>
-            <img style={{ width: '100%', backgroundColor: 'transparent' }} src={item.img} />
+            <a href={item.link} target="_blank" rel="noopener noreferrer">
+            <img  style={{ width: '100%', backgroundColor: 'transparent' }} src={item.img} alt={`Image ${item.id}`}/>
+            </a>
           </Paper>
         </Grid>
       ))}
@@ -165,7 +169,7 @@ const Material = () => {
 
   return (
     <Box>
-      <Box sx={{ width: '100%', marginTop: isMobileView ? "100px" : "110px", position: 'relative', height: '150px', backgroundImage: "linear-gradient( 26.3deg ,rgba(8,24,68,1) 87.6%   ,rgba(0,119,182,1) 9.6%)" }}>
+      <Box  className="material-page" sx={{ width: '100%', marginTop: isMobileView ? "100px" : "110px", position: 'relative', height: '150px', backgroundImage: "linear-gradient( 26.3deg ,rgba(8,24,68,1) 87.6%   ,rgba(0,119,182,1) 9.6%)" }}>
         <Typography variant="h4"  sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', textAlign: 'center', fontSize: isMobileView ? "30px" : "50px" }}>
           NCERT NOTES
         </Typography>

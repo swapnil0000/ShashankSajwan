@@ -1,7 +1,6 @@
 import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import logo from "../assets/shashank.PNG"
-import "../style.css"
 import { Link, useNavigate } from 'react-router-dom';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Floating from './floating/Floating';
@@ -226,7 +225,7 @@ const Header = () => {
         </Menu>
           </div> 
           <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
-          <Link onClick={handleClose} style={{  fontSize: '30px' }} to="/videos">Videos</Link>   
+          <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/videos">Videos</Link>   
           <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
   
           <Link onClick={handleClose} style={{  fontSize: '30px' }} to="/courses">Course</Link>     
@@ -306,7 +305,7 @@ const Header = () => {
             <Box sx={{ marginTop: '30px' }}>
               <Stack direction="row" sx={{ display: 'flex', color: 'black', marginTop: '25px', marginRight: '25px', gap: '10px' }}>
 
-                <Link to='/'>Home</Link>
+                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/'>Home</Link>
                 {!isMobileView && 
                   (
                     <div>
@@ -318,6 +317,7 @@ const Header = () => {
                     aria-haspopup="true"
                     aria-expanded={openMenuTable ? 'true' : undefined}
                     onClick={handleClick}
+                    style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}}
                   >
                     Resources
                     <ExpandMoreIcon sx={{color:'white'}}/>
@@ -336,7 +336,7 @@ const Header = () => {
                   <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
                     backgroundColor: 'orangered' // Change the background color on hover
                   },}}>
-                  <MenuItem onClick={handleOpenNotes} sx={{fontSize:'15px'}} >Ncert Notes
+                  <MenuItem  onClick={handleOpenNotes} sx={{fontSize:'15px',}} >Ncert Notes
                   
                   </MenuItem>
                    
@@ -375,11 +375,11 @@ const Header = () => {
                 }
                
              
-                <Link to='/courses'>Course</Link> {/* Navigate to course section in home */}
-                <Link to='/videos'>Videos</Link> {/* Navigattoe to course section in home */}
-                <Link to='/about'>About</Link>
+                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/courses'>Course</Link> {/* Navigate to course section in home */}
+                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/videos'>Videos</Link> {/* Navigattoe to course section in home */}
+                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/about'>About</Link>
 
-                <Link to='/contact'>Contact</Link>
+                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/contact'>Contact</Link>
               </Stack>
             </Box>
             <Box sx={{ display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>

@@ -13,20 +13,20 @@ const Icon = () => {
     <>
     <ul >
     <li>
-    <a href="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS"  target="_blank">
+    <a  href="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS"  target="_blank">
       <i class="fab fa-youtube icon"></i>
     </a>
   </li>
   <li>
-      <a onClick={handleEmail} target='_blank'><i class="fab fa-google-plus-g icon"></i></a>
+      <a  onClick={handleEmail} target='_blank'><i class="fab fa-google-plus-g icon"></i></a>
     </li>
     <li>
-    <a href="https://t.me/iasips_mentor" target='_blank'>
+    <a  href="https://t.me/iasips_mentor" target='_blank'>
       <i class="fab fa-telegram icon"></i>
     </a>
   </li>
     <li>
-    <a href="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target='_blank'>
+    <a  href="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target='_blank'>
     <i class="fab fa-instagram icon"></i>
   </a>
     </li>
