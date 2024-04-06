@@ -1,48 +1,30 @@
+import React from 'react';
+import { Box, Container, Typography, Grid, useMediaQuery, useTheme } from '@mui/material';
+import notes1 from "../Notespresent/homenotes1.webp";
+import notes2 from "../Notespresent/homenotes2.webp";
+import notes3 from "../Notespresent/homenotes3.webp";
+import notes4 from "../Notespresent/homenotes4.webp";
+import notes5 from "../Notespresent/homenotes5.webp";
+import notes6 from "../Notespresent/homenotes6.webp";
+import "../Notespresent/notesStyle.css";
 
-import noteslogo from "../Notespresent/NOTESLOGO.jpg"
-import newslogo from "../Notespresent/newsnotes.jpg"
-import pyqslogo from "../Notespresent/pyqnotes.jpg"
-import { Box, Container, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
-import React from 'react'
-import "../Notespresent/notesStyle.css"
 const Course = () => {
-  const theme=useTheme();
-  const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down('xs'));
+  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
-    <Container sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',width:'100%',marginTop:'50px'}}>
-    <Typography sx={{fontWeight:'700',fontSize:isMobileView?"25px":"40px",marginBottom:'10px'}}>NOTES PROVIDED</Typography>
-    <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',justifyContent:'center',width:'100%'}}>
-    <div style={{display:'flex',flexDirection:isMobileView?"column":"row",alignItems:'center',justifyContent:'center',gap:'10px'}} class="wrapper">
-    <div style={{}} class="card">
-    <img style={{width:'100%'}} src={noteslogo}/>
-
-          <div class="info">
-            <h1 >Ncert Notes</h1>
-            <button>Open</button>
-        </div>
-    </div>
-
-    <div style={{ }} className="card">
-    <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={pyqslogo} alt="PYQ's Notes" />
-    <div className="info">
-        <h1>PYQ's Notes</h1>
-        <button>Open</button>
-    </div>
-</div>
-
-
-    <div style={{}}  class="card">
-    <img style={{width:'100%',objectFit:'cover',height:'100%'}} src={newslogo}/>
-    <div class="info">
-            <h1>NewsPaper Notes</h1>
-            <button>Open</button>
-        </div>
-    </div>
-</div>
-</Box>
-   
+    <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', marginTop: '50px' }}>
+      <Typography sx={{ fontWeight: '700', fontSize: isXs ? '25px' : '40px', marginBottom: '10px' }}>NOTES PROVIDED</Typography>
+      <Grid container spacing={2} justifyContent="center">
+        {[notes1, notes2, notes3, notes4, notes5, notes6].map((note, index) => (
+          <Grid item xs={isXs ? 12 : (isSm ? 6 : 4)} key={index}>
+              <img style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={note} alt={`Note ${index + 1}`} />
+          </Grid>
+        ))}
+      </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default Course
+export default Course;

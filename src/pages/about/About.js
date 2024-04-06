@@ -43,7 +43,7 @@ const About = () => {
        <Typography  sx={{marginTop:'10px',textAlign:'justify',hyphens:'inherit'}}>As Shashank embarks on this new journey, his commitment to empowering aspirants remains unwavering.</Typography>
         </Box>
       <Box>
-       <img style={{width:'350px',marginTop:'10px',borderRadius:'50%'}} src={aboutphoto}/>
+       <img style={{width:'400px',marginTop:'10px',borderRadius:'50%'}} src={aboutphoto}/>
       </Box>
 
       </Box>

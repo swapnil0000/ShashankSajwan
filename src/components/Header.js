@@ -158,7 +158,7 @@ const Header = () => {
                 }}
               >
 
-                <Link onClick={handleClose} style={{  fontSize: '30px' }} to="/">Home</Link>
+                <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/">Home</Link>
                 <Divider orientation='horizontal' sx={{width:'50%',color:'orange',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
 
                 <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
@@ -170,7 +170,7 @@ const Header = () => {
               aria-haspopup="true"
               aria-expanded={openMenuTable ? 'true' : undefined}
               onClick={handleClick}
-              style={{fontSize:'30px'}}
+              style={{  fontSize: '30px',textDecoration:'none',color:'white' }}
             >
               Resources
               <ExpandMoreIcon sx={{color:'white'}}/>
@@ -228,13 +228,13 @@ const Header = () => {
           <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/videos">Videos</Link>   
           <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
   
-          <Link onClick={handleClose} style={{  fontSize: '30px' }} to="/courses">Course</Link>     
+          <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/courses">Course</Link>     
           <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
 
-                  <Link onClick={handleClose} style={{ fontSize: '30px' }} to="/about">About</Link>
+                  <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/about">About</Link>
                   <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
 
-                <Link onClick={handleClose} style={{ fontSize: '30px' }} to="/contact">Contact</Link>
+                <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/contact">Contact</Link>
 
                 {/* Add more menu items as needed */}
               </List>
@@ -294,16 +294,21 @@ const Header = () => {
                 <Typography sx={{ fontWeight: '700', fontSize: isTabletView ? "20px" : "20px" }}>SHASHANK SAJWAN</Typography>
                 <Typography sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', fontSize: '15px' }} variant='h6'>Your Vision, My Direction</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '11px', marginTop: '5px' }}>
-                  <img style={{ width: '20px' }} src={youtube} />
-                  <img style={{ width: '20px' }} src={telegram} />
-                  <img style={{ width: '20px' }} src={insta} />
-
-                  <img style={{ width: '20px' }} src={twitter} />
+                  <Link to="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS" target="_blank">
+                    <img style={{ width: '22px' }} src={youtube} />
+                   </Link>
+                   <Link to="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target="_blank">
+                   <img style={{ width: '22px' }} src={insta} />
+                  </Link>
+                  <Link to="https://t.me/iasips_mentor" target="_blank">
+                  <img style={{ width: '22px' }} src={telegram} />
+                 </Link>
+                 
                 </Box>
               </Box>
             </Box>
             <Box sx={{ marginTop: '30px' }}>
-              <Stack direction="row" sx={{ display: 'flex', color: 'black', marginTop: '25px', marginRight: '25px', gap: '10px' }}>
+              <Stack direction="row" sx={{ display: 'flex', color: 'black', marginTop: '25px', marginRight: '25px', gap: '20px' }}>
 
                 <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/'>Home</Link>
                 {!isMobileView && 
@@ -320,7 +325,7 @@ const Header = () => {
                     style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}}
                   >
                     Resources
-                    <ExpandMoreIcon sx={{color:'white'}}/>
+
                   </Link>
                   <Menu
                     id="basic-menu"

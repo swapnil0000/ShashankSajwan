@@ -17,9 +17,9 @@ const Footer = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: '#212529', color: 'white', bottom: 0, marginTop: '20px', position: 'relative' }}>
-      <Container>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '100%', bottom: 0 }}>
+    <Box sx={{ backgroundColor: '#212529', color: 'white', marginTop: '20px', position: 'relative' }}>
+      
+        <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '100%' }}>
 
           {/* Logo and Navigation Links */}
           <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '40px' }}>
@@ -37,7 +37,7 @@ const Footer = () => {
 
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Typography onClick={() => navigate("/material")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Resources</Typography>
-                <Typography onClick={() => navigate("/")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Courses</Typography>
+                <Typography onClick={() => navigate("/courses")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Courses</Typography>
                 <Typography onClick={() => navigate("/faqs")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>FAQs</Typography>
               </Box>
             </Box>
@@ -51,10 +51,10 @@ const Footer = () => {
           </Box>
 
           {/* Bottom Text */}
-          <Typography fontSize='15px' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '35px' }}>©  All rights reserved Shashank Sajwan.</Typography>
+          <Typography fontSize='15px' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '30px' , marginBottom:'10px'}}>©  All rights reserved Shashank Sajwan.</Typography>
           
-        </Box>
-      </Container>
+        </Container>
+
     </Box>
   );
 };

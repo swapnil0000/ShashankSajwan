@@ -1,16 +1,15 @@
-import { Avatar, Box, Button, Container, Divider, Grid, Paper, Typography, useMediaQuery, useTheme } from '@mui/material'
+import {  Box, Button, Container, Divider, Grid, Paper, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
-import coursephoto from "../../assets/banner3.jpg"
+import coursephoto from "../../assets/banner2.jpg"
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import GTranslateIcon from '@mui/icons-material/GTranslate';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
-import Choose from '../Choose/Choose';
-
-import mentor from "../CourseSection/mentor.png"
-
+window.onload = function () {
+  window.scrollTo(0, 0);
+}
 const CourseSection = () => {
     const theme=useTheme();
     const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
@@ -63,7 +62,7 @@ const CourseSection = () => {
 
        <Box>
        <Typography sx={{margin:'10px',fontSize:'25px',fontWeight:'600'}}>UPSC Full-Fledged Preparation</Typography>
-       <Typography sx={{margin:'8px',marginTop:'40px'}} variant='h5'>In this program, you will get Full-Fledged Preparation including with proper mentorship and guidance with all the materials.</Typography>
+       <Typography sx={{margin:'8px',marginTop:'40px'}} >In this program, you will get Full-Fledged Preparation including with proper mentorship and guidance with all the materials.</Typography>
 
        <Box sx={{display:'flex',flexDirection:isSmallMobile?"column":'row',justifyContent:'space-between'}}>
           <Box sx={{margin:'10px',display:'flex',flexDirection:'column',fontSize:'15px'}}>
@@ -117,47 +116,98 @@ const CourseSection = () => {
     <div className="">
      
           <div >
-            <h2 className="h3 mb-1">How can we help you?</h2>
-            <p >We hope you have found an answer to your question. If you need any help, please search your query on our Support Center or contact us via email.</p>
+            <h2 className="h3 mb-1">FAQs</h2>
+
             <div className="accordion accordion-flush" id="accordionExample">
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingOne">
                   <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    How Do I Change My Billing Information?
-                  </button>
+                  Will this UPSC FULL-FLEDGED BATCH offer study materials such as notes and video lectures?                  </button>
                 </h2>
                 <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    <p>To change your billing information, please follow these steps:</p>
-                   
+                    <p>Yes, All the notes of all the subjects including with proper lectures, PYQ Analysis, tips & tricks will be delivered.</p>              
                   </div>
                 </div>
               </div>
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingTwo">
                   <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    How Does Payment System Work?
-                  </button>
+                  What are Mentorship Sessions?                  </button>
                 </h2>
                 <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    A payment system is a way to transfer money from one person or organization to another. It is a complex process that involves many different parties, including banks, credit card companies, and merchants.
-                  </div>
+                  Mentorship Sessions will be conducted every week, students will interact directly with Shashank Sir.                  </div>
                 </div>
               </div>
+
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingThree">
                   <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    How Do I Cancel My Account?
+                    Who will conduct mentorship sessions, and how will participants receive their session schedules?
+                    count?
                   </button>
                 </h2>
-                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    <p>To cancel your account, please follow these steps:</p>
-                  
+                    <p>Shashank Sir will conduct Mentorship Sessions, students will get the notification & access of live sessions through their telegram channel.</p>               
                   </div>
                 </div>
               </div>
+
+              <div className="accordion-item">
+              <h2 className="accordion-header" id="headingFour">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Are the lectures presented live or in recorded format?
+                </button>
+              </h2>
+              <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                <div className="accordion-body">
+                  <p>That is totally combined format, modules are designed in a way that students will not study but they’ll enjoy their preparation journey also.</p>               
+                </div>
+              </div>
+            </div>
+
+            <div className="accordion-item">
+            <h2 className="accordion-header" id="headingFive">
+              <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              Are weekly assessments part of the course structure?              
+              </button>
+            </h2>
+            <div id="collapseFive" className="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+              <div className="accordion-body">
+                <p>Yes, we will track your progress on weekly & monthly basis through weekly test and all.</p>               
+              </div>
+            </div>
+          </div>
+
+          <div className="accordion-item">
+          <h2 className="accordion-header" id="headingSix">
+            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            How can participants access the classes?           
+             </button>
+          </h2>
+          <div id="collapseSix" className="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+            <div className="accordion-body">
+              <p>Private portal will be shared after your admissions.</p>               
+            </div>
+          </div>
+        </div>
+
+        <div className="accordion-item">
+        <h2 className="accordion-header" id="headingSeven">
+          <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+
+          What is Direct Interaction in this course?
+          </button>
+        </h2>
+        <div id="collapseSeven" className="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+          <div className="accordion-body">
+            <p>Throughout your journey, you’ll have personal number of Shashank Sir, on which aspirants can ask their doubts (Subjective/Non-Subjective), and the Personal Interaction will not be discontinued after the course ends.</p>               
+          </div>
+        </div>
+      </div>
+
             </div>
           </div>
      
@@ -165,21 +215,7 @@ const CourseSection = () => {
   </div>
 </section>
 
-  </Box>
-
-
-
-     <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',marginTop:'20px',height:'300px',width:'100%',marginTop:'20px'}}>
-       <Typography sx={{fontSize:isMobileView?"25px":"40px",fontWeight:'700',margin:'10px'}}>Journey So Far</Typography>
-       <Typography sx={{textAlign:'justify',hyphens:'initial'}}>Lorem ipsum dolor sit amet consectetur. Id nullam nisi lacinia rhoncus tincidunt nec. Pretium dolor amet viverra tincidunt bibendum. Platea eu porta phasellus in. Hendrerit viverra vitae velit facilisis at. Accumsan leo cursus nec mattis mi sed. Et ipsum risus ridiculus morbi. Turpis mauris eleifend libero amet convallis quis dis scelerisque. Tincidunt tortor convallis turpis amet dapibus rhoncus ultrices id.</Typography>
-       <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-evenly',width:'100%',margin:'20px'}}>
-         <img style={{width:'80px'}} src={mentor}/>
-         <img style={{width:'80px'}} src={mentor}/>
-         <img style={{width:'80px'}} src={mentor}/>
-       </Box>
-     </Box>
-
-  
+  </Box>  
     </Container>
 
 
