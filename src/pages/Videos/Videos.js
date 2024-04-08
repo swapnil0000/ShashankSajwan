@@ -160,7 +160,10 @@ const Videos = () => {
                     </Grid>
                 ))}
             </Grid>
+            
+
         </Container>
+        <Divider sx={{ width: '100%', border: '1px solid white', color: 'white' }} orientation='horizontal' />
     </Box>
 );
 };

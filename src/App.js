@@ -20,6 +20,7 @@ import NewsNotes from './pages/Newspaper/NewsNotes';
 import Test from './Test';
 import CourseSection from './pages/CourseSection/CourseSection';
 import FAQs from './pages/FAQs/FAQs';
+import Popup from './components/popup/Popup';
 
 function App() 
 {
@@ -27,6 +28,7 @@ function App()
   return (
     
     <BrowserRouter>
+    <Popup/>
     <Header/>
            <Routes>
             <Route path='/' element={<Home/>}/>
@@ -41,7 +43,7 @@ function App()
             <Route path='/courses' element={<CourseSection/>}/>
             <Route path='/syllabus' element={<Syllabus/>}/>
             <Route path='/pyqs' element={<Pyqs/>}/>
-            <Route path='general' element={<General/>}/>
+            <Route path='/general' element={<General/>}/>
             <Route path='/optional' element={<Optional/>}/>
             <Route path='/newsnotes' element={<NewsNotes/>}/>
            </Routes> 

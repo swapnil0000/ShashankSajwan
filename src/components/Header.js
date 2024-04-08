@@ -1,11 +1,11 @@
 import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import logo from "../assets/shashank.PNG"
 import { Link, useNavigate } from 'react-router-dom';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Floating from './floating/Floating';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import email from "../assets/gmail.png"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -13,10 +13,13 @@ import telegram from "../assets/telegram.png"
 import twitter from "../assets/twitter.png"
 import insta from "../assets/insta.png"
 import youtube from "../assets/youtube.png"
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 const Header = () => {
   const handleWhatsapp = () => {
     // Replace '1234567890' with the phone number you want to send the message to
-    const phoneNumber = '6386455982';
+    const phoneNumber = '7060748896';
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -54,23 +57,6 @@ const Header = () => {
 
   const isTabletView = useMediaQuery(theme.breakpoints.down("lg"))
 
-  const handleCourseClick = () => {
-    const courseSection = document.getElementById('course');
-    if (courseSection) {
-      const yOffset = -70; // Adjust this value as needed
-      const y = courseSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
-
-  const handleVideoClick = () => {
-    const courseSection = document.getElementById('videos');
-    if (courseSection) {
-      const yOffset = -70; // Adjust this value as needed
-      const y = courseSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
 
   const handleNotesMenmClick = () => {
     setOpenMenu(!openMenu);
@@ -259,7 +245,7 @@ const Header = () => {
                   <img style={{ width: '20px' }} src={telegram} />
                   <img style={{ width: '20px' }} src={insta} />
 
-                  <img style={{ width: '20px' }} src={twitter} />
+                  <img style={{ width: '20px' }} src={XIcon} />
                 </Box>
               </Box>
             </Box>
@@ -295,14 +281,17 @@ const Header = () => {
                 <Typography sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', fontSize: '15px' }} variant='h6'>Your Vision, My Direction</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '11px', marginTop: '5px' }}>
                   <Link to="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS" target="_blank">
-                    <img style={{ width: '22px' }} src={youtube} />
+                     <YouTubeIcon sx={{color:'#FF0000'}} />
                    </Link>
                    <Link to="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target="_blank">
-                   <img style={{ width: '22px' }} src={insta} />
+                    <InstagramIcon sx={{color:'#DD2A7B'}}/>
                   </Link>
                   <Link to="https://t.me/iasips_mentor" target="_blank">
-                  <img style={{ width: '22px' }} src={telegram} />
-                 </Link>
+                   <TelegramIcon sx={{color:'#0088cc'}}/>
+                  </Link>
+                 <Link to="https://twitter.com/iasips_mentor" target="_blank">
+                   <XIcon sx={{width:'19px',color:'white'}}/>
+                </Link>
                  
                 </Box>
               </Box>
@@ -341,7 +330,7 @@ const Header = () => {
                   <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
                     backgroundColor: 'orangered' // Change the background color on hover
                   },}}>
-                  <MenuItem  onClick={handleOpenNotes} sx={{fontSize:'15px',}} >Ncert Notes
+                  <MenuItem  onClick={handleOpenNotes} sx={{fontSize:'15px',}} >NCERT Notes
                   
                   </MenuItem>
                    

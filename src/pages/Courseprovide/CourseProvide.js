@@ -8,8 +8,9 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import coursephoto from "../../assets/banner2.jpg";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+import { useNavigate } from 'react-router-dom';
 const CourseProvide = () => {
+  const navigate=useNavigate();
   const { breakpoints } = useTheme();
   const { down } = breakpoints;
   const isMobileView = useMediaQuery(down("md"));
@@ -27,6 +28,10 @@ const CourseProvide = () => {
       { id: 3, icon: <LiveTvIcon />, val: 'Live Interaction/Doubt Sessions' }
     ]
   };
+
+  const handleCourse=()=>{
+    navigate("/courses")
+  }
 
   return (
     <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', marginTop: '50px' }}>
@@ -53,7 +58,7 @@ const CourseProvide = () => {
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
           <Divider sx={{ width: '95%', marginTop: '20px', border: '0.5px solid black' }} />
-          <Button sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0750f', color: 'whitesmoke', marginTop: '10px', marginBottom: '-15px' }} variant='contained'>Coming Soon</Button>
+          <Button onClick={handleCourse} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0750f', color: 'whitesmoke', marginTop: '10px',marginBottom:'10px' }} variant='contained'>ENROLL</Button>
         </Box>
       </Box>
     </Container>

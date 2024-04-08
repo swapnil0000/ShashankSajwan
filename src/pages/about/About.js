@@ -28,7 +28,7 @@ const About = () => {
     window.open('https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS/');
   };
   return (
-    <Container >
+    <Container sx={{marginBottom:'20px'}} >
      {!isMobileView && (
       <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',width:'100%',marginTop:'130px'}} >
       <Box sx={{display:'flex',flexDirection:'row',width:'100%',alignItems:'center'}} >
@@ -152,9 +152,6 @@ const About = () => {
 
          <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around',gap:'11px',marginTop:'50px',width:'100%'}}>
 
-      
-       
-      
 
          <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'8px'}}>
          <img style={{width:'32px'}} src={youtube}/>

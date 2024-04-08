@@ -3,7 +3,7 @@ import banner1 from "../assets/banner1.png"
 import banner2 from "../assets/banner2.jpg";
 import banner4 from "../assets/banner4.jpg";
 import banner5 from "../assets/banner5.jpg";
-import banner3 from "../assets/bannerposter.jpg";
+import banner3 from "../assets/banner3.jpg";
 import * as React from 'react';
 import { Box, Card, CardMedia, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 
@@ -28,14 +28,15 @@ const Carousels = () => {
               <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner1} alt="..." />
             </div>
             <div class="carousel-item active">
-            <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner3} alt="..." />
+            <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner5} alt="..." />
           </div>
             <div class="carousel-item active">
             <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner4} alt="..." />
           </div>
           <div class="carousel-item active">
-          <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner5} alt="..." />
-        </div>
+            <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner3} alt="..." />
+          </div>
+         
           </div>
           <button style={{ color: 'red', fontSize: '100px' }} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true" style={{ color: 'red', fontSize: '100px' }}></span>

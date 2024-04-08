@@ -38,7 +38,7 @@ const Author = () => {
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"))
   const isSmallMobileView = useMediaQuery(theme.breakpoints.down("sm"))
   return (
-    <Container sx={{ marginTop: '40px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center' }}>
+    <Container sx={{ marginTop: '40px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',marginBottom:'20px' }}>
        <Typography sx={{fontWeight:'700',fontSize:isMobileView?"25px":"40px",display:'flex',alignItems:'center',marginBottom:'10px'}}>CONTACT US</Typography>
       <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", alignItems:"center", justifyContent: 'space-around' }}>
 

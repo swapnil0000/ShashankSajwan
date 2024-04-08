@@ -65,7 +65,7 @@ const Contact = () => {
 
   return (
     <Box>
-      <Container sx={{ display: 'flex', flexDirection: 'column', marginTop: '100px', alignItems: 'center', justifyContent: 'center' }}>
+      <Container sx={{ display: 'flex', flexDirection: 'column', marginTop: '100px', alignItems: 'center', justifyContent: 'center',marginBottom:'20px' }}>
         <Typography sx={{ fontSize: '50px', fontWeight: '700', marginTop: isMobileView ? "" : "60px", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>Contact Us</Typography>
         <Typography sx={{ fontSize: isMobileView ? "12px" : "20px", display: isMobileView ? "none" : "row" }}>We appreciate your feedback. Please don't hesitate to reach out to us for any support, inquiries, or assistance you may need. Our team is dedicated to assisting you and providing the information you require.</Typography>
 

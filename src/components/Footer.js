@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: '#212529', color: 'white', marginTop: '20px', position: 'relative' }}>
+    <Box sx={{ backgroundColor: '#212529', color: 'white', position: 'relative',paddingBottom:"0px"}}>
       
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '100%' }}>
 
@@ -27,31 +27,31 @@ const Footer = () => {
               <img style={{ width: '130px' }} src={logos} alt='logo' />
             </Box>
 
-            <Box sx={{ display: 'flex', flexDirection: "row", justifyContent: 'space-between', gap: '80px' }}>
+            <Box sx={{ display: 'flex', flexDirection: "row", justifyContent: 'space-between', gap: '80px',marginBottom:isMobileView?"20px":"null" }}>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography onClick={() => navigate("/")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Home</Typography>
-                <Typography onClick={() => navigate("/private")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Privacy Policy</Typography>
-                <Typography onClick={() => navigate("/terms")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>T&C</Typography>
-                <Typography onClick={() => navigate("/refund")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Refund Policy</Typography>
+                <Typography onClick={() => navigate("/")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Home</Typography>
+                <Typography onClick={() => navigate("/private")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Privacy Policy</Typography>
+                <Typography onClick={() => navigate("/terms")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>T&C</Typography>
+                <Typography onClick={() => navigate("/refund")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Refund Policy</Typography>
               </Box>
 
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography onClick={() => navigate("/material")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Resources</Typography>
-                <Typography onClick={() => navigate("/courses")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Courses</Typography>
-                <Typography onClick={() => navigate("/faqs")} sx={{ color: 'white', margin: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>FAQs</Typography>
+                <Typography onClick={() => navigate("/material")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Resources</Typography>
+                <Typography onClick={() => navigate("/courses")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Courses</Typography>
+                <Typography onClick={() => navigate("/faqs")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>FAQs</Typography>
               </Box>
             </Box>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: isMobileView ? "center" : "null", justifyContent: 'center' }}>
-              <Typography>Connect With Us</Typography>
+              <Typography sx={{marginTop:'15.55px'}}>Connect With Us</Typography>
               <Icon />
-              <Typography>For Career and Opportunity:</Typography>
-              <Typography onClick={handleEmail}>ask.iasmentor@gmail.com</Typography>
+              <Typography sx={{fontSize:'13px'}}>For Career and Opportunity:</Typography>
+              <Typography sx={{fontSize:'16px'}} onClick={handleEmail}>ask.iasmentor@gmail.com</Typography>
             </Box>
           </Box>
 
           {/* Bottom Text */}
-          <Typography fontSize='15px' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '30px' , marginBottom:'10px'}}>©  All rights reserved Shashank Sajwan.</Typography>
+          <Typography fontSize='15px' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '40px' , marginBottom:'40px'}}>©  All rights reserved Shashank Sajwan.</Typography>
           
         </Container>
 

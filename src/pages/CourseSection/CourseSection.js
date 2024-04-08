@@ -1,5 +1,5 @@
 import {  Box, Button, Container, Divider, Grid, Paper, Typography, useMediaQuery, useTheme } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import coursephoto from "../../assets/banner2.jpg"
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import GTranslateIcon from '@mui/icons-material/GTranslate';
@@ -7,13 +7,19 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
+import { useLocation } from 'react-router-dom';
 window.onload = function () {
   window.scrollTo(0, 0);
 }
 const CourseSection = () => {
+  const { pathname } = useLocation();
+
     const theme=useTheme();
     const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
     const isSmallMobile=useMediaQuery(theme.breakpoints.down("sm"));
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
   return (
 
      <Box>
@@ -22,6 +28,7 @@ const CourseSection = () => {
         marginTop: isMobileView?"100px":"110px", 
         position: 'relative', 
         height:'250px',
+        marginBottom:'20px',
         backgroundImage: "linear-gradient( 26.3deg ,rgba(8,24,68,1) 87.6%   ,rgba(0,119,182,1) 9.6%)",
       }}>
        
