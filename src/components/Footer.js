@@ -42,7 +42,7 @@ const Footer = () => {
               </Box>
             </Box>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: isMobileView ? "center" : "null", justifyContent: 'center' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: isMobileView ? "center" : "", justifyContent: 'space-around' }}>
               <Typography sx={{marginTop:'15.55px'}}>Connect With Us</Typography>
               <Icon />
               <Typography sx={{fontSize:'18px'}}>For Career and Opportunity:</Typography>

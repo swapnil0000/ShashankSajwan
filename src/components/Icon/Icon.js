@@ -10,8 +10,8 @@ const Icon = () => {
     window.open(mailtoUrl, '_blank');
   };
   return (
-    <>
-    <ul style={{marginLeft:isMobileView?"60px":""}}>
+    <Box>
+    <ul style={{marginLeft:isMobileView?"20px":"",display:'flex',flexDirection:"row",alignItems:"center",justifyContent:"space-between",width:'100%'}}>
     <li>
     <a  href="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS"  target="_blank">
       <i class="fab fa-youtube icon"></i>
@@ -31,7 +31,7 @@ const Icon = () => {
   </a>
     </li>
   </ul>
-  </>
+  </Box>
   )
 }
 

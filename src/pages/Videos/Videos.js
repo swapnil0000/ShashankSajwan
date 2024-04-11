@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { Box, Container, Grid, Typography, useMediaQuery, useTheme, CircularProgress, Divider } from '@mui/material';
-import ReactPlayer from "react-player/youtube";
-import Test from '../../Test';
-import thumb from "../../assets/shashank.PNG"
-import logo from "../../assets/shashank.PNG"
+import logo from "../../assets/shashank.PNG";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
+// Lazy load ReactPlayer component
+const ReactPlayer = lazy(() => import("react-player/youtube"));
 const Videos = () => {
     const videos = [
         {
@@ -129,6 +129,7 @@ const Videos = () => {
 
     return (
 
+     
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', backgroundColor: '#212529', marginTop: isMobileView ? "100px" : '110px' }}>
         <Divider sx={{ width: '100%', border: '1px solid white', color: 'white' }} orientation='horizontal' />
         <Typography sx={{ fontSize: isMobileView ? "21px" : "40px", fontWeight: '700', color: 'white', fontFamily: 'Montserrat', marginTop: '10px' }}>MOST IMPORTANT VIDEOS</Typography>
@@ -142,17 +143,19 @@ const Videos = () => {
                                     <CircularProgress sx={{ color: 'white' }} />
                                 </Box>
                             )}
-                            <ReactPlayer
-                                style={{ position: 'absolute', top: 0, left: 0, width: '95%', height: '100%', overflow: 'hidden' }}
-                                url={video.link}
-                                controls={true}
-                                width="100%"
-                                height="205px"
-                                playing={false}
-                                onReady={() => setLoading(false)}
-                            />
+                            <Suspense fallback={<CircularProgress sx={{ color: 'white' }} />}>
+                                <ReactPlayer
+                                    style={{ position: 'absolute', top: 0, left: 0, width: '95%', height: '100%', overflow: 'hidden' }}
+                                    url={video.link}
+                                    controls={true}
+                                    width="100%"
+                                    height="205px"
+                                    playing={false}
+                                    onReady={() => setLoading(false)}
+                                />
+                            </Suspense>
                         </Box>
-                        
+
                         <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '10px', gap: '5px' }}>
                             <img style={{ width: '30px' }} src={logo} alt="Logo" />
                             <Typography sx={{ color: 'white', fontWeight: '700' }}>{video.val}</Typography>
@@ -160,8 +163,6 @@ const Videos = () => {
                     </Grid>
                 ))}
             </Grid>
-            
-
         </Container>
         <Divider sx={{ width: '100%', border: '1px solid white', color: 'white' }} orientation='horizontal' />
     </Box>

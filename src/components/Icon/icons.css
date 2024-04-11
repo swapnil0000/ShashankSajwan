@@ -5,6 +5,8 @@ ul{
     flex-direction: row;
     margin-top: 10px;
     margin-bottom: 12px;
+    align-items: center;
+    justify-content: space-between;
 }
   
   ul li a {
@@ -14,7 +16,7 @@ ul{
     text-align: center;
     line-height: 38px;
     font-size:18px;
-    right: 45px;
+    right: 35px;
    
     display: block;
     align-items: center;
