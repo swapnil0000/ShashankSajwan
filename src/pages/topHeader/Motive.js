@@ -1,10 +1,7 @@
-import { Box, Button, Container, Divider, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Button, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import photo from "../topHeader/top.jpg"
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import playbutton from "../topHeader/play.jpg"
+
 const Motive = () => {
   const theme=useTheme();
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"));

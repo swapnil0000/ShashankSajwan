@@ -15,12 +15,12 @@ import Videos from './pages/Videos/Videos';
 import Syllabus from './pages/syllabus/Syllabus';
 import Pyqs from './pages/Pyqs/Pyqs';
 import General from './pages/GeneralStudies/General';
-import Optional from './pages/about/optional/Optional';
 import NewsNotes from './pages/Newspaper/NewsNotes';
 import Test from './Test';
 import CourseSection from './pages/CourseSection/CourseSection';
 import FAQs from './pages/FAQs/FAQs';
 import Popup from './components/popup/Popup';
+import Optional from './pages/optional/Optional';
 
 function App() 
 {

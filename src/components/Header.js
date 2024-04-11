@@ -9,10 +9,6 @@ import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import email from "../assets/gmail.png"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import telegram from "../assets/telegram.png"
-import twitter from "../assets/twitter.png"
-import insta from "../assets/insta.png"
-import youtube from "../assets/youtube.png"
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -241,11 +237,19 @@ const Header = () => {
                 <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>SHASHANK SAJWAN</Typography>
                 <Typography sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', fontSize: '10px' }} variant='h6'>Your Vision, My Direction</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '11px', marginTop: '10px' }}>
-                  <img style={{ width: '20px' }} src={youtube} />
-                  <img style={{ width: '20px' }} src={telegram} />
-                  <img style={{ width: '20px' }} src={insta} />
-
-                  <img style={{ width: '20px' }} src={XIcon} />
+                <Link to="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS" target="_blank">
+                <YouTubeIcon sx={{color:'#FF0000'}} />
+              </Link>
+              <Link to="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target="_blank">
+               <InstagramIcon sx={{color:'#DD2A7B'}}/>
+             </Link>
+             <Link to="https://t.me/iasips_mentor" target="_blank">
+              <TelegramIcon sx={{color:'#0088cc'}}/>
+             </Link>
+            <Link to="https://twitter.com/iasips_mentor" target="_blank">
+              <XIcon sx={{width:'19px',color:'white'}}/>
+           </Link>
+            
                 </Box>
               </Box>
             </Box>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import backgroundImage from "../src/assets/background.jpg";
 
-const Test = () => {
+const Test = ({children}) => {
   const theme=useTheme();
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
   return (

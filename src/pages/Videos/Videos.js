@@ -131,7 +131,7 @@ const Videos = () => {
 
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', backgroundColor: '#212529', marginTop: isMobileView ? "100px" : '110px' }}>
         <Divider sx={{ width: '100%', border: '1px solid white', color: 'white' }} orientation='horizontal' />
-        <Typography sx={{ fontSize: isMobileView ? "25px" : "40px", fontWeight: '700', color: 'white', fontFamily: 'Montserrat', marginTop: '10px' }}>MOST IMPORTANT VIDEOS</Typography>
+        <Typography sx={{ fontSize: isMobileView ? "21px" : "40px", fontWeight: '700', color: 'white', fontFamily: 'Montserrat', marginTop: '10px' }}>MOST IMPORTANT VIDEOS</Typography>
         <Container sx={{ marginBottom: '80px', width: '100%', marginTop: '25px' }}>
             <Grid container spacing={5}>
                 {videos.map((video) => (

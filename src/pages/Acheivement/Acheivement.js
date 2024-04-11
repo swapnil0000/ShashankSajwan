@@ -1,7 +1,7 @@
 import "../Acheivement/style.css";
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player/youtube';
-import { Box, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Container, Typography, styled, useMediaQuery, useTheme } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -45,10 +45,37 @@ const Acheivement = () => {
     { id: 6, val: "His speech offers practical advice for overcoming obstacles in UPSC preparation." },
   ];
 
+  const CounterBox = ({ icon, count, label }) => {
+    const isMobileView = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  
+    return (
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '30px', width: '100%', height: '100%', marginBottom: isMobileView ? '5px' : '0px', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.2)' } }}>
+        {icon}
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Typography sx={{ fontWeight: 700, fontSize: '30px', color: '#f0750f' }}>{count}K+</Typography>
+          <Typography sx={{ fontSize: isMobileView ? '15px' : '17px' }}>{label}</Typography>
+        </Box>
+      </Box>
+    );
+  };
+  
+  const DividerBox = () => {
+    const isMobileView = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  
+    return (
+      <Box sx={{ width: isMobileView ? '100%' : '3px', height: isMobileView ? '4px' : '100%', backgroundColor: 'white', borderRight: '3px solid white' }} />
+    );
+  };
+
+
+  const CounterBoxStyle=styled('Box')({
+    marginTop: '20px', display: 'flex', flexDirection: isMobileView ? 'column' : 'row', backgroundColor: '#212529', color: 'white', width: '100%', height: isMobileView ? '350px' : '110px', borderRadius: '30px', alignItems: 'center', justifyContent: 'center'
+  })
+
   return (
     <Container sx={{ boxShadow: 'rgba(0, 0, 0, 0.1) 10px 4px 12px' }}>
       <Box sx={{ width: '100%', margin: '0 auto', marginTop: '50px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '10px' }}>
-        <Typography id="word" sx={{ fontSize: isMobileView ? '20px' : '40px', fontWeight: '700', opacity: 1, transition: 'opacity 0.5s ease' }} align="center" gutterBottom>
+        <Typography  sx={{ fontSize: isMobileView ? '21px' : '40px', fontWeight: '700' }} align="center" gutterBottom>
           OUR JOSH TALKS SESSION
         </Typography>
 
@@ -71,40 +98,18 @@ const Acheivement = () => {
           </Box>
         </Box>
 
-        <Box sx={{ marginTop: '20px', display: 'flex', flexDirection: isMobileView ? 'column' : 'row', backgroundColor: '#212529', color: 'white', width: '100%', height: isMobileView ? '350px' : '110px', borderRadius: '30px', alignItems: 'center', justifyContent: 'center' }}>
-          <Box sx={{ display: 'flex', flexDirection: isMobileView ? 'column' : 'row', backgroundColor: '#212529', color: 'white', width: '100%', height: isMobileView ? '350px' : '110px', borderRadius: '30px', alignItems: 'center', justifyContent: 'center' }}>
+        <CounterBoxStyle>
             <CounterBox icon={<YouTubeIcon sx={{ fontSize: '50px', fontWeight: '700' }} />} count={count} label="Subscribers" />
             <DividerBox />
             <CounterBox icon={<InstagramIcon sx={{ fontSize: '50px', fontWeight: '700' }} />} count={instaCount} label="Followers" />
             <DividerBox />
             <CounterBox icon={<TelegramIcon sx={{ fontSize: '50px', fontWeight: '700' }} />} count={telegramCount} label="Followers" />
-          </Box>
-        </Box>
+        </CounterBoxStyle>
       </Box>
     </Container>
   );
 };
 
-const CounterBox = ({ icon, count, label }) => {
-  const isMobileView = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
-  return (
-    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '30px', width: '100%', height: '100%', marginBottom: isMobileView ? '5px' : '0px', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.2)' } }}>
-      {icon}
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography sx={{ fontWeight: 700, fontSize: '30px', color: '#f0750f' }}>{count}K+</Typography>
-        <Typography sx={{ fontSize: isMobileView ? '15px' : '17px' }}>{label}</Typography>
-      </Box>
-    </Box>
-  );
-};
-
-const DividerBox = () => {
-  const isMobileView = useMediaQuery((theme) => theme.breakpoints.down('sm'));
-
-  return (
-    <Box sx={{ width: isMobileView ? '100%' : '3px', height: isMobileView ? '4px' : '100%', backgroundColor: 'white', borderRight: '3px solid white' }} />
-  );
-};
 
 export default Acheivement;

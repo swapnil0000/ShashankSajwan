@@ -1,11 +1,18 @@
 import { Box, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const FAQs = () => {
   const theme=useTheme();
+  const { pathname } = useLocation();
+
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"));
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
-    <Container sx={{marginTop:'110px'}}>
+    <Box>
     <Box sx={{ 
       width: '100%', 
       marginTop: isMobileView?"100px":"110px", 
@@ -29,7 +36,11 @@ const FAQs = () => {
       >
          Frequently Asked Question
       </Typography>
-    </Box>
+      </Box>
+
+    <Container sx={{marginTop:'110px'}}>
+  
+    
       <Box sx={{ marginTop: '30px', display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <section className="bg-light" style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <div className="container">
@@ -192,7 +203,9 @@ What subjects should I focus on for UPSC?
         </section>
 
       </Box>
+
     </Container>
+    </Box>
   );
 };
 

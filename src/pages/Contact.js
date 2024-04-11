@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Container, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button,  Container,  TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation } from 'react-router-dom';
-import map from "../assets/contact.png";
+import map from "../assets/contact.webp";
 import MailIcon from '@mui/icons-material/Mail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import axios from "axios";
+import { ContainerWrapper } from '../common';
 
 const Contact = () => {
   const theme = useTheme();
@@ -52,7 +53,7 @@ const Contact = () => {
   };
 
   const handleWhatsapp = () => {
-    const phoneNumber = '6386455982';
+    const phoneNumber = '7060748896';
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -64,8 +65,7 @@ const Contact = () => {
   };
 
   return (
-    <Box>
-      <Container sx={{ display: 'flex', flexDirection: 'column', marginTop: '100px', alignItems: 'center', justifyContent: 'center',marginBottom:'20px' }}>
+    <Container sx={{ display: 'flex', flexDirection: 'column', marginTop: '100px', alignItems: 'center', justifyContent: 'center',marginBottom:'20px'}}>
         <Typography sx={{ fontSize: '50px', fontWeight: '700', marginTop: isMobileView ? "" : "60px", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>Contact Us</Typography>
         <Typography sx={{ fontSize: isMobileView ? "12px" : "20px", display: isMobileView ? "none" : "row" }}>We appreciate your feedback. Please don't hesitate to reach out to us for any support, inquiries, or assistance you may need. Our team is dedicated to assisting you and providing the information you require.</Typography>
 
@@ -107,9 +107,8 @@ const Contact = () => {
             <Typography onClick={handleEmail} sx={{ transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.05)' }, cursor: 'pointer' }}>ask.iasmentor@gmail.com</Typography>
           </Box>
         </Box>
-      </Container>
-    </Box>
+    </Container>
   );
 }
 
-export default Contact;
+export default  Contact ;

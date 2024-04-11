@@ -32,7 +32,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3,marginLeft:'50px' }}>
+        <Box>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -94,7 +94,7 @@ const Material = () => {
   const renderGridItems = (data) => (
     <Grid container>
       {data.map(item => (
-        <Grid key={item.id} item xs={12} sm={6} md={6} lg={4}>
+        <Grid key={item.id} item xs={12} sm={6} md={6} lg={4} sx={{display:'flex',flexDirection:'column',alignItems:'center',marginTop:'10px'}}>
        
           <Paper sx={{ width: 250, height: 140, display: 'flex', flexDirection: 'column', margin: '5px', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.05)' } }}>
             <a href={item.link} target="_blank" rel="noopener noreferrer">

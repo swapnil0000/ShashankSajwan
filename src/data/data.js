@@ -1,13 +1,11 @@
-import banner1 from "../assets/banner1.png";
-import banner2 from "../assets/banner2.jpg";
-import banner4 from "../assets/banner4.jpg";
-import banner3 from "../assets/banner3.jpg";
+
 import dct from "../pages/Choose/dct.webp"
 import ffp from "../pages/Choose/ffp.webp"
-import pt from "../pages/Choose/pt.jpg"
+import pt from "../pages/Choose/pt.webp"
 import tma from "../pages/Choose/tma.webp"
 import wmp from "../pages/Choose/wmp.webp"
 import wtp from "../pages/Choose/wtp.webp"
+
 
 
 
@@ -63,3 +61,5 @@ export const choosedata = [
       value2:'Its a holistic solution empowering aspirants with the tools to excel.'
     },
 ];
+
+

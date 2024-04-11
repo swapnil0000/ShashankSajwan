@@ -38,7 +38,7 @@ const BoxStyle = styled('Box')({
         }}
       >
         <FlexCenterColoum  >
-          <Typography sx={{ fontSize: isMobileView ? "25px" : "40px", fontWeight: '700' }}>OUR UNIQUE FEATURES</Typography>
+          <Typography sx={{ fontSize: isSmallMobileView ? "21px" : "40px", fontWeight: '700' }}>OUR UNIQUE FEATURES</Typography>
         </FlexCenterColoum>
       </Box>
       <Grid sx={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '15px' }} container spacing={1}>

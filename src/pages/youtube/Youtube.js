@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import "../youtube/video.css";
 import { Container, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
-// https://youtu.be/TMWikPFCCfQ?si=RybZVxH0KiuXTXnD
-// https://youtu.be/HbcHQBsQTAI?si=m6Ow9HkIj8eLZNXs
-// https://youtu.be/v5DnIVwvAbY?si=avOs_9cE89ZI4tU4
-// https://youtu.be/q3VxjyGgE-c?si=Ut9pyUlYR4s-6Tup
-// https://youtu.be/oROOSZz6RjE?si=okfUOE97qsTt0Nh6
-// https://youtu.be/zD_5-nqBT-k?si=rWEfwNRIh_NzpO8D
+
 
 const Youtube = () => {
     const theme=useTheme();

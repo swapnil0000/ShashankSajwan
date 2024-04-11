@@ -45,13 +45,13 @@ const Footer = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: isMobileView ? "center" : "null", justifyContent: 'center' }}>
               <Typography sx={{marginTop:'15.55px'}}>Connect With Us</Typography>
               <Icon />
-              <Typography sx={{fontSize:'13px'}}>For Career and Opportunity:</Typography>
-              <Typography sx={{fontSize:'16px'}} onClick={handleEmail}>ask.iasmentor@gmail.com</Typography>
+              <Typography sx={{fontSize:'18px'}}>For Career and Opportunity:</Typography>
+              <Typography sx={{fontSize:'18px'}} onClick={handleEmail}>ask.iasmentor@gmail.com</Typography>
             </Box>
           </Box>
 
           {/* Bottom Text */}
-          <Typography fontSize='15px' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '40px' , marginBottom:'40px'}}>©  All rights reserved Shashank Sajwan.</Typography>
+          <Typography fontSize='15px' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '40px' , marginBottom:'40px'}}>©  All Rights Reserved</Typography>
           
         </Container>
 
