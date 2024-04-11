@@ -23,7 +23,6 @@ const Top = () => {
         <EmailIcon/>
         <Typography>swapnilsrivastava1999@gmail.com</Typography>
       </Box>
-    </Box>
   )
 }
 

@@ -1,9 +1,9 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import banner1 from "../assets/banner1.png"
+import banner1 from "../assets/banner1.webp"
 import banner2 from "../assets/banner2.webp";
-import banner4 from "../assets/banner4.jpg";
-import banner5 from "../assets/banner5.jpg";
-import banner3 from "../assets/banner3.jpg";
+import banner4 from "../assets/banner4.webp";
+import banner5 from "../assets/banner5.webp";
+import banner3 from "../assets/banner3.webp";
 import * as React from 'react';
 import { Box, Card, CardMedia, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 

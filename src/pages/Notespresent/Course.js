@@ -3,10 +3,9 @@ import { Box, Container, Typography, Grid, useMediaQuery, useTheme } from '@mui/
 import notes1 from "../Notespresent/homenotes1.webp";
 import notes2 from "../Notespresent/homenotes2.webp";
 import notes3 from "../Notespresent/homenotes3.webp";
-import notes4 from "../Notespresent/homenotes4.png";
+import notes4 from "../Notespresent/homenotes4.webp";
 import notes5 from "../Notespresent/homenotes5.webp";
 import notes6 from "../Notespresent/homenotes6.webp";
-import "../Notespresent/notesStyle.css";
 import { Link } from 'react-router-dom';
 const data=[
   {

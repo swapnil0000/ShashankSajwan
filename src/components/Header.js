@@ -1,13 +1,13 @@
 import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useState } from 'react'
-import logo from "../assets/shashank.PNG"
+import logo from "../assets/shashank.webp"
 import { Link, useNavigate } from 'react-router-dom';
 import Floating from './floating/Floating';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import email from "../assets/gmail.png"
+import email from "../assets/gmail.webp"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TelegramIcon from '@mui/icons-material/Telegram';

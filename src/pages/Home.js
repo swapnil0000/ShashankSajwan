@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Carousels from '../components/Carousels'
 import Course from './Notespresent/Course'
-import Youtube from './youtube/Youtube'
 import Author from './author/Author'
 import Choose from './Choose/Choose'
 import CourseProvide from './Courseprovide/CourseProvide'

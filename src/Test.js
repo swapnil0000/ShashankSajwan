@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
-import backgroundImage from "../src/assets/background.jpg";
 
 const Test = ({children}) => {
   const theme=useTheme();

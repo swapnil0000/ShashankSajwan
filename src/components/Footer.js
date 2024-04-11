@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Typography, Box, useTheme, useMediaQuery } from '@mui/material';
 import Icon from './Icon/Icon';
 import { Link, useNavigate } from 'react-router-dom';
-import logos from "../assets/shashank.PNG";
+import logos from "../assets/shashank.webp";
 
 const Footer = () => {
   const theme = useTheme();

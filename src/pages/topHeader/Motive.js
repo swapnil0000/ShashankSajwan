@@ -1,6 +1,6 @@
 import { Box, Button, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
-import photo from "../topHeader/top.jpg"
+import photo from "../topHeader/top.webp"
 
 const Motive = () => {
   const theme=useTheme();

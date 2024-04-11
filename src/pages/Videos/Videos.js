@@ -1,7 +1,6 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { Box, Container, Grid, Typography, useMediaQuery, useTheme, CircularProgress, Divider } from '@mui/material';
-import logo from "../../assets/shashank.PNG";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import logo from "../../assets/shashank.webp";
 
 // Lazy load ReactPlayer component
 const ReactPlayer = lazy(() => import("react-player/youtube"));
@@ -163,6 +162,7 @@ const Videos = () => {
                     </Grid>
                 ))}
             </Grid>
+          
         </Container>
         <Divider sx={{ width: '100%', border: '1px solid white', color: 'white' }} orientation='horizontal' />
     </Box>
