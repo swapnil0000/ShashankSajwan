@@ -5,7 +5,7 @@ import banner4 from "../assets/banner4.webp";
 import banner5 from "../assets/banner5.webp";
 import banner3 from "../assets/banner3.webp";
 import * as React from 'react';
-import { Box, Card, CardMedia, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 
 const Carousels = () => {
   const theme = useTheme();
