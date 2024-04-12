@@ -24,15 +24,6 @@ const Header = () => {
     const mailtoUrl = `mailto:${recipientEmail}`;
     window.open(mailtoUrl, '_blank');
   };
-  const MenuItemLink = ({ to, children, onClick }) => {
-    return (
-      <ListItem onClick={onClick}>
-        <ListItemText sx={{ color: 'black' }}>
-          <Link style={{ textDecoration: 'none', color: 'black', fontSize: '16px' }} to={to}>{children}</Link>
-        </ListItemText>
-      </ListItem>
-    );
-  };
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const navigate = useNavigate()
@@ -72,44 +63,14 @@ const Header = () => {
     setAnchorEl(!anchorEl)
    }
 
-   const handleOpenNotes=()=>{
-    navigate('/ncert')
-    setAnchorEl(!anchorEl)
-    setOpenMenu(!openMenu)
-   }
-
-   const handleSyllabus=()=>{
-    navigate('/syllabus')
-    setAnchorEl(!anchorEl)
-    setOpenMenu(!openMenu)
-
-   }
-   const handlePyqs=()=>{
-    navigate('/pyqs')
-    setAnchorEl(!anchorEl)
-    setOpenMenu(!openMenu)
+   const handleNavigation = (path) => () => {
+    navigate(path);
+    setOpenMenu(false);
+    setAnchorEl(false);
+  };
+  
 
 
-   }
-   const handleGeneral=()=>{
-    navigate('/general')
-    setAnchorEl(!anchorEl)
-    setOpenMenu(!openMenu)
-
-   }
-   const handleOptional=()=>{
-    navigate('/optional')
-    setAnchorEl(!anchorEl)
-    setOpenMenu(!openMenu)
-
-   }
-
-   const handleNews=()=>{
-    navigate('/newsnotes')
-    setAnchorEl(!anchorEl)
-    setOpenMenu(!openMenu)
-
-   }
 
   return (
     <>
@@ -171,7 +132,7 @@ const Header = () => {
           <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
             backgroundColor: 'orangered' // Change the background color on hover
           },}}>
-          <MenuItem onClick={handleOpenNotes}  sx={{fontSize:'15px'}} >Ncert Notes
+          <MenuItem onClick={handleNavigation('/ncert')}  sx={{fontSize:'15px'}} >Ncert Notes
           
           </MenuItem>
            
@@ -180,27 +141,27 @@ const Header = () => {
           <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
             backgroundColor: 'orangered' // Change the background color on hover
           },}}>
-          <MenuItem onClick={handleSyllabus} sx={{fontSize:'15px'}}>Syllabus</MenuItem>
+          <MenuItem onClick={handleNavigation("/syllabus")} sx={{fontSize:'15px'}}>Syllabus</MenuItem>
           </Typography>
           <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
             backgroundColor: 'orangered'// Change the background color on hover
           },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handlePyqs}>PYQs</MenuItem>
+          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/pyqs')}>PYQs</MenuItem>
           </Typography>
           <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
             backgroundColor:'orangered'// Change the background color on hover
           },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handleGeneral}>General Studies</MenuItem>
+          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/general')}>General Studies</MenuItem>
           </Typography>
           <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
             backgroundColor:'orangered' // Change the background color on hover
           },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handleOptional}>Optional</MenuItem>
+          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/optional')}>Optional</MenuItem>
           </Typography>          
           <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
             backgroundColor: 'orangered', // Change the background color on hover
           },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handleNews}>Newspaper Notes</MenuItem>
+          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>
       
           </Typography>
           </Box>
@@ -321,53 +282,53 @@ const Header = () => {
 
                   </Link>
                   <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={openMenuTable}
-                    onClose={handleMenuClose}
-                    MenuListProps={{
-                      'aria-labelledby': 'basic-button',
-                      sx: { flexDirection: 'column' , fontWeight:'600',backgroundColor:'#212529'}, // Set the direction to column
-                    }}
-                  >
-                  <Box sx={{display:'flex',flexDirection:'column',fontWeight:'600'}}>
-                  <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
-                    backgroundColor: 'orangered' // Change the background color on hover
-                  },}}>
-                  <MenuItem  onClick={handleOpenNotes} sx={{fontSize:'15px',}} >NCERT Notes
-                  
-                  </MenuItem>
-                   
-                  
-                  </Typography>
-                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                    backgroundColor: 'orangered' // Change the background color on hover
-                  },}}>
-                  <MenuItem onClick={handleSyllabus} sx={{fontSize:'15px'}}>Syllabus</MenuItem>
-                  </Typography>
-                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                    backgroundColor: 'orangered'// Change the background color on hover
-                  },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handlePyqs}>PYQs</MenuItem>
-                  </Typography>
-                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                    backgroundColor:'orangered'// Change the background color on hover
-                  },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handleGeneral}>General Studies</MenuItem>
-                  </Typography>
-                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                    backgroundColor:'orangered' // Change the background color on hover
-                  },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handleOptional}>Optional</MenuItem>
-                  </Typography>          
-                  <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                    backgroundColor: 'orangered', // Change the background color on hover
-                  },}}>
-                  <MenuItem sx={{fontSize:'15px'}} onClick={handleNews}>Newspaper Notes</MenuItem>
-              
-                  </Typography>
-                  </Box>
-                </Menu>
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={openMenuTable}
+                  onClose={handleMenuClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                    sx: { flexDirection: 'column' , fontWeight:'600',backgroundColor:'#212529'}, // Set the direction to column
+                  }}
+                >
+                <Box sx={{display:'flex',flexDirection:'column',fontWeight:'600'}}>
+                <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
+                  backgroundColor: 'orangered' // Change the background color on hover
+                },}}>
+                <MenuItem  onClick={handleNavigation('/ncert')} sx={{fontSize:'15px',}} >NCERT Notes
+                
+                </MenuItem>
+                 
+                
+                </Typography>
+                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                  backgroundColor: 'orangered' // Change the background color on hover
+                },}}>
+                <MenuItem onClick={handleNavigation('/syllabus')} sx={{fontSize:'15px'}}>Syllabus</MenuItem>
+                </Typography>
+                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                  backgroundColor: 'orangered'// Change the background color on hover
+                },}}>
+                <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/pyqs')}>PYQs</MenuItem>
+                </Typography>
+                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                  backgroundColor:'orangered'// Change the background color on hover
+                },}}>
+                <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/general')}>General Studies</MenuItem>
+                </Typography>
+                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                  backgroundColor:'orangered' // Change the background color on hover
+                },}}>
+                <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/optional')}>Optional</MenuItem>
+                </Typography>          
+                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
+                  backgroundColor: 'orangered', // Change the background color on hover
+                },}}>
+                <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>
+            
+                </Typography>
+                </Box>
+              </Menu>
               </div>
                   )
                 }
@@ -400,3 +361,4 @@ const Header = () => {
 }
 
 export default Header
+

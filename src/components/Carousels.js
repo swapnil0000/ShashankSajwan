@@ -10,6 +10,28 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 const Carousels = () => {
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down('sm'))
+
+
+  const data=[
+    {
+      id:1,
+      img:banner1
+    },
+    {
+      id:2,
+      img:banner5,
+    },
+    {
+      id:3,
+      img:banner4,
+    },
+    {
+      id:4,
+      img:banner3
+    }
+  
+
+  ]
   return (
 
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} >
@@ -23,19 +45,16 @@ const Carousels = () => {
 
 
           </div>
+         
           <div class="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
-            <div class="carousel-item active">
-              <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner1} alt="..." />
-            </div>
-            <div class="carousel-item active">
-            <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner5} alt="..." />
-          </div>
-            <div class="carousel-item active">
-            <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner4} alt="..." />
-          </div>
-          <div class="carousel-item active">
-            <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={banner3} alt="..." />
-          </div>
+          {
+            data.map((ele)=>(
+              <div key={ele.id} class="carousel-item active">
+              <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={ele.img} alt="..." />
+            </div>  
+            ))
+          }
+          
          
           </div>
           <button style={{ color: 'red', fontSize: '100px' }} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

@@ -154,7 +154,6 @@ const Videos = () => {
                                 />
                             </Suspense>
                         </Box>
-
                         <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '10px', gap: '5px' }}>
                             <img style={{ width: '30px' }} src={logo} alt="Logo" />
                             <Typography sx={{ color: 'white', fontWeight: '700' }}>{video.val}</Typography>
@@ -162,10 +161,10 @@ const Videos = () => {
                     </Grid>
                 ))}
             </Grid>
-          
         </Container>
         <Divider sx={{ width: '100%', border: '1px solid white', color: 'white' }} orientation='horizontal' />
     </Box>
+
 );
 };
 
