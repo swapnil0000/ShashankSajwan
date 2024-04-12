@@ -12,25 +12,7 @@ const Acheivement = () => {
   const [instaCount, setInstaCount] = useState(1);
   const [telegramCount, setTelegramCount] = useState(1);
 
-  useEffect(() => {
-    const countInterval = setInterval(() => {
-      setCount((prevCount) => (prevCount !== 600 ? prevCount + 1 : prevCount));
-    }, 20);
 
-    const instaInterval = setInterval(() => {
-      setInstaCount((prevInstaCount) => (prevInstaCount !== 182 ? prevInstaCount + 1 : prevInstaCount));
-    }, 60);
-
-    const telegramInterval = setInterval(() => {
-      setTelegramCount((prevTelegramCount) => (prevTelegramCount !== 124 ? prevTelegramCount + 1 : prevTelegramCount));
-    }, 60);
-
-    return () => {
-      clearInterval(countInterval);
-      clearInterval(instaInterval);
-      clearInterval(telegramInterval);
-    };
-  }, []);
 
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down('sm'));
