@@ -42,20 +42,15 @@ const Carousels = () => {
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-
-
-          </div>
-         
+          </div>      
           <div class="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
-          {
+           {
             data.map((ele)=>(
               <div key={ele.id} class="carousel-item active">
               <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={ele.img} alt="..." />
             </div>  
             ))
-          }
-          
-         
+           }  
           </div>
           <button style={{ color: 'red', fontSize: '100px' }} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true" style={{ color: 'red', fontSize: '100px' }}></span>

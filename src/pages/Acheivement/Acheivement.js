@@ -1,4 +1,3 @@
-import "../Acheivement/style.css";
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { Box, Container, Typography, styled, useMediaQuery, useTheme } from '@mui/material';

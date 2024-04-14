@@ -1,13 +1,59 @@
-import { Box, Container, Grid, Paper, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import genstudies1 from "../GeneralStudies/generalstud1.webp"
-import genstudies2 from "../GeneralStudies/generalstud2.webp"
-import genstudies3 from "../GeneralStudies/generalstud3.webp"
-import genstudies4 from "../GeneralStudies/generalstud4.webp"
-import genstudies5 from "../GeneralStudies/generalstud5.webp"
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import "../Materials/material.css"
+import { Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Test from '../../Test';
+import history1 from "../Materials/historyassest/history6.webp";
+import history2 from "../Materials/historyassest/history7.webp";
+import history3 from "../Materials/historyassest/history8.webp";
+import history4 from "../Materials/historyassest/history9.webp";
+import history5 from "../Materials/historyassest/history10.webp";
+import history6 from "../Materials/historyassest/history12part1.webp";
+import history7 from "../Materials/historyassest/history12part2.webp";
+import history8 from "../Materials/historyassest/history12part3.webp";
+import historynew from "../Materials/historyassest/historyclass11new.webp"
 
-import { useLocation, useNavigate } from 'react-router-dom'
+import polity1 from "../Materials/polityassets/polity1.webp";
+import polity2 from "../Materials/polityassets/polity2.webp";
+import polity3 from "../Materials/polityassets/polity3.webp";
+import polity4 from "../Materials/polityassets/polity4.webp";
+import polity5 from "../Materials/polityassets/polity5.webp";
+import polity6 from "../Materials/polityassets/polity6.webp";
+import polity7 from "../Materials/polityassets/polity7.webp";
+import polity8 from "../Materials/polityassets/polity8.webp";
+import polity9 from "../Materials/polityassets/polity9.webp";
+import polity11 from "../Materials/polityassets/polityclass11new.webp"
+import polity12 from "../Materials/polityassets/polityclass12new.webp"
+
+import geo1 from "../Materials/geoasset/geo1.webp";
+import geo2 from "../Materials/geoasset/geo2.webp";
+import geo3 from "../Materials/geoasset/geo3.webp";
+import geo4 from "../Materials/geoasset/geo4.webp";
+import geo5 from "../Materials/geoasset/geo5.webp";
+import geo6 from "../Materials/geoasset/geo6.webp";
+import geo7 from "../Materials/geoasset/geo7.webp";
+import geo8 from "../Materials/geoasset/geo8.webp";
+import geo9 from "../Materials/geoasset/geo9.webp";
+import eco1 from "../Materials/ecoasset/eco1.webp";
+import eco2 from "../Materials/ecoasset/eco2.webp";
+import eco3 from "../Materials/ecoasset/eco3.webp";
+import eco4 from "../Materials/ecoasset/eco4.webp";
+
+import soc1 from "../Materials/socioasset/socio1.webp";
+import soc2 from "../Materials/socioasset/socio2.webp";
+import soc3 from "../Materials/socioasset/socio3.webp";
+import soc4 from "../Materials/socioasset/socio4.webp";
+import art from "../Materials/arts.webp";
+import science from "../Materials/science.webp";
+
+
+
+import icon from "../GeneralStudies/icon.png"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -21,7 +67,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box >
+        <Box>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -35,62 +81,7 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const data=[
-  {
-    id:1,
-    img:genstudies1
-  },
-  {
-    id:2,
-    img:genstudies2
-  },
-  {
-    id:3,
-    img:genstudies3
-  },
-  {
-    id:4,
-    img:genstudies4
-  },
-  {
-    id:5,
-    img:genstudies5
-  },
-]
-
-
-const tabData = [
-  { id: 0, label: "Polity" },
-  { id: 1, label: "Economics" },
-  { id: 2, label: "History" },
-  { id: 3, label: "Geography" },
-  { id: 6, label: "Environment" }
-];
-
-const General = () => {
-  const data=[
-    {
-      id:1,
-      img:genstudies1
-    },
-    {
-      id:2,
-      img:genstudies2
-    },
-    {
-      id:3,
-      img:genstudies3
-    },
-    {
-      id:4,
-      img:genstudies4
-    },
-    {
-      id:5,
-      img:genstudies5
-    },
-  ]
-  
+const Material = () => {
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
   const [value, setValue] = useState(0);
@@ -105,43 +96,117 @@ const General = () => {
     setValue(newValue);
   };
 
+  const tabData = [
+    { id: 0, label: "Polity" },
+    { id: 1, label: "Economics" },
+    { id: 2, label: "History" },
+    { id: 3, label: "Geography" },
+    { id: 4, label: "Science & Tech" },
+    { id: 5, label: "Environment" },
+  ];
+
+  const data = [
+    { id: 1,val:"Indian National Movement", img: history1,link:'https://drive.google.com/file/d/1YXMopEQtziDNgLOpriUybkqNbUAMnQ5k/view' },
+    { id: 2,val:"Modern Timeline", img: history2,link:'https://drive.google.com/file/d/1KtbLDSFtVSAjSfTJgIQRKzvNJezJQUuw/view'  },
+  ];
+
+  const dataPolitical = [
+    { id: 1,val:"Important Articles", img: polity1,link:'https://drive.google.com/file/d/17ABh13RgIl_e7On4eCObLhWx_xZeqeuk/view' },
+    { id: 2,val:"Important Amendments", img: polity2,link:'https://drive.google.com/file/d/1PKPUTF_p0ur97u73StDgjtaIx0roUdA2/view' },
+    { id: 3,val:"Constitutional Bodies", img: polity3,link:"https://drive.google.com/file/d/1JIWBjVZGpl9m0VCgIsfl4efx1sMVAd7w/view" },
+  ];
+
+  const dataGeo = [
+    { id: 1,val:"Indian Coastline", img: geo1,link:"https://drive.google.com/file/d/1fmgr5M3INl3G8JIkenLH9RG77yZSztmG/view" },
+    { id: 2,val:"Indus River System", img: geo2,link:"https://drive.google.com/file/d/1T8Vk8roEMfc3chNRd66FHnF_ZNlKDvvP/view" },
+   
+  ];
+
+  const dataEco = [
+    { id: 1,val:"Important Terms", img: eco1,link:"https://drive.google.com/file/d/15DmCzWzNGSK4sIEc5AH7b7tNqj4LP5vJ/view" },
+    { id: 2,val:"GDP & GNP", img: eco2,link:"https://drive.google.com/file/d/1hGPPYLc6bPiP9fXycTBUrl731mJX7jKY/view" },
+   
+  ];
+
+  const science = [
+    { id: 1,val:"ISRO", img: soc1,link:'https://drive.google.com/file/d/19l7GsMcEkTTCg2XjzMG_6saiGgW8lP40/view' },
+    { id: 2,val:"Indian Missiles", img: soc2,link:'https://drive.google.com/file/d/1gjwbOyfH4W-MbR1XATblCzHZ9EI9zbAp/view' },
+  ];
+
+  const Environment = [
+    { id: 1,val:"Ramsar Sites", img: soc1,link:'https://drive.google.com/file/d/19l7GsMcEkTTCg2XjzMG_6saiGgW8lP40/view' },
+    { id: 2,val:"National Parks", img: soc2,link:'https://drive.google.com/file/d/1gjwbOyfH4W-MbR1XATblCzHZ9EI9zbAp/view' },
+  ];
+
+
+
   const a11yProps = (index) => {
     return {
       id: `vertical-tab-${index}`,
       'aria-controls': `vertical-tabpanel-${index}`,
     };
   };
+
+
+  const renderGridItems = (data) => (
+    <Grid container>
+      {data.map(item => (
+        <Grid key={item.id} item xs={12} sm={6} md={6} lg={4} sx={{display:'flex',flexDirection:'column',alignItems:'center',marginTop:'10px'}}>
+          <Paper sx={{ width: 250,justifyContent:"center", height: 85, display: 'flex', flexDirection: 'column', margin: '5px', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.05)' },backgroundColor:'cornflowerblue' }}>
+            <a style={{textDecoration:'none'}} href={item.link} target="_blank" rel="noopener noreferrer">
+            <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',width:'100%',gap:'30px'}}>
+            <img style={{width:'60px',margin:'2px'}} src={icon}/>
+             <Box>
+             <Typography sx={{color:'white',fontSize:'23px',display:'flex',fontWeight:'500',margin:'2px',gap:'30px'}}>{item.val}</Typography>
+             </Box>
+            </Box>
+            </a>
+          </Paper>
+        </Grid>
+      ))}
+    </Grid>
+  );
+
   return (
     <Box>
-    <Box  className="material-page" sx={{ width: '100%', marginTop: isMobileView ? "100px" : "110px", position: 'relative', height: '150px', backgroundImage: "linear-gradient( 26.3deg ,rgba(8,24,68,1) 87.6%   ,rgba(0,119,182,1) 9.6%)" }}>
-      <Typography variant="h4"  sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', textAlign: 'center', fontSize: isMobileView ? "30px" : "50px" }}>
-        GENERAL STUDIES
-      </Typography>
-    </Box>
-    <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', marginTop: '10px', display: 'flex', marginBottom: isMobileView ? '10px' : '200px', flexDirection: isMobileView ? "column" : 'row', justifyContent: 'space-evenly', width: '100%' }}>
-      {!isMobileView && (
-        <Tabs orientation={isMobileView ? "horizontal" : 'vertical'} value={value} onChange={handleChange} variant="scrollable" aria-label="Vertical tabs example" sx={{ height: isMobileView ? "" : '600px', marginLeft: '10px', padding: '10px', width: isMobileView ? "100%" : "500px", display: 'flex', alignItems: 'center', justifyContent: isMobileView ? "space-between" : "", backgroundColor: isMobileView ? "" : 'rgba(8,24,68,1)', borderRadius: '10px', borderColor: 'white' }}>
-          {tabData.map(tab => (
-            <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: isMobileView ? '5px' : '15px', marginBottom: '20px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px' }} />
-          ))}
-        </Tabs>
-      )}
-      {isMobileView && (
-        <Box sx={{  bgcolor: 'background.paper',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center' }}>
-          <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile aria-label="scrollable force tabs example" sx={{ width: '100%' }}>
-            {data.map(tab => (
-              <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: '10px', marginBottom: '10px', marginLeft: '10px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px', maxWidth: '300px' }} />
+      <Box className="material-page" sx={{ width: '100%', marginTop: isMobileView ? "100px" : "110px", position: 'relative', height: '150px', backgroundImage: "linear-gradient( 26.3deg ,rgba(8,24,68,1) 87.6%   ,rgba(0,119,182,1) 9.6%)" }}>
+        <Typography variant="h4"  sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', textAlign: 'center', fontSize: isMobileView ? "30px" : "50px" }}>
+          General Studies
+        </Typography>
+      </Box>
+      <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', marginTop: '10px', display: 'flex', marginBottom: isMobileView ? '10px' : '200px', flexDirection: isMobileView ? "column" : 'row', justifyContent: 'space-evenly', width: '100%' }}>
+        {!isMobileView && (
+          <Tabs orientation={isMobileView ? "horizontal" : 'vertical'} value={value} onChange={handleChange} variant="scrollable" aria-label="Vertical tabs example" sx={{ height: isMobileView ? "" : '600px', marginLeft: '10px', padding: '10px', width: isMobileView ? "100%" : "500px", display: 'flex', alignItems: 'center', justifyContent: isMobileView ? "space-between" : "", backgroundColor: isMobileView ? "" : 'rgba(8,24,68,1)', borderRadius: '10px', borderColor: 'white' }}>
+            {tabData.map(tab => (
+              <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: isMobileView ? '5px' : '15px', marginBottom: '20px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px' }} />
             ))}
           </Tabs>
+        )}
+        {isMobileView && (
+          <Box sx={{  bgcolor: 'background.paper',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center' }}>
+            <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile aria-label="scrollable force tabs example" sx={{ width: '100%' }}>
+              {tabData.map(tab => (
+                <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: '10px', marginBottom: '10px', marginLeft: '10px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px', maxWidth: '100%' }} />
+              ))}
+            </Tabs>
+          </Box>
+        )}
+        <Box sx={{ width: '100%' }}>
+          {tabData.map((tab, index) => (
+            <TabPanel key={tab.id} value={value} index={index} sx={{ marginLeft: isMobileView ? '' : '20px', marginRight: isMobileView ? '' : '20px', marginTop: isMobileView ? '10px' : '' }}>
+              {value === 0 && renderGridItems(dataPolitical)}
+              {value === 1 && renderGridItems(dataEco)}
+              {value === 2 && renderGridItems(data)}
+              {value === 3 && renderGridItems(dataGeo)}
+              {value === 4 && renderGridItems(science)}
+              {value===5 && renderGridItems(Environment)}
+            
+            </TabPanel>
+          ))}
         </Box>
-      )}
-      <Box sx={{ width: '100%' , display:'flex',flexDirection:'column'}}>
-         
       </Box>
     </Box>
-  </Box>
+  );
+};
 
-  )
-}
-
-export default General
+export default Material;
