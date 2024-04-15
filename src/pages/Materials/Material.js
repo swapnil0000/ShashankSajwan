@@ -153,6 +153,17 @@ const Material = () => {
     { id: 3, img: soc3,link:'https://drive.google.com/file/d/1Wntht8h0hO3QBx6WmuWAM1qkaozlKax6/view?usp=sharing' },
     { id: 4, img: soc4,link:'https://drive.google.com/file/d/1OwbY9uN9NF2xeeivZVnM-_l46cXUpxwL/view?usp=sharing' }
   ];
+
+  const dataArt = [
+    { id: 1, img: art,link:'https://drive.google.com/file/d/19LgIgunaqeLOLEoLfFRTkEUaLsCUHyau/view?usp=sharing' },
+
+  ];
+
+  const dataScience = [
+    { id: 1, img: science,link:'https://drive.google.com/file/d/1O841slSvpbjcdmfQiKtoJEOK-XpvIj5-/view?usp=sharing' },
+
+  ];
+
   const a11yProps = (index) => {
     return {
       id: `vertical-tab-${index}`,
@@ -207,8 +218,8 @@ const Material = () => {
               {value === 2 && renderGridItems(data)}
               {value === 3 && renderGridItems(dataGeo)}
               {value === 4 && renderGridItems(dataSocio)}
-              {value === 5 && <img src={art} alt="art" style={{ width: '300px' }} />}
-              {value === 6 && <img src={science} alt="science" style={{ width: '300px' }} />}
+              {value === 5 && renderGridItems(dataArt)}
+              {value === 6 && renderGridItems(dataScience)}
             </TabPanel>
           ))}
         </Box>
