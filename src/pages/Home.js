@@ -8,6 +8,7 @@ import Acheivement from './Acheivement/Acheivement'
 import CarouseYoutube from './youtube/CarouseYoutube'
 import Motive from './topHeader/Motive'
 import { useLocation } from 'react-router-dom'
+import Career from './carrer/Career'
 const Home = () => {
   const {pathname}=useLocation();
 
@@ -24,6 +25,7 @@ const Home = () => {
        <Course/>
        <CarouseYoutube/>
        <Author/>
+       <Career/>
     </>
   )
 }

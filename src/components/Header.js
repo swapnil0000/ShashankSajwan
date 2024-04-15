@@ -81,11 +81,11 @@ const Header = () => {
               anchor="top"
               open={openMenu}
               onClose={handleClose}
-              sx={{ width: '50vw', "& .MuiPaper-root": { width: '100vw',height:'500px' } }} // Set width to full viewport width
+              sx={{ width: '50vw', "& .MuiPaper-root": { width: '100vw',height:'450px' } }} // Set width to full viewport width
             >
               <Box sx={{ display: 'flex', justifyContent: 'flex-end',backgroundColor:'#212529' }}>
                 <IconButton onClick={handleClose} sx={{ color: 'white',fontSize:'30px', }}>
-                  <CloseIcon  sx={{fontSize:'40px',fontWeight:'600',margin:'20px'}}/> {/* Assume CloseIcon is imported */}
+                  <CloseIcon  sx={{fontSize:'40px',fontWeight:'600',marginTop:'4px'}}/> {/* Assume CloseIcon is imported */}
                 </IconButton>
               </Box>
 
@@ -94,8 +94,8 @@ const Header = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center', // Center items vertically
-                  alignItems: 'center', // Center items horizontally
-                  height: '100vh', // Set height to full viewport height
+                 // Center items horizontally
+                  height: '55vh', // Set height to full viewport height
                   backgroundColor: '#212529',
                   padding: '0', // Remove default padding
                 }}
@@ -161,8 +161,7 @@ const Header = () => {
           <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
             backgroundColor: 'orangered', // Change the background color on hover
           },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>
-      
+          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>     
           </Typography>
           </Box>
         </Menu>

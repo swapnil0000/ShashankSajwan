@@ -34,7 +34,8 @@ TabPanel.propTypes = {
 const data=[
   {
     id:1,
-    img:optional
+    img:optional,
+    link:"https://drive.google.com/file/d/1JPmo1rFOLLhZDfmpqvMSIpt7bqDyR5yR/view?usp=sharing"
   },
 ]
 

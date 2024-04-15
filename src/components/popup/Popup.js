@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import "../popup/popupStyle.css";
+import popupImage from  "../popup/popup.webp";
 
 const Popup = () => {
-  const [showPopup, setShowPopup] = useState(false); // Initialize showPopup as false initially
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const poppy = localStorage.getItem('myPopup');
     if (!poppy) {
-      setShowPopup(true); // Set showPopup to true only if the flag is not found in localStorage
+      setShowPopup(true);
       localStorage.setItem('myPopup', 'true');
     }
   }, []);
@@ -22,8 +23,7 @@ const Popup = () => {
         <div className="home-popup">
           <div className="popup">
             <div className="popup-content">
-              <h2>Popup Title</h2>
-              <p>Popup body text goes here.</p>
+              <img src={popupImage} alt="Popup Image" />
               <button className="close-popup-btn" onClick={handleClose}>Close</button>
             </div>
           </div>

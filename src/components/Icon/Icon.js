@@ -18,7 +18,8 @@ const Icon = () => {
     </a>
   </li>
   <li>
-      <a  onClick={handleEmail} target='_blank'><i class="fab fa-google-plus-g icon"></i></a>
+      <a href='https://www.linkedin.com/in/shashanksajwan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app ' target='_blank'><i class="fab fa-linkedin icon"></i>
+      </a>
     </li>
     <li>
     <a  href="https://t.me/iasips_mentor" target='_blank'>

@@ -44,14 +44,13 @@ const Carousels = () => {
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
           </div>      
           <div class="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
-           {
-            data.map((ele)=>(
-              <div key={ele.id} class="carousel-item active">
-              <img style={{ width: '100%',height:isMobileView?"220px":"480px"}} src={ele.img} alt="..." />
-            </div>  
-            ))
-           }  
-          </div>
+  {data.map((ele, index) => (
+    <div key={ele.id} class={`carousel-item ${index === 0 ? 'active' : ''}`}>
+      <img style={{ width: '100%', height: isMobileView ? "220px" : "480px" }} src={ele.img} alt="..." />
+    </div>
+  ))}
+</div>
+
           <button style={{ color: 'red', fontSize: '100px' }} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true" style={{ color: 'red', fontSize: '100px' }}></span>
             <span className="visually-hidden" style={{ color: 'red', fontSize: '100px' }}>Previous</span>

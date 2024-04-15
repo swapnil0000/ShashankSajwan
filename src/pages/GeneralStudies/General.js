@@ -106,36 +106,36 @@ const Material = () => {
   ];
 
   const data = [
-    { id: 1,val:"Indian National Movement", img: history1,link:'https://drive.google.com/file/d/1YXMopEQtziDNgLOpriUybkqNbUAMnQ5k/view' },
-    { id: 2,val:"Modern Timeline", img: history2,link:'https://drive.google.com/file/d/1KtbLDSFtVSAjSfTJgIQRKzvNJezJQUuw/view'  },
+    { id: 1,val:"Indian National Movement", img: history1,link:'https://drive.google.com/file/d/1c0deMO_p-XnsnkI4Pmi57x9r7s2IK7P1/view?usp=sharing' },
+    { id: 2,val:"Modern Timeline", img: history2,link:'https://drive.google.com/file/d/1V2q3aTclTbaPTtCgDHHsOmRY7da6kwC_/view?usp=sharing'  },
   ];
 
   const dataPolitical = [
-    { id: 1,val:"Important Articles", img: polity1,link:'https://drive.google.com/file/d/17ABh13RgIl_e7On4eCObLhWx_xZeqeuk/view' },
-    { id: 2,val:"Important Amendments", img: polity2,link:'https://drive.google.com/file/d/1PKPUTF_p0ur97u73StDgjtaIx0roUdA2/view' },
-    { id: 3,val:"Constitutional Bodies", img: polity3,link:"https://drive.google.com/file/d/1JIWBjVZGpl9m0VCgIsfl4efx1sMVAd7w/view" },
+    { id: 1,val:"Important Articles", img: polity1,link:'https://drive.google.com/file/d/1hokuBS1wSfyh1Vjy_k98VZoWmnJNvj_F/view?usp=sharing' },
+    { id: 2,val:"Important Amendments", img: polity2,link:'https://drive.google.com/file/d/1J6hiELlpZ5yJrBAemkhCiRyFuG60dIUC/view?usp=sharing' },
+    { id: 3,val:"Constitutional Bodies", img: polity3,link:"https://drive.google.com/file/d/1Y2aHw5p3wmYH-nTLJP56gxujHAgP2Ioz/view?usp=sharing" },
   ];
 
   const dataGeo = [
-    { id: 1,val:"Indian Coastline", img: geo1,link:"https://drive.google.com/file/d/1fmgr5M3INl3G8JIkenLH9RG77yZSztmG/view" },
-    { id: 2,val:"Indus River System", img: geo2,link:"https://drive.google.com/file/d/1T8Vk8roEMfc3chNRd66FHnF_ZNlKDvvP/view" },
+    { id: 1,val:"Indian Coastline", img: geo1,link:"https://drive.google.com/file/d/1Ppj6NLubQU54zhUqlP2iznMHk24hpSBx/view?usp=sharing" },
+    { id: 2,val:"Indus River System", img: geo2,link:"https://drive.google.com/file/d/1ank3_cvdBisP9A9JuF84psNhTIX2_1ZJ/view?usp=sharing" },
    
   ];
 
   const dataEco = [
-    { id: 1,val:"Important Terms", img: eco1,link:"https://drive.google.com/file/d/15DmCzWzNGSK4sIEc5AH7b7tNqj4LP5vJ/view" },
-    { id: 2,val:"GDP & GNP", img: eco2,link:"https://drive.google.com/file/d/1hGPPYLc6bPiP9fXycTBUrl731mJX7jKY/view" },
+    { id: 1,val:"Important Terms", img: eco1,link:"https://drive.google.com/file/d/14vkEnIL9VdN6X8OkVCv6zBNTW-VS0rt8/view?usp=sharing" },
+    { id: 2,val:"GDP & GNP", img: eco2,link:"https://drive.google.com/file/d/1smzDSlYbxXIoZRfPqbJAhS9GlF_iwmsm/view?usp=sharing" },
    
   ];
 
   const science = [
-    { id: 1,val:"ISRO", img: soc1,link:'https://drive.google.com/file/d/19l7GsMcEkTTCg2XjzMG_6saiGgW8lP40/view' },
-    { id: 2,val:"Indian Missiles", img: soc2,link:'https://drive.google.com/file/d/1gjwbOyfH4W-MbR1XATblCzHZ9EI9zbAp/view' },
+    { id: 1,val:"ISRO", img: soc1,link:'https://drive.google.com/file/d/13xnmYhgOLJE1plburGhMDHQRODOWtScF/view?usp=sharing' },
+    { id: 2,val:"Indian Missiles", img: soc2,link:'https://drive.google.com/file/d/1tOs5qxMTnCfQwwENIex7LokmTOtnZAZ0/view' },
   ];
 
   const Environment = [
-    { id: 1,val:"Ramsar Sites", img: soc1,link:'https://drive.google.com/file/d/19l7GsMcEkTTCg2XjzMG_6saiGgW8lP40/view' },
-    { id: 2,val:"National Parks", img: soc2,link:'https://drive.google.com/file/d/1gjwbOyfH4W-MbR1XATblCzHZ9EI9zbAp/view' },
+    { id: 1,val:"Ramsar Sites", img: soc1,link:'https://drive.google.com/file/d/1grDar8stFL_jtlyK3qMDvvqO3Pyhg2vb/view?usp=sharing' },
+    { id: 2,val:"National Parks", img: soc2,link:'https://drive.google.com/file/d/1dNoH_bBjUne99TygwpDGOkPuo5nRMw3y/view?usp=sharing' },
   ];
 
 

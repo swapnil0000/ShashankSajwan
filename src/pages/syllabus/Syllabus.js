@@ -68,15 +68,15 @@ const Material = () => {
   ];
 
   const datamains = [
-    { id: 1, img: pre1 },
-    { id: 2, img: pre2  },
+    { id: 1, img: pre1,link:'https://drive.google.com/file/d/1v8T-ry1vMjx2qku9RcnRg7m8WKwbcWVB/view?usp=sharing' },
+    { id: 2, img: pre2,link:'https://drive.google.com/file/d/1AgWORfMSJUxKge_E42DE9PjBrFH9nwO6/view?usp=sharing'  },
   ];
 
   const dataprelims = [
-    { id: 1, img: main1 },
-    { id: 2, img: main2 },
-    { id: 3, img: main3 },
-    { id: 4, img: main4  },
+    { id: 1, img: main1,link:"https://drive.google.com/file/d/1pAEi2O2RhftDZSQxMEg85EKgzOcu7CCs/view?usp=sharing" },
+    { id: 2, img: main2,link:"https://drive.google.com/file/d/1dfZQzulFkOGhcVFiZU51teSYzSux08uM/view?usp=sharing" },
+    { id: 3, img: main3,link:"https://drive.google.com/file/d/19m-7H3wJVSnUtMQu0lZvoCK3-LBIqXWC/view?usp=sharing" },
+    { id: 4, img: main4,link:'https://drive.google.com/file/d/1DMRNCB5Z8U4ZPY5pOM7uXYaKFbDU3UZ5/view?usp=sharing'  },
 
   ];
 

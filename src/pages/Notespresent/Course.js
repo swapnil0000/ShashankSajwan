@@ -46,15 +46,15 @@ const Course = () => {
   const isSm = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '60%', marginTop: '50px' }}>
+    <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width:isSm?"70%":"60%" ,justifyContent:'center', marginTop: '50px' }}>
       <Typography sx={{ fontWeight: '700', fontSize: isXs ? '25px' : '40px', marginBottom: '10px' }}>NOTES PROVIDED</Typography>
      
       <Grid container spacing={1} justifyContent="center">
         {data.map((note) => (
-          <Grid item xs={isXs ? 12 : (isSm ? 6 : 4)} key={note.id}>
-          <Box sx={{width:'240px',height:'240px',width:'100%'}}>
+          <Grid  item xs={isXs ? 12 : (isSm ? 6 : 4)} key={note.id}>
+          <Box sx={{width:'100%',height:'auto',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
              <Link to={note.path}>          
-             <img style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={note.img}  />
+             <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={note.img}  />
              </Link>
             </Box>
           </Grid>
