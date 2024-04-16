@@ -1,41 +1,35 @@
 import React from 'react';
 import { Box, Container, Typography, Grid, useMediaQuery, useTheme } from '@mui/material';
-import notes1 from "../Notespresent/homenotes1.webp";
-import notes2 from "../Notespresent/homenotes2.webp";
-import notes3 from "../Notespresent/homenotes3.webp";
-import notes4 from "../Notespresent/homenotes4.webp";
-import notes5 from "../Notespresent/homenotes5.webp";
-import notes6 from "../Notespresent/homenotes6.webp";
 import { Link } from 'react-router-dom';
 const data=[
   {
     id:1,
-    img:notes1,
+    img:"/assets/noteshome/homenotes1.webp",
     path:'/syllabus'
   },
   {
     id:2,
-    img:notes2,
+    img:'/assets/noteshome/homenotes2.webp',
     path:'/ncert'
   },
   {
     id:3,
-    img:notes3,
+    img:'/assets/noteshome/homenotes3.webp',
     path:'/general',
   },
   {
     id:4,
-    img:notes4,
+    img:'/assets/noteshome/homenotes4.webp',
     path:'/pyqs',
   },
   {
     id:5,
-    img:notes5,
+    img:'/assets/noteshome/homenotes5.webp',
     path:'/optional',
   },
   {
     id:3,
-    img:notes6,
+    img:'/assets/noteshome/homenotes6.webp',
     path:'/newsnotes',
   },
 

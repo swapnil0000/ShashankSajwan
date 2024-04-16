@@ -2,10 +2,6 @@ import React, { useEffect } from 'react';
 import { Box, Container, Typography, styled, useMediaQuery, useTheme } from '@mui/material';
 import ChevronRightSharpIcon from '@mui/icons-material/ChevronRightSharp';
 import { useLocation } from 'react-router-dom';
-import aboutphoto from "../about/shashanksajwan2.0.webp";
-import telegram from "../../assets/telegram.webp";
-import insta from "../../assets/insta.webp";
-import youtube from "../../assets/youtube.webp";
 import { ContentWrapper } from '../../common';
 
 const About = () => {
@@ -55,15 +51,15 @@ const About = () => {
   ]
 
   const AboutIconData = [
-    { id: 1, img: youtube, click: redirectToYoutube },
-    { id: 2, img: insta, click: redirectToInstagram },
-    { id: 3, img: telegram, click: redirectToTelegram },
+    { id: 1, img: '/assets/youtube.webp', click: redirectToYoutube },
+    { id: 2, img: '/assets/insta.webp', click: redirectToInstagram },
+    { id: 3, img: '/assets/telegram.webp', click: redirectToTelegram },
   ]
 
   const renderDirectorPhoto = () => {
     return (
       <Box>
-        <img style={{ width: isMobileView ? '300px' : '400px', marginTop: '10px', borderRadius: '50%' }} src={aboutphoto} alt="Director Photo" />
+        <img style={{ width: isMobileView ? '300px' : '400px', marginTop: '10px', borderRadius: '50%' }} src="/assets/shashanksajwan2.0.webp" alt="Director Photo" />
       </Box>
     );
   };

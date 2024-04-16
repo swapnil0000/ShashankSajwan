@@ -9,16 +9,6 @@ import { Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Test from '../../Test';
 
-import pre1 from "../syllabus/preassets/genstud1.webp"
-import pre2 from "../syllabus/preassets/genstud2.webp"
-
-
-
-import main1 from "../syllabus/mainsassets/genstud3.webp"
-import main2 from "../syllabus/mainsassets/genstud4.webp"
-import main3 from "../syllabus/mainsassets/genstud5.webp"
-import main4 from "../syllabus/mainsassets/genstud6.webp"
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,15 +58,15 @@ const Material = () => {
   ];
 
   const datamains = [
-    { id: 1, img: pre1,link:'https://drive.google.com/file/d/1v8T-ry1vMjx2qku9RcnRg7m8WKwbcWVB/view?usp=sharing' },
-    { id: 2, img: pre2,link:'https://drive.google.com/file/d/1AgWORfMSJUxKge_E42DE9PjBrFH9nwO6/view?usp=sharing'  },
+    { id: 1, img: "/assets/syllubus/preassets/genstud1.webp",link:'https://drive.google.com/file/d/1v8T-ry1vMjx2qku9RcnRg7m8WKwbcWVB/view?usp=sharing' },
+    { id: 2, img: "/assets/syllubus/preassets/genstud2.webp",link:'https://drive.google.com/file/d/1AgWORfMSJUxKge_E42DE9PjBrFH9nwO6/view?usp=sharing'  },
   ];
 
   const dataprelims = [
-    { id: 1, img: main1,link:"https://drive.google.com/file/d/1pAEi2O2RhftDZSQxMEg85EKgzOcu7CCs/view?usp=sharing" },
-    { id: 2, img: main2,link:"https://drive.google.com/file/d/1dfZQzulFkOGhcVFiZU51teSYzSux08uM/view?usp=sharing" },
-    { id: 3, img: main3,link:"https://drive.google.com/file/d/19m-7H3wJVSnUtMQu0lZvoCK3-LBIqXWC/view?usp=sharing" },
-    { id: 4, img: main4,link:'https://drive.google.com/file/d/1DMRNCB5Z8U4ZPY5pOM7uXYaKFbDU3UZ5/view?usp=sharing'  },
+    { id: 1, img: "/assets/syllubus/mainsassets/genstud3.webp",link:"https://drive.google.com/file/d/1pAEi2O2RhftDZSQxMEg85EKgzOcu7CCs/view?usp=sharing" },
+    { id: 2, img: "/assets/syllubus/mainsassets/genstud4.webp",link:"https://drive.google.com/file/d/1dfZQzulFkOGhcVFiZU51teSYzSux08uM/view?usp=sharing" },
+    { id: 3, img: "/assets/syllubus/mainsassets/genstud5.webp",link:"https://drive.google.com/file/d/19m-7H3wJVSnUtMQu0lZvoCK3-LBIqXWC/view?usp=sharing" },
+    { id: 4, img: "/assets/syllubus/mainsassets/genstud6.webp",link:'https://drive.google.com/file/d/1DMRNCB5Z8U4ZPY5pOM7uXYaKFbDU3UZ5/view?usp=sharing'  },
 
   ];
 

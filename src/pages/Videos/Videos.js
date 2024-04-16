@@ -1,6 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { Box, Container, Grid, Typography, useMediaQuery, useTheme, CircularProgress, Divider } from '@mui/material';
-import logo from "../../assets/shashank.webp";
 
 // Lazy load ReactPlayer component
 const ReactPlayer = lazy(() => import("react-player/youtube"));
@@ -155,7 +154,7 @@ const Videos = () => {
                             </Suspense>
                         </Box>
                         <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '10px', gap: '5px' }}>
-                            <img style={{ width: '30px' }} src={logo} alt="Logo" />
+                            <img style={{ width: '30px' }} src="/assets/shashank.webp" alt="Logo" />
                             <Typography sx={{ color: 'white', fontWeight: '700' }}>{video.val}</Typography>
                         </Box>
                     </Grid>

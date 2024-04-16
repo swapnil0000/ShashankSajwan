@@ -8,52 +8,10 @@ import "../Materials/material.css"
 import { Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Test from '../../Test';
-import history1 from "../Materials/historyassest/history6.webp";
-import history2 from "../Materials/historyassest/history7.webp";
-import history3 from "../Materials/historyassest/history8.webp";
-import history4 from "../Materials/historyassest/history9.webp";
-import history5 from "../Materials/historyassest/history10.webp";
-import history6 from "../Materials/historyassest/history12part1.webp";
-import history7 from "../Materials/historyassest/history12part2.webp";
-import history8 from "../Materials/historyassest/history12part3.webp";
-import historynew from "../Materials/historyassest/historyclass11new.webp"
-
-import polity1 from "../Materials/polityassets/polity1.webp";
-import polity2 from "../Materials/polityassets/polity2.webp";
-import polity3 from "../Materials/polityassets/polity3.webp";
-import polity4 from "../Materials/polityassets/polity4.webp";
-import polity5 from "../Materials/polityassets/polity5.webp";
-import polity6 from "../Materials/polityassets/polity6.webp";
-import polity7 from "../Materials/polityassets/polity7.webp";
-import polity8 from "../Materials/polityassets/polity8.webp";
-import polity9 from "../Materials/polityassets/polity9.webp";
-import polity11 from "../Materials/polityassets/polityclass11new.webp"
-import polity12 from "../Materials/polityassets/polityclass12new.webp"
-
-import geo1 from "../Materials/geoasset/geo1.webp";
-import geo2 from "../Materials/geoasset/geo2.webp";
-import geo3 from "../Materials/geoasset/geo3.webp";
-import geo4 from "../Materials/geoasset/geo4.webp";
-import geo5 from "../Materials/geoasset/geo5.webp";
-import geo6 from "../Materials/geoasset/geo6.webp";
-import geo7 from "../Materials/geoasset/geo7.webp";
-import geo8 from "../Materials/geoasset/geo8.webp";
-import geo9 from "../Materials/geoasset/geo9.webp";
-import eco1 from "../Materials/ecoasset/eco1.webp";
-import eco2 from "../Materials/ecoasset/eco2.webp";
-import eco3 from "../Materials/ecoasset/eco3.webp";
-import eco4 from "../Materials/ecoasset/eco4.webp";
-
-import soc1 from "../Materials/socioasset/socio1.webp";
-import soc2 from "../Materials/socioasset/socio2.webp";
-import soc3 from "../Materials/socioasset/socio3.webp";
-import soc4 from "../Materials/socioasset/socio4.webp";
-import art from "../Materials/arts.webp";
-import science from "../Materials/science.webp";
 
 
 
-import icon from "../GeneralStudies/icon.png"
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -106,36 +64,36 @@ const Material = () => {
   ];
 
   const data = [
-    { id: 1,val:"Indian National Movement", img: history1,link:'https://drive.google.com/file/d/1c0deMO_p-XnsnkI4Pmi57x9r7s2IK7P1/view?usp=sharing' },
-    { id: 2,val:"Modern Timeline", img: history2,link:'https://drive.google.com/file/d/1V2q3aTclTbaPTtCgDHHsOmRY7da6kwC_/view?usp=sharing'  },
+    { id: 1,val:"Indian National Movement",link:'https://drive.google.com/file/d/1c0deMO_p-XnsnkI4Pmi57x9r7s2IK7P1/view?usp=sharing' },
+    { id: 2,val:"Modern Timeline",link:'https://drive.google.com/file/d/1V2q3aTclTbaPTtCgDHHsOmRY7da6kwC_/view?usp=sharing'  },
   ];
 
   const dataPolitical = [
-    { id: 1,val:"Important Articles", img: polity1,link:'https://drive.google.com/file/d/1hokuBS1wSfyh1Vjy_k98VZoWmnJNvj_F/view?usp=sharing' },
-    { id: 2,val:"Important Amendments", img: polity2,link:'https://drive.google.com/file/d/1J6hiELlpZ5yJrBAemkhCiRyFuG60dIUC/view?usp=sharing' },
-    { id: 3,val:"Constitutional Bodies", img: polity3,link:"https://drive.google.com/file/d/1Y2aHw5p3wmYH-nTLJP56gxujHAgP2Ioz/view?usp=sharing" },
+    { id: 1,val:"Important Articles",link:'https://drive.google.com/file/d/1hokuBS1wSfyh1Vjy_k98VZoWmnJNvj_F/view?usp=sharing' },
+    { id: 2,val:"Important Amendments", link:'https://drive.google.com/file/d/1J6hiELlpZ5yJrBAemkhCiRyFuG60dIUC/view?usp=sharing' },
+    { id: 3,val:"Constitutional Bodies", link:"https://drive.google.com/file/d/1Y2aHw5p3wmYH-nTLJP56gxujHAgP2Ioz/view?usp=sharing" },
   ];
 
   const dataGeo = [
-    { id: 1,val:"Indian Coastline", img: geo1,link:"https://drive.google.com/file/d/1Ppj6NLubQU54zhUqlP2iznMHk24hpSBx/view?usp=sharing" },
-    { id: 2,val:"Indus River System", img: geo2,link:"https://drive.google.com/file/d/1ank3_cvdBisP9A9JuF84psNhTIX2_1ZJ/view?usp=sharing" },
+    { id: 1,val:"Indian Coastline", link:"https://drive.google.com/file/d/1Ppj6NLubQU54zhUqlP2iznMHk24hpSBx/view?usp=sharing" },
+    { id: 2,val:"Indus River System",link:"https://drive.google.com/file/d/1ank3_cvdBisP9A9JuF84psNhTIX2_1ZJ/view?usp=sharing" },
    
   ];
 
   const dataEco = [
-    { id: 1,val:"Important Terms", img: eco1,link:"https://drive.google.com/file/d/14vkEnIL9VdN6X8OkVCv6zBNTW-VS0rt8/view?usp=sharing" },
-    { id: 2,val:"GDP & GNP", img: eco2,link:"https://drive.google.com/file/d/1smzDSlYbxXIoZRfPqbJAhS9GlF_iwmsm/view?usp=sharing" },
+    { id: 1,val:"Important Terms",link:"https://drive.google.com/file/d/14vkEnIL9VdN6X8OkVCv6zBNTW-VS0rt8/view?usp=sharing" },
+    { id: 2,val:"GDP & GNP",link:"https://drive.google.com/file/d/1smzDSlYbxXIoZRfPqbJAhS9GlF_iwmsm/view?usp=sharing" },
    
   ];
 
   const science = [
-    { id: 1,val:"ISRO", img: soc1,link:'https://drive.google.com/file/d/13xnmYhgOLJE1plburGhMDHQRODOWtScF/view?usp=sharing' },
-    { id: 2,val:"Indian Missiles", img: soc2,link:'https://drive.google.com/file/d/1tOs5qxMTnCfQwwENIex7LokmTOtnZAZ0/view' },
+    { id: 1,val:"ISRO", link:'https://drive.google.com/file/d/13xnmYhgOLJE1plburGhMDHQRODOWtScF/view?usp=sharing' },
+    { id: 2,val:"Indian Missiles",link:'https://drive.google.com/file/d/1tOs5qxMTnCfQwwENIex7LokmTOtnZAZ0/view' },
   ];
 
   const Environment = [
-    { id: 1,val:"Ramsar Sites", img: soc1,link:'https://drive.google.com/file/d/1grDar8stFL_jtlyK3qMDvvqO3Pyhg2vb/view?usp=sharing' },
-    { id: 2,val:"National Parks", img: soc2,link:'https://drive.google.com/file/d/1dNoH_bBjUne99TygwpDGOkPuo5nRMw3y/view?usp=sharing' },
+    { id: 1,val:"Ramsar Sites", link:'https://drive.google.com/file/d/1grDar8stFL_jtlyK3qMDvvqO3Pyhg2vb/view?usp=sharing' },
+    { id: 2,val:"National Parks", link:'https://drive.google.com/file/d/1dNoH_bBjUne99TygwpDGOkPuo5nRMw3y/view?usp=sharing' },
   ];
 
 
@@ -155,7 +113,7 @@ const Material = () => {
           <Paper sx={{ width: 250,justifyContent:"center", height: 85, display: 'flex', flexDirection: 'column', margin: '5px', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.05)' },backgroundColor:'cornflowerblue' }}>
             <a style={{textDecoration:'none'}} href={item.link} target="_blank" rel="noopener noreferrer">
             <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',width:'100%',gap:'30px'}}>
-            <img style={{width:'60px',margin:'2px'}} src={icon}/>
+            <img style={{width:'60px',margin:'2px'}} src="/assets/icon.png" />
              <Box>
              <Typography sx={{color:'white',fontSize:'23px',display:'flex',fontWeight:'500',margin:'2px',gap:'30px'}}>{item.val}</Typography>
              </Box>

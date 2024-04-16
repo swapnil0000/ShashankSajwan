@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Typography, Box, useTheme, useMediaQuery } from '@mui/material';
 import Icon from './Icon/Icon';
 import { Link, useNavigate } from 'react-router-dom';
-import logos from "../assets/shashank.webp";
 
 const Footer = () => {
   const theme = useTheme();
@@ -24,7 +23,7 @@ const Footer = () => {
           {/* Logo and Navigation Links */}
           <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '40px' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img style={{ width: '130px' }} src={logos} alt='logo' />
+              <img style={{ width: '130px' }} src="/assets/shashank.webp" alt='logo' />
             </Box>
 
             <Box sx={{ display: 'flex', flexDirection: "row", justifyContent: 'space-between', gap: '80px',marginBottom:isMobileView?"20px":"null" }}>

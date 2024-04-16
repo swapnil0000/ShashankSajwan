@@ -1,13 +1,11 @@
 import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useState } from 'react'
-import logo from "../assets/shashank.webp"
 import { Link, useNavigate } from 'react-router-dom';
 import Floating from './floating/Floating';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import email from "../assets/gmail.webp"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TelegramIcon from '@mui/icons-material/Telegram';
@@ -188,7 +186,7 @@ const Header = () => {
               onClick={() => { navigate("/") }}
               width={isMobileView ? "60px" : "70px"}
 
-              src={logo}
+              src="/assets/shashank.webp"
               alt='logo'
             />
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -219,7 +217,7 @@ const Header = () => {
               <Box sx={{ display: "flex", flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '10px', cursor: 'pointer', marginTop: '15px' }}>
                   <WhatsAppIcon onClick={handleWhatsapp} sx={{ color: 'lightgreen', fontWeight: '700', fontSize: '20px' }} />
-                  <img onClick={handleEmail} style={{ width: '20px' }} src={email} />
+                  <img onClick={handleEmail} style={{ width: '20px' }} src="/assets/gmail.webp" />
                 </Box>
               </Box>
 
@@ -239,7 +237,7 @@ const Header = () => {
             <Floating />
 
             <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6px' }}>
-              <img onClick={() => { navigate("/") }} style={{ width: '99px', contain: 'cover' }} src={logo} alt='logo' />
+              <img onClick={() => { navigate("/") }} style={{ width: '99px', contain: 'cover' }} src="/assets/shashank.webp" alt='logo' />
               <Box sx={{ display: 'flex', flexDirection: "column" }}>
                 <Typography sx={{ fontWeight: '700', fontSize: isTabletView ? "20px" : "20px" }}>SHASHANK SAJWAN</Typography>
                 <Typography sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', fontSize: '15px' }} variant='h6'>Your Vision, My Direction</Typography>
@@ -346,7 +344,7 @@ const Header = () => {
                 <Typography sx={{ color: 'white', fontSize: "15px" }}>+91 7060748896</Typography>
               </Box>
               <Box onClick={handleEmail} sx={{ display: 'flex', flexDirection: 'row', gap: '12px', marginTop: '5px', cursor: 'pointer' }}>
-                <img style={{ width: '18px' }} src={email} />
+                <img style={{ width: '18px' }} src="/assets/gmail.webp" />
                 <Typography sx={{ color: 'white', fontSize: "14px", textTransform: 'lowercase' }}>ask.iasmentor@gmail.com</Typography>
               </Box>
 

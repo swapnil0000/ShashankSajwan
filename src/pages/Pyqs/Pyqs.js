@@ -7,18 +7,6 @@ import Box from '@mui/material/Box';
 import "../Materials/material.css"
 import { Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Test from '../../Test';
-
-
-import pre1 from "../Pyqs/prelimsasset/prelims1.webp"
-import pre2 from "../Pyqs/prelimsasset/prelims2.webp"
-import pre3 from "../Pyqs/prelimsasset/prelims3.webp"
-import pre4 from "../Pyqs/prelimsasset/prelims4.webp"
-
-import main1 from "../Pyqs/mainsassets/mains1.webp"
-import main2 from "../Pyqs/mainsassets/mains2.webp"
-import main3 from "../Pyqs/mainsassets/mains3.webp"
-import main4 from "../Pyqs/mainsassets/mains4.webp"
 
 
 function TabPanel(props) {
@@ -69,17 +57,17 @@ const Material = () => {
   ];
 
   const datamains = [
-    { id: 1, img: pre1,link:"https://drive.google.com/file/d/1QopEZrk281Daot___wQxBigXJMtJiyfS/view?usp=sharing" },
-    { id: 2, img: pre2,link:"https://drive.google.com/file/d/1bHwt-GXFIBWa3DEnH6zcWbDzzAhXrAnY/view?usp=sharing"  },
-    { id: 3, img: pre3  },
-    { id: 4, img: pre4 },
+    { id: 1, img: "/assets/pyqs/prelimsasset/prelims1.webp",link:"https://drive.google.com/file/d/1QopEZrk281Daot___wQxBigXJMtJiyfS/view?usp=sharing" },
+    { id: 2, img: "/assets/pyqs/prelimsasset/prelims2.webp",link:"https://drive.google.com/file/d/1bHwt-GXFIBWa3DEnH6zcWbDzzAhXrAnY/view?usp=sharing"  },
+    { id: 3, img: "/assets/pyqs/prelimsasset/prelims3.webp"  },
+    { id: 4, img: "/assets/pyqs/prelimsasset/prelims4.webp" },
   ];
 
   const dataprelims = [
-    { id: 1, img: main1,link:"https://drive.google.com/file/d/1gwkGijCf362_zm0jTY1hG7dZpbh85qOR/view?usp=sharing" },
-    { id: 2, img: main2,link:"https://drive.google.com/file/d/10SJfwvwYICnkjsnQSV04tVlHAAS9XtMe/view?usp=sharing" },
-    { id: 3, img: main3 },
-    { id: 4, img: main4  },
+    { id: 1, img: "/assets/pyqs/mainsassets/mains1.webp",link:"https://drive.google.com/file/d/1gwkGijCf362_zm0jTY1hG7dZpbh85qOR/view?usp=sharing" },
+    { id: 2, img: "/assets/pyqs/mainsassets/mains2.webp",link:"https://drive.google.com/file/d/10SJfwvwYICnkjsnQSV04tVlHAAS9XtMe/view?usp=sharing" },
+    { id: 3, img: "/assets/pyqs/mainsassets/mains3.webp" },
+    { id: 4, img: "/assets/pyqs/mainsassets/mains4.webp"  },
 
   ];
 

@@ -1,6 +1,5 @@
 import { Box, Button, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
-import photo from "../topHeader/top.webp"
 
 const Motive = () => {
   const theme=useTheme();
@@ -12,7 +11,7 @@ const Motive = () => {
       <Box sx={{display:'flex',marginTop:isMobileView?"15px":"40px",flexDirection:isSmallMobileView?"column":"row",alignItems:isSmallMobileView?"center":"null",justifyContent:isSmallMobileView?"center":"null",backgroundColor:"EEEEFF",gap:'30px',width:'100%',height:{lg:'240px',md:'240px',sm:'210px'}}}>
        
       <Box sx={{display:'flex',flexDirection:'column'}}>
-      <img style={{width:isMobileView?"330px":"350px",borderRadius:'20px',display:'flex',flexDirection:'row',height:'200px'}} src={photo} alt='photo'/>
+      <img style={{width:isMobileView?"330px":"350px",borderRadius:'20px',display:'flex',flexDirection:'row',height:'200px'}} src='/assets/top.webp' alt='photo'/>
     </Box>
         <Box sx={{display:'flex',flexDirection:'column',alignItems:isMobileView?"center":""}} >
          <Typography sx={{fontWeight:'700',fontSize:{lg:"30px",md:"30px",sm:'25px',xs:'24px'}}}>From <span style={{color:'#f0750f'}}> Director's Pen </span></Typography>

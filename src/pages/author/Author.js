@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Box, Button, Container, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
-import author from '../../assets/author.webp';
 import axios from 'axios';
 import { AuthorContactForm, ColumnCenter } from '../../common';
 
@@ -23,7 +22,7 @@ const Author = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:5000/send-email', contactDetails);
+      await axios.post('https://us-central1-shashankupsccoaching.cloudfunctions.net/sendEmail', contactDetails);
       alert('Email sent successfully!');
       resetForm();
     } catch (error) {
@@ -50,7 +49,8 @@ const Author = () => {
     <Container sx={{ marginTop: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
       <Typography sx={{ fontWeight: '700', fontSize: isMobileView ? '25px' : '40px', display: 'flex', alignItems: 'center', marginBottom: '10px' }}>CONTACT US</Typography>
       <AuthorContactForm >
-        <img style={{ width: '270px', height: '270px', borderRadius: '50%' }} src={author} alt='Shashank Sajwan' />
+      
+        <img style={{ width: '270px', height: '270px', borderRadius: '50%' }} src="/assets/author.webp" alt='Shashank Sajwan' />
         <ColumnCenter >
         {['name', 'fromEmail', 'mobileNo', 'message'].map((field) => (
           <TextField

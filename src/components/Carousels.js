@@ -1,9 +1,4 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import banner1 from "../assets/banner1.webp"
-import banner2 from "../assets/banner2.webp";
-import banner4 from "../assets/banner4.webp";
-import banner5 from "../assets/banner5.webp";
-import banner3 from "../assets/banner3.webp";
 import * as React from 'react';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 
@@ -15,19 +10,19 @@ const Carousels = () => {
   const data=[
     {
       id:1,
-      img:banner1
+      img:"/assets/banners/banner1.webp"
     },
     {
       id:2,
-      img:banner5,
+      img:"/assets/banners/banner5.webp",
     },
     {
       id:3,
-      img:banner4,
+      img:"/assets/banners/banner4.webp",
     },
     {
       id:4,
-      img:banner3
+      img:"/assets/banners/banner3.webp"
     }
   
 

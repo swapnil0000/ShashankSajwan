@@ -8,48 +8,7 @@ import "../Materials/material.css"
 import { Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Test from '../../Test';
-import history1 from "../Materials/historyassest/history6.webp";
-import history2 from "../Materials/historyassest/history7.webp";
-import history3 from "../Materials/historyassest/history8.webp";
-import history4 from "../Materials/historyassest/history9.webp";
-import history5 from "../Materials/historyassest/history10.webp";
-import history6 from "../Materials/historyassest/history12part1.webp";
-import history7 from "../Materials/historyassest/history12part2.webp";
-import history8 from "../Materials/historyassest/history12part3.webp";
-import historynew from "../Materials/historyassest/historyclass11new.webp"
 
-import polity1 from "../Materials/polityassets/polity1.webp";
-import polity2 from "../Materials/polityassets/polity2.webp";
-import polity3 from "../Materials/polityassets/polity3.webp";
-import polity4 from "../Materials/polityassets/polity4.webp";
-import polity5 from "../Materials/polityassets/polity5.webp";
-import polity6 from "../Materials/polityassets/polity6.webp";
-import polity7 from "../Materials/polityassets/polity7.webp";
-import polity8 from "../Materials/polityassets/polity8.webp";
-import polity9 from "../Materials/polityassets/polity9.webp";
-import polity11 from "../Materials/polityassets/polityclass11new.webp"
-import polity12 from "../Materials/polityassets/polityclass12new.webp"
-
-import geo1 from "../Materials/geoasset/geo1.webp";
-import geo2 from "../Materials/geoasset/geo2.webp";
-import geo3 from "../Materials/geoasset/geo3.webp";
-import geo4 from "../Materials/geoasset/geo4.webp";
-import geo5 from "../Materials/geoasset/geo5.webp";
-import geo6 from "../Materials/geoasset/geo6.webp";
-import geo7 from "../Materials/geoasset/geo7.webp";
-import geo8 from "../Materials/geoasset/geo8.webp";
-import geo9 from "../Materials/geoasset/geo9.webp";
-import eco1 from "../Materials/ecoasset/eco1.webp";
-import eco2 from "../Materials/ecoasset/eco2.webp";
-import eco3 from "../Materials/ecoasset/eco3.webp";
-import eco4 from "../Materials/ecoasset/eco4.webp";
-
-import soc1 from "../Materials/socioasset/socio1.webp";
-import soc2 from "../Materials/socioasset/socio2.webp";
-import soc3 from "../Materials/socioasset/socio3.webp";
-import soc4 from "../Materials/socioasset/socio4.webp";
-import art from "../Materials/arts.webp";
-import science from "../Materials/science.webp";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -103,64 +62,64 @@ const Material = () => {
   ];
 
   const data = [
-    { id: 1, img: history1,link:'https://drive.google.com/file/d/1g9vK54LhN0rkphoK05t-f8ml4SKUfAsf/view?usp=sharing' },
-    { id: 2, img: history2,link:'https://drive.google.com/file/d/12NMmTCAUyIyuVHIICDj9XfBXXY5xvLR_/view?usp=sharing'  },
-    { id: 3, img: history3,link:'https://drive.google.com/file/d/1UzZ7IbLWtaWc7fN5UaKpdc8bEH7kqy2x/view?usp=sharing'  },
-    { id: 4, img: history4,link:'https://drive.google.com/file/d/1js2AqyHCwnMF1v2TTzNXy3HhODyLf6SG/view?usp=sharing'  },
-    { id: 5, img: history5,link:'https://drive.google.com/file/d/1fxUCtg0COgnDXNEmU7hrNkoBczeBJXTu/view?usp=sharing'  },
-    { id: 6, img: historynew,link:'https://drive.google.com/file/d/1iUU4ryYBACCbQpbFXsJUoG_iMlFRlx70/view?usp=sharing'  },
-    { id: 7, img: history6,link:'https://drive.google.com/file/d/1iUU4ryYBACCbQpbFXsJUoG_iMlFRlx70/view?usp=sharing'  },
-    { id: 8, img: history7,link:'https://drive.google.com/file/d/1FPjsa3LM4yVZC8rbL9XnJaykRq_IsJOX/view?usp=sharing'  },
-    { id: 9, img: history8,link:'https://drive.google.com/file/d/1iv5X2eMF26UczJ8_4uEii9SEx6-umXio/view?usp=sharing'  }
+    { id: 1, img: "/assets/material/historyassest/history6.webp",link:'https://drive.google.com/file/d/1g9vK54LhN0rkphoK05t-f8ml4SKUfAsf/view?usp=sharing' },
+    { id: 2, img: "/assets/material/historyassest/history7.webp",link:'https://drive.google.com/file/d/12NMmTCAUyIyuVHIICDj9XfBXXY5xvLR_/view?usp=sharing'  },
+    { id: 3, img: "/assets/material/historyassest/history8.webp",link:'https://drive.google.com/file/d/1UzZ7IbLWtaWc7fN5UaKpdc8bEH7kqy2x/view?usp=sharing'  },
+    { id: 4, img: "/assets/material/historyassest/history9.webp",link:'https://drive.google.com/file/d/1js2AqyHCwnMF1v2TTzNXy3HhODyLf6SG/view?usp=sharing'  },
+    { id: 5, img: "/assets/material/historyassest/history10.webp",link:'https://drive.google.com/file/d/1fxUCtg0COgnDXNEmU7hrNkoBczeBJXTu/view?usp=sharing'  },
+    { id: 6, img: "/assets/material/historyassest/history12part1.webp",link:'https://drive.google.com/file/d/1iUU4ryYBACCbQpbFXsJUoG_iMlFRlx70/view?usp=sharing'  },
+    { id: 7, img: "/assets/material/historyassest/history12part2.webp",link:'https://drive.google.com/file/d/1iUU4ryYBACCbQpbFXsJUoG_iMlFRlx70/view?usp=sharing'  },
+    { id: 8, img: "/assets/material/historyassest/history12part3.webp",link:'https://drive.google.com/file/d/1FPjsa3LM4yVZC8rbL9XnJaykRq_IsJOX/view?usp=sharing'  },
+    { id: 9, img: "/assets/material/historyassest/historyclass11new.webp",link:'https://drive.google.com/file/d/1iv5X2eMF26UczJ8_4uEii9SEx6-umXio/view?usp=sharing'  }
   ];
 
   const dataPolitical = [
-    { id: 1, img: polity1,link:'https://drive.google.com/file/d/12isEdwMrAXNgzAbsutcbLIXN2K1_fWU5/view?usp=sharing' },
-    { id: 2, img: polity2,link:'https://drive.google.com/file/d/1KVBFu9ZWYXoC2s2VccSFu_zpSHGMNkip/view?usp=sharing' },
-    { id: 3, img: polity3,link:"https://drive.google.com/file/d/1UYklPoImWnrvkAAm9S49oqpVGwnTPY-U/view?usp=sharing" },
-    { id: 4, img: polity4,link:"https://drive.google.com/file/d/1WO_DiNItvcns4Gbqgc9q7zZsMooVzUgn/view?usp=sharing"  },
-    { id: 5, img: polity5,link:"https://drive.google.com/file/d/1Sdn46fojarAkN43586tm100IS1-5busv/view?usp=sharing" },
-    { id: 6, img: polity11,link:"https://drive.google.com/file/d/1G1_0aniSYLGKiFLtFwlq-IgaDNuUKGAK/view?usp=sharing" },
-    { id: 7, img: polity6,link:"https://drive.google.com/file/d/1Ya-x-HS6NE5CK9fo3IGgiy85aVGZ-aGi/view?usp=sharing" },
-    { id: 8, img: polity7,link:"https://drive.google.com/file/d/1FUQzCkliohf_5P5btXaivaMQ8iigwpP6/view?usp=sharing"  },
-    { id: 9, img: polity12,link:"https://drive.google.com/file/d/134cFGGV_1n_6lgiLt-OqalpP5nYkgNgA/view?usp=sharing"  },
-    { id: 10, img: polity8,link:"https://drive.google.com/file/d/1L46pBWXppgnAfN7-mrofMyLASKeGdit1/view"  },
-    { id: 11, img: polity9,link:"https://drive.google.com/file/d/147LyBhH72o-J4f0bx5Lc8TsbwWguBM_i/view" }
+    { id: 1, img: "/assets/material/polityassets/polity1.webp",link:'https://drive.google.com/file/d/12isEdwMrAXNgzAbsutcbLIXN2K1_fWU5/view?usp=sharing' },
+    { id: 2, img: "/assets/material/polityassets/polity2.webp",link:'https://drive.google.com/file/d/1KVBFu9ZWYXoC2s2VccSFu_zpSHGMNkip/view?usp=sharing' },
+    { id: 3, img: "/assets/material/polityassets/polity3.webp",link:"https://drive.google.com/file/d/1UYklPoImWnrvkAAm9S49oqpVGwnTPY-U/view?usp=sharing" },
+    { id: 4, img: "/assets/material/polityassets/polity4.webp",link:"https://drive.google.com/file/d/1WO_DiNItvcns4Gbqgc9q7zZsMooVzUgn/view?usp=sharing"  },
+    { id: 5, img: "/assets/material/polityassets/polity5.webp",link:"https://drive.google.com/file/d/1Sdn46fojarAkN43586tm100IS1-5busv/view?usp=sharing" },
+    { id: 6, img: "/assets/material/polityassets/polityclass11new.webp",link:"https://drive.google.com/file/d/1G1_0aniSYLGKiFLtFwlq-IgaDNuUKGAK/view?usp=sharing" },
+    { id: 7, img: "/assets/material/polityassets/polity6.webp",link:"https://drive.google.com/file/d/1Ya-x-HS6NE5CK9fo3IGgiy85aVGZ-aGi/view?usp=sharing" },
+    { id: 8, img: "/assets/material/polityassets/polity7.webp",link:"https://drive.google.com/file/d/1FUQzCkliohf_5P5btXaivaMQ8iigwpP6/view?usp=sharing"  },
+    { id: 9, img: "/assets/material/polityassets/polityclass12new.webp",link:"https://drive.google.com/file/d/134cFGGV_1n_6lgiLt-OqalpP5nYkgNgA/view?usp=sharing"  },
+    { id: 10, img: "/assets/material/polityassets/polity8.webp",link:"https://drive.google.com/file/d/1L46pBWXppgnAfN7-mrofMyLASKeGdit1/view"  },
+    { id: 11, img:"/assets/material/polityassets/polity9.webp",link:"https://drive.google.com/file/d/147LyBhH72o-J4f0bx5Lc8TsbwWguBM_i/view" }
   ];
 
   const dataGeo = [
-    { id: 1, img: geo1,link:"https://drive.google.com/file/d/131xIGwA2Q3rguXil70N3ie3b98M1yQrx/view?usp=sharing" },
-    { id: 2, img: geo2,link:"https://drive.google.com/file/d/1dFfY-Eig_kaxnM5rkfMdT-TxieLn2b0b/view?usp=sharing" },
-    { id: 3, img: geo3,link:"https://drive.google.com/file/d/1V65sM3ECZDe5BeucEesN04Ef5q5Bo8Cs/view?usp=sharing" },
-    { id: 4, img: geo4,link:"https://drive.google.com/file/d/1nrZJFSWo46HE0HNMNLwHHW24KwEiDBpt/view?usp=sharing" },
-    { id: 5, img: geo5,link:"https://drive.google.com/file/d/1j7iZhDkxkoXIyywDXaSxs60wSQ-EjmBm/view?usp=sharing"},
-    { id: 6, img: geo6,link:"https://drive.google.com/file/d/1RTZyv-1LJY--X-aF--Sk52QBFKtKsi8y/view?usp=sharing" },
-    { id: 7, img: geo7,link:"https://drive.google.com/file/d/16AoENastUUR5kdc-h7KAmQ0CZ8zXPqVS/view?usp=sharing" },
-    { id: 8, img: geo8,link:"https://drive.google.com/file/d/1A9uGIYEB5Ve09D_RhEv3D0oLvRV0y2HS/view?usp=sharing" },
-    { id: 9, img: geo9,link:"https://drive.google.com/file/d/1ABhDFytVliunrrl0HsTGupn1m-i2m4B4/view?usp=sharing" }
+    { id: 1, img: "/assets/material/geoasset/geo1.webp",link:"https://drive.google.com/file/d/131xIGwA2Q3rguXil70N3ie3b98M1yQrx/view?usp=sharing" },
+    { id: 2, img: "/assets/material/geoasset/geo2.webp",link:"https://drive.google.com/file/d/1dFfY-Eig_kaxnM5rkfMdT-TxieLn2b0b/view?usp=sharing" },
+    { id: 3, img: "/assets/material/geoasset/geo3.webp",link:"https://drive.google.com/file/d/1V65sM3ECZDe5BeucEesN04Ef5q5Bo8Cs/view?usp=sharing" },
+    { id: 4, img: "/assets/material/geoasset/geo4.webp",link:"https://drive.google.com/file/d/1nrZJFSWo46HE0HNMNLwHHW24KwEiDBpt/view?usp=sharing" },
+    { id: 5, img: "/assets/material/geoasset/geo5.webp",link:"https://drive.google.com/file/d/1j7iZhDkxkoXIyywDXaSxs60wSQ-EjmBm/view?usp=sharing"},
+    { id: 6, img: "/assets/material/geoasset/geo6.webp",link:"https://drive.google.com/file/d/1RTZyv-1LJY--X-aF--Sk52QBFKtKsi8y/view?usp=sharing" },
+    { id: 7, img: "/assets/material/geoasset/geo7.webp",link:"https://drive.google.com/file/d/16AoENastUUR5kdc-h7KAmQ0CZ8zXPqVS/view?usp=sharing" },
+    { id: 8, img: "/assets/material/geoasset/geo8.webp",link:"https://drive.google.com/file/d/1A9uGIYEB5Ve09D_RhEv3D0oLvRV0y2HS/view?usp=sharing" },
+    { id: 9, img: "/assets/material/geoasset/geo9.webp",link:"https://drive.google.com/file/d/1ABhDFytVliunrrl0HsTGupn1m-i2m4B4/view?usp=sharing" }
   ];
 
   const dataEco = [
-    { id: 1, img: eco1,link:"https://drive.google.com/file/d/1C3s0Zp0_oIcUWByBNQS0KPWNh2nQZLPt/view?usp=sharing" },
-    { id: 2, img: eco2,link:"https://drive.google.com/file/d/1GIQwfJJ0_9BfB95nL0gi9faEkfzv_gC0/view?usp=sharing" },
-    { id: 3, img: eco3,link:"https://drive.google.com/file/d/1rNY3DwZDMRyIcp3h2_SKTQTcfCpoFLv_/view?usp=sharing" },
-    { id: 4, img: eco4,link:"https://drive.google.com/file/d/1imnaYFbvwrFJYfxTnVevKTY9MqjfcE2U/view?usp=sharing" }
+    { id: 1, img: "/assets/material/ecoasset/eco1.webp",link:"https://drive.google.com/file/d/1C3s0Zp0_oIcUWByBNQS0KPWNh2nQZLPt/view?usp=sharing" },
+    { id: 2, img:  "/assets/material/ecoasset/eco2.webp",link:"https://drive.google.com/file/d/1GIQwfJJ0_9BfB95nL0gi9faEkfzv_gC0/view?usp=sharing" },
+    { id: 3, img:  "/assets/material/ecoasset/eco3.webp",link:"https://drive.google.com/file/d/1rNY3DwZDMRyIcp3h2_SKTQTcfCpoFLv_/view?usp=sharing" },
+    { id: 4, img:  "/assets/material/ecoasset/eco4.webp",link:"https://drive.google.com/file/d/1imnaYFbvwrFJYfxTnVevKTY9MqjfcE2U/view?usp=sharing" }
   ];
 
   const dataSocio = [
-    { id: 1, img: soc1,link:'https://drive.google.com/file/d/1O841slSvpbjcdmfQiKtoJEOK-XpvIj5-/view?usp=sharing' },
-    { id: 2, img: soc2,link:'https://drive.google.com/file/d/1-v1O5FL6PTcx7jpJgdUK5avmspQghePv/view?usp=sharing' },
-    { id: 3, img: soc3,link:'https://drive.google.com/file/d/1Wntht8h0hO3QBx6WmuWAM1qkaozlKax6/view?usp=sharing' },
-    { id: 4, img: soc4,link:'https://drive.google.com/file/d/1OwbY9uN9NF2xeeivZVnM-_l46cXUpxwL/view?usp=sharing' }
+    { id: 1, img:'/assets/material/socioasset/socio1.webp',link:'https://drive.google.com/file/d/1O841slSvpbjcdmfQiKtoJEOK-XpvIj5-/view?usp=sharing' },
+    { id: 2, img: '/assets/material/socioasset/socio2.webp',link:'https://drive.google.com/file/d/1-v1O5FL6PTcx7jpJgdUK5avmspQghePv/view?usp=sharing' },
+    { id: 3, img: '/assets/material/socioasset/socio3.webp',link:'https://drive.google.com/file/d/1Wntht8h0hO3QBx6WmuWAM1qkaozlKax6/view?usp=sharing' },
+    { id: 4, img: '/assets/material/socioasset/socio4.webp',link:'https://drive.google.com/file/d/1OwbY9uN9NF2xeeivZVnM-_l46cXUpxwL/view?usp=sharing' }
   ];
 
   const dataArt = [
-    { id: 1, img: art,link:'https://drive.google.com/file/d/19LgIgunaqeLOLEoLfFRTkEUaLsCUHyau/view?usp=sharing' },
+    { id: 1, img: "/assets/material/arts.webp",link:'https://drive.google.com/file/d/19LgIgunaqeLOLEoLfFRTkEUaLsCUHyau/view?usp=sharing' },
 
   ];
 
   const dataScience = [
-    { id: 1, img: science,link:'https://drive.google.com/file/d/1O841slSvpbjcdmfQiKtoJEOK-XpvIj5-/view?usp=sharing' },
+    { id: 1, img: "/assets/material/science.webp",link:'https://drive.google.com/file/d/1O841slSvpbjcdmfQiKtoJEOK-XpvIj5-/view?usp=sharing' },
 
   ];
 

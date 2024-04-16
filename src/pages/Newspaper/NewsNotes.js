@@ -3,21 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
-import newsnotes1 from "../Newspaper/newsnotes1.webp"
-import newsnotes2 from "../Newspaper/newsnotes2.webp"
-import newsnotes3 from "../Newspaper/newsnotes3.webp"
-import newsnotes4 from "../Newspaper/newsnotes4.webp"
-import newsnotes5 from "../Newspaper/newsnotes5.webp"
-import newsnotes6 from "../Newspaper/newsnotes6.webp"
-import newsnotes7 from "../Newspaper/newsnotes7.webp"
-import newsnotes8 from "../Newspaper/newsnotes8.webp"
-import newsnotes9 from "../Newspaper/newsnotes9.webp"
-import newsnotes10 from "../Newspaper/newsnotes10.webp"
-import newsnotes11 from "../Newspaper/newsnotes11.webp"
-import newsnotes12 from "../Newspaper/newsnotes12.webp"
-import newsnotes13 from "../Newspaper/newsnotes13.webp"
-import newsnotes14 from "../Newspaper/newsnotes14.webp"
-import newsnotes15 from "../Newspaper/newsnotes15.webp"
+
 
 
 function TabPanel(props) {
@@ -48,21 +34,21 @@ TabPanel.propTypes = {
 
 
 const tabpanel = [
-  { id: 0, img:newsnotes1 },
-  { id: 1, img:newsnotes2 },
-  { id: 2, img:newsnotes3 },
-  { id: 3, img:newsnotes4 },
-  { id: 4, img:newsnotes5 },
-  { id: 5, img:newsnotes6 },
-  { id: 6, img:newsnotes7 },
-  { id: 7, img:newsnotes8 },
-  { id: 8, img:newsnotes9 },
-  { id: 9, img:newsnotes10 },
-  { id: 10, img:newsnotes11 },
-  { id: 11, img:newsnotes12 },
-  { id: 12, img:newsnotes13 },
-  { id: 13, img:newsnotes14 },
-  { id: 14, img:newsnotes15 },
+  { id: 0, img:"/assets/newspaper/newsnotes1.webp" },
+  { id: 1, img:"/assets/newspaper/newsnotes2.webp" },
+  { id: 2, img:"/assets/newspaper/newsnotes3.webp" },
+  { id: 3, img:"/assets/newspaper/newsnotes4.webp" },
+  { id: 4, img:"/assets/newspaper/newsnotes5.webp" },
+  { id: 5, img:"/assets/newspaper/newsnotes6.webp" },
+  { id: 6, img:"/assets/newspaper/newsnotes7.webp" },
+  { id: 7, img:"/assets/newspaper/newsnotes8.webp" },
+  { id: 8, img:"/assets/newspaper/newsnotes9.webp" },
+  { id: 9, img:"/assets/newspaper/newsnotes10.webp" },
+  { id: 10, img:"/assets/newspaper/newsnotes11.webp" },
+  { id: 11, img:"/assets/newspaper/newsnotes12.webp" },
+  { id: 12, img:"/assets/newspaper/newsnotes13.webp" },
+  { id: 13, img:"/assets/newspaper/newsnotes14.webp" },
+  { id: 14, img:"/assets/newspaper/newsnotes15.webp" },
 ];
 
 

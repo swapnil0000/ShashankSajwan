@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button,  Container,  TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation } from 'react-router-dom';
-import map from "../assets/contact.webp";
 import MailIcon from '@mui/icons-material/Mail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import axios from "axios";
@@ -34,7 +33,7 @@ const Contact = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:5000/send-email', contactDetails);
+      await axios.post('https://us-central1-shashankupsccoaching.cloudfunctions.net/sendEmail', contactDetails);
       alert('Email sent successfully!');
       resetForm();
     } catch (error) {
@@ -71,7 +70,7 @@ const Contact = () => {
 
         <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", marginTop: isMobileView ? "10px" : "70px", width: '100%', alignItems: 'center', justifyContent: isMobileView ? "center" : "space-between" }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-            <img style={{ width: '350px', height: '300px', marginTop: '20px', marginBottom: '20px' }} src={map} alt="Map" />
+            <img style={{ width: '350px', height: '300px', marginTop: '20px', marginBottom: '20px' }} src="/assets/contact.webp" alt="Map" />
           </Box>
 
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

@@ -6,7 +6,6 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
-import coursephoto from "../../assets/banner2.webp";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useNavigate } from 'react-router-dom';
 import { ColumnCenter } from '../../common';
@@ -53,7 +52,7 @@ const CourseProvide = () => {
       <Typography sx={{ fontWeight: '700', fontSize: isSmallMobile ? "21px" : "40px" }} align="center">COURSES PROVIDED</Typography>
       <BoxMainStyle>
         <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", justifyContent: 'space-between' }}>
-          <LazyLoadImage style={{ width: !isMobileView ? "23%" : "100%", height: '20%', borderRadius: '13px' }} src={coursephoto} alt='generla' />
+          <LazyLoadImage style={{ width: !isMobileView ? "23%" : "100%", height: '20%', borderRadius: '13px' }} src="/assets/banner2.webp" alt='generla' />
           <Box>
             <Typography sx={{ margin: '10px', fontSize: '25px', fontWeight: '600' }}>UPSC Full-Fledged Preparation</Typography>
             <Typography sx={{ margin: '8px', marginTop: '20px', fontSize: isMobileView ? "15px" : "18px" }}>In this program, you will get Full-Fledged Preparation including with proper mentorship and guidance with all the materials.</Typography>

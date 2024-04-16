@@ -1,6 +1,5 @@
 import {  Box, Button, Container, Divider, Grid, Paper, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useEffect } from 'react'
-import coursephoto from "../../assets/banner2.webp"
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import GTranslateIcon from '@mui/icons-material/GTranslate';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -63,7 +62,7 @@ const CourseSection = () => {
        <Box sx={{display:'flex',flexDirection:isMobileView?"column":"row",justifyContent:'space-between'}}>
        {
          
-        isMobileView &&        <img style={{width:isMobileView?"100%":"auto",height:'20%',borderRadius:'13px'}} src={coursephoto} alt='generla'/>         
+        isMobileView &&        <img style={{width:isMobileView?"100%":"auto",height:'20%',borderRadius:'13px'}} src="/assets/banner2.webp" alt='generla'/>         
        }
 
 
@@ -102,7 +101,7 @@ const CourseSection = () => {
       </Box>
        </Box>  
        {
-          !isMobileView && <img style={{width:!isMobileView?"25%":"auto",height:'25%',borderRadius:'13px'}} src={coursephoto} alt='generla'/>
+          !isMobileView && <img style={{width:!isMobileView?"25%":"auto",height:'25%',borderRadius:'13px'}} src="/assets/banner2.webp" alt='generla'/>
        }
 
        </Box>

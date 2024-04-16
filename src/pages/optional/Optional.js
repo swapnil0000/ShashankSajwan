@@ -1,6 +1,5 @@
 import { Box, Container, Grid, Paper, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import optional from "./optionals.webp"
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -34,7 +33,7 @@ TabPanel.propTypes = {
 const data=[
   {
     id:1,
-    img:optional,
+    img:"/assets/optionals.webp",
     link:"https://drive.google.com/file/d/1JPmo1rFOLLhZDfmpqvMSIpt7bqDyR5yR/view?usp=sharing"
   },
 ]
@@ -67,17 +66,16 @@ const Optional = () => {
   
   const renderGridItems = (data) => (
     <Grid container>
-      {data.map(item => (
-        <Grid key={item.id} item xs={12} sm={6} md={6} lg={4}>
-       
-          <Paper sx={{ width: 250, height: 140, display: 'flex', flexDirection: 'column', margin: '5px', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.05)' } }}>
-            <a href={item.link} target="_blank" rel="noopener noreferrer">
-            <img  style={{ width: '100%', backgroundColor: 'transparent' }} src={item.img} alt={`Image ${item.id}`}/>
-            </a>
-          </Paper>
-        </Grid>
-      ))}
-    </Grid>
+    {data.map(item => (
+      <Grid key={item.id} item xs={12} sm={6} md={6} lg={4} sx={{marginTop:'10px'}}>
+        <Paper sx={{ width: 250, height: 140,                                                                                                                                                                                                                                     transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.05)' } }}>
+          <a href={item.link} target="_blank" rel="noopener noreferrer">
+          <img  style={{ width: '100%', backgroundColor: 'transparent' }} src={item.img} alt={`Image ${item.id}`}/>
+          </a>
+        </Paper>
+      </Grid>
+    ))}
+  </Grid>
   );
 
   return (
@@ -104,9 +102,9 @@ const Optional = () => {
           </Tabs>
         </Box>
       )}
-      <Box sx={{ width: '100%' , display:'flex',flexDirection:'column'}}>
+      <Box sx={{ width: '100%' }}>
       {tabData.map((tab, index) => (
-        <TabPanel key={tab.id} value={value} index={index} sx={{ marginLeft: isMobileView ? '' : '20px', marginRight: isMobileView ? '' : '20px', marginTop: isMobileView ? '10px' : '' }}>
+        <TabPanel key={tab.id} value={value} index={index} sx={{  marginTop: isMobileView ? '10px' : '' }}>
           {value === 0 && renderGridItems(data)}
         </TabPanel>
       ))}
