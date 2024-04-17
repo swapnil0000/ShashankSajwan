@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../Materials/ecoasset"
+		},
+		{
+			"path": "../Materials/geoasset"
+		},
+		{
+			"path": "../Materials/historyassest"
+		},
+		{
+			"path": "../Materials/polityassets"
+		},
+		{
+			"path": "../Materials/socioasset"
+		}
+	]
+}
