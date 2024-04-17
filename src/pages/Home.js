@@ -25,7 +25,7 @@ const Home = () => {
        <Course/>
        <CarouseYoutube/>
        <Author/>
-       <Career/>
+      
     </>
   )
 }
