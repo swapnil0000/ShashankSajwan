@@ -1,4 +1,4 @@
-import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { AppBar, Box, Divider, Drawer, IconButton, List, Menu, MenuItem, Stack, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Floating from './floating/Floating';
@@ -22,7 +22,6 @@ const Header = () => {
     const mailtoUrl = `mailto:${recipientEmail}`;
     window.open(mailtoUrl, '_blank');
   };
-  const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const navigate = useNavigate()
 
@@ -31,7 +30,6 @@ const Header = () => {
   }
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
-  const isSmallView = useMediaQuery(theme.breakpoints.down("sm"));
   const handleMenuClick = () => {
     setOpenMenu(!openMenu);
   };
@@ -41,15 +39,6 @@ const Header = () => {
   };
 
   const isTabletView = useMediaQuery(theme.breakpoints.down("lg"))
-
-
-  const handleNotesMenmClick = () => {
-    setOpenMenu(!openMenu);
-  };
-
-  const handleCloseMenu = () => {
-    setOpenMenu(false);
-  };
 
 
   const [anchorEl, setAnchorEl] = React.useState(false);
@@ -217,7 +206,7 @@ const Header = () => {
               <Box sx={{ display: "flex", flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '10px', cursor: 'pointer', marginTop: '15px' }}>
                   <WhatsAppIcon onClick={handleWhatsapp} sx={{ color: 'lightgreen', fontWeight: '700', fontSize: '20px' }} />
-                  <img onClick={handleEmail} style={{ width: '20px' }} src="/assets/gmail.webp" />
+                  <img onClick={handleEmail} style={{ width: '20px' }} src="/assets/gmail.webp" alt='gmail' />
                 </Box>
               </Box>
 
@@ -344,7 +333,7 @@ const Header = () => {
                 <Typography sx={{ color: 'white', fontSize: "15px" }}>+91 7060748896</Typography>
               </Box>
               <Box onClick={handleEmail} sx={{ display: 'flex', flexDirection: 'row', gap: '12px', marginTop: '5px', cursor: 'pointer' }}>
-                <img style={{ width: '18px' }} src="/assets/gmail.webp" />
+                <img style={{ width: '18px' }} src="/assets/gmail.webp" alt='logo'/>
                 <Typography sx={{ color: 'white', fontSize: "14px", textTransform: 'lowercase' }}>ask.iasmentor@gmail.com</Typography>
               </Box>
 

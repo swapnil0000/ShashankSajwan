@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Card,  CardMedia, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 import React, { useState } from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"; // Import carousel styles

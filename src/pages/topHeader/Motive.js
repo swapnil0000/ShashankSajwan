@@ -1,4 +1,4 @@
-import { Box, Button, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
 
 const Motive = () => {
