@@ -94,11 +94,11 @@ const Optional = () => {
         </Tabs>
       )}
       {isMobileView && (
-        <Box sx={{  bgcolor: 'background.paper',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center' }}>
+        <Box sx={{ display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center' }}>
           <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile aria-label="scrollable force tabs example" sx={{ width: '100%' }}>
-            {data.map(tab => (
+            {tabData.map(tab => (
               <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: '10px', marginBottom: '10px', marginLeft: '10px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px', maxWidth: '300px' }} />
-            ))}
+              ))}
           </Tabs>
         </Box>
       )}

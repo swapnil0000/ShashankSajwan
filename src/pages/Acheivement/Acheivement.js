@@ -17,11 +17,11 @@ const Acheivement = () => {
     }, 20);
 
     const instaInterval = setInterval(() => {
-      setInstaCount((prevInstaCount) => (prevInstaCount !== 182 ? prevInstaCount + 1 : prevInstaCount));
+      setInstaCount((prevInstaCount) => (prevInstaCount !== 189 ? prevInstaCount + 1 : prevInstaCount));
     }, 60);
 
     const telegramInterval = setInterval(() => {
-      setTelegramCount((prevTelegramCount) => (prevTelegramCount !== 124 ? prevTelegramCount + 1 : prevTelegramCount));
+      setTelegramCount((prevTelegramCount) => (prevTelegramCount !== 125 ? prevTelegramCount + 1 : prevTelegramCount));
     }, 60);
 
     return () => {

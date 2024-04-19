@@ -15,8 +15,8 @@ import General from './pages/GeneralStudies/General';
 import NewsNotes from './pages/Newspaper/NewsNotes';
 import CourseSection from './pages/CourseSection/CourseSection';
 import FAQs from './pages/FAQs/FAQs';
-import Popup from './components/popup/Popup';
 import Optional from './pages/optional/Optional';
+import PopupDialog from './components/popup/PopupDailog';
 
 function App() 
 {
@@ -24,8 +24,9 @@ function App()
   return (
     
     <BrowserRouter>
-    <Popup/>
+   
     <Header/>
+    <PopupDialog/>
            <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/about' element={<About/>}/>

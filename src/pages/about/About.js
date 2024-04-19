@@ -70,16 +70,17 @@ const About = () => {
         <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", alignItems: 'center' }}>
           {isMobileView && renderDirectorPhoto()}
           <BoxCenter>
-            <Typography sx={{ fontSize: isMobileView ? "25px" : "40px", fontWeight: '700' }}>Our Director</Typography>
-            {ourDirectorData.map((ele) => (<Typography key={ele.id} sx={{ marginTop: '10px', textAlign: 'justify', hyphens: 'inherit' }}>{ele.val}</Typography>))}
+            <Typography sx={{ fontSize: isMobileView ? "30px" : "40px", fontWeight: '700' }}>Our Director</Typography>
+            {ourDirectorData.map((ele) => (
+              <Typography key={ele.id} sx={{ marginTop: '10px', textAlign: 'justify', hyphens: 'inherit' }}>{ele.val}</Typography>))}
           </BoxCenter>
           {!isMobileView && renderDirectorPhoto()}
         </Box>
 
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <BoxCenter >
-            <Typography sx={{ marginTop: isMobileView ? "40px" : "10px", fontSize: isMobileView ? "25px" : "40px", fontWeight: '700' }}>Our Vision</Typography>
-            <Typography sx={{ marginTop: '10px', textAlign: 'justify', marginBottom: '10px' }}>From the outset of our Academy, our mission has been centered on delivering high-quality education at accessible rates. We deeply grasp the significance of mentorship and tailored guidance in this field. Therefore, leveraging our esteemed educators, we strive to offer individualized mentorship, a factor that has consistently contributed to students achieving commendable positions in civil services examinations.</Typography>
+            <Typography sx={{ marginTop: isMobileView ? "40px" : "10px", fontSize: isMobileView ? "30px" : "40px", fontWeight: '700' }}>Our Vision</Typography>
+            <Typography sx={{ marginTop: '10px', textAlign: 'justify', marginBottom: '10px' }}>Our academy's mission has always prioritized delivering top-notch education at affordable rates. We understand the importance of personalized mentorship, which has consistently helped students. We focus on,</Typography>
           </BoxCenter>
           <Box>
             {ourVisionData.map((ele) => (<Typography key={ele.id} sx={{ display: 'flex', alignItems: 'center' }}><ChevronRightSharpIcon style={{ color: 'green' }} />{ele.val}</Typography>))}
@@ -87,13 +88,13 @@ const About = () => {
         </Box>
 
         <BoxCenter >
-          <Typography sx={{ marginTop: '40px', fontSize: isMobileView ? "25px" : "40px", fontWeight: '700' }}>Our Team</Typography>
+          <Typography sx={{ marginTop: '40px', fontSize: isMobileView ? "30px" : "40px", fontWeight: '700' }}>Our Team</Typography>
           <Typography sx={{ textAlign: 'justify', marginTop: '10px' }}>Our team comprises highly educated and experienced professionals, with several faculty members having undergone the interview process themselves. Our collective aim is to deliver the utmost quality education to our students, prioritizing excellence in every aspect of our teaching approach. With a wealth of knowledge and expertise, we are committed to nurturing the academic growth and success of our students.</Typography>
         </BoxCenter>
 
         <Box >
           <BoxCenter >
-            <Typography sx={{ marginTop: '40px', fontSize: isMobileView ? "25px" : "40px", fontWeight: '700' }}>Our Achievements</Typography>
+            <Typography sx={{ marginTop: '40px', fontSize: isMobileView ? "30px" : "40px", fontWeight: '700' }}>Our Achievements</Typography>
             <Typography sx={{ textAlign: 'justify', marginTop: '10px' }} >We take pride in being recognized as the most innovative YouTube channel and academy throughout India. Shashank Sir stands as the most sought-after mentor for UPSC CSE in the country. Pioneering successful mentorship programs, we strive to revolutionize the education landscape, setting new standards of excellence and achievement.
             </Typography>
           </BoxCenter>

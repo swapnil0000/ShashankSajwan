@@ -13,7 +13,7 @@ export const choosedata = [
     id: 2,
     img: "/assets/wtp.webp",
     title: 'We Track Your Progress',
-    value: "After we provide weekly targets aspirants are requested to send their weekly report to sir.",
+    value: "After we provide weekly targets aspirants are requested to send their weekly report to sir.",
     value1:"Our dedicated team will closely monitor your UPSC journey, providing guidance through tests, live classes, module assessments, and personalized calls.",
     value2:"We're committed to supporting your progress every step of the way."
   },
@@ -36,8 +36,8 @@ export const choosedata = [
   {
     id: 5,
     img: "/assets/pt.webp",
-    title: ' Personal Touch Remains',
-    value: "The key highlight of this program is its personal connection with Shashank Saiwan sir.",
+    title: 'Personal Touch Remains',
+    value: "The key highlight of this program is its personal connection with Shashank Sajwan sir.",
     value1:'Even after the course concludes, the personal touch continues.',
     value2:"Access to his guidance remains available, ensuring ongoing support and mentorship for an extended period."
   },

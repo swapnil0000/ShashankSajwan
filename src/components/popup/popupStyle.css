@@ -1,36 +1,46 @@
 /* popupStyle.css */
 .home-popup {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: none;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+  width: 100%;
+  height: 100%;
+  z-index: 1205; /* Ensure the popup is above other content */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* Black shadow effect */
 
-.home-popup.show {
-  display: flex; /* Show the popup when 'show' class is present */
 }
 
 .popup {
-  background-color: white;
-  padding: 20px;
+  position: relative;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  padding: 20px;
 }
 
 .popup-content {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* popupStyle.css */
+.popup-content {
+  text-align: center;
+  position: relative; /* Ensure relative positioning for absolute children */
 }
 
 .close-popup-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   background-color: #ff6347;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
 }

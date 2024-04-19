@@ -43,7 +43,7 @@ const CourseSection = () => {
            
           }}>
         <Typography  sx={{  fontSize:isMobileView?"25px":"40px",fontWeight:'600',width:'100%'}}
-        >FULL FLEDGED UPSC </Typography> 
+        >FULL FLEDGED UPSC PREPARATION</Typography> 
         <Box sx={{marginTop:'20px',display:'flex',flexDirection:'row',alignItems:'center',width:'100%',gap:'20px'}}>
          <Button sx={{backgroundColor:'rgba(0,119,182,1)',color:'white',width:isMobileView?"110px":"300px"}}>
           <Typography sx={{fontWeight:'600'}}>VIDEO </Typography>
@@ -151,7 +151,6 @@ const CourseSection = () => {
                 <h2 className="accordion-header" id="headingThree">
                   <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     Who will conduct mentorship sessions, and how will participants receive their session schedules?
-                    count?
                   </button>
                 </h2>
                 <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">

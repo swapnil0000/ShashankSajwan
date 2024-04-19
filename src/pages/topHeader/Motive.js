@@ -15,7 +15,7 @@ const Motive = () => {
     </Box>
         <Box sx={{display:'flex',flexDirection:'column',alignItems:isMobileView?"center":""}} >
          <Typography sx={{fontWeight:'700',fontSize:{lg:"30px",md:"30px",sm:'25px',xs:'24px'}}}>From <span style={{color:'#f0750f'}}> Director's Pen </span></Typography>
-         <Typography sx={{textAlign:'justify',fontSize:{lg:'20px',xs:'14px',md:"18px",sm:"15px"},marginBottom:isSmallMobileView?"10px":"0"}}>"After preparing for UPSC CSE several years I decided to pass on the knowledge & experience to the aspirants to the aspirants community. There is a myth that IAS exam is the toughest & hard to achieve. But I believe with discipline, self-belief, hard work & consistent efforts one can definitely achieve the goals of becoming an officer. With the right guidance & clear direction my purpose is to make aspirants journey smooth so that they can achieve their ultimate goal."</Typography>
+         <Typography sx={{textAlign:'justify',fontSize:{lg:'20px',xs:'14px',md:"18px",sm:"15px"},marginBottom:isSmallMobileView?"10px":"0"}}>"After preparing for UPSC CSE for several years, I decided to impart my knowledge and experience to the aspirant community. There is a myth that the IAS exam is the toughest and hard to achieve. However, I believe that with discipline, self-belief, hard work, and consistent efforts, one can definitely achieve the goal of becoming an officer. With the right guidance and clear direction, my purpose is to make the aspirants' journey smooth so that they can achieve their ultimate goal."</Typography>
         </Box>
        </Box>
 

@@ -48,7 +48,7 @@ const BoxStyle = styled('Box')({
               <BoxStyle>
                 <Paper sx={{ display: 'flex', flexDirection: 'column', width: '40px' }} elevation={3}>
                   <Typography variant='h5' >{ele.title}</Typography>
-                  <Box sx={{ display: "flex", flexDirection: 'row', height: '240px' }}>
+                  <Box sx={{ display: "flex", flexDirection: 'row', height: '200px' }}>
                   <LazyLoadImage
                   src={ele.img}
                   alt={ele.title}
@@ -58,7 +58,7 @@ const BoxStyle = styled('Box')({
                   effect="blur"
                 />                   
                  <Box sx={{ marginTop: '5px' }}>
-                      <ul style={{ display: 'flex', flexDirection: 'column' }} >
+                      <ul style={{ display: 'flex', flexDirection: 'column',alignItems:'start' }} >
                         <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value}</li>
                         <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value1}</li>
                         <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value2}</li>

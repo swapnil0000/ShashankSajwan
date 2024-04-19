@@ -35,9 +35,9 @@ const CourseProvide = () => {
 
   const CourseDetails = ({ courseData }) => {
     return (
-      <Box sx={{ margin: '10px', display: 'flex', flexDirection: 'column', fontSize: '15px' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', fontSize: '15px' }}>
         {courseData.map(ele => (
-          <Typography key={ele.id} sx={{ display: 'flex', margin: '10px', gap: '5px', fontSize: "17px" }}>{ele.icon}{ele.val}</Typography>
+          <Typography key={ele.id} sx={{ display: 'flex', margin: '10px', gap: '5px', fontSize: "17px",alignItems:'center' }}>{ele.icon}{ele.val}</Typography>
         ))}
       </Box>
     );
@@ -49,12 +49,12 @@ const CourseProvide = () => {
 
   return (
     <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', marginTop: '50px' }}>
-      <Typography sx={{ fontWeight: '700', fontSize: isSmallMobile ? "21px" : "40px" }} align="center">COURSES PROVIDED</Typography>
+      <Typography sx={{ fontWeight: '700', fontSize: isSmallMobile ? "25px" : "40px" }} align="center">COURSES PROVIDED</Typography>
       <BoxMainStyle>
         <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", justifyContent: 'space-between' }}>
           <LazyLoadImage style={{ width: !isMobileView ? "23%" : "100%", height: '20%', borderRadius: '13px' }} src="/assets/banner2.webp" alt='generla' />
           <Box>
-            <Typography sx={{ margin: '10px', fontSize: '25px', fontWeight: '600' }}>UPSC Full-Fledged Preparation</Typography>
+            <Typography sx={{ margin: '10px', fontSize:isMobileView?"20px":"25px", fontWeight: '600' }}>UPSC Full-Fledged Preparation</Typography>
             <Typography sx={{ margin: '8px', marginTop: '20px', fontSize: isMobileView ? "15px" : "18px" }}>In this program, you will get Full-Fledged Preparation including with proper mentorship and guidance with all the materials.</Typography>
             <Box sx={{ display: 'flex', flexDirection: isSmallMobile ? "column" : "row", justifyContent: 'space-between' }}>
               <CourseDetails courseData={courseData.left} />

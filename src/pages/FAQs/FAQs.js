@@ -38,7 +38,7 @@ const FAQs = () => {
       </Typography>
       </Box>
 
-    <Container sx={{marginTop:'110px'}}>
+    <Container>
   
     
       <Box sx={{ marginTop: '30px', display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
