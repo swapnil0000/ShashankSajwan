@@ -145,7 +145,7 @@ const CourseSection = () => {
      
        
         </Box>
-        <Button onClick={handleWhatsapp} sx={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'rgba(0,119,182,1)',color:'whitesmoke',marginBottom:'11px'}} variant='contained'>Coming Soon</Button>
+        <Button onClick={handleWhatsapp} sx={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'rgba(0,119,182,1)',color:'whitesmoke',marginBottom:'11px'}} variant='contained'>Enroll now</Button>
       </Box>
       </Box>
       <Box sx={{ marginTop: '30px', display: 'flex', width: '100%',flexDirection:'column',alignItems:'center',justifyContent:'center' }}>
