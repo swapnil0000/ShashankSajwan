@@ -17,6 +17,7 @@ import CourseSection from './pages/CourseSection/CourseSection';
 import FAQs from './pages/FAQs/FAQs';
 import Optional from './pages/optional/Optional';
 import PopupDialog from './components/popup/PopupDailog';
+import Payment from './pages/Payment';
 
 function App() 
 {
@@ -43,6 +44,7 @@ function App()
             <Route path='/general' element={<General/>}/>
             <Route path='/optional' element={<Optional/>}/>
             <Route path='/newsnotes' element={<NewsNotes/>}/>
+            <Route path='/payment' element={<Payment/>}/>
            </Routes> 
            <Footer/>
 

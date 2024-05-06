@@ -67,7 +67,7 @@ const Material = () => {
     { id: 3, img: "/assets/material/historyassest/history8.webp",link:'https://drive.google.com/file/d/1UzZ7IbLWtaWc7fN5UaKpdc8bEH7kqy2x/view?usp=sharing'  },
     { id: 4, img: "/assets/material/historyassest/history9.webp",link:'https://drive.google.com/file/d/1js2AqyHCwnMF1v2TTzNXy3HhODyLf6SG/view?usp=sharing'  },
     { id: 5, img: "/assets/material/historyassest/history10.webp",link:'https://drive.google.com/file/d/1fxUCtg0COgnDXNEmU7hrNkoBczeBJXTu/view?usp=sharing'  },
-    { id: 9, img: "/assets/material/historyassest/historyclass11new.webp"  },
+    { id: 9, img: "/assets/material/historyassest/historyclass11new.webp" , link:'https://drive.google.com/file/d/1UH5n09uGyZMqYYXclRhtnH_VgbmSiVR7/view?usp=sharing' },
     { id: 6, img: "/assets/material/historyassest/history12part1.webp",link:'https://drive.google.com/file/d/1iUU4ryYBACCbQpbFXsJUoG_iMlFRlx70/view'  },
     { id: 7, img: "/assets/material/historyassest/history12part2.webp",link:'https://drive.google.com/file/d/1FPjsa3LM4yVZC8rbL9XnJaykRq_IsJOX/view'  },
     { id: 8, img: "/assets/material/historyassest/history12part3.webp",link:'https://drive.google.com/file/d/1iv5X2eMF26UczJ8_4uEii9SEx6-umXio/view'  },
@@ -117,7 +117,7 @@ const Material = () => {
   ];
 
   const dataScience = [
-    { id: 1, img: "/assets/material/science.webp" },
+    { id: 1, img: "/assets/material/science.webp",link:'https://drive.google.com/file/d/1QafEnAGJxkhOQI161onrCmuQFFqyHsOD/view?usp=sharing' },
 
   ];
 

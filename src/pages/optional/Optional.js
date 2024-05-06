@@ -36,6 +36,11 @@ const data=[
     img:"/assets/optionals.webp",
     link:"https://drive.google.com/file/d/1JPmo1rFOLLhZDfmpqvMSIpt7bqDyR5yR/view?usp=sharing"
   },
+  {
+    id:2,
+    img:"/assets/optionals1.webp",
+    link:"https://drive.google.com/file/d/1qGhT4ObXqIQ9cBZ6K1EfkPOXuF-iyhrS/view?usp=sharing"
+  },
 ]
 
 const tabData = [
