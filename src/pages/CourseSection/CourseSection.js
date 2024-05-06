@@ -59,15 +59,15 @@ const CourseSection = () => {
             flexDirection:'column',
            
           }}>
-        <Typography  sx={{  fontSize:isMobileView?"25px":"40px",fontWeight:'600',width:'100%'}}
-        >FULL FLEDGED UPSC PREPARATION</Typography> 
-        <Box sx={{marginTop:'20px',display:'flex',flexDirection:'row',alignItems:'center',width:'100%',gap:'20px'}}>
+        <Typography  sx={{  fontSize:isMobileView?"20px":"30px",fontWeight:'600',width:'100%',textAlign:'center'}}
+        >FULL FLEDGED UPSC CSE PREPARATION</Typography> 
+        <Box sx={{marginTop:'20px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',width:'100%',gap:'20px'}}>
         <Button 
         onClick={handleVideoClick}
         sx={{
           backgroundColor: 'rgba(0,119,182,1)',
           color: 'white',
-          width: isMobileView ? "110px" : "300px",
+          width: isMobileView ? "110px" : "200px",
           marginRight: '10px', // Add margin if needed
         }}
       >
@@ -78,7 +78,7 @@ const CourseSection = () => {
         sx={{
           backgroundColor: 'rgba(0,119,182,1)',
           color: 'white',
-          width: isMobileView ? "110px" : "300px",
+          width: isMobileView ? "110px" : "200px",
         }}
       >
         <Typography sx={{ fontWeight: '600' }}>Brochure</Typography>
