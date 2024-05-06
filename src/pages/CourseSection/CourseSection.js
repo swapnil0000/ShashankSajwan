@@ -11,6 +11,12 @@ window.onload = function () {
   window.scrollTo(0, 0);
 }
 const CourseSection = () => {
+  const handleWhatsapp = () => {
+    // Replace '1234567890' with the phone number you want to send the message to
+    const phoneNumber = '7060748896';
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, '_blank');
+  };
   const { pathname } = useLocation();
 
     const theme=useTheme();
@@ -19,6 +25,17 @@ const CourseSection = () => {
     useEffect(() => {
       window.scrollTo(0, 0);
     }, [pathname]);
+
+    const handleVideoClick = () => {
+      // Open the YouTube video link in a new tab
+      window.open("https://youtu.be/z9aEoW4Fkbk?feature=shared", "_blank");
+    };
+  
+    const handleBrochureClick = () => {
+      // Open the brochure link in a new tab
+      window.open("your-brochure-link", "_blank");
+    };
+ 
   return (
 
      <Box>
@@ -45,12 +62,27 @@ const CourseSection = () => {
         <Typography  sx={{  fontSize:isMobileView?"25px":"40px",fontWeight:'600',width:'100%'}}
         >FULL FLEDGED UPSC PREPARATION</Typography> 
         <Box sx={{marginTop:'20px',display:'flex',flexDirection:'row',alignItems:'center',width:'100%',gap:'20px'}}>
-         <Button sx={{backgroundColor:'rgba(0,119,182,1)',color:'white',width:isMobileView?"110px":"300px"}}>
-          <Typography sx={{fontWeight:'600'}}>VIDEO </Typography>
-         </Button>
-         <Button sx={{backgroundColor:'rgba(0,119,182,1)',color:'white',width:isMobileView?"110px":"300px"}}>
-         <Typography sx={{fontWeight:'600'}}>BROCHURE</Typography>
-        </Button>
+        <Button 
+        onClick={handleVideoClick}
+        sx={{
+          backgroundColor: 'rgba(0,119,182,1)',
+          color: 'white',
+          width: isMobileView ? "110px" : "300px",
+          marginRight: '10px', // Add margin if needed
+        }}
+      >
+        <Typography sx={{ fontWeight: '600' }}>Video</Typography>
+      </Button>
+      <Button
+        onClick={handleBrochureClick}
+        sx={{
+          backgroundColor: 'rgba(0,119,182,1)',
+          color: 'white',
+          width: isMobileView ? "110px" : "300px",
+        }}
+      >
+        <Typography sx={{ fontWeight: '600' }}>Brochure</Typography>
+      </Button>
         </Box>
         </Box>
          
@@ -113,7 +145,7 @@ const CourseSection = () => {
      
        
         </Box>
-        <Button sx={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'rgba(0,119,182,1)',color:'whitesmoke',marginBottom:'11px'}} variant='contained'>Coming Soon</Button>
+        <Button onClick={handleWhatsapp} sx={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'rgba(0,119,182,1)',color:'whitesmoke',marginBottom:'11px'}} variant='contained'>Coming Soon</Button>
       </Box>
       </Box>
       <Box sx={{ marginTop: '30px', display: 'flex', width: '100%',flexDirection:'column',alignItems:'center',justifyContent:'center' }}>

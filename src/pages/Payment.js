@@ -1,6 +1,7 @@
-import { Box, Button, Container, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Button, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
+import React, { useEffect } from 'react';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { useLocation } from 'react-router-dom';
 
 const Payment = () => {
   // Array to store batch details along with topics
@@ -69,7 +70,7 @@ const Payment = () => {
     {
       id: 2,
       title: "Sharing materials outside the course leads to immediate ban without refund.",
-     
+
     },
     {
       id: 3,
@@ -78,7 +79,7 @@ const Payment = () => {
     {
       id: 4,
       title: '2-year access to course materials upon enrollment.',
-      
+
     },
     {
       id: 5,
@@ -89,12 +90,22 @@ const Payment = () => {
     window.open("https://pages.razorpay.com/pl_O6MONxa68ozqrM/view", "_blank"); // Opens the link in a new tab
   };
 
+  const theme = useTheme();
+  const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
+  const { pathname } = useLocation();
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+
   return (
     <Container sx={{ marginTop: '110px' }}>
       <Box>
-        <Typography sx={{ fontSize: '50px', fontWeight: '900', textAlign: 'center' }}>UPSC FULL-FLEDGED PREPARATION BATCH</Typography>
-        <Box sx={{marginTop:'30px',backgroundColor:'lightblue',padding:'10px',borderRadius:'10px'}}>
-          <Typography sx={{ fontSize: '30px', fontWeight: '700' }}>BATCH DETAILS</Typography>
+        <Typography sx={{ fontSize: isMobileView ? "30px" : "50px", fontWeight: '900', textAlign: 'center' }}>UPSC FULL-FLEDGED PREPARATION BATCH</Typography>
+        <Box sx={{ marginTop: '30px', backgroundColor: 'lightblue', padding: '10px', borderRadius: '10px' }}>
+          <Typography sx={{ fontSize: '30px', fontWeight: '700', textAlign: 'center' }}>BATCH DETAILS</Typography>
           {/* Map through the array to render batch details and topics */}
           <Box>
             {
@@ -109,14 +120,14 @@ const Payment = () => {
             }
           </Box>
         </Box>
-        <Box sx={{marginTop:'30px',backgroundColor:'lightblue',padding:'10px',borderRadius:'10px'}}>
-          <Typography sx={{ fontSize: '30px', fontWeight: '700',marginTop:'30px' }}>TERMS & CONDITION</Typography>
+        <Box sx={{ marginTop: '30px', backgroundColor: 'lightblue', padding: '10px', borderRadius: '10px' }}>
+          <Typography sx={{ fontSize: '30px', fontWeight: '700', marginTop: '30px', textAlign: 'center' }}>TERMS & CONDITION</Typography>
           {/* Map through the array to render batch details and topics */}
           <Box>
             {
               terms.map((ele) => (
                 <Box sx={{ margin: '15px' }}>
-                  <Typography key={ele.id}>{ele.id}-{ele.title}</Typography>
+                  <Typography key={ele.id}><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />{ele.title}</Typography>
                 </Box>
 
               ))
@@ -124,29 +135,37 @@ const Payment = () => {
           </Box>
         </Box>
 
-        <Box sx={{marginTop:'30px',backgroundColor:'lightblue',padding:'10px',borderRadius:'10px',marginBottom:'60px'}}>
-        <Typography sx={{ fontSize: '30px', fontWeight: '700',marginTop:'30px' }}>FOR PAYMENTS</Typography>
-        {/* Map through the array to render batch details and topics */}
-        <Box sx={{margin:'20px',display:'flex',flexDirection:'row'}}>
-              <Box sx={{ margin: '15px' }}>
-                <Typography sx={{ fontSize: '25px', fontWeight: '500' }}><FiberManualRecordIcon sx={{width:'17px',marginRight:'5px'}}/>Scan the QR done the payment.</Typography>
-                <Typography sx={{ fontSize: '25px', fontWeight: '500' }}><FiberManualRecordIcon sx={{width:'17px',marginRight:'5px'}}/>Send the screenshot to 7827019549.</Typography>
-                <Typography sx={{ fontSize: '25px', fontWeight: '500' }}><FiberManualRecordIcon sx={{width:'17px',marginRight:'5px'}}/>After your payment verification, team will respond you soon.</Typography>
-                <Box sx={{marginTop:'20px'}}>
-                  <Typography sx={{fontSize:'40px',fontWeight:'600'}}>Account Detials</Typography>
-                  <Typography sx={{fontSize:'25px'}}><span style={{fontSize:'30px'}}>Name-</span>Shashank Sajwan </Typography>
-                  <Typography sx={{fontSize:'25px'}}><span style={{fontSize:'30px'}}>Acc No.-</span>50200072647120 </Typography>
-                  <Typography sx={{fontSize:'25px'}}><span style={{fontSize:'30px'}}>IFSC-</span>HDFC0003784</Typography>
-                  <Typography sx={{fontSize:'25px'}}><span style={{fontSize:'30px'}}>UPI-</span>upscmentor@axl</Typography>
-                </Box>
-                
-              </Box>
-              <Box>
-               <img style={{width:'400px'}} src="/assets/qr.jpg"/>
-              </Box>
-                
-              </Box>
-      </Box>
+        <Box sx={{ marginTop: '30px', backgroundColor: 'lightblue', padding: '10px', borderRadius: '10px', marginBottom: '60px' }}>
+          <Typography sx={{ fontSize: '30px', fontWeight: '700', marginTop: '30px', textAlign: 'center' }}>FOR PAYMENT</Typography>
+          {/* Map through the array to render batch details and topics */}
+          <Box sx={{ margin: '20px', display: 'flex', flexDirection: isMobileView ? "column" : "row" }}>
+            <Box >
+              <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />Scan the QR Code for payment.                </Typography>
+              <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />Send the screenshot of the payment to 7827019549 on WhatsApp.                </Typography>
+              <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />After your payment, our team will respond you soon.</Typography>
+
+
+            </Box>
+
+          </Box>
+
+        </Box>
+        <Box sx={{backgroundColor:'lightblue',padding:'20px',marginBottom:'30px'}}>
+        <Typography sx={{ fontSize: isMobileView ? "30px" : "35px", fontWeight: '700', textAlign: 'center' , }}>Account Details</Typography>
+          <Box sx={{display:'flex',flexDirection:isMobileView?"column":'row',alignItems:isMobileView?"center":"",justifyContent:'space-around',width:'100%'}}>
+          <Box>
+            <img style={{ width: '240px',display:'flex',alignItems:'center',justifyContent:'center', margin:'10px'}} src="/assets/qr.jpg" />
+          </Box>
+          <Box sx={{margin:'10px'}}>
+            <Typography sx={{ fontSize: '22px',  }}><span style={{ fontSize: '25px', fontWeight: '500' }}>Name-</span>Shashank Sajwan </Typography>
+            <Typography sx={{ fontSize: '22px',  }}><span style={{ fontSize: '25px', fontWeight: '500' }}>Acc No.-</span>50200072647120 </Typography>
+            <Typography sx={{ fontSize: '22px',  }}><span style={{ fontSize: '25px', fontWeight: '500' }}>IFSC-</span>HDFC0003784</Typography>
+            <Typography sx={{ fontSize: '22px',  }}><span style={{ fontSize: '25px', fontWeight: '500' }}>UPI-</span>upscmentor@axl</Typography>
+          </Box>
+          
+          </Box>
+        </Box>
+
       </Box>
     </Container>
   );
