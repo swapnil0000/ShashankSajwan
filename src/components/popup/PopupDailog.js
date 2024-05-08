@@ -20,7 +20,7 @@ const PopupDialog = () => {
         <div className="home-popup">
           <div className="popup">
             <div className="popup-content">
-              <img src={popupImage} alt="Popup Image" style={{width:isMobileView?"360px":"700px",height:isMobileView?"230px":"400px"}}/>
+              <img src="/assets/popup.webp" alt="Popup Image" style={{width:isMobileView?"360px":"700px",height:isMobileView?"230px":"400px"}}/>
               <button className="close-popup-btn" onClick={handleClose}>Close</button>
             </div>
           </div>

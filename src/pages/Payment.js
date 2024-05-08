@@ -141,7 +141,7 @@ const Payment = () => {
           <Box sx={{ margin: '20px', display: 'flex', flexDirection: isMobileView ? "column" : "row" }}>
             <Box >
               <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />Scan the QR Code for payment.                </Typography>
-              <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />Send the screenshot of the payment to 7827019549 on WhatsApp.                </Typography>
+              <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />Send the screenshot of the payment on WhatsApp.                </Typography>
               <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />After your payment, our team will respond you soon.</Typography>
 
 
