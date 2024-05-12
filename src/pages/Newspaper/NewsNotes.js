@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Paper, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Container, Grid, Paper, Tab, Tabs, Typography, colors, useMediaQuery, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types';
@@ -65,9 +65,17 @@ const tabpanel = [
 
 ];
 
+const maydata = [
+  { id: 101, img:'/assets/newspaper/may/newnotesmay1.webp',link:'https://drive.google.com/file/d/1WwqSvAUXEJ-98woVB_p2em2RjF6gPqBm/view?usp=sharing' },
+  { id: 201, img: '/assets/newspaper/may/newnotesmay2.webp',link:'https://drive.google.com/file/d/1-ZVAZ6Epqxz-3fGrmbVoPygfL_Hk4j9d/view?usp=sharing' },
+  { id: 301, img: '/assets/newspaper/may/newnotesmay3.webp',link:'https://drive.google.com/file/d/1m-Mn3Ng2hJCla0JmMLddSKjPUktskRO-/view?usp=sharing' },
+  { id: 401, img: '/assets/newspaper/may/newnotesmay4.webp',link:'https://drive.google.com/file/d/1FpUB1dY_eY9xUxZp2Z5dwHmuRgwNWFhm/view?usp=sharing ' }
+];
+
 
 const tabData = [
   { id: 0, label: "APRIL 2024" },
+  {id:1,label:"MAY 2024"},
 ];
 
 
@@ -137,6 +145,7 @@ const Optional = () => {
       {tabData.map((tab, index) => (
         <TabPanel key={tab.id} value={value} index={index} sx={{ marginLeft: isMobileView ? '' : '20px', marginRight: isMobileView ? '' : '20px', marginTop: isMobileView ? '10px' : '' }}>
           {value === 0 && renderGridItems(tabpanel)}
+          {value === 1 && renderGridItems(maydata)}
         </TabPanel>
       ))}
       </Box>

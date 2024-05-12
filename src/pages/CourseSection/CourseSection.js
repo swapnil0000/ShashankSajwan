@@ -33,7 +33,7 @@ const CourseSection = () => {
   
     const handleBrochureClick = () => {
       // Open the brochure link in a new tab
-      window.open("your-brochure-link", "_blank");
+      window.open("https://drive.google.com/file/d/1uaihxINODY8nbJVZhnNMun-HkYmbg6L2/view?pli=1", "_blank");
     };
  
   return (
