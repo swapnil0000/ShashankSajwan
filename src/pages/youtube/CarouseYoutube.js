@@ -63,7 +63,6 @@ const CarouseYoutube = () => {
                     infiniteLoop={true}
                     autoPlay={true}
                     width="100%"
-
                     customTransition="transform 500ms ease-in-out"
                     containerClass="carousel-container"
                 >
@@ -79,8 +78,7 @@ const CarouseYoutube = () => {
                         style={{ alignItems:'center',overflow:'hidden',borderRadius:'20px',marginBottom:'10px'}}
                         id={ele.id}
                             url={ele.link}
-                            controls
-                            
+                            controls                            
                             width="100%"
                             height="230px"
                             playing={show}
