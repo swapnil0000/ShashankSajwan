@@ -13,15 +13,15 @@ const Acheivement = () => {
 
   useEffect(() => {
     const countInterval = setInterval(() => {
-      setCount((prevCount) => (prevCount !== 600 ? prevCount + 1 : prevCount));
+      setCount((prevCount) => (prevCount !== 640 ? prevCount + 1 : prevCount));
     }, 20);
 
     const instaInterval = setInterval(() => {
-      setInstaCount((prevInstaCount) => (prevInstaCount !== 189 ? prevInstaCount + 1 : prevInstaCount));
+      setInstaCount((prevInstaCount) => (prevInstaCount !== 200 ? prevInstaCount + 1 : prevInstaCount));
     }, 60);
 
     const telegramInterval = setInterval(() => {
-      setTelegramCount((prevTelegramCount) => (prevTelegramCount !== 125 ? prevTelegramCount + 1 : prevTelegramCount));
+      setTelegramCount((prevTelegramCount) => (prevTelegramCount !== 128 ? prevTelegramCount + 1 : prevTelegramCount));
     }, 60);
 
     return () => {
