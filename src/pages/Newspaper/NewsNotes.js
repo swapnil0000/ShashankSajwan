@@ -226,15 +226,6 @@ const Optional = () => {
       </Box>
     
     </Box>
-    <div style={{marginBottom:'100px'}}>
-    <h2>Newspaper Notes</h2>
-    {notes.map((note) => (
-      <div key={note.id}>
-        <img src={`http://localhost:1337${note.image.url}`} alt={note.title} />
-        <a href={note.driveLink} target="_blank" rel="noopener noreferrer">View on Drive</a>
-      </div>
-    ))}
-  </div>
   </Box>
   )
 }
