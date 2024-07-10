@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios'; // If using Axios for HTTP requests
+
 
 
 
@@ -114,6 +116,17 @@ const juneData=[
   { id: 15, img:'/assets/newspaper/june/ncertjuly15.jpg',link:'https://drive.google.com/file/d/1uVg51b0TH7cC0T55QREhJf8ZaA7CZp8m/view?usp=sharing' },
   { id: 16, img:'/assets/newspaper/june/ncertjuly16.jpg',link:'https://drive.google.com/file/d/12f12065BmIwg3DzvnthwZFCAMDfarG2d/view?usp=sharing' },
   { id: 17, img:'/assets/newspaper/june/ncertjuly17.jpg',link:'https://drive.google.com/file/d/194h-0zAUvqyTJcKY-iKIddbV70wZ3UvE/view?usp=sharing' },
+  { id: 18, img:'/assets/newspaper/june/june21.webp',link:'https://drive.google.com/file/d/1FVYYqJOCWmpd3w3zE-xVE3zvkd2qMttX/view?usp=sharing' },
+  { id: 19, img:'/assets/newspaper/june/june22.webp',link:'https://drive.google.com/file/d/16PlYq_4gPlocdhr8B1BmGb06qDmwpdc6/view?usp=sharing' },
+  { id: 20, img:'/assets/newspaper/june/june23.webp',link:'https://drive.google.com/file/d/1sf3ARe8Zb6Ed1aoObNOe1o27H3DEJj-3/view?usp=sharing' },
+  { id: 21, img:'/assets/newspaper/june/june24.webp',link:'https://drive.google.com/file/d/1VupWtO-jmATHuKspVP1uOsKv_YFYwHlX/view?usp=sharing' },
+  { id: 22, img:'/assets/newspaper/june/june25.webp',link:'https://drive.google.com/file/d/1ok1R6emRHOb6nbtUjgCF-ZojUx9n1k22/view?usp=sharing' },
+  { id: 23, img:'/assets/newspaper/june/june26.webp',link:'https://drive.google.com/file/d/16UZWHm9SK2Z0adF4D8x3o64Sk4G2A2EE/view' },
+  { id: 24, img:'/assets/newspaper/june/june27.webp',link:'https://drive.google.com/file/d/1wbYUle-7IiqZyzU_qRMls3PkPtRS-ZVW/view?usp=sharing' },
+  { id: 25, img:'/assets/newspaper/june/june28.webp',link:'https://drive.google.com/file/d/1Bp1o117_sH87QbtPBoyc3bAMXYwnuGxp/view?usp=sharing' },
+  { id: 26, img:'/assets/newspaper/june/june2930.webp',link:'https://drive.google.com/file/d/1nYLKI7LH0lrez10XFEaF5ln_AglEO8WC/view?usp=sharing' },
+
+
 
 ]
 
@@ -130,10 +143,24 @@ const Optional = () => {
   const [value, setValue] = useState(0);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const [notes, setNotes] = useState([]);
+
 
   useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const response = await axios.get('http://localhost:1337/newspaper-notes');
+        console.log('Response:', response); // Log the entire response object
+        setNotes(response.data); // Assuming the response data is an array of notes
+      } catch (error) {
+        console.error('Error fetching notes:', error);
+      }
+    };
+
+    fetchNotes();
+    
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -197,9 +224,20 @@ const Optional = () => {
         </TabPanel>
       ))}
       </Box>
+    
     </Box>
+    <div style={{marginBottom:'100px'}}>
+    <h2>Newspaper Notes</h2>
+    {notes.map((note) => (
+      <div key={note.id}>
+        <img src={`http://localhost:1337${note.image.url}`} alt={note.title} />
+        <a href={note.driveLink} target="_blank" rel="noopener noreferrer">View on Drive</a>
+      </div>
+    ))}
+  </div>
   </Box>
   )
 }
 
 export default Optional
+
