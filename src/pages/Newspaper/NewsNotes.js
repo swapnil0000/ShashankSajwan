@@ -126,7 +126,29 @@ const juneData=[
   { id: 25, img:'/assets/newspaper/june/june28.webp',link:'https://drive.google.com/file/d/1Bp1o117_sH87QbtPBoyc3bAMXYwnuGxp/view?usp=sharing' },
   { id: 26, img:'/assets/newspaper/june/june2930.webp',link:'https://drive.google.com/file/d/1nYLKI7LH0lrez10XFEaF5ln_AglEO8WC/view?usp=sharing' },
 
+]
 
+const julyData=[
+  {id:1, img:'/assets/newspaper/july/july1.webp',link:"https://drive.google.com/file/d/1N4BbB7sd0iepIEg5cE2Zfs9q3YIFJhPF/view?usp=sharing"},
+  {id:2, img:'/assets/newspaper/july/july2.webp',link:"https://drive.google.com/file/d/10988mlaQNPy41RSTPSgBEHT0zS-fpAXo/view?usp=sharing"},
+  {id:3, img:'/assets/newspaper/july/july3.webp',link:"https://drive.google.com/file/d/1jmTd8Ul62jpSX1HRaw-zxrY582TMr4Js/view?usp=sharing"},
+  {id:4, img:'/assets/newspaper/july/july4.webp',link:"https://drive.google.com/file/d/1_NiS3max9H_CL7e2YLliZLnXKt7-ZYs0/view?usp=sharing"},
+  {id:5, img:'/assets/newspaper/july/july5.webp',link:"https://drive.google.com/file/d/1w9wyCKxYUEXIR0FN8272A1G3Jk19wTnv/view?usp=sharing"},
+  {id:6, img:'/assets/newspaper/july/july6.webp',link:"https://drive.google.com/file/d/1O_lUSrAlveFvKRXxzmWubdqDl8mfj_Jq/view?usp=sharing"},
+  {id:7, img:'/assets/newspaper/july/july7.webp',link:"https://drive.google.com/file/d/1OTn3-w6JWi3jhEhckkowRD33yFd5Cltu/view?usp=sharing"},
+  {id:8, img:'/assets/newspaper/july/july8.webp',link:"https://drive.google.com/file/d/1FB0CmJOpsGfm78Y9885utNayIIbYklmp/view?usp=sharing"},
+  {id:9, img:'/assets/newspaper/july/july9.webp',link:"https://drive.google.com/file/d/1i8BrioMBeS_GhBNVYHMxezjdG3tDypUk/view?usp=sharing"},
+  {id:10, img:'/assets/newspaper/july/july10.webp',link:"https://drive.google.com/file/d/1u2s7SBBcDrKJVTtMXgQxxhsu-RvRooG9/view?usp=sharing"},
+  {id:11, img:'/assets/newspaper/july/july11.webp',link:"https://drive.google.com/file/d/10I854-83vaJ4KgUjfL7SgFx_XNV879dS/view?usp=sharing"},
+  {id:12, img:'/assets/newspaper/july/july12.webp',link:"https://drive.google.com/file/d/1P3GgxtyKW-TgZWQHEfZG89uav4tzb96g/view?usp=sharing"},
+  {id:13, img:'/assets/newspaper/july/july13.webp',link:"https://drive.google.com/file/d/1nXJwvIQvsvknhEFJlsyt4GNV8ccljaZS/view?usp=sharing"},
+  {id:14, img:'/assets/newspaper/july/july14.webp',link:"https://drive.google.com/file/d/1REc3LjyfLQ6pDnVU7lZXp17Tybrc_1fE/view?usp=sharing"},
+  {id:15, img:'/assets/newspaper/july/july15.webp',link:"https://drive.google.com/file/d/1CA-zxzho1170oy-wzyPDNHHYoz4yT9PD/view?usp=sharing"},
+  {id:16, img:'/assets/newspaper/july/july16.webp',link:"https://drive.google.com/file/d/11R9TNG-O8bXUfjMHbLy8YTFdnrLoO6FI/view?usp=sharing"},
+  {id:17, img:'/assets/newspaper/july/july17.webp',link:"https://drive.google.com/file/d/1GtYqEPZub5tkxjs6HArCquZA7IMa914J/view?usp=sharing"},
+  {id:18, img:'/assets/newspaper/july/july18.webp',link:"https://drive.google.com/file/d/1ea7sRt7FFcb4ipvcdMMfpvjGv9ke7ePA/view?usp=sharing"},
+
+  
 
 ]
 
@@ -136,6 +158,7 @@ const tabData = [
   { id: 0, label: "APRIL 2024" },
   {id:1,label:"MAY 2024"},
   {id:2,label:"JUNE 2024"},
+  {id:3,label:"JULY 2024"},
 ];
 
 
@@ -221,6 +244,7 @@ const Optional = () => {
           {value === 0 && renderGridItems(tabpanel)}
           {value === 1 && renderGridItems(maydata)}
           {value===2 && renderGridItems(juneData)} 
+          {value===3 && renderGridItems(julyData)} 
         </TabPanel>
       ))}
       </Box>
