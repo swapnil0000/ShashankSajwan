@@ -147,11 +147,13 @@ const julyData=[
   {id:16, img:'/assets/newspaper/july/july16.webp',link:"https://drive.google.com/file/d/11R9TNG-O8bXUfjMHbLy8YTFdnrLoO6FI/view?usp=sharing"},
   {id:17, img:'/assets/newspaper/july/july17.webp',link:"https://drive.google.com/file/d/1GtYqEPZub5tkxjs6HArCquZA7IMa914J/view?usp=sharing"},
   {id:18, img:'/assets/newspaper/july/july18.webp',link:"https://drive.google.com/file/d/1ea7sRt7FFcb4ipvcdMMfpvjGv9ke7ePA/view?usp=sharing"},
+  {id:19, img:'/assets/newspaper/july/july19.webp',link:"https://drive.google.com/file/d/1wDdZk1j-U9xUcyzg_h8GItXXEywSP_as/view?usp=sharing"},
+  {id:20, img:'/assets/newspaper/july/july20.webp',link:"https://drive.google.com/file/d/1Qv3I7n73bkV98ggHpYCHfmvjm7FXfJ0P/view?usp=sharing"},
+
 
   
 
 ]
-
 
 
 const tabData = [
