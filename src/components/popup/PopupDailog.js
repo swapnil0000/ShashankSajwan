@@ -27,10 +27,8 @@ const PopupDialog = () => {
       {showPopup && (
         <div className="home-popup">
           <div className="popup">
-            <div className="popup-content">
-              <img onClick={handleClick} src="/assets/popup.webp" alt="Popup Image" style={{width:isMobileView?"360px":"700px",height:isMobileView?"230px":"400px"}}/>
-              <button className="close-popup-btn" onClick={handleClose}>Close</button>
-            </div>
+          <img onClick={handleClick} src="/assets/biggest.jpg" alt="Popup Image" style={{width:isMobileView?"280px":"100%",height:isMobileView?"220px":"500px",borderRadius:'5px'}}/>
+           <button style={{}} className="close-popup-btn" onClick={handleClose}>Close</button> 
           </div>
         </div>
       )}
@@ -39,3 +37,14 @@ const PopupDialog = () => {
 };
 
 export default PopupDialog;
+
+// {!isMobileView&& <div className="popup-content">
+//   <img onClick={handleClick} src="/assets/biggest.jpg" alt="Popup Image" style={{width:isMobileView?"auto":"100%",height:isMobileView?"300px":"500px"}}/>
+//   {!isMobileView && <button style={{}} className="close-popup-btn" onClick={handleClose}>Close</button>            }
+// </div>}
+// {
+//   isMobileView && <div className="popup-mobile">
+//   <img onClick={handleClick} src="/assets/biggest.jpg" alt="Popup Image" style={{width:isMobileView?"auto":"100%",height:isMobileView?"300px":"500px"}}/>
+//   {!isMobileView && <button style={{}} className="close-popup-btn" onClick={handleClose}>Close</button>            }
+// </div>
+// }

@@ -1,4 +1,3 @@
-/* popupStyle.css */
 .home-popup {
   position: fixed;
   display: flex;
@@ -7,10 +6,9 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  z-index: 1205; /* Ensure the popup is above other content */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* Black shadow effect */
-
+  z-index: 1205;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .popup {
@@ -25,18 +23,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-/* popupStyle.css */
-.popup-content {
-  text-align: center;
-  position: relative; /* Ensure relative positioning for absolute children */
-}
+
 
 .close-popup-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5%;
+  right: 0%; /* Position it outside the image */
+  transform: translateY(-50%);
   background-color: #ff6347;
   color: white;
   border: none;
