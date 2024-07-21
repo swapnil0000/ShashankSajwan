@@ -18,7 +18,7 @@ const PopupDialog = () => {
   const navigate=useNavigate();
 
   const handleClick=()=>{
-    navigate('/courses');
+    navigate('/');
     setShowPopup(false);
   }
 
@@ -27,8 +27,8 @@ const PopupDialog = () => {
       {showPopup && (
         <div className="home-popup">
           <div className="popup">
-          <img onClick={handleClick} src="/assets/biggest.jpg" alt="Popup Image" style={{width:isMobileView?"280px":"100%",height:isMobileView?"220px":"500px",borderRadius:'5px'}}/>
-           <button style={{}} className="close-popup-btn" onClick={handleClose}>Close</button> 
+          <img onClick={handleClick} src="/assets/biggest.jpg" alt="Popup Image" style={{width:isMobileView?"350px":"100%",height:isMobileView?"220px":"500px",borderRadius:'5px'}}/>
+          {!isMobileView && <button style={{}} className="close-popup-btn" onClick={handleClose}>Close</button> }
           </div>
         </div>
       )}
