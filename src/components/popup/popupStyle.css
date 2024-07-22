@@ -40,3 +40,15 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.close-popup-mobile{
+  position: absolute;
+  top: 5%;
+  right: 5%; /* Position it outside the image */
+  transform: translateY(-50%);
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
