@@ -10,7 +10,7 @@ const Carousels = () => {
   const data=[
     {
       id:1,
-      img:"/assets/banners/banner1.webp"
+      img:"/assets/banners/banner1.png"
     },
     {
       id:2,
