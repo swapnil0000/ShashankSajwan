@@ -152,6 +152,8 @@ const julyData=[
   {id:21, img:'/assets/newspaper/july/july21.webp',link:"https://drive.google.com/file/d/135AVmgbys96k22IUr6akhlRF34EFo8b3/view?usp=sharing"},
   {id:22, img:'/assets/newspaper/july/july22.webp',link:"https://drive.google.com/file/d/1beI3x16LeUS1W50IQTuyTjqH_PrHCsef/view?usp=sharing"},
   {id:23, img:'/assets/newspaper/july/july23.webp',link:"https://drive.google.com/file/d/1fFTDL_t0ITPxVKjXwpaodLhhpNzbX_7d/view?usp=sharing"},
+  {id:25, img:'/assets/newspaper/july/july25.webp',link:"https://drive.google.com/file/d/1qaxy-sLdBSXFwrdnXCPLIxDB8Ss39KZ1/view?usp=sharing"},
+
 
 
 
