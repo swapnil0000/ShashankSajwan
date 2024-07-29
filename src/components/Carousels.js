@@ -11,7 +11,7 @@ const Carousels = () => {
       {
         id: 1,
         img: "/assets/banners/banner1.png",
-        link: "https://amzn.to/3YcFpxc"
+        link: "https://amzn.to/3WncEva"
       },]
     // {
     //   id:2,
