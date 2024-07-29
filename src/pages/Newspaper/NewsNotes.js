@@ -155,8 +155,8 @@ const julyData=[
   {id:25, img:'/assets/newspaper/july/july25.webp',link:"https://drive.google.com/file/d/1qaxy-sLdBSXFwrdnXCPLIxDB8Ss39KZ1/view?usp=sharing"},
   {id:26, img:'/assets/newspaper/july/july26.webp',link:"https://drive.google.com/file/d/1YjnxL3m32_8k-fMk_FZi4T96DRzUvQqq/view?usp=sharing"},
   {id:27, img:'/assets/newspaper/july/july27.webp',link:"https://drive.google.com/file/d/12V5MGsZ923QpPfuosGn_G7rAt7b8-D4O/view?usp=sharing"},
-  // {id:28, img:'/assets/newspaper/july/july28.webp',link:"https://drive.google.com/file/d/1YjnxL3m32_8k-fMk_FZi4T96DRzUvQqq/view?usp=sharing"},
-  // {id:29, img:'/assets/newspaper/july/july29.webp',link:"https://drive.google.com/file/d/1YjnxL3m32_8k-fMk_FZi4T96DRzUvQqq/view?usp=sharing"},
+  {id:28, img:'/assets/newspaper/july/july28.webp',link:"https://drive.google.com/file/d/19_M-U13CPnh11R9R4jbx1wR2l3hP57UU/view?usp=sharing"},
+  {id:29, img:'/assets/newspaper/july/july29.webp',link:"https://drive.google.com/file/d/1M9oABa8DVSwB7IFzpl-Oo2uYexo5y2hs/view"},
   // {id:30, img:'/assets/newspaper/july/july30.webp',link:"https://drive.google.com/file/d/1YjnxL3m32_8k-fMk_FZi4T96DRzUvQqq/view?usp=sharing"},
   // {id:31, img:'/assets/newspaper/july/july31.webp',link:"https://drive.google.com/file/d/1YjnxL3m32_8k-fMk_FZi4T96DRzUvQqq/view?usp=sharing"},
 
