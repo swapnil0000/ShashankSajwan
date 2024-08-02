@@ -164,7 +164,7 @@ const julyData=[
 
 const augData=[
   {id:1,img:'/assets/newspaper/aug/aug1.webp',link:'https://drive.google.com/file/d/17nw8wTeTor4VEczoNmWmzswWvYp1Ct9F/view?usp=sharing'},
-  // {id:1,img:'/assets/newspaper/aug/aug1.webp',link:'https://drive.google.com/file/d/17nw8wTeTor4VEczoNmWmzswWvYp1Ct9F/view?usp=sharing'},
+  {id:1,img:'/assets/newspaper/aug/aug2.webp',link:'https://drive.google.com/file/d/1avMjetYWoOulGcbL4-X_5L4wGgKkl0uX/view?usp=sharing'},
   // {id:1,img:'/assets/newspaper/aug/aug1.webp',link:'https://drive.google.com/file/d/17nw8wTeTor4VEczoNmWmzswWvYp1Ct9F/view?usp=sharing'},
   // {id:1,img:'/assets/newspaper/aug/aug1.webp',link:'https://drive.google.com/file/d/17nw8wTeTor4VEczoNmWmzswWvYp1Ct9F/view?usp=sharing'},
 
