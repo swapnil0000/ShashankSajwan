@@ -34,6 +34,8 @@ const BookPage = () => {
             }
         }
     };
+    const videoUrl = 'https://book-video.s3.ap-south-1.amazonaws.com/bookvideo_0ixoliwT.mp4';
+
 
     return (
         <Box sx={{ width: '100%',marginTop:'110px' }}>
@@ -41,7 +43,7 @@ const BookPage = () => {
         <video
             ref={videoRef}
             style={{ width:isMobileView?"100%":"70%", height:isMobileView?"210px":'550px', objectFit: 'cover' }}
-            src='/assets/bookvideo.mp4'
+            src={videoUrl}
             alt="Book Banner"
             onClick={handleVideoClick}
             controls={false} // Optional: Hide default video controls
