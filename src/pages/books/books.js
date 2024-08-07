@@ -50,7 +50,7 @@ const Books = () => {
                             <Typography sx={{ fontSize: '15px' }}>👉🏼<span style={{ fontWeight: '600' }}> Exercise 4 :</span> Basic & Advance Practice Questions</Typography>
                         </Box>
                     }
-                    <ButtonComp isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+                    <ButtonComp isExpanded={isExpanded} setIsExpanded={setIsExpanded} link={"https://amzn.to/3WncEva"} />
                     </Box>
             </Container>
         </>
