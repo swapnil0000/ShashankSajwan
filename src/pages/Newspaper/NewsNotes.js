@@ -169,6 +169,8 @@ const augData=[
   {id:4,img:'/assets/newspaper/aug/aug4.webp',link:'https://drive.google.com/file/d/1PfCqV-8out848OaHT7nhki3Um-qzQuXc/view?usp=sharing'},
   {id:5,img:'/assets/newspaper/aug/aug5.webp',link:'https://drive.google.com/file/d/1TSVL2QvwfaF76J0wOfixkUAN2aVR6fE6/view?usp=sharing'},
   {id:6,img:'/assets/newspaper/aug/aug6.webp',link:'https://drive.google.com/file/d/1vDBz5x61A9QTs1HeEF7B_s6PMDBa-GuP/view?usp=sharing'},
+  {id:7,img:'/assets/newspaper/aug/aug7.jpg',link:'https://drive.google.com/file/d/1kICOqB9OLFS2VeK64Z6jcc6PBJZdnb2F/view?usp=sharing'},
+
 
 
 ]

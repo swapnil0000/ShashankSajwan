@@ -1,6 +1,7 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import * as React from 'react';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Link } from "react-router-dom";
 
 const Carousels = () => {
   const theme = useTheme();
@@ -10,7 +11,7 @@ const Carousels = () => {
   const data = [
       {
         id: 1,
-        img: "/assets/banners/banner1.png",
+        img: "/assets/banners/banner.png",
         link: "https://amzn.to/3WncEva"
       },]
     // {
@@ -39,9 +40,9 @@ const handleClick=(link)=>{
         </div>
         <div className="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
           {data.map((ele, index) => (
-            <div style={{cursor:'pointer'}} onClick={() => handleClick(ele.link)} key={ele.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+            <Link to='/books' style={{cursor:'pointer'}}  key={ele.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
               <img   style={{ width: '100%', height: isMobileView ? "220px" : "480px" ,cursor:'pointer'}} src={ele.img} alt="..." />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
