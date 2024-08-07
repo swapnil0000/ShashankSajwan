@@ -47,6 +47,8 @@ const BookPage = () => {
             alt="Book Banner"
             onClick={handleVideoClick}
             controls={false} // Optional: Hide default video controls
+            onLoadedData={() => console.log('Video loaded')}
+                    onError={(e) => console.error('Error loading video:', e)}
         />
         {!isPlaying && (
             <Box
