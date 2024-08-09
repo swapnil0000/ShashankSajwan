@@ -34,7 +34,7 @@ const handleClick=(link)=>{
 
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
     <Box sx={{ width: '100%' }}>
-      <div id="carouselExampleIndicators" className="carousel slide" style={{ maxHeight: '900px', marginTop: '100px' }}>
+      <div id="carouselExampleIndicators" className="carousel slide" style={{ maxHeight: '900px', marginTop:isMobileView?"100px":"110px" }}>
         <div className="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
         </div>

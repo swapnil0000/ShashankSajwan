@@ -30,22 +30,23 @@
 
 .close-popup-btn {
   position: absolute;
-  top: 5%;
-  right: 0%; /* Position it outside the image */
+  top: 8.3%;
+  right: 12.3%; /* Position it outside the image */
   transform: translateY(-50%);
-  background-color: #ff6347;
-  color: white;
+  background-color: #e8b008;
+  color: rgb(41, 9, 9);
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: 700;
 }
 .close-popup-mobile{
   position: absolute;
   top: 5%;
   right: 5%; /* Position it outside the image */
   transform: translateY(-50%);
-  background-color: #ff6347;
+  background-color: #efcb15;
   color: white;
   border: none;
   padding: 5px 10px;

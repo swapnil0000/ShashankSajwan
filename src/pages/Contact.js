@@ -3,6 +3,7 @@ import { Box, Button, Container, TextField, Typography, useMediaQuery, useTheme 
 import MailIcon from '@mui/icons-material/Mail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import axios from "axios";
+import Career from './carrer/Career';
 
 const Contact = () => {
   const theme = useTheme();
@@ -139,10 +140,11 @@ const Contact = () => {
       <Box sx={{ display: 'flex', flexDirection: 'column', marginBottom: '60px',justifyContent:'center' }}>
         <Typography sx={{fontSize:isMobileView?"25px":"36px",fontWeight:'500'}}>Contact us via Email or WhatsApp?</Typography>
         <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '5px' }}>For correspondence, kindly reach out to us at <span style={{ fontWeight: '600',color:'green' }}>ask.iasmentor@gmail.com or 7060748896 </span>
-          <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '10px', textAlign: 'justify', hyphens: 'inherit' }}>All email communications are managed and responded to by our Head Office located in Dehradun.</Typography> Should you seek guidance on Civil Services Exam preparation or wish to share your feedback/suggestions for us, we welcome you to send us an email.</Typography>
+        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '10px', textAlign: 'justify', hyphens: 'inherit' }}>All email communications are managed and responded to by our Head Office located in Dehradun.</Typography> Should you seek guidance on Civil Services Exam preparation or wish to share your feedback/suggestions for us, we welcome you to send us an email.</Typography>
       </Box>
       </Box>
     </Box>
+    <Career/>
     </Box>
   );
 }

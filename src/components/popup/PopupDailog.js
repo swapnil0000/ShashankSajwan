@@ -27,10 +27,10 @@ const PopupDialog = () => {
       {showPopup && (
         <div className="home-popup">
           <div className="popup">
-          <img onClick={handleClick} src="/assets/biggest.jpg" alt="Popup Image" style={{width:isMobileView?"350px":"100%",height:isMobileView?"220px":"500px",borderRadius:'5px'}}/>
+          <img onClick={handleClick} src="/assets/popup.png" alt="Popup Image" style={{width:isMobileView?"350px":"90%",height:isMobileView?"220px":"400px",borderRadius:'5px'}}/>
           {!isMobileView &&<button style={{}} className="close-popup-btn" onClick={handleClose}>Close</button>}
 {        
-  isMobileView &&  <button style={{}} className="close-popup-mobile" onClick={handleClose}>Close</button>
+  isMobileView &&  <button style={{fontSize:'20px'}} className="close-popup-mobile" onClick={handleClose}>Close</button>
 }
           </div>
         </div>

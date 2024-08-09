@@ -88,7 +88,7 @@ const Header = () => {
                 }}
               >
 
-                <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/">Home</Link>
+                <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/">Home</Link>
                 <Divider orientation='horizontal' sx={{width:'50%',color:'orange',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
 
                 <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
@@ -100,7 +100,7 @@ const Header = () => {
               aria-haspopup="true"
               aria-expanded={openMenuTable ? 'true' : undefined}
               onClick={handleClick}
-              style={{  fontSize: '30px',textDecoration:'none',color:'white' }}
+              style={{  fontSize: '25px',textDecoration:'none',color:'white' }}
             >
               Resources
               <ExpandMoreIcon sx={{color:'white'}}/>
@@ -154,16 +154,17 @@ const Header = () => {
         </Menu>
           </div> 
           <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
-          <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/videos">Videos</Link>   
+          <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/books">Our Books</Link>   
           <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
-  
-          <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/courses">Course</Link>     
+          <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/courses">Course</Link> 
+          <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+          <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/videos">Videos</Link>         
           <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
 
-                  <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/about">About</Link>
+                  <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/about">About</Link>
                   <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
 
-                <Link onClick={handleClose} style={{  fontSize: '30px',textDecoration:'none',color:'white' }} to="/contact">Contact</Link>
+                <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/contact">Contact</Link>
 
                 {/* Add more menu items as needed */}
               </List>
@@ -320,7 +321,7 @@ const Header = () => {
                   )
                 }
                
-             
+                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/books'>Our Books</Link> {/* Navigate to course section in home */}
                 <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/courses'>Course</Link> {/* Navigate to course section in home */}
                 <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/videos'>Videos</Link> {/* Navigattoe to course section in home */}
                 <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/about'>About</Link>

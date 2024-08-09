@@ -9,6 +9,7 @@ import CarouseYoutube from './youtube/CarouseYoutube'
 import Motive from './topHeader/Motive'
 import { useLocation } from 'react-router-dom'
 import Career from './carrer/Career'
+import HomeBook from './books/HomeBook'
 const Home = () => {
   const {pathname}=useLocation();
 
@@ -23,9 +24,8 @@ const Home = () => {
        <Acheivement/>
        <CourseProvide/>
        <Course/>
+       <HomeBook/>
        <CarouseYoutube/>
-      
-       <Career/>
     </>
   )
 }

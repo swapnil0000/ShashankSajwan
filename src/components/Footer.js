@@ -37,6 +37,7 @@ const Footer = () => {
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
 
                 <Typography onClick={() => navigate("/ncert")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Resources</Typography>
+                <Typography onClick={() => navigate("/books")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Our Books</Typography>
                 <Typography onClick={() => navigate("/courses")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Courses</Typography>
                 <Typography onClick={() => navigate("/faqs")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>FAQs</Typography>
               </Box>
