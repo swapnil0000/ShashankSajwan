@@ -8,7 +8,7 @@ const Motive = () => {
 
   return (
      <Container >
-      <Box sx={{display:'flex',marginTop:isMobileView?"15px":"40px",flexDirection:isSmallMobileView?"column":"row",alignItems:isSmallMobileView?"center":"null",justifyContent:isSmallMobileView?"center":"null",backgroundColor:"EEEEFF",gap:'30px',width:'100%',height:{lg:'240px',md:'240px',sm:'210px'}}}>
+      <Box sx={{display:'flex',marginTop:isMobileView?"15px":"40px",flexDirection:isSmallMobileView?"column":"row",alignItems:isSmallMobileView?"center":"null",justifyContent:isSmallMobileView?"center":"null",backgroundColor:"EEEEFF",gap:'30px',width:'100%',height:{lg:'200px',md:'240px',sm:'210px'}}}>
        
       <Box sx={{display:'flex',flexDirection:'column'}}>
       <img style={{width:isMobileView?"330px":"350px",borderRadius:'20px',display:'flex',flexDirection:'row',height:'200px'}} src='/assets/top.webp' alt='photo'/>

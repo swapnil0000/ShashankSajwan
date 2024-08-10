@@ -6,7 +6,7 @@ export const FlexCenterColoum=({children})=>{
   (theme.breakpoints.down("md"))
   const isSmallMobileView=useMediaQuery(theme.breakpoints.down("sm"));
     return(
-      <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center' sx={{width:'100%',marginTop:isMobileView?"15px":"10px"}}>{children}</Box>
+      <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center' sx={{width:'100%',marginTop:isMobileView?"15px":"0px"}}>{children}</Box>
     )
  }
 
@@ -14,7 +14,7 @@ export const FlexCenterColoum=({children})=>{
 
  export const ContentWrapper=({children})=>{
       return (
-         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '100px' }} >
+         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', width: '100%' }} >
          {children}</Box>
       )
  }

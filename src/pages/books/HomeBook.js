@@ -30,8 +30,7 @@ const HomeBook = () => {
     }
 
     return (
-        <div style={{ marginTop: '50px' }}>
-
+        <div>
             <section>
                 <FlexCenterColoum  >
                     <Typography sx={{ fontSize: isMobileView ? "25px" : "40px", fontWeight: '700' }}>OUR BOOKS</Typography>
