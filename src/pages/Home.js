@@ -10,6 +10,7 @@ import Motive from './topHeader/Motive'
 import { useLocation } from 'react-router-dom'
 import Career from './carrer/Career'
 import HomeBook from './books/HomeBook'
+import { Box } from '@mui/material'
 const Home = () => {
   const {pathname}=useLocation();
 
@@ -17,16 +18,16 @@ const Home = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return (   
-    <>
+    <Box>
        <Carousels/>
        <Motive/>
+       <HomeBook/>
        <Choose/>
        <Acheivement/>
        <CourseProvide/>
        <Course/>
-       <HomeBook/>
        <CarouseYoutube/>
-    </>
+    </Box>
   )
 }
 
