@@ -34,7 +34,7 @@ const BookPage = () => {
             }
         }
     };
-    const videoUrl = 'https://book-video.s3.ap-south-1.amazonaws.com/bookvideo_0ixoliwT.mp4';
+    const videoUrl = 'https://bookvideo.s3.ap-south-1.amazonaws.com/bookvideo_0ixoliwT.mp4';
 
 
     return (
