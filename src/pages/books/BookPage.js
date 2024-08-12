@@ -34,7 +34,7 @@ const BookPage = () => {
             }
         }
     };
-    const videoUrl = 'https://bookvideo.s3.ap-south-1.amazonaws.com/bookvideo_0ixoliwT.mp4';
+    const videoUrl = 'https://book-video.s3.ap-south-1.amazonaws.com/Sajwam+Video+FINAL+For+Amazon.mp4';
 
 
     return (
