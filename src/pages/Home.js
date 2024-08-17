@@ -24,7 +24,6 @@ const Home = () => {
        <HomeBook/>
        <Choose/>
        <Acheivement/>
-       <CourseProvide/>
        <Course/>
        <CarouseYoutube/>
     </Box>
