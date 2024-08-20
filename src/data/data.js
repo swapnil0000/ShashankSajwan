@@ -52,7 +52,7 @@ export const choosedata = [
       value:"The book features a dedicated Pre-Examination Revision Section, including UPSC CSE Previous Year Questions (2017-2024) and State PSC Previous Year Questions.",
       // value: "Introducing a pioneering platform for CSE Aspirants, providing comprehensive preparation with meticulous guidance.",
       value1:'It also offers NCERT-based exercises mapped to Classes 6-12, along with Basic and Advanced Practice Questions.',
-      value2:'  This comprehensive inclusion supports thorough revision and practice for aspirants'
+      value2:'  This comprehensive inclusion supports thorough revision and practice for aspirants.'
     },
 ];
 
