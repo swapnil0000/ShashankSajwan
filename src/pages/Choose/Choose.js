@@ -7,14 +7,14 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { choosedata } from '../../data/data';
 
 const Choose = () => {
-const theme = useTheme();
-const isMobileView = useMediaQuery(theme.breakpoints.down("md"))
-const isSmallMobileView = useMediaQuery(theme.breakpoints.down("sm"));
+  const theme = useTheme();
+  const isMobileView = useMediaQuery(theme.breakpoints.down("md"))
+  const isSmallMobileView = useMediaQuery(theme.breakpoints.down("sm"));
 
 
-//STYLED COMPONENT
-  
-const BoxStyle = styled('Box')({
+  //STYLED COMPONENT
+
+  const BoxStyle = styled('Box')({
     display: 'flex',
     height: { md: '250px', sm: '290px', xs: '270px', lg: '320px' },
     flexDirection: 'row',
@@ -26,7 +26,7 @@ const BoxStyle = styled('Box')({
     '&:hover': {
       transform: 'scale(1.01)',
     }
-});
+  });
   return (
     <Container >
       <Box
@@ -38,30 +38,30 @@ const BoxStyle = styled('Box')({
         }}
       >
         <FlexCenterColoum  >
-          <Typography sx={{ fontSize: isSmallMobileView ? "21px" : "40px", fontWeight: '700' }}>OUR UNIQUE FEATURES</Typography>
+          <Typography sx={{ fontSize: isSmallMobileView ? "21px" : "40px", fontWeight: '700' }}>KEY FEATURES OF OUR BOOK</Typography>
         </FlexCenterColoum>
       </Box>
-      <Grid sx={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '15px' }} container spacing={1}>
+      <Grid sx={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '5px' }} container spacing={1}>
         {
           choosedata.map((ele) => (
             <Grid item lg={4} md={6} sm={6} xs={12} key={ele.id}>
               <BoxStyle>
                 <Paper sx={{ display: 'flex', flexDirection: 'column', width: '40px' }} elevation={3}>
-                  <Typography variant='h5' >{ele.title}</Typography>
-                  <Box sx={{ display: "flex", flexDirection: 'row', height: '200px' }}>
-                  <LazyLoadImage
-                  src={ele.img}
-                  alt={ele.title}
-                  width="100px"
-                  height="100px"
-                  style={{ marginRight: '10px', margin: '10px' }}
-                  effect="blur"
-                />                   
-                 <Box sx={{ marginTop: '5px' }}>
-                      <ul style={{ display: 'flex', flexDirection: 'column',alignItems:'start' }} >
-                        <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value}</li>
-                        <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value1}</li>
-                        <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value2}</li>
+                  <Typography sx={{ fontSize: isMobileView ? "17px" : "20px", textAlign: 'center', fontWeight: '600', marginTop: '10px' }} >{ele.title}</Typography>
+                  <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: 'row', height: isMobileView ? 'auto' : "220px" }}>
+                    <LazyLoadImage
+                      src={ele.img}
+                      alt={ele.title}
+                      width="100px"
+                      height="100px"
+                      style={{ marginRight: '10px', margin: '5px' }}
+                      effect="blur"
+                    />
+                    <Box sx={{ marginTop: '0px' }}>
+                      <ul style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }} >
+                        {ele.value &&  <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value}</li>}
+                        {ele.value1 && <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value1}</li>}
+                        {ele.value2 && <li style={{ listStyle: 'circle', fontSize: isMobileView ? "11px" : "13px", fontFamily: 'roboto' }}>{ele.value2}</li>}
                       </ul>
                     </Box>
                   </Box>
@@ -70,9 +70,10 @@ const BoxStyle = styled('Box')({
             </Grid>
           ))
         }
-  </Grid>
-</Container>
- );
- }
+      </Grid>
+    </Container>
+  );
+}
 
 export default Choose;
+

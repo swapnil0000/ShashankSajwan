@@ -13,7 +13,7 @@ const Acheivement = () => {
 
   useEffect(() => {
     const countInterval = setInterval(() => {
-      setCount((prevCount) => (prevCount !== 640 ? prevCount + 1 : prevCount));
+      setCount((prevCount) => (prevCount !== 650 ? prevCount + 1 : prevCount));
     }, 20);
 
     const instaInterval = setInterval(() => {
