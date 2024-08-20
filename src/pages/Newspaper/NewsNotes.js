@@ -182,6 +182,19 @@ const augData=[
   {id:17,img:'/assets/newspaper/aug/aug17.jpg',link:'https://drive.google.com/file/d/1id7Rt5yaYGKTRtzsBqqk-k6iz9bQW4bh/view?usp=sharing'},
   {id:18,img:'/assets/newspaper/aug/aug18.jpg',link:'https://drive.google.com/file/d/1QgwuKZk8_T5ZqSX6r9sXSOQZA9bK6-vU/view?usp=sharing'},
   {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  {id:19,img:'/assets/newspaper/aug/aug20.jpg',link:'https://drive.google.com/file/d/1hu8B_VA8I-3RdIhtJnlZpk6cdCDL5zEb/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+
 
 
 
