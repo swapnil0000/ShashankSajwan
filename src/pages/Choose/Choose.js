@@ -38,7 +38,7 @@ const Choose = () => {
         }}
       >
         <FlexCenterColoum  >
-          <Typography sx={{ fontSize: isSmallMobileView ? "21px" : "40px", fontWeight: '700' }}>KEY FEATURES OF OUR BOOK</Typography>
+          <Typography sx={{ fontSize: isSmallMobileView ? "21px" : "40px", fontWeight: '700' }}>KEY FEATURES OF OUR BOOKS</Typography>
         </FlexCenterColoum>
       </Box>
       <Grid sx={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '5px' }} container spacing={1}>
