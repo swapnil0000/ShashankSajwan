@@ -143,12 +143,8 @@ const Payment = () => {
               <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />Scan the QR Code for payment.                </Typography>
               <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />Send the screenshot of the payment on WhatsApp.                </Typography>
               <Typography><FiberManualRecordIcon sx={{ width: '17px', marginRight: '5px' }} />After your payment, our team will respond you soon.</Typography>
-
-
             </Box>
-
           </Box>
-
         </Box>
         <Box sx={{backgroundColor:'lightblue',padding:'20px',marginBottom:'30px'}}>
         <Typography sx={{ fontSize: isMobileView ? "30px" : "35px", fontWeight: '700', textAlign: 'center' , }}>Account Details</Typography>
