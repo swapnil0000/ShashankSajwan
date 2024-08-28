@@ -1,6 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { Box, Container, Grid, Typography, useMediaQuery, useTheme, CircularProgress, Divider } from '@mui/material';
-
 // Lazy load ReactPlayer component
 const ReactPlayer = lazy(() => import("react-player/youtube"));
 const Videos = () => {
