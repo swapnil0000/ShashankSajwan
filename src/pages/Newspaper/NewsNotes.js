@@ -191,7 +191,7 @@ const augData=[
   {id:26,img:'/assets/newspaper/aug/aug26.jpg',link:'https://drive.google.com/file/d/15yy3jb8fp-QyqZ3MCAiMD42KF_yGlRQ6/view?usp=sharing'},
   {id:27,img:'/assets/newspaper/aug/aug27.jpg',link:'https://drive.google.com/file/d/1uANB3LKxXICFX5I2yvRmS4bblFvM7HDR/view?usp=sharing'},
   {id:28,img:'/assets/newspaper/aug/aug28.jpg',link:'https://drive.google.com/file/d/1AztTDLVyTLJDYgA8RN26wMPgpRzdPr3d/view?usp=sharing'},
-  // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
+  {id:29,img:'/assets/newspaper/aug/aug29.jpg',link:'https://drive.google.com/file/d/1K0HfvUzHSqCX3o6miRVTJ9StrgZiikjd/view?usp=sharing'},
   // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
   // {id:19,img:'/assets/newspaper/aug/aug19.jpg',link:'https://drive.google.com/file/d/1dI0TG3ElHYzrjxpshEm-m1L8B2-0FGsA/view?usp=sharing'},
 
