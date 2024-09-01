@@ -193,14 +193,42 @@ const augData=[
   {id:28,img:'/assets/newspaper/aug/aug28.jpg',link:'https://drive.google.com/file/d/1AztTDLVyTLJDYgA8RN26wMPgpRzdPr3d/view?usp=sharing'},
   {id:29,img:'/assets/newspaper/aug/aug29.jpg',link:'https://drive.google.com/file/d/1K0HfvUzHSqCX3o6miRVTJ9StrgZiikjd/view?usp=sharing'},
   {id:30,img:'/assets/newspaper/aug/aug30.jpg',link:'https://drive.google.com/file/d/1l22-8bF1G1oQjwLLg3NZ2NY2YllzFelK/view?usp=sharing'},
-  {id:31,img:'/assets/newspaper/aug/aug31.jpg',link:'https://drive.google.com/file/d/1nKYcCyXmFsDx-q80oHHAuALafGGIlsm-/view?usp=sharing'},
+  {id:31,img:'/assets/newspaper/aug/aug31.jpg',link:'https://drive.google.com/file/d/1nKYcCyXmFsDx-q80oHHAuALafGGIlsm-/view?usp=sharing'}
 
+]
 
-
-
-
-
-
+const sepData=[
+  {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:'https://drive.google.com/file/d/1djkcO6qoJJkJ3tQ_fsKVVg5bj6lrvy7K/view?usp=sharing'},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
+  // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
 ]
 
 
@@ -209,7 +237,8 @@ const tabData = [
   {id:1,label:"MAY 2024"},
   {id:2,label:"JUNE 2024"},
   {id:3,label:"JULY 2024"},
-  {id:4,label:"AUGUST 2024"}
+  {id:4,label:"AUGUST 2024"},
+  {id:5,label:"SEPTEMBER 2024"}
 ];
 
 
@@ -297,7 +326,7 @@ const Optional = () => {
           {value===2 && renderGridItems(juneData)} 
           {value===3 && renderGridItems(julyData)} 
           {value===4 && renderGridItems(augData)} 
-
+          {value===5 && renderGridItems(sepData)} 
         </TabPanel>
       ))}
       </Box>
