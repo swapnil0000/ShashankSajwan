@@ -215,6 +215,7 @@ const sepData=[
   {id:15,img:'/assets/newspaper/sep/16sep.jpg',link:'https://drive.google.com/file/d/1NiSEu9-20FdKlr6zFsibPaHnKFZlLa02/view?usp=sharing'},
   {id:16,img:'/assets/newspaper/sep/17sep.jpg',link:'https://drive.google.com/file/d/12Duz4hVRQ72xa7C1LxNmHtWddMPlQY-R/view?usp=sharing'},
   {id:16,img:'/assets/newspaper/sep/18sep.jpg',link:'https://drive.google.com/file/d/1mgWUkqSvfSjgA8hxNQ_ZxFrIeUwVOIRn/view?usp=sharing'},
+  {id:16,img:'/assets/newspaper/sep/19sep.jpg',link:'https://drive.google.com/file/d/1IewxlWWxtEg_aufv7Nc7kxLt_7SJWjR4/view?usp=sharing'},
   // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
   // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
   // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
