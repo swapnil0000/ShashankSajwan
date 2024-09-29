@@ -30,7 +30,7 @@ const CourseProvide = () => {
   };
 
   const handleCourse = () => {
-    // navigate("/courses");
+    navigate("/courses");
   };
 
   const CourseDetails = ({ courseData }) => {
@@ -64,7 +64,7 @@ const CourseProvide = () => {
         </Box>
         <ColumnCenter>
           <Divider sx={{ width: '95%', marginTop: '20px', border: '0.5px solid black' }} />
-          <Button onClick={handleCourse} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0750f', color: 'whitesmoke', marginTop: '10px',marginBottom:'10px' }} variant='contained'>Coming Soon</Button>
+          <Button onClick={handleCourse} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0750f', color: 'whitesmoke', marginTop: '10px',marginBottom:'10px' }} variant='contained'>Enroll Now</Button>
         </ColumnCenter>
       </BoxMainStyle>
     </Container>
