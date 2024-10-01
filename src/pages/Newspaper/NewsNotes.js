@@ -241,14 +241,18 @@ const sepData=[
   // {id:1,img:'/assets/newspaper/sep/1sep.jpg',link:''},
 ]
 
+const octData = [
+  {id:1,img:'/assets/newspaper/oct/1oct.jpg',link:'https://drive.google.com/file/d/1hfM4a1lSQUWhhQlMv5j0iJUdcU18hHoc/view?usp=sharing '},
 
+]
 const tabData = [
   { id: 0, label: "APRIL 2024" },
   {id:1,label:"MAY 2024"},
   {id:2,label:"JUNE 2024"},
   {id:3,label:"JULY 2024"},
   {id:4,label:"AUGUST 2024"},
-  {id:5,label:"SEPTEMBER 2024"}
+  {id:5,label:"SEPTEMBER 2024"},
+  {id:6,label:"OCTOBER 2024"},
 ];
 
 
@@ -337,6 +341,7 @@ const Optional = () => {
           {value===3 && renderGridItems(julyData)} 
           {value===4 && renderGridItems(augData)} 
           {value===5 && renderGridItems(sepData)} 
+          {value===6 && renderGridItems(octData)} 
         </TabPanel>
       ))}
       </Box>
