@@ -244,6 +244,7 @@ const sepData=[
 const octData = [
   {id:1,img:'/assets/newspaper/oct/1oct.jpg',link:'https://drive.google.com/file/d/1hfM4a1lSQUWhhQlMv5j0iJUdcU18hHoc/view?usp=sharing '},
   {id:2,img:'/assets/newspaper/oct/2oct.jpg',link:'https://drive.google.com/file/d/1edVN4FjWX9z9X-8XJzPXMidX32q4JCYB/view?usp=sharing'},
+  {id:3,img:'/assets/newspaper/oct/3oct.jpg',link:'https://drive.google.com/file/d/1H1k0iIbCl1aSou_W5pZ4QhJUzVBpG65U/view?usp=sharing'},
   // {id:1,img:'/assets/newspaper/oct/1oct.jpg',link:''},
   // {id:1,img:'/assets/newspaper/oct/1oct.jpg',link:''},
   // {id:1,img:'/assets/newspaper/oct/1oct.jpg',link:''},
