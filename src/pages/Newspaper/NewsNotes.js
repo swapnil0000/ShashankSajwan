@@ -258,6 +258,7 @@ const octData = [
   {id:15,img:'/assets/newspaper/oct/15oct.jpg',link:'https://drive.google.com/file/d/1BPck1ssH1lIBLvAmvXVekarcLqX76ARB/view?usp=sharing'},
   {id:16,img:'/assets/newspaper/oct/16oct.jpg',link:'https://drive.google.com/file/d/1LwCKI2Bf92wkdCJvLyaGaE3uRrRTuK_a/view?usp=sharing'},
   {id:17,img:'/assets/newspaper/oct/17oct.jpeg',link:'https://drive.google.com/file/d/1XqQz_Ta4JyBTCU8ecXyq6bTcNq5Ca1p5/view?usp=sharing'},
+  {id:18,img:'/assets/newspaper/oct/18oct.jpeg',link:'https://drive.google.com/file/d/1t6837NWHo7hhv5LDHy0g1DpRXz9QbvrP/view?usp=sharing'},
   // {id:1,img:'/assets/newspaper/oct/1oct.jpg',link:''},
   // {id:1,img:'/assets/newspaper/oct/1oct.jpg',link:''},
   // {id:1,img:'/assets/newspaper/oct/1oct.jpg',link:''},
