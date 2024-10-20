@@ -56,16 +56,16 @@ const Header = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-   const handleMenuClose=()=>{
+  const handleMenuClose = () => {
     setAnchorEl(!anchorEl)
-   }
+  }
 
-   const handleNavigation = (path) => () => {
+  const handleNavigation = (path) => () => {
     navigate(path);
     setOpenMenu(false);
     setAnchorEl(false);
   };
-  
+
 
 
 
@@ -78,11 +78,11 @@ const Header = () => {
               anchor="top"
               open={openMenu}
               onClose={handleClose}
-              sx={{ width: '50vw', "& .MuiPaper-root": { width: '100vw',height:'450px' } }} // Set width to full viewport width
+              sx={{ width: '50vw', "& .MuiPaper-root": { width: '100vw', height: '450px' } }} // Set width to full viewport width
             >
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end',backgroundColor:'#212529' }}>
-                <IconButton onClick={handleClose} sx={{ color: 'white',fontSize:'30px', }}>
-                  <CloseIcon  sx={{fontSize:'40px',fontWeight:'600',marginTop:'4px'}}/> {/* Assume CloseIcon is imported */}
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end', backgroundColor: '#212529' }}>
+                <IconButton onClick={handleClose} sx={{ color: 'white', fontSize: '30px', }}>
+                  <CloseIcon sx={{ fontSize: '40px', fontWeight: '600', marginTop: '4px' }} /> {/* Assume CloseIcon is imported */}
                 </IconButton>
               </Box>
 
@@ -91,93 +91,107 @@ const Header = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center', // Center items vertically
-                 // Center items horizontally
+                  // Center items horizontally
                   height: '55vh', // Set height to full viewport height
                   backgroundColor: '#212529',
                   padding: '0', // Remove default padding
                 }}
               >
 
-                <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/">Home</Link>
-                <Divider orientation='horizontal' sx={{width:'50%',color:'orange',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+                <Link onClick={handleClose} style={{ fontSize: '25px', textDecoration: 'none', color: 'white' }} to="/">Home</Link>
+                <Divider orientation='horizontal' sx={{ width: '50%', color: 'orange', height: '3px', border: '1px solid white', marginBottom: '10px', }} />
 
-                <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
-              <Link
-              id="basic-button"
-              variant='text'
-              sx={{color:'white',textTransform:'none'}}
-              aria-controls={openMenuTable ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={openMenuTable ? 'true' : undefined}
-              onClick={handleClick}
-              style={{  fontSize: '25px',textDecoration:'none',color:'white' }}
-            >
-              Resources
-              <ExpandMoreIcon sx={{color:'white'}}/>
-            </Link>
-            <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={openMenuTable}
-            onClose={handleMenuClose}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
-              sx: { flexDirection: 'column' , fontWeight:'600',backgroundColor:'#212529'}, // Set the direction to column
-            }}
-          >
-          <Box sx={{display:'flex',flexDirection:'column',fontWeight:'600'}}>
-          <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
-            backgroundColor: 'orangered' // Change the background color on hover
-          },}}>
-          <MenuItem onClick={handleNavigation('/ncert')}  sx={{fontSize:'15px'}} >Ncert Notes
-          
-          </MenuItem>
-           
-          
-          </Typography>
-          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-            backgroundColor: 'orangered' // Change the background color on hover
-          },}}>
-          <MenuItem onClick={handleNavigation("/syllabus")} sx={{fontSize:'15px'}}>Syllabus</MenuItem>
-          </Typography>
-          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-            backgroundColor: 'orangered'// Change the background color on hover
-          },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/pyqs')}>PYQs</MenuItem>
-          </Typography>
-          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-            backgroundColor:'orangered'// Change the background color on hover
-          },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/general')}>General Studies</MenuItem>
-          </Typography>
-          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-            backgroundColor:'orangered' // Change the background color on hover
-          },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/optional')}>Optional</MenuItem>
-          </Typography>          
-          <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-            backgroundColor: 'orangered', // Change the background color on hover
-          },}}>
-          <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>     
-          </Typography>
-          </Box>
-        </Menu>
-          </div> 
-          <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
-          <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/books">Our Books</Link>   
-          <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
-          <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/videos">Videos</Link>         
-          <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                  <Link
+                    id="basic-button"
+                    variant='text'
+                    sx={{ color: 'white', textTransform: 'none' }}
+                    aria-controls={openMenuTable ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openMenuTable ? 'true' : undefined}
+                    onClick={handleClick}
+                    style={{ fontSize: '25px', textDecoration: 'none', color: 'white' }}
+                  >
+                    Resources
+                    <ExpandMoreIcon sx={{ color: 'white' }} />
+                  </Link>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={openMenuTable}
+                    onClose={handleMenuClose}
+                    MenuListProps={{
+                      'aria-labelledby': 'basic-button',
+                      sx: { flexDirection: 'column', fontWeight: '600', backgroundColor: '#212529' }, // Set the direction to column
+                    }}
+                  >
+                    <Box sx={{ display: 'flex', flexDirection: 'column', fontWeight: '600' }}>
+                      <Typography sx={{
+                        textTransform: 'none', margin: "1px", color: 'white', fontSize: '15px', '&:hover': {
+                          backgroundColor: 'orangered' // Change the background color on hover
+                        },
+                      }}>
+                        <MenuItem onClick={handleNavigation('/ncert')} sx={{ fontSize: '15px' }} >Ncert Notes
 
-                  <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/about">About</Link>
-                  <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+                        </MenuItem>
 
-                <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/contact">Contact</Link>
+
+                      </Typography>
+                      <Typography sx={{
+                        textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                          backgroundColor: 'orangered' // Change the background color on hover
+                        },
+                      }}>
+                        <MenuItem onClick={handleNavigation("/syllabus")} sx={{ fontSize: '15px' }}>Syllabus</MenuItem>
+                      </Typography>
+                      <Typography sx={{
+                        textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                          backgroundColor: 'orangered'// Change the background color on hover
+                        },
+                      }}>
+                        <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/pyqs')}>PYQs</MenuItem>
+                      </Typography>
+                      <Typography sx={{
+                        textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                          backgroundColor: 'orangered'// Change the background color on hover
+                        },
+                      }}>
+                        <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/general')}>General Studies</MenuItem>
+                      </Typography>
+                      <Typography sx={{
+                        textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                          backgroundColor: 'orangered' // Change the background color on hover
+                        },
+                      }}>
+                        <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/optional')}>Optional</MenuItem>
+                      </Typography>
+                      <Typography sx={{
+                        textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                          backgroundColor: 'orangered', // Change the background color on hover
+                        },
+                      }}>
+                        <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>
+                      </Typography>
+                    </Box>
+                  </Menu>
+                </div>
+                <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
+                <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/courses">Course</Link>
+                <Divider orientation='horizontal' sx={{ width: '50%', color: 'white', height: '3px', border: '1px solid white', marginBottom: '10px', }} />
+                <Link onClick={handleClose} style={{ fontSize: '25px', textDecoration: 'none', color: 'white' }} to="/books">Our Books</Link>
+                <Divider orientation='horizontal' sx={{ width: '50%', color: 'white', height: '3px', border: '1px solid white', marginBottom: '10px', }} />
+                <Link onClick={handleClose} style={{ fontSize: '25px', textDecoration: 'none', color: 'white' }} to="/videos">Videos</Link>
+                <Divider orientation='horizontal' sx={{ width: '50%', color: 'white', height: '3px', border: '1px solid white', marginBottom: '10px', }} />
+
+                <Link onClick={handleClose} style={{ fontSize: '25px', textDecoration: 'none', color: 'white' }} to="/about">About</Link>
+                <Divider orientation='horizontal' sx={{ width: '50%', color: 'white', height: '3px', border: '1px solid white', marginBottom: '10px', }} />
+
+                <Link onClick={handleClose} style={{ fontSize: '25px', textDecoration: 'none', color: 'white' }} to="/contact">Contact</Link>
 
                 {/* Add more menu items as needed */}
               </List>
             </Drawer>
-            
+
 
 
             <img
@@ -194,19 +208,19 @@ const Header = () => {
                 <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>SHASHANK SAJWAN</Typography>
                 <Typography sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', fontSize: '10px' }} variant='h6'>Your Vision, My Direction</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '11px', marginTop: '10px' }}>
-                <Link to="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS" target="_blank">
-                <YouTubeIcon sx={{color:'#FF0000'}} />
-              </Link>
-              <Link to="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target="_blank">
-               <InstagramIcon sx={{color:'#DD2A7B'}}/>
-             </Link>
-             <Link to="https://t.me/iasips_mentor" target="_blank">
-              <TelegramIcon sx={{color:'#0088cc'}}/>
-             </Link>
-            <Link to="https://twitter.com/iasips_mentor" target="_blank">
-              <XIcon sx={{width:'19px',color:'white'}}/>
-           </Link>
-            
+                  <Link to="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS" target="_blank">
+                    <YouTubeIcon sx={{ color: '#FF0000' }} />
+                  </Link>
+                  <Link to="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target="_blank">
+                    <InstagramIcon sx={{ color: '#DD2A7B' }} />
+                  </Link>
+                  <Link to="https://t.me/iasips_mentor" target="_blank">
+                    <TelegramIcon sx={{ color: '#0088cc' }} />
+                  </Link>
+                  <Link to="https://twitter.com/iasips_mentor" target="_blank">
+                    <XIcon sx={{ width: '19px', color: 'white' }} />
+                  </Link>
+
                 </Box>
               </Box>
             </Box>
@@ -242,98 +256,111 @@ const Header = () => {
                 <Typography sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', fontSize: '15px' }} variant='h6'>Your Vision, My Direction</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '11px', marginTop: '5px' }}>
                   <Link to="https://youtube.com/@ShashankSajwan?si=wmlMFjuWQhsZmCGS" target="_blank">
-                     <YouTubeIcon sx={{color:'#FF0000'}} />
-                   </Link>
-                   <Link to="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target="_blank">
-                    <InstagramIcon sx={{color:'#DD2A7B'}}/>
+                    <YouTubeIcon sx={{ color: '#FF0000' }} />
+                  </Link>
+                  <Link to="https://www.instagram.com/iasips_mentor?igsh=Mjk1bGNraGttNW5i" target="_blank">
+                    <InstagramIcon sx={{ color: '#DD2A7B' }} />
                   </Link>
                   <Link to="https://t.me/iasips_mentor" target="_blank">
-                   <TelegramIcon sx={{color:'#0088cc'}}/>
+                    <TelegramIcon sx={{ color: '#0088cc' }} />
                   </Link>
-                 <Link to="https://twitter.com/iasips_mentor" target="_blank">
-                   <XIcon sx={{width:'19px',color:'white'}}/>
-                </Link>
-                 
+                  <Link to="https://twitter.com/iasips_mentor" target="_blank">
+                    <XIcon sx={{ width: '19px', color: 'white' }} />
+                  </Link>
+
                 </Box>
               </Box>
             </Box>
             <Box sx={{ marginTop: '30px' }}>
               <Stack direction="row" sx={{ display: 'flex', color: 'black', marginTop: '25px', marginRight: '25px', gap: '20px' }}>
 
-                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/'>Home</Link>
-                {!isMobileView && 
+                <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/'>Home</Link>
+                {!isMobileView &&
                   (
                     <div>
-                    <Link
-                    id="basic-button"
-                    variant='text'
-                    sx={{color:'white',textTransform:'none'}}
-                    aria-controls={openMenuTable ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={openMenuTable ? 'true' : undefined}
-                    onClick={handleClick}
-                    style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}}
-                  >
-                    Resources
+                      <Link
+                        id="basic-button"
+                        variant='text'
+                        sx={{ color: 'white', textTransform: 'none' }}
+                        aria-controls={openMenuTable ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openMenuTable ? 'true' : undefined}
+                        onClick={handleClick}
+                        style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }}
+                      >
+                        Resources
 
-                  </Link>
-                  <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={openMenuTable}
-                  onClose={handleMenuClose}
-                  MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                    sx: { flexDirection: 'column' , fontWeight:'600',backgroundColor:'#212529'}, // Set the direction to column
-                  }}
-                >
-                <Box sx={{display:'flex',flexDirection:'column',fontWeight:'600'}}>
-                <Typography sx={{textTransform:'none',margin:"1px", color:'white',fontSize:'15px', '&:hover': {
-                  backgroundColor: 'orangered' // Change the background color on hover
-                },}}>
-                <MenuItem  onClick={handleNavigation('/ncert')} sx={{fontSize:'15px',}} >NCERT Notes
-                
-                </MenuItem>
-                 
-                
-                </Typography>
-                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                  backgroundColor: 'orangered' // Change the background color on hover
-                },}}>
-                <MenuItem onClick={handleNavigation('/syllabus')} sx={{fontSize:'15px'}}>Syllabus</MenuItem>
-                </Typography>
-                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                  backgroundColor: 'orangered'// Change the background color on hover
-                },}}>
-                <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/pyqs')}>PYQs</MenuItem>
-                </Typography>
-                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                  backgroundColor:'orangered'// Change the background color on hover
-                },}}>
-                <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/general')}>General Studies</MenuItem>
-                </Typography>
-                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                  backgroundColor:'orangered' // Change the background color on hover
-                },}}>
-                <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/optional')}>Optional</MenuItem>
-                </Typography>          
-                <Typography sx={{textTransform:'none',margin:"1px",color:'white',  '&:hover': {
-                  backgroundColor: 'orangered', // Change the background color on hover
-                },}}>
-                <MenuItem sx={{fontSize:'15px'}} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>
-            
-                </Typography>
-                </Box>
-              </Menu>
-              </div>
+                      </Link>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openMenuTable}
+                        onClose={handleMenuClose}
+                        MenuListProps={{
+                          'aria-labelledby': 'basic-button',
+                          sx: { flexDirection: 'column', fontWeight: '600', backgroundColor: '#212529' }, // Set the direction to column
+                        }}
+                      >
+                        <Box sx={{ display: 'flex', flexDirection: 'column', fontWeight: '600' }}>
+                          <Typography sx={{
+                            textTransform: 'none', margin: "1px", color: 'white', fontSize: '15px', '&:hover': {
+                              backgroundColor: 'orangered' // Change the background color on hover
+                            },
+                          }}>
+                            <MenuItem onClick={handleNavigation('/ncert')} sx={{ fontSize: '15px', }} >NCERT Notes
+
+                            </MenuItem>
+
+
+                          </Typography>
+                          <Typography sx={{
+                            textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                              backgroundColor: 'orangered' // Change the background color on hover
+                            },
+                          }}>
+                            <MenuItem onClick={handleNavigation('/syllabus')} sx={{ fontSize: '15px' }}>Syllabus</MenuItem>
+                          </Typography>
+                          <Typography sx={{
+                            textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                              backgroundColor: 'orangered'// Change the background color on hover
+                            },
+                          }}>
+                            <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/pyqs')}>PYQs</MenuItem>
+                          </Typography>
+                          <Typography sx={{
+                            textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                              backgroundColor: 'orangered'// Change the background color on hover
+                            },
+                          }}>
+                            <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/general')}>General Studies</MenuItem>
+                          </Typography>
+                          <Typography sx={{
+                            textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                              backgroundColor: 'orangered' // Change the background color on hover
+                            },
+                          }}>
+                            <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/optional')}>Optional</MenuItem>
+                          </Typography>
+                          <Typography sx={{
+                            textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
+                              backgroundColor: 'orangered', // Change the background color on hover
+                            },
+                          }}>
+                            <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>
+
+                          </Typography>
+                        </Box>
+                      </Menu>
+                    </div>
                   )
                 }
-               
-                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/books'>Our Books</Link> {/* Navigate to course section in home */}
-                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/videos'>Videos</Link> {/* Navigattoe to course section in home */}
-                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/about'>About</Link>
 
-                <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/contact'>Contact</Link>
+                <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/courses'>Course</Link> {/* Navigate to course section in home */}
+                <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/books'>Our Books</Link> {/* Navigate to course section in home */}
+                <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/videos'>Videos</Link> {/* Navigattoe to course section in home */}
+                <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/about'>About</Link>
+
+                <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/contact'>Contact</Link>
               </Stack>
             </Box>
             <Box sx={{ display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -342,7 +369,7 @@ const Header = () => {
                 <Typography sx={{ color: 'white', fontSize: "15px" }}>+91 7060748896</Typography>
               </Box>
               <Box onClick={handleEmail} sx={{ display: 'flex', flexDirection: 'row', gap: '12px', marginTop: '5px', cursor: 'pointer' }}>
-                <img style={{ width: '18px' }} src="/assets/gmail.webp" alt='logo'/>
+                <img style={{ width: '18px' }} src="/assets/gmail.webp" alt='logo' />
                 <Typography sx={{ color: 'white', fontSize: "14px", textTransform: 'lowercase' }}>ask.iasmentor@gmail.com</Typography>
               </Box>
 

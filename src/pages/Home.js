@@ -23,6 +23,7 @@ const Home = () => {
        <Motive/>
        <HomeBook/>
        <Choose/>
+       <CourseProvide/>
        <Acheivement/>
        <Course/>
        <CarouseYoutube/>
