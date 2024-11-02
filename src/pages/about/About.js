@@ -65,7 +65,7 @@ const About = () => {
   };
 
   return (
-    <Container sx={{ marginBottom: '20px' }}>
+    <Container sx={{ marginBottom: '20px',marginTop:'100px' }}>
       <ContentWrapper>
         <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", alignItems: 'center' }}>
           {isMobileView && renderDirectorPhoto()}

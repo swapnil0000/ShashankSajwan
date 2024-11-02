@@ -271,11 +271,30 @@ const octData = [
   {id:27,img:'/assets/newspaper/oct/28oct.jpg',link:'https://drive.google.com/file/d/1VO1XnYUjj85D4ah6m7QRLAG8h2Ox3d66/view?usp=sharing'},
   {id:29,img:'/assets/newspaper/oct/29oct.jpeg',link:'https://drive.google.com/file/d/1xlZ4i_8CquuxjCj0lqO0LzHqJsZ8qUoP/view?usp=sharing'},
   {id:30,img:'/assets/newspaper/oct/30oct.jpg',link:'https://drive.google.com/file/d/1UvF2nkQRyDzjScXeUxgKg-Qq_ZC5FCm1/view?usp=sharing'},
-  // {id:27,img:'/assets/newspaper/oct/27oct.jpg',link:''},
+  {id:31,img:'/assets/newspaper/oct/31oct.jpg',link:'https://drive.google.com/file/d/1f9sM2PMC6Bas5EB24Mf1bqaNO0lyKER_/view?usp=sharing'},
   // {id:27,img:'/assets/newspaper/oct/27oct.jpg',link:''},
 
 
 ]
+
+
+const novData=[
+  {id:1,img:'/assets/newspaper/nov/1nov.webp',link:"https://drive.google.com/file/d/1k5FNH8Ll_Hv-E9-5HPlpUF8Mnzud6lkm/view?usp=sharing"},
+  // {id:2,img:'/assets/newspaper/nov/2nov.webp',link:""},
+  // {id:3,img:'/assets/newspaper/nov/3nov.webp',link:""},
+  // {id:4,img:'/assets/newspaper/nov/4nov.webp',link:""},
+  // {id:5,img:'/assets/newspaper/nov/5nov.webp',link:""} ,
+  //  {id:6,img:'/assets/newspaper/nov/6nov.webp',link:""},
+  // {id:7,img:'/assets/newspaper/nov/7nov.webp',link:""},
+  // {id:8,img:'/assets/newspaper/nov/8nov.webp',link:""},
+  // {id:9,img:'/assets/newspaper/nov/9nov.webp',link:""},
+  // {id:10,img:'/assets/newspaper/nov/10nov.webp',link:""},
+  // {id:11,img:'/assets/newspaper/nov/11nov.webp',link:""},
+  // {id:12,img:'/assets/newspaper/nov/12nov.webp',link:""},
+  // {id:13,img:'/assets/newspaper/nov/13nov.webp',link:""},
+  // {id:14,img:'/assets/newspaper/nov/14nov.webp',link:""},
+]
+
 const tabData = [
   { id: 0, label: "APRIL 2024" },
   {id:1,label:"MAY 2024"},
@@ -284,6 +303,7 @@ const tabData = [
   {id:4,label:"AUGUST 2024"},
   {id:5,label:"SEPTEMBER 2024"},
   {id:6,label:"OCTOBER 2024"},
+  {id:7,label:"NOVEMBER 2024"}
 ];
 
 
@@ -373,6 +393,7 @@ const Optional = () => {
           {value===4 && renderGridItems(augData)} 
           {value===5 && renderGridItems(sepData)} 
           {value===6 && renderGridItems(octData)} 
+          {value===7 && renderGridItems(novData)}
         </TabPanel>
       ))}
       </Box>
