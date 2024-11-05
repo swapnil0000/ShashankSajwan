@@ -283,7 +283,7 @@ const novData=[
   // {id:2,img:'/assets/newspaper/nov/2nov.webp',link:""},
   {id:3,img:'/assets/newspaper/nov/3nov.webp',link:"https://drive.google.com/file/d/1B66gCCAm-VnRmIgXX-nrPtAwSCeXa8Pm/view?usp=sharing"},
   {id:4,img:'/assets/newspaper/nov/4nov.webp',link:"https://drive.google.com/file/d/1YOTZ5lqAdp3hH61kNSUfVTuVyFYZ5U3K/view?usp=sharing"},
-  // {id:5,img:'/assets/newspaper/nov/5nov.webp',link:""} ,
+  {id:5,img:'/assets/newspaper/nov/5oct.jpeg',link:"https://drive.google.com/file/d/1kLX6zCAOjlPf1IFAnOL82LND2LuD5W6z/view?usp=sharing"} ,
   //  {id:6,img:'/assets/newspaper/nov/6nov.webp',link:""},
   // {id:7,img:'/assets/newspaper/nov/7nov.webp',link:""},
   // {id:8,img:'/assets/newspaper/nov/8nov.webp',link:""},
