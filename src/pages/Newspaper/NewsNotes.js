@@ -294,6 +294,12 @@ const novData=[
   {id:12,img:'/assets/newspaper/nov/13nov.jpeg',link:"https://drive.google.com/file/d/1u0ob_xcias_oATe3w_pWgypdPRaLAgyV/view?usp=sharing"},
   {id:13,img:'/assets/newspaper/nov/14nov.jpeg',link:"https://drive.google.com/file/d/1CkMJ3FYxzjNwXK9DacHlsslM4GaEuv_U/view?usp=sharing"},
   {id:14,img:'/assets/newspaper/nov/15nov.jpeg',link:"https://drive.google.com/file/d/1jERrxDLh8oPw2KMVv5wycztycXpChUM7/view?usp=sharing"},
+  {id:15,img:'/assets/newspaper/nov/16nov.png',link:"https://drive.google.com/file/d/1hw4wBVVJj_XEy7SURwAYO-TvQqVXoCGa/view?usp=sharing"},
+  // {id:16,img:'/assets/newspaper/nov/17nov.jpeg',link:""},
+  // {id:17,img:'/assets/newspaper/nov/18nov.jpeg',link:""},
+  // {id:18,img:'/assets/newspaper/nov/19nov.jpeg',link:""},
+  // {id:19,img:'/assets/newspaper/nov/20nov.jpeg',link:""},
+
 ]
 
 const tabData = [
