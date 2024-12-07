@@ -28,7 +28,7 @@ const CourseSection = () => {
 
     const handleVideoClick = () => {
       // Open the YouTube video link in a new tab
-      window.open("https://youtu.be/z9aEoW4Fkbk?feature=shared", "_blank");
+      window.open("https://www.youtube.com/watch?v=O9PEPEyxDck", "_blank");
     };
   
     const handleBrochureClick = () => {
