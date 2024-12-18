@@ -318,13 +318,15 @@ const devdata = [
   { id: 5, img: '/assets/newspaper/dec/5dec.jpg', link: "https://drive.google.com/file/d/1QldhxOR1ZmVci1wpuFNu6-KYJq_DrIji/view?usp=sharing" },
    {id:6,img:   '/assets/newspaper/dec/6dec.jpg',link:"https://drive.google.com/file/d/1csLanR_ter4GppPWLy9vPwdqxwJz29Rq/view?usp=sharing"},
    {id:7,img:   '/assets/newspaper/dec/7dec.jpg',link:"https://drive.google.com/file/d/1CS6Fd7Jg9fmvTO3YlfVqwTteZa6PBgox/view?usp=sharing"},
-  //  {id:8,img:'/assets/newspaper/dec/8dec.jpg',link:""},
-  //  {id:9,img:'/assets/newspaper/dec/9dec.jpg',link:""},
-  //  {id:10,img:'/assets/newspaper/dec/10dec.jpg',link:""},
-  //  {id:11,img:'/assets/newspaper/dec/11dec.jpg',link:""},
-  //  {id:12,img:'/assets/newspaper/dec/12dec.jpg',link:""},
-  //  {id:13,img:'/assets/newspaper/dec/13dec.jpg',link:""},
-  //  {id:14,img:'/assets/newspaper/dec/14dec.jpg',link:""}
+   {id:8,img:'/assets/newspaper/dec/8dec.jpg',link:"https://drive.google.com/file/d/1myuQlemnLEnkLbcCAlZXNHb1TEt1JNeY/view?usp=sharing"},
+   {id:9,img:'/assets/newspaper/dec/9dec.jpg',link:"https://drive.google.com/file/d/1H7fFw0IEIRSqc9DGtL8hXN19z7RrP2Bd/view?usp=sharing"},
+   {id:10,img:'/assets/newspaper/dec/10dec.jpg',link:"https://drive.google.com/file/d/1wcBxZd4b26rr7x4nd99_11iGEeKCAJu5/view?usp=sharing"},
+   {id:11,img:'/assets/newspaper/dec/11dec.jpg',link:"https://drive.google.com/file/d/1CdJEWx3lMFhwGu1y40G-0ttpgTNAUHUR/view?usp=sharing"},
+   {id:12,img:'/assets/newspaper/dec/12dec.jpg',link:"https://drive.google.com/file/d/1h9ZMYwiGr8U_8sqF47BLMpOwOr2ji1z5/view?usp=sharing"},
+   {id:13,img:'/assets/newspaper/dec/13dec.jpg',link:"https://drive.google.com/file/d/1imfCpKE7fLa4T0ymIVKfYZiibnU1eHUf/view?usp=sharing"},
+   {id:14,img:'/assets/newspaper/dec/14dec.jpg',link:"https://drive.google.com/file/d/1AJZCFGbqdBFmu5wmz8YkxmbHUQyujkMe/view?usp=sharing"},
+   {id:14,img:'/assets/newspaper/dec/18dec.jpg',link:"https://drive.google.com/file/d/1NSfAxTrHcr68dhqOayuqxjOm_1Ma3zpg/view?usp=sharing"}
+
 ]
 const tabData = [
   { id: 0, label: "APRIL 2024" },
