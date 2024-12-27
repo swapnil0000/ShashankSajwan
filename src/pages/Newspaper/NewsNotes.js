@@ -337,7 +337,7 @@ const devdata = [
    {id:24,img:'/assets/newspaper/dec/24dec.jpg',link:"https://drive.google.com/file/d/1Zzlr5Lb3f_dAyoFM_WlY8WzzJpUqU9mU/view?usp=sharing"},
    {id:25,img:'/assets/newspaper/dec/25dec.jpg',link:"https://drive.google.com/file/d/1IkReFVKGxhwCVhI5AYPEwEWnfb2zuqSC/view?usp=sharing"},
    {id:26,img:'/assets/newspaper/dec/26dec.jpg',link:"https://drive.google.com/file/d/1HGv1qVamWCVoISmnZDrVXAvXJneIuFfZ/view?usp=sharing"},
-  //  {id:27,img:'/assets/newspaper/dec/27dec.jpg',link:"https://drive.google.com/file/d/1TRaosx97E4LJCwA7J-kK5ApIByRiQ4OJ/view?usp=sharing"},
+   {id:27,img:'/assets/newspaper/dec/27dec.jpg',link:"https://drive.google.com/file/d/1CxYkmOzdB0o8tWzBcnc2fgJIM26CTvJl/view?usp=sharing"},
   //  {id:28,img:'/assets/newspaper/dec/28dec.jpg',link:"https://drive.google.com/file/d/1TRaosx97E4LJCwA7J-kK5ApIByRiQ4OJ/view?usp=sharing"}
 
 
