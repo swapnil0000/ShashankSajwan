@@ -338,9 +338,15 @@ const devdata = [
    {id:25,img:'/assets/newspaper/dec/25dec.jpg',link:"https://drive.google.com/file/d/1IkReFVKGxhwCVhI5AYPEwEWnfb2zuqSC/view?usp=sharing"},
    {id:26,img:'/assets/newspaper/dec/26dec.jpg',link:"https://drive.google.com/file/d/1HGv1qVamWCVoISmnZDrVXAvXJneIuFfZ/view?usp=sharing"},
    {id:27,img:'/assets/newspaper/dec/27dec.jpg',link:"https://drive.google.com/file/d/1CxYkmOzdB0o8tWzBcnc2fgJIM26CTvJl/view?usp=sharing"},
-  //  {id:28,img:'/assets/newspaper/dec/28dec.jpg',link:"https://drive.google.com/file/d/1TRaosx97E4LJCwA7J-kK5ApIByRiQ4OJ/view?usp=sharing"}
+]
 
-
+const janData=[
+  {id:1,img:'/assets/newspaper/jan2025/1jan.jpg',link:'https://drive.google.com/file/d/1C9QjTieislhE0EcO8r-l9Xl0qOJTMNKO/view?usp=sharing'},
+  {id:2,img:'/assets/newspaper/jan2025/2jan.jpg',link:'https://drive.google.com/file/d/1yJu31ltAsIBTEY7hhastfqVYMD8wrw5V/view?usp=sharing'},
+  {id:3,img:'/assets/newspaper/jan2025/3jan.jpg',link:'https://drive.google.com/file/d/1q-UJ6UNxXNLjah5H4hm-RWcVI9ppRKv9/view?usp=sharing'},
+  {id:4,img:'/assets/newspaper/jan2025/4jan.jpg',link:'https://drive.google.com/file/d/1z-WivwMKGVYLdWPRM3dCK6UBvtgCJtQi/view?usp=sharing'},
+  {id:5,img:'/assets/newspaper/jan2025/5jan.jpg',link:'https://drive.google.com/file/d/1VALWaAw2m7Afz0FN0qr1j5boz9WdhUyf/view?usp=sharing'},
+   {id:6,img:'/assets/newspaper/jan2025/6jan.jpg',link:'https://drive.google.com/file/d/1ptlU3vVMxvxBpjZOFn_geI2JU6VL1TuV/view?usp=sharing'}
 ]
 
 const tabData = [
@@ -352,7 +358,9 @@ const tabData = [
   { id: 5, label: "SEPTEMBER 2024" },
   { id: 6, label: "OCTOBER 2024" },
   { id: 7, label: "NOVEMBER 2024" },
-  { id: 8, label: 'DECEMBER 2024' }
+  { id: 8, label: 'DECEMBER 2024' },
+  { id: 9, label: 'JANUARY 2025' },
+  
 ];
 
 
@@ -444,6 +452,7 @@ const Optional = () => {
               {value === 6 && renderGridItems(octData)}
               {value === 7 && renderGridItems(novData)}
               {value === 8 && renderGridItems(devdata)}
+              {value === 9 && renderGridItems(janData)}
             </TabPanel>
           ))}
         </Box>
