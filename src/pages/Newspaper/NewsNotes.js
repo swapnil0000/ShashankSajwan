@@ -352,7 +352,23 @@ const janData=[
    {id:22,img:'/assets/newspaper/jan2025/23jan.jpg',link:'https://drive.google.com/file/d/1yx18YnlACYc-dvCI_bWUVpKWc5MNH70J/view?usp=sharing'},
    {id:23,img:'/assets/newspaper/jan2025/24jan.jpg',link:'https://drive.google.com/file/d/1XYU3b7V6EtLNqhpCWfzGfiE0IWL_tLVU/view?usp=sharing'},
    {id:24,img:'/assets/newspaper/jan2025/25jan.jpg',link:'https://drive.google.com/file/d/1XjVd5JhAd_kRINOMidx5MeCM5kMm5f7S/view?usp=sharing'},
+   {id:25,img:'/assets/newspaper/jan2025/26jan.jpg',link:'https://drive.google.com/file/d/1vqjmuQDo1VdN7L91J9banwszF2makPjR/view?usp=sharing'},
+   {id:26,img:'/assets/newspaper/jan2025/27jan.jpg',link:'https://drive.google.com/file/d/1MBcJohBSNSb45SLL-dVhAK3fIrPkXEzs/view?usp=sharing'},
+   {id:27,img:'/assets/newspaper/jan2025/28jan.jpg',link:'https://drive.google.com/file/d/1zmPfkcHsczmv3v8Tw-yFw5rgurGcloL_/view?usp=sharing'},
+   {id:28,img:'/assets/newspaper/jan2025/29jan.jpg',link:'https://drive.google.com/file/d/1aXs7UopruK1lKg7NqZp9kChtFrYoef82/view?usp=sharing'},
+   {id:29,img:'/assets/newspaper/jan2025/30jan.jpg',link:'https://drive.google.com/file/d/1mI-THVQNQ1dwefEKa1p7bmy-vs8NqjCj/view?usp=sharing'},
+   {id:30,img:'/assets/newspaper/jan2025/31jan.jpg',link:'https://drive.google.com/file/d/1IkotMU_5waD7yJF4Wb4eWTnV6te76nIt/view?usp=sharing'},
+
   //  {id:25,img:'/assets/newspaper/jan2025/17jan.jpg',link:''},
+
+]
+
+const febData = [
+  {id:1,img:'/assets/newspaper/feb2025/1feb.jpg',link:"https://drive.google.com/file/d/1cuskun_lua8iGxbGtCUo7CFalwiilQPp/view?usp=sharing"},
+  {id:2,img:'/assets/newspaper/feb2025/2feb.jpg',link:"https://drive.google.com/file/d/1lysjDZ2fwFlkk_wOZCvdOiv6S00-fzeV/view?usp=sharing"},
+  {id:3,img:'/assets/newspaper/feb2025/3feb.jpg',link:"https://drive.google.com/file/d/1v5kiHblIVPvOIdFI3Oty8X9XwiQ0FK-K/view?usp=sharing"},
+  {id:4,img:'/assets/newspaper/feb2025/4feb.jpg',link:"https://drive.google.com/file/d/1MYsEnS6RUHw8LNvWBfIXU_VTuslX7NGB/view?usp=sharing"},
+  {id:5,img:'/assets/newspaper/feb2025/5feb.jpg',link:"https://drive.google.com/file/d/1p5UV7M9DiO8VJNVd7Ka_QLEpHHKKQKxU/view?usp=sharing"},
 
 ]
 
@@ -367,7 +383,7 @@ const tabData = [
   { id: 7, label: "NOVEMBER 2024" },
   { id: 8, label: 'DECEMBER 2024' },
   { id: 9, label: 'JANUARY 2025' },
-  
+  { id: 10, label: 'FEBRUARY 2025' },
 ];
 
 
@@ -460,6 +476,7 @@ const Optional = () => {
               {value === 7 && renderGridItems(novData)}
               {value === 8 && renderGridItems(devdata)}
               {value === 9 && renderGridItems(janData)}
+              {value === 10 && renderGridItems(febData)}
             </TabPanel>
           ))}
         </Box>
