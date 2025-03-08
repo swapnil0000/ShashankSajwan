@@ -28,7 +28,7 @@ const CourseSection = () => {
 
     const handleVideoClick = () => {
       // Open the YouTube video link in a new tab
-      window.open("https://www.youtube.com/watch?v=O9PEPEyxDck", "_blank");
+      window.open("https://www.youtube.com/watch?v=iMgo6KXEjC8", "_blank");
     };
   
     const handleBrochureClick = () => {
@@ -59,8 +59,7 @@ const CourseSection = () => {
             flexDirection:'column',
            
           }}>
-        <Typography  sx={{  fontSize:isMobileView?"20px":"30px",fontWeight:'600',width:'100%',textAlign:'center'}}
-        >FULL FLEDGED UPSC CSE PREPARATION</Typography> 
+        <Typography  sx={{  fontSize:isMobileView?"20px":"30px",fontWeight:'600',width:'100%',textAlign:'center'}}>FULL FLEDGED UPSC CSE PREPARATION</Typography> 
         <Box sx={{marginTop:'20px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',width:'100%',gap:'20px'}}>
         <Button 
         onClick={handleVideoClick}
