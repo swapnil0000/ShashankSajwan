@@ -9,11 +9,17 @@ const Carousels = () => {
 
 
   const data = [
+      // {
+      //   id: 1,
+      //   img: "/assets/banners/banner.png",
+      //   link: "https://amzn.to/3WncEva"
+      // },
       {
         id: 1,
-        img: "/assets/banners/banner.png",
+        img: "/assets/banners/newbanner.jpeg",
         link: "https://amzn.to/3WncEva"
-      },]
+      },
+    ]
     // {
     //   id:2,
     //   img:"/assets/banners/banner5.webp",
