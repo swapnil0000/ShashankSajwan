@@ -46,7 +46,7 @@ const handleClick=(link)=>{
         </div>
         <div className="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
           {data.map((ele, index) => (
-            <Link to='/books' style={{cursor:'pointer'}}  key={ele.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+            <Link to='/courses' style={{cursor:'pointer'}}  key={ele.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
               <img   style={{ width: '100%', height: isMobileView ? "220px" : "480px" ,cursor:'pointer'}} src={ele.img} alt="..." />
             </Link>
           ))}
