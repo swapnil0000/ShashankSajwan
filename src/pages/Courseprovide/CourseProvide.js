@@ -49,7 +49,7 @@ const CourseProvide = () => {
 
   return (
     <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', marginTop: '50px' }}>
-      <Typography sx={{ fontWeight: '700', fontSize: isSmallMobile ? "25px" : "40px" }} align="center">COURSES PROVIDED</Typography>
+      <Typography sx={{ fontWeight: '700', fontSize: isSmallMobile ? "25px" : "40px" }} align="center">PERSONAL MENTORSHIP</Typography>
       <BoxMainStyle>
         <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", justifyContent: 'space-between' }}>
           <LazyLoadImage style={{ width: !isMobileView ? "23%" : "100%", height: '20%', borderRadius: '13px' }} src="/assets/banner2.webp" alt='generla' />

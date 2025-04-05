@@ -21,9 +21,9 @@ const Home = () => {
     <Box>
        <Carousels/>
        <Motive/>
+       <CourseProvide/>
        <HomeBook/>
        <Choose/>
-       <CourseProvide/>
        <Acheivement/>
        <Course/>
        <CarouseYoutube/>
