@@ -382,6 +382,20 @@ const febData = [
 
 
 ]
+const april2025 = [
+  { id: 1, img: '/assets/newspaper/april2025/april1.jpeg', link: 'https://drive.google.com/file/d/1IeGVZjj7zWwVE-nA532LafEEt2R5M0Lh/view' },
+  { id: 2, img: '/assets/newspaper/april2025/april2.jpeg', link: 'https://drive.google.com/file/d/1dmCNGZuvoKyvzXN5eLNMa6qXCiyInIce/view?usp=sharing' },
+  { id: 3, img: '/assets/newspaper/april2025/april3.jpeg', link: 'https://drive.google.com/file/d/1hGoOs6U-SrWFUJZwD6oP2xuB-rvtNsqK/view?usp=sharing' },
+  { id: 4, img: '/assets/newspaper/april2025/april4.jpeg', link: 'https://drive.google.com/file/d/1k7jNkfZLuMIjxrZoG7CmU-CZZR-ocWBS/view?usp=sharing' },
+  { id: 5, img: '/assets/newspaper/april2025/april5.jpeg', link: 'https://drive.google.com/file/d/1DyH62zyJIFQwOLg79hbLsZCPIh_EnGoV/view?usp=sharing' },
+  { id: 6, img: '/assets/newspaper/april2025/april6.jpeg', link: 'https://drive.google.com/file/d/1hb2evohDX1GASmcpDPv17ge_zIQXwW5G/view?usp=sharing' },
+  { id: 7, img: '/assets/newspaper/april2025/april7.jpeg', link: 'https://drive.google.com/file/d/1a0J8nUrtq9WhMeWjKXZvBrhTDXr6WOCA/view?usp=sharing' },
+  { id: 8, img: '/assets/newspaper/april2025/april8.jpeg', link: 'https://drive.google.com/file/d/125tjz3H-XYwDgCxyznn7HULZ3VBnOiAN/view?usp=sharing' },
+  { id: 9, img: '/assets/newspaper/april2025/april9.jpeg', link: 'https://drive.google.com/file/d/1khJyLGkn9foyihzMPRe41si_V6B4KVxO/view?usp=sharing' },
+  { id: 10, img: '/assets/newspaper/april2025/april10.jpeg', link: 'https://drive.google.com/file/d/1K9JN4bkrrle6d2R4RZk70EycE28IAlp1/view?usp=sharing' },
+  { id: 11, img: '/assets/newspaper/april2025/april11.jpeg', link: 'https://drive.google.com/file/d/1OEQO1sS7bH8GnPi0f5zy5fGkFxJiLtl_/view?usp=sharing' },
+  { id: 12, img: '/assets/newspaper/april2025/april12.jpeg', link: 'https://drive.google.com/file/d/1VXwMJurVb_J9XL6QqncSnhqhINai6ql_/view?usp=sharing' },
+]
 
 const tabData = [
   { id: 0, label: "APRIL 2024" },
@@ -395,6 +409,13 @@ const tabData = [
   { id: 8, label: 'DECEMBER 2024' },
   { id: 9, label: 'JANUARY 2025' },
   { id: 10, label: 'FEBRUARY 2025' },
+  // { id: 11, label: 'MARCH 2025' },
+  { id: 11, label: 'APRIL 2025' },
+  // { id: 13, label: 'MAY 2025' },
+  // { id: 14, label: 'JUNE 2025' },
+  // { id: 15, label: 'JULY 2025' },
+  // { id: 16, label: 'AUGUST 2025' },
+  // { id: 17, label: 'SEPTEMBER 2025' },
 ];
 
 
@@ -488,6 +509,13 @@ const Optional = () => {
               {value === 8 && renderGridItems(devdata)}
               {value === 9 && renderGridItems(janData)}
               {value === 10 && renderGridItems(febData)}
+              {value === 11 && renderGridItems(april2025)}
+              {/* {value === 11 && renderGridItems(march2025)} */}
+              {/* {value === 13 && renderGridItems(may2025)} */}
+              {/* {value === 14 && renderGridItems(june2025)} */}
+              {/* {value === 15 && renderGridItems(july2025)} */}
+              {/* {value === 16 && renderGridItems(aug2025)} */}
+              {/* {value === 17 && renderGridItems(sep2025)} */}
             </TabPanel>
           ))}
         </Box>
