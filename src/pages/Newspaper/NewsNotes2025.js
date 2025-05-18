@@ -327,22 +327,84 @@ const devdata = [
    {id:27,img:'/assets/newspaper/dec/27dec.jpg',link:"https://drive.google.com/file/d/1CxYkmOzdB0o8tWzBcnc2fgJIM26CTvJl/view?usp=sharing"},
 ]
 
+const janData=[
+  {id:1,img:'/assets/newspaper/jan2025/1jan.jpg',link:'https://drive.google.com/file/d/1C9QjTieislhE0EcO8r-l9Xl0qOJTMNKO/view?usp=sharing'},
+  {id:2,img:'/assets/newspaper/jan2025/2jan.jpg',link:'https://drive.google.com/file/d/1yJu31ltAsIBTEY7hhastfqVYMD8wrw5V/view?usp=sharing'},
+  {id:3,img:'/assets/newspaper/jan2025/3jan.jpg',link:'https://drive.google.com/file/d/1q-UJ6UNxXNLjah5H4hm-RWcVI9ppRKv9/view?usp=sharing'},
+  {id:4,img:'/assets/newspaper/jan2025/4jan.jpg',link:'https://drive.google.com/file/d/1z-WivwMKGVYLdWPRM3dCK6UBvtgCJtQi/view?usp=sharing'},
+  {id:5,img:'/assets/newspaper/jan2025/5jan.jpg',link:'https://drive.google.com/file/d/1VALWaAw2m7Afz0FN0qr1j5boz9WdhUyf/view?usp=sharing'},
+   {id:6,img:'/assets/newspaper/jan2025/6jan.jpg',link:'https://drive.google.com/file/d/1ptlU3vVMxvxBpjZOFn_geI2JU6VL1TuV/view?usp=sharing'},
+   {id:7,img:'/assets/newspaper/jan2025/7jan.jpg',link:'https://drive.google.com/file/d/1mY4oBUmirZpnAOw2hYS8YIlcWDVfvd21/view?usp=sharing'},
+   {id:8,img:'/assets/newspaper/jan2025/8jan.jpg',link:'https://drive.google.com/file/d/16zu08uFurgQ2WSFtInskmrf9_J0KvO0R/view?usp=sharing'},
+   {id:9,img:'/assets/newspaper/jan2025/9jan.jpg',link:'https://drive.google.com/file/d/1_HpoOr_Ns41nfBOXvCC5GRtxS-1Wt6KN/view?usp=sharing'},
+   {id:10,img:'/assets/newspaper/jan2025/10jan.jpg',link:'https://drive.google.com/file/d/10bneF5HJiVtfrUOCTeX2PEo3s43DSwo_/view?usp=sharing'},
+   {id:11,img:'/assets/newspaper/jan2025/11jan.jpg',link:'https://drive.google.com/file/d/1FmfCJsKjTtBREnk8fJhdHXWUGQ0X9eXT/view?usp=sharing'},
+   {id:12,img:'/assets/newspaper/jan2025/12jan.jpg',link:'https://drive.google.com/file/d/1WEwiqlXTRGS6wFRfk14AI3SbM9Lpqn8s/view?usp=sharing'},
+   {id:13,img:'/assets/newspaper/jan2025/13jan.jpg',link:'https://drive.google.com/file/d/16RXjzZvr4CtuPg8Y7jnIhpPTf1ku_WUA/view?usp=sharing'},
+   {id:14,img:'/assets/newspaper/jan2025/14jan.jpg',link:'https://drive.google.com/file/d/1m9s93m6jgNsr-JnQI1vKb8SYu9GKxfUn/view?usp=sharing'},
+   {id:15,img:'/assets/newspaper/jan2025/16jan.jpg',link:'https://drive.google.com/file/d/1J5uekMCsh9WTp6U7wwmh55JRkSJQMo4i/view?usp=sharing'},
+   {id:16,img:'/assets/newspaper/jan2025/17jan.jpg',link:'https://drive.google.com/file/d/1TMfgLKXgylGdE0JpRe5Qs8iteZpChlYn/view?usp=sharing'},
+   {id:17,img:'/assets/newspaper/jan2025/18jan.jpg',link:'https://drive.google.com/file/d/1GJ-D5lAxbu3UxN7-8hwsBAg9uvIp57dc/view?usp=sharing'},
+   {id:18,img:'/assets/newspaper/jan2025/19jan.jpg',link:'https://drive.google.com/file/d/1PLF0anptJYNFBVyyQBZ4uPpg5Umxqe5y/view?usp=sharing'},
+   {id:19,img:'/assets/newspaper/jan2025/20jan.jpg',link:'https://drive.google.com/file/d/139mRN0gTt11w2FxuoY9Rnt-AszAD3QYS/view?usp=sharing'},
+   {id:20,img:'/assets/newspaper/jan2025/21jan.jpg',link:'https://drive.google.com/file/d/12jI-p_hElfJS2EyPK7SlTxd7aW02Yci2/view?usp=sharing'},
+   {id:21,img:'/assets/newspaper/jan2025/22jan.jpg',link:'https://drive.google.com/file/d/1brJKbSkA52TySLMCzk8RknUgUKCM6jyi/view?usp=sharing'},
+   {id:22,img:'/assets/newspaper/jan2025/23jan.jpg',link:'https://drive.google.com/file/d/1yx18YnlACYc-dvCI_bWUVpKWc5MNH70J/view?usp=sharing'},
+   {id:23,img:'/assets/newspaper/jan2025/24jan.jpg',link:'https://drive.google.com/file/d/1XYU3b7V6EtLNqhpCWfzGfiE0IWL_tLVU/view?usp=sharing'},
+   {id:24,img:'/assets/newspaper/jan2025/25jan.jpg',link:'https://drive.google.com/file/d/1XjVd5JhAd_kRINOMidx5MeCM5kMm5f7S/view?usp=sharing'},
+   {id:25,img:'/assets/newspaper/jan2025/26jan.jpg',link:'https://drive.google.com/file/d/1vqjmuQDo1VdN7L91J9banwszF2makPjR/view?usp=sharing'},
+   {id:26,img:'/assets/newspaper/jan2025/27jan.jpg',link:'https://drive.google.com/file/d/1MBcJohBSNSb45SLL-dVhAK3fIrPkXEzs/view?usp=sharing'},
+   {id:27,img:'/assets/newspaper/jan2025/28jan.jpg',link:'https://drive.google.com/file/d/1zmPfkcHsczmv3v8Tw-yFw5rgurGcloL_/view?usp=sharing'},
+   {id:28,img:'/assets/newspaper/jan2025/29jan.jpg',link:'https://drive.google.com/file/d/1aXs7UopruK1lKg7NqZp9kChtFrYoef82/view?usp=sharing'},
+   {id:29,img:'/assets/newspaper/jan2025/30jan.jpg',link:'https://drive.google.com/file/d/1mI-THVQNQ1dwefEKa1p7bmy-vs8NqjCj/view?usp=sharing'},
+   {id:30,img:'/assets/newspaper/jan2025/31jan.jpg',link:'https://drive.google.com/file/d/1IkotMU_5waD7yJF4Wb4eWTnV6te76nIt/view?usp=sharing'},
 
+  //  {id:25,img:'/assets/newspaper/jan2025/17jan.jpg',link:''},
+
+]
+
+const febData = [
+  {id:1,img:'/assets/newspaper/feb2025/1feb.jpg',link:"https://drive.google.com/file/d/1cuskun_lua8iGxbGtCUo7CFalwiilQPp/view?usp=sharing"},
+  {id:2,img:'/assets/newspaper/feb2025/2feb.jpg',link:"https://drive.google.com/file/d/1lysjDZ2fwFlkk_wOZCvdOiv6S00-fzeV/view?usp=sharing"},
+  {id:3,img:'/assets/newspaper/feb2025/3feb.jpg',link:"https://drive.google.com/file/d/1v5kiHblIVPvOIdFI3Oty8X9XwiQ0FK-K/view?usp=sharing"},
+  {id:4,img:'/assets/newspaper/feb2025/4feb.jpg',link:"https://drive.google.com/file/d/1MYsEnS6RUHw8LNvWBfIXU_VTuslX7NGB/view?usp=sharing"},
+  {id:5,img:'/assets/newspaper/feb2025/5feb.jpg',link:"https://drive.google.com/file/d/1p5UV7M9DiO8VJNVd7Ka_QLEpHHKKQKxU/view?usp=sharing"},
+  {id:6,img:'/assets/newspaper/feb2025/6feb.jpeg',link:"https://drive.google.com/file/d/1tzHcsiQHdl7Kk4ylritQWUkrQUX0mW67/view?usp=sharing"},
+  {id:7,img:'/assets/newspaper/feb2025/7feb.jpeg',link:"https://drive.google.com/file/d/1_1TvlBYgYesiq6W0U6w_YpxcurWLU_BH/view"},
+  {id:8,img:'/assets/newspaper/feb2025/8feb.jpeg',link:"https://drive.google.com/file/d/1Z99VoJZhUh7Zq8fSnlv-xH3Iu1wgQrJI/view"},
+  {id:9,img:'/assets/newspaper/feb2025/9feb.jpeg',link:"https://drive.google.com/file/d/1MGKakQIoOkVop-CYqcuf5pNqY-FwZP9T/view?usp=sharing"},
+  {id:10,img:'/assets/newspaper/feb2025/10feb.jpeg',link:"https://drive.google.com/file/d/12e7hpAA2n3z0xhc5I65pjNIOBdevsOXQ/view?usp=sharing"},
+  {id:11,img:'/assets/newspaper/feb2025/11feb.jpeg',link:"https://drive.google.com/file/d/1JiJOqALwKV3KmGgikjEe1nkS3gVLfQMJ/view?usp=sharing"},
+  // {id:12,img:'/assets/newspaper/feb2025/5feb.jpeg',link:""},
+  // {id:13,img:'/assets/newspaper/feb2025/5feb.jpg',link:""},
+  // {id:14,img:'/assets/newspaper/feb2025/5feb.jpg',link:""},
+  // {id:15,img:'/assets/newspaper/feb2025/5feb.jpg',link:""},
+
+
+]
+const april2025 = [
+  { id: 1, img: '/assets/newspaper/april2025/april1.jpeg', link: 'https://drive.google.com/file/d/1IeGVZjj7zWwVE-nA532LafEEt2R5M0Lh/view' },
+  { id: 2, img: '/assets/newspaper/april2025/april2.jpeg', link: 'https://drive.google.com/file/d/1dmCNGZuvoKyvzXN5eLNMa6qXCiyInIce/view?usp=sharing' },
+  { id: 3, img: '/assets/newspaper/april2025/april3.jpeg', link: 'https://drive.google.com/file/d/1hGoOs6U-SrWFUJZwD6oP2xuB-rvtNsqK/view?usp=sharing' },
+  { id: 4, img: '/assets/newspaper/april2025/april4.jpeg', link: 'https://drive.google.com/file/d/1k7jNkfZLuMIjxrZoG7CmU-CZZR-ocWBS/view?usp=sharing' },
+  { id: 5, img: '/assets/newspaper/april2025/april5.jpeg', link: 'https://drive.google.com/file/d/1DyH62zyJIFQwOLg79hbLsZCPIh_EnGoV/view?usp=sharing' },
+  { id: 6, img: '/assets/newspaper/april2025/april6.jpeg', link: 'https://drive.google.com/file/d/1hb2evohDX1GASmcpDPv17ge_zIQXwW5G/view?usp=sharing' },
+  { id: 7, img: '/assets/newspaper/april2025/april7.jpeg', link: 'https://drive.google.com/file/d/1a0J8nUrtq9WhMeWjKXZvBrhTDXr6WOCA/view?usp=sharing' },
+  { id: 8, img: '/assets/newspaper/april2025/april8.jpeg', link: 'https://drive.google.com/file/d/125tjz3H-XYwDgCxyznn7HULZ3VBnOiAN/view?usp=sharing' },
+  { id: 9, img: '/assets/newspaper/april2025/april9.jpeg', link: 'https://drive.google.com/file/d/1khJyLGkn9foyihzMPRe41si_V6B4KVxO/view?usp=sharing' },
+  { id: 10, img: '/assets/newspaper/april2025/april10.jpeg', link: 'https://drive.google.com/file/d/1K9JN4bkrrle6d2R4RZk70EycE28IAlp1/view?usp=sharing' },
+  { id: 11, img: '/assets/newspaper/april2025/april11.jpeg', link: 'https://drive.google.com/file/d/1OEQO1sS7bH8GnPi0f5zy5fGkFxJiLtl_/view?usp=sharing' },
+  { id: 12, img: '/assets/newspaper/april2025/april12.jpeg', link: 'https://drive.google.com/file/d/1VXwMJurVb_J9XL6QqncSnhqhINai6ql_/view?usp=sharing' },
+]
 
 const tabData = [
-  { id: 0, label: "APRIL 2024" },
-  { id: 1, label: "MAY 2024" },
-  { id: 2, label: "JUNE 2024" },
-  { id: 3, label: "JULY 2024" },
-  { id: 4, label: "AUGUST 2024" },
-  { id: 5, label: "SEPTEMBER 2024" },
-  { id: 6, label: "OCTOBER 2024" },
-  { id: 7, label: "NOVEMBER 2024" },
-  { id: 8, label: 'DECEMBER 2024' },
+  { id: 1, label: 'JANUARY 2025' },
+  { id: 2, label: 'FEBRUARY 2025' },
+  { id: 3, label: 'APRIL 2025' },
 ];
 
 
-const Optional = () => {
+const Optional2025 = () => {
   const [value, setValue] = useState(0);
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -421,15 +483,9 @@ const Optional = () => {
         <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
           {tabData.map((tab, index) => (
             <TabPanel key={tab.id} value={value} index={index} sx={{ marginLeft: isMobileView ? '' : '20px', marginRight: isMobileView ? '' : '20px', marginTop: isMobileView ? '10px' : '' }}>
-              {value === 0 && renderGridItems(tabpanel)}
-              {value === 1 && renderGridItems(maydata)}
-              {value === 2 && renderGridItems(juneData)}
-              {value === 3 && renderGridItems(julyData)}
-              {value === 4 && renderGridItems(augData)}
-              {value === 5 && renderGridItems(sepData)}
-              {value === 6 && renderGridItems(octData)}
-              {value === 7 && renderGridItems(novData)}
-              {value === 8 && renderGridItems(devdata)}
+              {value === 0 && renderGridItems(janData)}
+              {value === 1 && renderGridItems(febData)}
+              {value === 2 && renderGridItems(april2025)}
             </TabPanel>
           ))}
         </Box>
@@ -439,5 +495,5 @@ const Optional = () => {
   )
 }
 
-export default Optional
+export default Optional2025
 

@@ -12,7 +12,6 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 const Header = () => {
   const handleWhatsapp = () => {
-    // Replace '1234567890' with the phone number you want to send the message to
     const phoneNumber = '7060748896';
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
     window.open(whatsappUrl, '_blank');
@@ -38,13 +37,6 @@ const Header = () => {
     setOpenMenu(!openMenu);
   };
 
-  // for mobile
-  //<Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
-  //<Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/courses">Course</Link>
-
-  //for desktop
-  // <Link style={{textDecoration:'none',color:'white',fontSize:'20px',fontWeight:'400'}} to='/courses'>Course</Link> {/* Navigate to course section in home */}
-
 
 
 
@@ -52,6 +44,7 @@ const Header = () => {
 
 
   const [anchorEl, setAnchorEl] = React.useState(false);
+  const [subMenuAnchorEl, setSubMenuAnchorEl] = useState(null);
   const openMenuTable = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -61,10 +54,29 @@ const Header = () => {
   }
 
   const handleNavigation = (path) => () => {
+    console.log(path, "Path ")
     navigate(path);
     setOpenMenu(false);
     setAnchorEl(false);
   };
+
+
+  // Open submenu
+  const handleYearClick = (event) => {
+    setSubMenuAnchorEl(event.currentTarget);
+  };
+
+  // Close submenu
+  const handleYearClose = () => {
+    setSubMenuAnchorEl(null);
+  };
+
+
+  const handleSubMenu = (path) =>{
+    navigate(path);
+    setSubMenuAnchorEl(null);
+    setAnchorEl(!anchorEl)
+  }
 
 
 
@@ -170,13 +182,32 @@ const Header = () => {
                           backgroundColor: 'orangered', // Change the background color on hover
                         },
                       }}>
-                        <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>
+                        <MenuItem sx={{ fontSize: '15px' }} onClick={handleYearClick}>Newspaper Notes</MenuItem>
                       </Typography>
+                      <Menu
+                            anchorEl={subMenuAnchorEl} // Attach submenu properly
+                            open={Boolean(subMenuAnchorEl)}
+                            onClose={handleYearClose}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "right",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "right",
+                            }}
+                            MenuListProps={{
+                              sx: { flexDirection: "column", fontWeight: "600", backgroundColor: "white", color: "black" },
+                            }}
+                          >
+                            <MenuItem onClick={()=>handleSubMenu('/newsnotes')}>2024</MenuItem>
+                            <MenuItem onClick={() => handleSubMenu('/newsnotes25')}>2025</MenuItem>
+                          </Menu>
                     </Box>
                   </Menu>
                 </div>
-                <Divider orientation='horizontal' sx={{width:'50%',color:'white',height:'3px',border:'1px solid white',marginBottom: '10px',}}/>
-                <Link onClick={handleClose} style={{  fontSize: '25px',textDecoration:'none',color:'white' }} to="/courses">Mentorship</Link>
+                <Divider orientation='horizontal' sx={{ width: '50%', color: 'white', height: '3px', border: '1px solid white', marginBottom: '10px', }} />
+                <Link onClick={handleClose} style={{ fontSize: '25px', textDecoration: 'none', color: 'white' }} to="/courses">Mentorship</Link>
                 <Divider orientation='horizontal' sx={{ width: '50%', color: 'white', height: '3px', border: '1px solid white', marginBottom: '10px', }} />
                 <Link onClick={handleClose} style={{ fontSize: '25px', textDecoration: 'none', color: 'white' }} to="/books">Our Books</Link>
                 <Divider orientation='horizontal' sx={{ width: '50%', color: 'white', height: '3px', border: '1px solid white', marginBottom: '10px', }} />
@@ -341,14 +372,39 @@ const Header = () => {
                           }}>
                             <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/optional')}>Optional</MenuItem>
                           </Typography>
-                          <Typography sx={{
-                            textTransform: 'none', margin: "1px", color: 'white', '&:hover': {
-                              backgroundColor: 'orangered', // Change the background color on hover
-                            },
-                          }}>
-                            <MenuItem sx={{ fontSize: '15px' }} onClick={handleNavigation('/newsnotes')}>Newspaper Notes</MenuItem>
-
+                          <Typography
+                            sx={{
+                              textTransform: "none",
+                              margin: "1px",
+                              color: "white",
+                              "&:hover": { backgroundColor: "orangered" },
+                            }}
+                          >
+                            <MenuItem sx={{ fontSize: "15px" }} onClick={handleYearClick}>
+                              Newspaper Notes
+                            </MenuItem>
                           </Typography>
+
+                          {/* Submenu for Year Selection */}
+                          <Menu
+                            anchorEl={subMenuAnchorEl} // Attach submenu properly
+                            open={Boolean(subMenuAnchorEl)}
+                            onClose={handleYearClose}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "right",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "right",
+                            }}
+                            MenuListProps={{
+                              sx: { flexDirection: "column", fontWeight: "600", backgroundColor: "white", color: "black" },
+                            }}
+                          >
+                            <MenuItem onClick={()=>handleSubMenu('/newsnotes')}>2024</MenuItem>
+                            <MenuItem onClick={() => handleSubMenu('/newsnotes25')}>2025</MenuItem>
+                          </Menu>
                         </Box>
                       </Menu>
                     </div>

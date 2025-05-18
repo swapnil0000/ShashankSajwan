@@ -19,6 +19,7 @@ import Optional from './pages/optional/Optional';
 import PopupDialog from './components/popup/PopupDailog';
 import Payment from './pages/Payment';
 import BookPage from './pages/books/BookPage';
+import Optional2025 from './pages/Newspaper/NewsNotes2025';
 
 function App() 
 {
@@ -45,6 +46,7 @@ function App()
             <Route path='/general' element={<General/>}/>
             <Route path='/optional' element={<Optional/>}/>
             <Route path='/newsnotes' element={<NewsNotes/>}/>
+            <Route path='/newsnotes25' element={<Optional2025/>}/>
             <Route path='/payment' element={<Payment/>}/>
             <Route path='/books' element={<BookPage/>}/>
            </Routes> 
