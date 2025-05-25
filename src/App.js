@@ -29,7 +29,7 @@ function App()
     <BrowserRouter>
    
     <Header/>
-    <PopupDialog/>
+    {/* <PopupDialog/> */}
            <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/about' element={<About/>}/>

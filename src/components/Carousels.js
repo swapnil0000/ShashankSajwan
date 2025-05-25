@@ -9,29 +9,12 @@ const Carousels = () => {
 
 
   const data = [
-      // {
-      //   id: 1,
-      //   img: "/assets/banners/banner.png",
-      //   link: "https://amzn.to/3WncEva"
-      // },
       {
         id: 1,
-        img: "/assets/banners/newbanner.jpeg",
+        img: "/assets/banners/banner.png",
         link: "https://amzn.to/3WncEva"
       },
     ]
-    // {
-    //   id:2,
-    //   img:"/assets/banners/banner5.webp",
-    // },
-    // {
-    //   id:3,
-    //   img:"/assets/banners/banner4.webp",
-    // },
-    // {
-    //   id:4,
-    //   img:"/assets/banners/banner3.webp"
-    // }
 const handleClick=(link)=>{
   window.open(link, "_blank");
 }
@@ -46,7 +29,7 @@ const handleClick=(link)=>{
         </div>
         <div className="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
           {data.map((ele, index) => (
-            <Link to='/courses' style={{cursor:'pointer'}}  key={ele.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+            <Link to='/books' style={{cursor:'pointer'}}  key={ele.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
               <img   style={{ width: '100%', height: isMobileView ? "220px" : "480px" ,cursor:'pointer'}} src={ele.img} alt="..." />
             </Link>
           ))}
