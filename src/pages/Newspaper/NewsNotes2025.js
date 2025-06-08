@@ -123,11 +123,26 @@ const mayData = [
   {id:20,img:'/assets/newspaper/may2025/20may.jpeg',link:'https://drive.google.com/file/d/1C5IkeCIWHSJsGjfzETbw8J1B0ZjKNrWD/view'},
 ]
 
+const juneData = [
+  { id:1, img:'/assets/newspaper/june2025/1june.jpeg',link:'https://drive.google.com/file/d/1D44Q1muGK0WZSzaqlPAGdwy2_4PMdvse/view?usp=sharing'},
+  { id:2, img:'/assets/newspaper/june2025/2june.jpeg',link:'https://drive.google.com/file/d/1j1BuiWnwjWzHSO0NpyY0bqFu9Pw7SSoa/view'},
+  { id:3, img:'/assets/newspaper/june2025/3june.jpeg',link:'https://drive.google.com/file/d/1KvXr0csBMk7Q9Jzc4WpLMGCrJrrVa2BJ/view'},
+  // { id:4, img:'/assets/newspaper/june2025/4june.jpeg',link:''},
+  // { id:5, img:'/assets/newspaper/june2025/5june.jpeg',link:''},
+  // { id:6, img:'/assets/newspaper/june2025/6june.jpeg',link:''},
+  // { id:7, img:'/assets/newspaper/june2025/7june.jpeg',link:''},
+  // { id:8, img:'/assets/newspaper/june2025/8june.jpeg',link:''},
+  // { id:9, img:'/assets/newspaper/june2025/9june.jpeg',link:''},
+]
+
+
+
 const tabData = [
   { id: 1, label: 'JANUARY 2025' },
   { id: 2, label: 'FEBRUARY 2025' },
   { id: 3, label: 'APRIL 2025' },
-  { id: 4, label: 'MAY 2025' }
+  { id: 4, label: 'MAY 2025' },
+  { id:5,label:"JUNE 2025"}
 ];
 
 
@@ -214,6 +229,7 @@ const Optional2025 = () => {
               {value === 1 && renderGridItems(febData)}
               {value === 2 && renderGridItems(april2025)}
               {value === 3 && renderGridItems(mayData)}
+              {value === 4 && renderGridItems(juneData)}
             </TabPanel>
           ))}
         </Box>
