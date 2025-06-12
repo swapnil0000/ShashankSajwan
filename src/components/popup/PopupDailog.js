@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "../popup/popupStyle.css";
-import popupImage from "../popup/popup.webp";
 import { useMediaQuery, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +26,7 @@ const PopupDialog = () => {
       {showPopup && (
         <div className="home-popup">
           <div className="popup">
-            <img onClick={handleClick} src="/assets/popup2026.jpeg" alt="Popup" style={{ width: isMobileView ? "350px" : "90%", height: isMobileView ? "220px" : "400px", borderRadius: '5px', cursor: 'pointer' }} />
+            <img onClick={handleClick} src="/assets/popup2025(1).jpeg" alt="Popup" style={{ width: isMobileView ? "350px" : "90%", height: isMobileView ? "220px" : "400px", borderRadius: '5px', cursor: 'pointer' }} />
             {!isMobileView && <button style={{}} className="close-popup-btn" onClick={handleClose}>Close</button>}
             {
               isMobileView && <button style={{ fontSize: '20px' }} className="close-popup-mobile" onClick={handleClose}>Close</button>
