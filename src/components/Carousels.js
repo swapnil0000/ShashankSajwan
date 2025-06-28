@@ -9,34 +9,36 @@ const Carousels = () => {
 
 
   const data = [
-      {
-        id: 1,
-        img: "/assets/banners/banner.png",
-        link: "https://amzn.to/3WncEva"
-      },
-    ]
-const handleClick=(link)=>{
-  window.open(link, "_blank");
-}
+    {
+      id: 1,
+      img: "/assets/banners/homebanner.png",
+      link: "https://amzn.to/3WncEva"
+    },
+  ]
+  const handleClick = (link) => {
+    window.open(link, "_blank");
+  }
 
   return (
 
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-    <Box sx={{ width: '100%' }}>
-      <div id="carouselExampleIndicators" className="carousel slide" style={{ maxHeight: '900px', marginTop:isMobileView?"100px":"110px" }}>
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+      <Box sx={{ width: '100%' }}>
+        <div id="carouselExampleIndicators" className="carousel slide" style={{ maxHeight: '900px', marginTop: isMobileView ? "100px" : "110px" }}>
+          <div className="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+          </div>
+          <div className="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
+            {data.map((ele, index) => (
+            <img   style={{ width: '100%', height: isMobileView ? "220px" : "480px" ,cursor:'pointer'}} src={ele.img} alt="..." />
+
+          // <Link to='/books' style={{cursor:'pointer'}}  key={ele.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+          //     <img   style={{ width: '100%', height: isMobileView ? "220px" : "480px" ,cursor:'pointer'}} src={ele.img} alt="..." />
+          //   </Link>
+            ))}
+          </div>
         </div>
-        <div className="carousel-inner" style={{ display: 'flex', maxWidth: '100%' }}>
-          {data.map((ele, index) => (
-            <Link to='/books' style={{cursor:'pointer'}}  key={ele.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-              <img   style={{ width: '100%', height: isMobileView ? "220px" : "480px" ,cursor:'pointer'}} src={ele.img} alt="..." />
-            </Link>
-          ))}
-        </div>
-      </div>
+      </Box>
     </Box>
-  </Box>
 
   );
 }

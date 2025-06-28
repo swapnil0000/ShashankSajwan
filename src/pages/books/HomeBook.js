@@ -26,7 +26,7 @@ const HomeBook = () => {
     const isMobileView = useMediaQuery(theme.breakpoints.down('sm'))
     const navigate=useNavigate();
     const handleClick=()=>{
-          navigate('/books')
+        //   navigate('/books')
     }
 
     return (
