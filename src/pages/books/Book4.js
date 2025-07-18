@@ -12,7 +12,7 @@ const Book4 = () => {
   return (
     <Box className="revealDown" ref={(el) => (elementRefs.current[0] = el)} sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", fontSize: '15px', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '40px' }}>
     {isMobileView &&
-        <img style={{ width:isMobileView?"280px":"350px", height: 'auto', margin: '10px', borderRadius: '10px' }} src='/assets/book4.webp' alt='banner' />
+        <img style={{ width:isMobileView?"280px":"350px", height: 'auto', margin: '10px', borderRadius: '10px' }} src='/assets/book6.jpeg' alt='banner' />
     }
     <Box sx={{ marginLeft: '10px' }}>
     <Typography sx={{ fontSize: '15px' }}> The thoroughly Updated  
@@ -64,7 +64,7 @@ const Book4 = () => {
   </Box>
 
     {!isMobileView &&
-        <img style={{width:isMobileView?"280px":"350px", height: 'auto', margin: '10px', borderRadius: '10px' }} src='/assets/book4.webp' alt='banner' />
+        <img style={{width:isMobileView?"280px":"350px", height: 'auto', margin: '10px', borderRadius: '10px' }} src='/assets/book6.jpeg' alt='banner' />
     }
 </Box>
   )

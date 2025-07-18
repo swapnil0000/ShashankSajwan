@@ -26,7 +26,7 @@ const HomeBook = () => {
     const isMobileView = useMediaQuery(theme.breakpoints.down('sm'))
     const navigate=useNavigate();
     const handleClick=()=>{
-        //   navigate('/books')
+          navigate('/books')
     }
 
     return (
@@ -37,25 +37,25 @@ const HomeBook = () => {
                 </FlexCenterColoum>
                 <ul onClick={handleClick} className='ul' id="imgList" ref={imgListRef} style={{ display: 'flex', overflowX: 'scroll', listStyle: 'none', padding: 0, margin: 0, marginTop: '10px',alignItems:'center' }}>
                     <li className='li' >
-                        <img className='img' src="/assets/book3.webp" alt="Img 1" />
+                        <img className='img' src="/assets/book3.jpeg" alt="Img 1" />
                     </li>
                     <li className='li'>
-                        <img className='img' src="/assets/book2.webp" alt="Img 2" />
+                        <img className='img' src="/assets/book2.jpeg" alt="Img 2" />
                     </li>
                     <li className='li'>
-                        <img className='img' src="/assets/book6.webp" alt="Img 3" />
+                        <img className='img' src="/assets/book6.jpeg" alt="Img 3" />
                     </li>
                     <li className='li'>
-                        <img className='img' src="/assets/book5.webp" alt="Img 4" />
+                        <img className='img' src="/assets/book5.jpeg" alt="Img 4" />
                     </li>
                     <li className='li'>
-                        <img className='img' src="/assets/book1.webp" alt="Img 5" />
+                        <img className='img' src="/assets/book1.jpeg" alt="Img 5" />
                     </li>
                     <li className='li'>
-                        <img className='img' src="/assets/book4.webp" alt="Img 6" />
+                        <img className='img' src="/assets/book4.jpeg" alt="Img 6" />
                     </li>
                     <li className='li'>
-                        <img className='img' src="/assets/book7.webp" alt="Img 7" />
+                        <img className='img' src="/assets/book7.jpeg" alt="Img 7" />
                     </li>
                 </ul>
                 <div className="scroll-arrow" onClick={handleScrollLeft}>

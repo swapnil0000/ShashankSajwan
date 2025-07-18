@@ -36,7 +36,7 @@ const Book1 = () => {
     }, []); // Empty dependency array for mounting once
   return (
     <Box className="revealDown" ref={(el) => (elementRefs.current[0] = el)} sx={{ display: 'flex', flexDirection: isMobileView ? 'column' : 'row', fontSize: '15px', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-            <img style={{ width: isMobileView ? '280px' : '350px', height: 'auto', margin: '10px', borderRadius: '10px' }} src="/assets/book1.webp" alt="banner" />
+            <img style={{ width: isMobileView ? '280px' : '350px', height: 'auto', margin: '10px', borderRadius: '10px' }} src="/assets/book5.jpeg" alt="banner" />
             <Box sx={{ marginLeft: '10px' }}>
               <Typography sx={{ fontSize: '15px' }}> The thoroughly Updated  
               <span style={{ fontWeight: '600',color: '#178f4f', }}> 6th Edition of the book Ecology & Environment Compendium with NCERT (Class 6 to 12) for UPSC CSE Paper 1 & State PCS provides the MOST UPDATED material for the UPSC CSE & State PSC Prelims & Mains Exam.</span> 

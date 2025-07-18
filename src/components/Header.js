@@ -412,7 +412,7 @@ const Header = () => {
                 }
 
                 <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/courses'>Mentorship</Link> {/* Navigate to course section in home */}
-               {/* <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/books'>Our Books</Link>*/}
+                <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/books'>Our Books</Link> {/* Navigate to course section in home */}
                 <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/videos'>Videos</Link> {/* Navigattoe to course section in home */}
                 <Link style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontWeight: '400' }} to='/about'>About</Link>
 

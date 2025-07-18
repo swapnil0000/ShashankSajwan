@@ -11,7 +11,7 @@ const Carousels = () => {
   const data = [
     {
       id: 1,
-      img: "/assets/banners/homebanner.png",
+      img: "/assets/banners/Book.png",
       link: "https://amzn.to/3WncEva"
     },
   ]
