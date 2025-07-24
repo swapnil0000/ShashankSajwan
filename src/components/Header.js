@@ -255,9 +255,15 @@ const Header = () => {
                 </Box>
               </Box>
             </Box>
-             
+
 
             <Box>
+              <Box sx={{ display: "flex", flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '10px', cursor: 'pointer', marginTop: '15px' }}>
+                  <img onClick={handleEmail} style={{ width: '20px' }} src="/assets/gmail.webp" alt='gmail' />
+                </Box>
+              </Box>
+
 
 
 
