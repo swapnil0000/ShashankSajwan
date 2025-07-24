@@ -11,12 +11,12 @@ window.onload = function () {
   window.scrollTo(0, 0);
 }
 const CourseSection = () => {
-  const handleWhatsapp = () => {
-    // Replace '1234567890' with the phone number you want to send the message to
-    const phoneNumber = '7060748896';
-    const whatsappUrl = `https://wa.me/${phoneNumber}`;
-    window.open(whatsappUrl, '_blank');
-  };
+  // const handleWhatsapp = () => {
+  //   // Replace '1234567890' with the phone number you want to send the message to
+  //   const phoneNumber = '7060748896';
+  //   const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  //   window.open(whatsappUrl, '_blank');
+  // };
   const { pathname } = useLocation();
 
     const theme=useTheme();
@@ -144,7 +144,6 @@ const CourseSection = () => {
      
        
         </Box>
-        <Button onClick={handleWhatsapp} sx={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'rgba(0,119,182,1)',color:'whitesmoke',marginBottom:'11px'}} variant='contained'>Enroll now</Button>
       </Box>
       </Box>
       <Box sx={{ marginTop: '30px', display: 'flex', width: '100%',flexDirection:'column',alignItems:'center',justifyContent:'center' }}>

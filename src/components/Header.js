@@ -11,11 +11,11 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 const Header = () => {
-  const handleWhatsapp = () => {
-    const phoneNumber = '7060748896';
-    const whatsappUrl = `https://wa.me/${phoneNumber}`;
-    window.open(whatsappUrl, '_blank');
-  };
+  // const handleWhatsapp = () => {
+  //   const phoneNumber = '7060748896';
+  //   const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  //   window.open(whatsappUrl, '_blank');
+  // };
   const handleEmail = () => {
     const recipientEmail = 'ask.iasmentor@gmail.com';
     const mailtoUrl = `mailto:${recipientEmail}`;
@@ -255,16 +255,9 @@ const Header = () => {
                 </Box>
               </Box>
             </Box>
-
+             
 
             <Box>
-              <Box sx={{ display: "flex", flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '10px', cursor: 'pointer', marginTop: '15px' }}>
-                  <WhatsAppIcon onClick={handleWhatsapp} sx={{ color: 'lightgreen', fontWeight: '700', fontSize: '20px' }} />
-                  <img onClick={handleEmail} style={{ width: '20px' }} src="/assets/gmail.webp" alt='gmail' />
-                </Box>
-              </Box>
-
 
 
 
@@ -420,10 +413,7 @@ const Header = () => {
               </Stack>
             </Box>
             <Box sx={{ display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <Box onClick={handleWhatsapp} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', marginRight: '55px', gap: '10px', cursor: 'pointer' }}>
-                <WhatsAppIcon sx={{ color: 'lightgreen', fontWeight: '700' }} />
-                <Typography sx={{ color: 'white', fontSize: "15px" }}>+91 7060748896</Typography>
-              </Box>
+             
               <Box onClick={handleEmail} sx={{ display: 'flex', flexDirection: 'row', gap: '12px', marginTop: '5px', cursor: 'pointer' }}>
                 <img style={{ width: '18px' }} src="/assets/gmail.webp" alt='logo' />
                 <Typography sx={{ color: 'white', fontSize: "14px", textTransform: 'lowercase' }}>ask.iasmentor@gmail.com</Typography>

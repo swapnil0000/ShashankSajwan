@@ -1,8 +1,8 @@
-export const handleWhatsapp = () => {
-    const phoneNumber = '7060748896';
-    const whatsappUrl = `https://wa.me/${phoneNumber}`;
-    window.open(whatsappUrl, '_blank');
-};
+// export const handleWhatsapp = () => {
+//     const phoneNumber = '7060748896';
+//     const whatsappUrl = `https://wa.me/${phoneNumber}`;
+//     window.open(whatsappUrl, '_blank');
+// };
 
 
 export const handleEmail = () => {

@@ -85,11 +85,11 @@ const Author = () => {
     setErrors({});
   };
 
-  const handleWhatsapp = () => {
-    const phoneNumber = '7060748896';
-    const whatsappUrl = `https://wa.me/${phoneNumber}`;
-    window.open(whatsappUrl, '_blank');
-  };
+  // const handleWhatsapp = () => {
+  //   const phoneNumber = '7060748896';
+  //   const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  //   window.open(whatsappUrl, '_blank');
+  // };
 
   const handleEmail = () => {
     const recipientEmail = 'ask.iasmentor@gmail.com';

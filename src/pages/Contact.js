@@ -87,11 +87,11 @@ const Contact = () => {
   //   setErrors({});
   // };
 
-  const handleWhatsapp = () => {
-    const phoneNumber = '7060748896';
-    const whatsappUrl = `https://wa.me/${phoneNumber}`;
-    window.open(whatsappUrl, '_blank');
-  };
+  // const handleWhatsapp = () => {
+  //   const phoneNumber = '7060748896';
+  //   const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  //   window.open(whatsappUrl, '_blank');
+  // };
 
   const handleEmail = () => {
     const recipientEmail = 'ask.iasmentor@gmail.com';
@@ -135,7 +135,7 @@ const Contact = () => {
 
       <Box sx={{ display: 'flex', flexDirection: 'column', marginBottom: '10px',justifyContent:'center' }}>
         <Typography sx={{fontSize:isMobileView?"25px":"36px",fontWeight:'500'}}>Contact us via Email or WhatsApp?</Typography>
-        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '5px' }}>For correspondence, kindly reach out to us at <span style={{ fontWeight: '600',color:'green' }}>ask.iasmentor@gmail.com or 7060748896 </span>
+        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '5px' }}>For correspondence, kindly reach out to us at <span style={{ fontWeight: '600',color:'green' }}>ask.iasmentor@gmail.com  </span>
         <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '10px', textAlign: 'justify', hyphens: 'inherit' }}>All email communications are managed and responded to by our Head Office located in Dehradun.</Typography> Should you seek guidance on Civil Services Exam preparation or wish to share your feedback/suggestions for us, we welcome you to send us an email.</Typography>
         <Typography sx={{fontSize:isMobileView?"25px":"36px",marginTop:'5px',fontWeight:'500',color:'black'}}>WORK WITH US</Typography>
         <Typography sx={{fontSize:isMobileView?"17px":"20px",fontFamily:'sans-serif',marginTop:'5px'}}>If you are interested in working with us and be a part of this growing organisation do send your resume at<span style={{color:'green',fontWeight:'700'}}> ask.iasmentor@gmail.com.</span> </Typography>
