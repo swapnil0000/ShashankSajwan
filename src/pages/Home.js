@@ -21,7 +21,7 @@ const Home = () => {
     <Box>
        <Carousels/>
        <Motive/>
-       <CourseProvide/>
+       {/*<CourseProvide/>*/}
        <HomeBook/>
        <Choose/>
        <Acheivement/>
