@@ -134,14 +134,12 @@ const Contact = () => {
       </Box>
 
       <Box sx={{ display: 'flex', flexDirection: 'column', marginBottom: '10px',justifyContent:'center' }}>
-        {/* <Typography sx={{fontSize:isMobileView?"25px":"36px",fontWeight:'500'}}>Contact us via Email or WhatsApp?</Typography>
-        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '5px' }}>For correspondence, kindly reach out to us at <span style={{ fontWeight: '600',color:'green' }}>ask.iasmentor@gmail.com  </span>*/}
-        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '10px', textAlign: 'justify', hyphens: 'inherit' }}>
-          All email communications are managed and responded to by our Head Office located in Dehradun. Should you seek guidance on Civil Services Exam preparation or wish to share your feedback/suggestions for us, we welcome you to send us an email.
-        </Typography>
+        <Typography sx={{fontSize:isMobileView?"25px":"36px",fontWeight:'500'}}>Contact us via Email or WhatsApp?</Typography>
+        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '5px' }}>For correspondence, kindly reach out to us at <span style={{ fontWeight: '600',color:'green' }}>ask.iasmentor@gmail.com  </span>
+        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '10px', textAlign: 'justify', hyphens: 'inherit' }}>All email communications are managed and responded to by our Head Office located in Dehradun.</Typography> Should you seek guidance on Civil Services Exam preparation or wish to share your feedback/suggestions for us, we welcome you to send us an email.</Typography>
         <Typography sx={{fontSize:isMobileView?"25px":"36px",marginTop:'5px',fontWeight:'500',color:'black'}}>WORK WITH US</Typography>
-{/*       <Typography sx={{fontSize:isMobileView?"17px":"20px",fontFamily:'sans-serif',marginTop:'5px'}}>If you are interested in working with us and be a part of this growing organisation do send your resume at<span style={{color:'green',fontWeight:'700'}}> ask.iasmentor@gmail.com.</span> </Typography>
-*/}        <Typography sx={{fontSize:isMobileView?"17px":"20px",fontFamily:'sans-serif',marginTop:'5px'}}>Kindly do send some of your work samples too. Team will get back to you asap.</Typography>
+        <Typography sx={{fontSize:isMobileView?"17px":"20px",fontFamily:'sans-serif',marginTop:'5px'}}>If you are interested in working with us and be a part of this growing organisation do send your resume at<span style={{color:'green',fontWeight:'700'}}> ask.iasmentor@gmail.com.</span> </Typography>
+        <Typography sx={{fontSize:isMobileView?"17px":"20px",fontFamily:'sans-serif',marginTop:'5px'}}>Kindly do send some of your work samples too. Team will get back to you asap.</Typography>
       </Box>
       </Box>
     </Box>

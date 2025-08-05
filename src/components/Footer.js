@@ -46,9 +46,8 @@ const Footer = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: isMobileView ? "center" : "", justifyContent: 'space-around' }}>
               <Typography sx={{marginTop:'15.55px'}}>Connect With Us</Typography>
               <Icon />
-             {/* <Typography sx={{fontSize:'18px'}}>For Career and Opportunity:</Typography>
+              <Typography sx={{fontSize:'18px'}}>For Career and Opportunity:</Typography>
               <Typography sx={{fontSize:'18px'}} onClick={handleEmail}>ask.iasmentor@gmail.com</Typography>
-              */}
             </Box>
           </Box>
 
