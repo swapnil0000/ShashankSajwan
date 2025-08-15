@@ -2,7 +2,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Contact from './pages/Contact';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import About from './pages/about/About';
 import TermAndCondition from './pages/Policy/TermAndCondition';
 import Refund from './pages/Policy/Refund';
@@ -49,6 +49,7 @@ function App()
             <Route path='/payment' element={<Payment/>}/>
             <Route path='/books' element={<BookPage/>}/>
            </Routes> 
+           <Footer/>
 
     </BrowserRouter>
   );
