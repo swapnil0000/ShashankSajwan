@@ -1,60 +1,75 @@
 import React from 'react';
-import { Container, Typography, Box, useTheme, useMediaQuery } from '@mui/material';
-import Icon from './Icon/Icon';
-import { Link, useNavigate } from 'react-router-dom';
+import { Box, Container, IconButton, Link as MuiLink, Stack, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import XIcon from '@mui/icons-material/X';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { useApp } from '../context/AppContext';
+import { socials } from '../data/studyHub';
+import { tokens } from '../theme/theme';
+
+const FootLink = ({ to, children }) => (
+  <MuiLink component={Link} to={to} underline="none" sx={{ color: 'rgba(255,255,255,.75)', fontSize: 14, py: 0.5, '&:hover': { color: '#fff' } }}>
+    {children}
+  </MuiLink>
+);
 
 const Footer = () => {
-  const theme = useTheme();
-  const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
-  const navigate = useNavigate();
-
-
-  const handleEmail = () => {
-    const recipientEmail = 'ask.iasmentor@gmail.com';
-    const mailtoUrl = `mailto:${recipientEmail}`;
-    window.open(mailtoUrl, '_blank');
-  };
+  const { t } = useApp();
+  const icons = [
+    [socials.youtube, YouTubeIcon, 'YouTube'],
+    [socials.instagram, InstagramIcon, 'Instagram'],
+    [socials.telegram, TelegramIcon, 'Telegram'],
+    [socials.x, XIcon, 'X'],
+    [socials.linkedin, LinkedInIcon, 'LinkedIn'],
+  ];
 
   return (
-    <Box sx={{ backgroundColor: '#212529', color: 'white', position: 'relative',paddingBottom:"0px"}}>
-      
-        <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '100%' }}>
-
-          {/* Logo and Navigation Links */}
-          <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '40px' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img style={{ width: '130px' }} src="/assets/shashank.webp" alt='logo' />
-            </Box>
-
-            <Box sx={{ display: 'flex', flexDirection: "row", justifyContent: 'space-between', gap: '80px',marginBottom:isMobileView?"20px":"null" }}>
-              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography onClick={() => navigate("/")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Home</Typography>
-                <Typography onClick={() => navigate("/private")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Privacy Policy</Typography>
-                <Typography onClick={() => navigate("/terms")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>T&C</Typography>
-                <Typography onClick={() => navigate("/refund")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Refund Policy</Typography>
+    <Box component="footer" sx={{ background: tokens.gradientNavy, color: '#fff', mt: 6, pb: { xs: 'calc(90px + env(safe-area-inset-bottom))', md: 4 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ height: 4, background: tokens.gradient }} />
+      <Container maxWidth="lg" sx={{ pt: 6, px: { xs: 2, sm: 3 } }}>
+        <Box sx={{ display: 'grid', gap: 4, gridTemplateColumns: { xs: '1fr 1fr', md: '2fr 1fr 1fr 1.5fr' } }}>
+          <Box sx={{ gridColumn: { xs: '1 / -1', md: 'auto' } }}>
+            <Stack direction="row" alignItems="center" gap={1.5}>
+              <Box component="img" src="/assets/shashank.webp" alt="" sx={{ width: 52, height: 52, borderRadius: '14px' }} />
+              <Box>
+                <Typography sx={{ fontWeight: 800, fontSize: 18 }}>SHASHANK SAJWAN</Typography>
+                <Typography sx={{ opacity: 0.7, fontSize: 13 }}>{t('tagline')}</Typography>
               </Box>
-
-              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-
-                <Typography onClick={() => navigate("/ncert")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Resources</Typography>
-                <Typography onClick={() => navigate("/books")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>Our Books</Typography>
-                <Typography onClick={() => navigate("/faqs")} sx={{ color: 'white', marginBottom: '2.5px', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.1)' } }}>FAQs</Typography>
-              </Box>
-            </Box>
-
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: isMobileView ? "center" : "", justifyContent: 'space-around' }}>
-              <Typography sx={{marginTop:'15.55px'}}>Connect With Us</Typography>
-              <Icon />
-              <Typography sx={{fontSize:'18px'}}>For Career and Opportunity:</Typography>
-              <Typography sx={{fontSize:'18px'}} onClick={handleEmail}>ask.iasmentor@gmail.com</Typography>
-            </Box>
+            </Stack>
           </Box>
-
-          {/* Bottom Text */}
-          <Typography fontSize='15px' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '40px' , marginBottom:'40px'}}>©  All Rights Reserved</Typography>
-          
-        </Container>
-
+          <Stack>
+            <Typography sx={{ fontWeight: 700, mb: 1 }}>{t('quickLinks')}</Typography>
+            <FootLink to="/study">{t('studyHub')}</FootLink>
+            <FootLink to="/books">{t('ourBooks')}</FootLink>
+            <FootLink to="/videos">{t('videos')}</FootLink>
+            <FootLink to="/faqs">{t('faqs')}</FootLink>
+          </Stack>
+          <Stack>
+            <Typography sx={{ fontWeight: 700, mb: 1 }}>{t('policies')}</Typography>
+            <FootLink to="/private">Privacy Policy</FootLink>
+            <FootLink to="/terms">Terms &amp; Conditions</FootLink>
+            <FootLink to="/refund">Refund Policy</FootLink>
+          </Stack>
+          <Box sx={{ gridColumn: { xs: '1 / -1', md: 'auto' } }}>
+            <Typography sx={{ fontWeight: 700, mb: 1 }}>{t('connect')}</Typography>
+            <Stack direction="row" gap={1} sx={{ mb: 2 }}>
+              {icons.map(([href, Icon, label]) => (
+                <IconButton key={label} href={href} target="_blank" rel="noopener" aria-label={label} sx={{ color: '#fff', bgcolor: 'rgba(255,255,255,.08)', '&:hover': { bgcolor: 'rgba(255,255,255,.16)' } }}>
+                  <Icon fontSize="small" />
+                </IconButton>
+              ))}
+            </Stack>
+            <Typography sx={{ fontSize: 13, opacity: 0.7 }}>{t('careers')}</Typography>
+            <MuiLink href="mailto:ask.iasmentor@gmail.com" sx={{ color: '#fff', fontWeight: 600 }}>ask.iasmentor@gmail.com</MuiLink>
+          </Box>
+        </Box>
+        <Typography sx={{ mt: 5, pt: 3, borderTop: '1px solid rgba(255,255,255,.1)', fontSize: 13, opacity: 0.6, textAlign: 'center' }}>
+          © {new Date().getFullYear()} Shashank Sajwan · {t('rights')}
+        </Typography>
+      </Container>
     </Box>
   );
 };

@@ -1,3 +1,4 @@
+import ResourceLayout from '../../components/ui/ResourceLayout';
 import { Box, Grid, Paper, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
@@ -210,21 +211,7 @@ const Optional2025 = () => {
   const [notes, setNotes] = useState([]);
 
 
-  useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const response = await axios.get('http://localhost:1337/newspaper-notes');
-        console.log('Response:', response); // Log the entire response object
-        setNotes(response.data); // Assuming the response data is an array of notes
-      } catch (error) {
-        console.error('Error fetching notes:', error);
-      }
-    };
 
-    fetchNotes();
-
-    window.scrollTo(0, 0);
-  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -255,46 +242,14 @@ const Optional2025 = () => {
   );
 
   return (
-    <Box>
-      <Box className="material-page" sx={{ width: '100%', marginTop: isMobileView ? "100px" : "110px", position: 'relative', height: '150px', backgroundImage: "linear-gradient( 26.3deg ,rgba(8,24,68,1) 87.6%   ,rgba(0,119,182,1) 9.6%)" }}>
-        <Typography variant="h4" sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', textAlign: 'center', fontSize: isMobileView ? "20px" : "50px" }}>
-          NEWSPAPER NOTES
-        </Typography>
-      </Box>
-      <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', marginTop: '10px', display: 'flex', marginBottom: isMobileView ? '10px' : '200px', flexDirection: isMobileView ? "column" : 'row', justifyContent: 'space-evenly', width: '100%' }}>
-        {!isMobileView && (
-          <Tabs orientation={isMobileView ? "horizontal" : 'vertical'} value={value} onChange={handleChange} variant="scrollable" aria-label="Vertical tabs example" sx={{ height: isMobileView ? "" : '600px', marginLeft: '10px', padding: '10px', width: isMobileView ? "100%" : "500px", display: 'flex', alignItems: 'center', justifyContent: isMobileView ? "space-between" : "", backgroundColor: isMobileView ? "" : 'rgba(8,24,68,1)', borderRadius: '10px', borderColor: 'white' }}>
-            {tabData.map(tab => (
-              <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: isMobileView ? '5px' : '15px', marginBottom: '20px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px' }} />
-            ))}
-          </Tabs>
-        )}
-
-        {isMobileView && (
-          <Box sx={{ bgcolor: 'background.paper', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-            <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile aria-label="scrollable force tabs example" sx={{ width: '100%' }}>
-              {tabData.map(tab => (
-                <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: '10px', marginBottom: '10px', marginLeft: '10px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px', maxWidth: '300px' }} />
-              ))}
-            </Tabs>
-          </Box>
-        )}
-        <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-          {tabData.map((tab, index) => (
-            <TabPanel key={tab.id} value={value} index={index} sx={{ marginLeft: isMobileView ? '' : '20px', marginRight: isMobileView ? '' : '20px', marginTop: isMobileView ? '10px' : '' }}>
-              {value === 0 && renderGridItems(janData)}
-              {value === 1 && renderGridItems(febData)}
-              {value === 2 && renderGridItems(april2025)}
-              {value === 3 && renderGridItems(mayData)}
-              {value === 4 && renderGridItems(juneData)}
-                {value === 5 && renderGridItems(july2025)}
-            </TabPanel>
-          ))}
-        </Box>
-
-      </Box>
-    </Box>
-  )
+    <ResourceLayout
+      sectionId="news25"
+      title="Newspaper Notes"
+      accent="2025"
+      subtitle="Daily current affairs notes, month-wise."
+      tabs={[{ label: 'January 2025', items: janData }, { label: 'February 2025', items: febData }, { label: 'April 2025', items: april2025 }, { label: 'May 2025', items: mayData }, { label: 'June 2025', items: juneData }, { label: 'July 2025', items: july2025 }]}
+    />
+  );
 }
 
 export default Optional2025

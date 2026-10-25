@@ -1,1 +1,89 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+  --navy: #0B1640;
+  --saffron: #FF8A1F;
+  --crimson: #E0294A;
+  --grad: linear-gradient(100deg, #FF8A1F 0%, #F2543A 50%, #E0294A 100%);
+  --grad-navy: linear-gradient(135deg, #0B1640 0%, #1B2A6B 60%, #3A2E7A 100%);
+  --glass: rgba(255, 255, 255, 0.72);
+  --grid-line: rgba(11, 22, 64, 0.05);
+}
+[data-mode="dark"] {
+  --glass: rgba(10, 15, 40, 0.72);
+  --grid-line: rgba(255, 255, 255, 0.04);
+}
+
+html, body { overflow-x: clip; max-width: 100%; }
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: "Plus Jakarta Sans", "Noto Sans Devanagari", system-ui, sans-serif;
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; }
+img { max-width: 100%; }
+
+.text-gradient {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.glow-card {
+  background: var(--grad-navy);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgba(11, 22, 64, 0.7);
+}
+.glow-card::after {
+  content: "";
+  position: absolute;
+  width: 260px; height: 260px;
+  right: -80px; top: -120px;
+  background: radial-gradient(circle, rgba(255, 138, 31, 0.55), transparent 65%);
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+.orb-a { width: 380px; height: 380px; background: #FF8A1F; top: -120px; right: -100px; animation: drift 14s ease-in-out infinite; }
+.orb-b { width: 320px; height: 320px; background: #3A4BD8; bottom: -160px; left: -120px; opacity: 0.25; animation: drift 18s ease-in-out infinite reverse; }
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.08); }
+}
+
+.pulse { animation: pulse 2.2s ease-out infinite; }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(224, 41, 74, 0.55); }
+  100% { box-shadow: 0 0 0 22px rgba(224, 41, 74, 0); }
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.snap-x { scroll-snap-type: x mandatory; }
+.snap-start { scroll-snap-align: start; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

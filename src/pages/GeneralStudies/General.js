@@ -1,3 +1,4 @@
+import ResourceLayout from '../../components/ui/ResourceLayout';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -126,44 +127,13 @@ const Material = () => {
   );
 
   return (
-    <Box>
-      <Box className="material-page" sx={{ width: '100%', marginTop: isMobileView ? "100px" : "110px", position: 'relative', height: '150px', backgroundImage: "linear-gradient( 26.3deg ,rgba(8,24,68,1) 87.6%   ,rgba(0,119,182,1) 9.6%)" }}>
-        <Typography variant="h4"  sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', textAlign: 'center', fontSize: isMobileView ? "26px" : "50px" }}>
-          General Studies
-        </Typography>
-      </Box>
-      <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', marginTop: '10px', display: 'flex', marginBottom: isMobileView ? '10px' : '200px', flexDirection: isMobileView ? "column" : 'row', justifyContent: 'space-evenly', width: '100%' }}>
-        {!isMobileView && (
-          <Tabs orientation={isMobileView ? "horizontal" : 'vertical'} value={value} onChange={handleChange} variant="scrollable" aria-label="Vertical tabs example" sx={{ height: isMobileView ? "" : '600px', marginLeft: '10px', padding: '10px', width: isMobileView ? "100%" : "500px", display: 'flex', alignItems: 'center', justifyContent: isMobileView ? "space-between" : "", backgroundColor: isMobileView ? "" : 'rgba(8,24,68,1)', borderRadius: '10px', borderColor: 'white' }}>
-            {tabData.map(tab => (
-              <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: isMobileView ? '5px' : '15px', marginBottom: '20px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px' }} />
-            ))}
-          </Tabs>
-        )}
-        {isMobileView && (
-          <Box sx={{  bgcolor: 'background.paper',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center' }}>
-            <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile aria-label="scrollable force tabs example" sx={{ width: '100%' }}>
-              {tabData.map(tab => (
-                <Tab key={tab.id} label={tab.label} {...a11yProps(tab.id)} sx={{ bgcolor: value === tab.id ? 'lightblue' : 'white', color: 'black', marginRight: '10px', marginBottom: '10px', marginLeft: '10px', borderRadius: '8px', width: isMobileView ? "100%" : "200px", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px', maxWidth: '100%' }} />
-              ))}
-            </Tabs>
-          </Box>
-        )}
-        <Box sx={{ width: '100%' }}>
-          {tabData.map((tab, index) => (
-            <TabPanel key={tab.id} value={value} index={index} sx={{ marginLeft: isMobileView ? '' : '20px', marginRight: isMobileView ? '' : '20px', marginTop: isMobileView ? '10px' : '' }}>
-              {value === 0 && renderGridItems(dataPolitical)}
-              {value === 1 && renderGridItems(dataEco)}
-              {value === 2 && renderGridItems(data)}
-              {value === 3 && renderGridItems(dataGeo)}
-              {value === 4 && renderGridItems(science)}
-              {value===5 && renderGridItems(Environment)}
-            
-            </TabPanel>
-          ))}
-        </Box>
-      </Box>
-    </Box>
+    <ResourceLayout
+      sectionId="general"
+      title="General"
+      accent="Studies"
+      subtitle="GS notes and material across core subjects."
+      tabs={[{ label: 'Polity', items: dataPolitical }, { label: 'Economics', items: dataEco }, { label: 'History', items: data }, { label: 'Geography', items: dataGeo }, { label: 'Science & Tech', items: science }, { label: 'Environment', items: Environment }]}
+    />
   );
 };
 

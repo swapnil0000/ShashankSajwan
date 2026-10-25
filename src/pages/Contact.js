@@ -1,168 +1,74 @@
 import React, { useState } from 'react';
-import { Box, Button, Container, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
-import MailIcon from '@mui/icons-material/Mail';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import axios from "axios";
-import Career from './carrer/Career';
+import { Box, Button, Container, IconButton, Snackbar, Stack, Typography } from '@mui/material';
+import MailRoundedIcon from '@mui/icons-material/MailRounded';
+import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
+import WorkRoundedIcon from '@mui/icons-material/WorkRounded';
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import PageHero from '../components/ui/PageHero';
+import { Reveal } from '../components/ui/Motion';
+import { socials } from '../data/studyHub';
+
+const EMAIL = 'ask.iasmentor@gmail.com';
+
+const Card = ({ icon, title, children, delay }) => (
+  <Reveal delay={delay}>
+    <Box sx={{ p: { xs: 2.5, md: 3 }, borderRadius: '24px', bgcolor: 'background.paper', border: 1, borderColor: 'divider', height: '100%' }}>
+      <Box sx={{ width: 48, height: 48, borderRadius: '16px', display: 'grid', placeItems: 'center', background: 'var(--grad)', color: '#fff', mb: 2 }}>{icon}</Box>
+      <Typography variant="h6" sx={{ mb: 1 }}>{title}</Typography>
+      {children}
+    </Box>
+  </Reveal>
+);
 
 const Contact = () => {
-  const theme = useTheme();
-  const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
-
-  // const [contactDetails, setContactDetails] = useState({
-  //   name: '',
-  //   fromEmail: '',
-  //   mobileNo: '',
-  //   message: ''
-  // });
-  // const [errors, setErrors] = useState({});
-
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setContactDetails(prevState => ({
-  //     ...prevState,
-  //     [name]: value
-  //   }));
-  // };
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   // Validate form fields
-  //   const validationErrors = validateForm(contactDetails);
-  //   if (Object.keys(validationErrors).length > 0) {
-  //     setErrors(validationErrors);
-  //     return;
-  //   }
-
-  //   try {
-  //     await axios.post('https://us-central1-shashankupsccoaching.cloudfunctions.net/sendEmail', contactDetails);
-  //     alert('Email sent successfully!');
-  //     resetForm();
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //     alert('Failed to send email. Please try again later.');
-  //   }
-  // };
-
-  // const validateForm = (data) => {
-  //   const errors = {};
-
-  //   // Validate name
-  //   if (!data.name.trim()) {
-  //     errors.name = 'Name is required';
-  //   }
-
-  //   // Validate email
-  //   if (!data.fromEmail.trim()) {
-  //     errors.fromEmail = 'Email is required';
-  //   } else if (!isValidEmail(data.fromEmail)) {
-  //     errors.fromEmail = 'Invalid email address';
-  //   }
-
-  //   // Validate mobile number
-  //   if (!data.mobileNo.trim()) {
-  //     errors.mobileNo = 'Mobile number is required';
-  //   }
-
-  //   // Validate message
-  //   if (!data.message.trim()) {
-  //     errors.message = 'Message is required';
-  //   }
-
-  //   return errors;
-  // };
-
-  // const isValidEmail = (email) => {
-  //   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  // };
-
-  // const resetForm = () => {
-  //   setContactDetails({
-  //     name: '',
-  //     fromEmail: '',
-  //     mobileNo: '',
-  //     message: ''
-  //   });
-  //   setErrors({});
-  // };
-
-  // const handleWhatsapp = () => {
-  //   const phoneNumber = '7060748896';
-  //   const whatsappUrl = `https://wa.me/${phoneNumber}`;
-  //   window.open(whatsappUrl, '_blank');
-  // };
-
-  const handleEmail = () => {
-    const recipientEmail = 'ask.iasmentor@gmail.com';
-    const mailtoUrl = `mailto:${recipientEmail}`;
-    window.open(mailtoUrl, '_blank');
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard?.writeText(EMAIL).then(() => setCopied(true)).catch(() => {});
   };
 
   return (
-    <Box>
-    <Box sx={{ 
-      width: '100%', 
-      marginTop: isMobileView?"100px":"110px", 
-      position: 'relative', 
-      height:'150px',
-      backgroundImage: "linear-gradient( 26.3deg ,rgba(8,24,68,1) 87.6%   ,rgba(0,119,182,1) 9.6%)",
-    }}>
-      <Typography
-        variant="h4"
-        component="div"
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: 'white',
-          textAlign: 'center',
-           fontSize:isMobileView?"20px":"50px",
-          padding: '10px 20px',
-        }}
-      >
-        CONTACT US
-      </Typography>
-    </Box>
-    <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '50px', alignItems: 'center', marginBottom:'20px'}}>
-     <Box sx={{display:'flex',flexDirection:isMobileView?"column":'row', width: '90%'}}>
-      <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row", marginTop: isMobileView ? "10px" : "", width: '100%', alignItems: 'center', justifyContent: isMobileView ? "center" : "space-between" }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <img style={{ width:isMobileView?"360px":"400px", height: '300px', marginBottom: '20px' }} src="/assets/contact.webp" alt="Map" />
+    <Box sx={{ pb: 4 }}>
+      <PageHero title="Get in" accent="touch" eyebrow="Contact" subtitle="Questions about preparation, feedback or suggestions — we read every email." />
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+        <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' } }}>
+          <Card icon={<MailRoundedIcon />} title="Email us">
+            <Typography color="text.secondary" variant="body2">For guidance on Civil Services preparation or feedback, write to:</Typography>
+            <Stack direction="row" alignItems="center" gap={1} sx={{ mt: 1.5, p: 1, pl: 1.5, borderRadius: '999px', bgcolor: 'action.hover' }}>
+              <Typography sx={{ fontWeight: 700, fontSize: 14, flex: 1, wordBreak: 'break-all' }}>{EMAIL}</Typography>
+              <IconButton size="small" onClick={copy} aria-label="Copy email"><ContentCopyRoundedIcon fontSize="small" /></IconButton>
+            </Stack>
+            <Button variant="contained" href={`mailto:${EMAIL}`} fullWidth sx={{ mt: 1.5 }}>Send email</Button>
+          </Card>
+          <Card icon={<WorkRoundedIcon />} title="Work with us" delay={0.06}>
+            <Typography color="text.secondary" variant="body2">
+              Interested in being part of this growing organisation? Send your resume and a few work samples to {EMAIL}. The team will get back to you soon.
+            </Typography>
+            <Button variant="outlined" color="inherit" href={`mailto:${EMAIL}?subject=Job%20application`} fullWidth sx={{ mt: 2, borderColor: 'divider' }}>Apply by email</Button>
+          </Card>
+          <Card icon={<LocationOnRoundedIcon />} title="Head office" delay={0.12}>
+            <Typography color="text.secondary" variant="body2">All email communication is managed and answered by our head office in Dehradun, Uttarakhand.</Typography>
+            <Box component="img" loading="lazy" src="/assets/contact.webp" alt="" sx={{ mt: 2, width: '100%', borderRadius: '16px', maxHeight: 180, objectFit: 'contain' }} />
+          </Card>
         </Box>
-      </Box>
 
-      <Box sx={{ display: 'flex', flexDirection: 'column', marginBottom: '10px',justifyContent:'center' }}>
-        <Typography sx={{fontSize:isMobileView?"25px":"36px",fontWeight:'500'}}>Contact us via Email or WhatsApp?</Typography>
-        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '5px' }}>For correspondence, kindly reach out to us at <span style={{ fontWeight: '600',color:'green' }}>ask.iasmentor@gmail.com  </span>
-        <Typography sx={{ fontSize: isMobileView ? '15px' : '20px', marginTop: '10px', textAlign: 'justify', hyphens: 'inherit' }}>All email communications are managed and responded to by our Head Office located in Dehradun.</Typography> Should you seek guidance on Civil Services Exam preparation or wish to share your feedback/suggestions for us, we welcome you to send us an email.</Typography>
-        <Typography sx={{fontSize:isMobileView?"25px":"36px",marginTop:'5px',fontWeight:'500',color:'black'}}>WORK WITH US</Typography>
-        <Typography sx={{fontSize:isMobileView?"17px":"20px",fontFamily:'sans-serif',marginTop:'5px'}}>If you are interested in working with us and be a part of this growing organisation do send your resume at<span style={{color:'green',fontWeight:'700'}}> ask.iasmentor@gmail.com.</span> </Typography>
-        <Typography sx={{fontSize:isMobileView?"17px":"20px",fontFamily:'sans-serif',marginTop:'5px'}}>Kindly do send some of your work samples too. Team will get back to you asap.</Typography>
-      </Box>
-      </Box>
-    </Box>
-    <Career/>
+        <Reveal>
+          <Box className="glow-card" sx={{ mt: 3, p: { xs: 3, md: 4 }, borderRadius: '28px', color: '#fff' }}>
+            <Typography variant="h3">Fastest replies on social</Typography>
+            <Typography sx={{ opacity: 0.8, mt: 0.5, mb: 2 }}>Join the community for daily updates and doubt discussions.</Typography>
+            <Stack direction={{ xs: 'column', sm: 'row' }} gap={1.2}>
+              <Button href={socials.telegram} target="_blank" rel="noopener" startIcon={<TelegramIcon />} sx={{ bgcolor: '#fff', color: '#0B1640', '&:hover': { bgcolor: '#eee' } }}>Telegram</Button>
+              <Button href={socials.instagram} target="_blank" rel="noopener" startIcon={<InstagramIcon />} sx={{ bgcolor: 'rgba(255,255,255,.14)', color: '#fff' }}>Instagram</Button>
+              <Button href={socials.youtube} target="_blank" rel="noopener" startIcon={<YouTubeIcon />} sx={{ bgcolor: 'rgba(255,255,255,.14)', color: '#fff' }}>YouTube</Button>
+            </Stack>
+          </Box>
+        </Reveal>
+      </Container>
+      <Snackbar open={copied} autoHideDuration={1800} onClose={() => setCopied(false)} message="Email copied" anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} sx={{ bottom: { xs: 90, md: 24 } }} />
     </Box>
   );
-}
+};
 
 export default Contact;
-
-
-// {['name', 'fromEmail', 'mobileNo', 'message'].map((field) => (
-//   <TextField
-//     key={field}
-//     style={{ width: isMobileView ? "300px" : "350px", borderRadius: '3px', marginBottom: '40px' }}
-//     name={field}
-//     label={field === 'fromEmail' ? "Email" : field === 'mobileNo' ? "Mobile No" : field.charAt(0).toUpperCase() + field.slice(1)}
-//     variant='standard'
-//     value={contactDetails[field]}
-//     onChange={handleChange}
-//     error={Boolean(errors[field])}
-//     helperText={errors[field]}
-//   />
-// ))}
-
-// <Button onClick={handleSubmit} variant='contained' sx={{ backgroundColor: '#212529', color: 'white' }}>Submit</Button>
