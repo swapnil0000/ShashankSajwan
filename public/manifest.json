@@ -1,0 +1,9 @@
+{
+  "short_name": "Shashank Sajwan",
+  "name": "Shashank Sajwan — UPSC CSE Preparation",
+  "icons": [{ "src": "/assets/shashank.webp", "sizes": "512x512", "type": "image/webp", "purpose": "any" }],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0B1640",
+  "background_color": "#F7F8FC"
+}
