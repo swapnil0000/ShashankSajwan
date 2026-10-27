@@ -6,6 +6,9 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
+import { tr, useContent } from '../context/ContentContext';
+import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 
 const navItems = [
   { to: '/', key: 'home' },
@@ -20,6 +23,10 @@ const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { t, mode, toggleMode, lang, toggleLang } = useApp();
+  const { user, configured } = useAuth();
+  const { tagline } = useContent('site');
+  const batch = useContent('batch');
+  const links = batch.enabled === false ? navItems : [...navItems.slice(0, 3), { to: '/courses', label: batch.navLabel || 'Batch' }, ...navItems.slice(3)];
   const navigate = useNavigate();
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -54,13 +61,13 @@ const Header = () => {
             <Typography sx={{ fontWeight: 800, fontSize: { xs: 15, md: 18 }, letterSpacing: '0.02em' }}>
               SHASHANK <Box component="span" className="text-gradient">SAJWAN</Box>
             </Typography>
-            <Typography sx={{ fontSize: { xs: 11, md: 12 }, color: 'text.secondary' }}>{t('tagline')}</Typography>
+            <Typography sx={{ fontSize: { xs: 11, md: 12 }, color: 'text.secondary' }}>{tr(tagline, lang)}</Typography>
           </Box>
         </Stack>
 
         {!isMobile && (
           <Stack direction="row" gap={0.5}>
-            {navItems.map((n) => (
+            {links.map((n) => (
               <Button
                 key={n.to}
                 component={NavLink}
@@ -71,7 +78,7 @@ const Header = () => {
                   '&.active': { color: 'primary.main', bgcolor: 'action.hover' },
                 }}
               >
-                {t(n.key)}
+                {n.label || t(n.key)}
               </Button>
             ))}
           </Stack>
@@ -89,6 +96,19 @@ const Header = () => {
           <IconButton onClick={toggleMode} aria-label="Toggle dark mode" sx={{ bgcolor: 'action.hover' }}>
             {mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
           </IconButton>
+          {configured && (user ? (
+            <Tooltip title="My account">
+              <IconButton component={Link} to="/account" aria-label="My account" sx={{ p: 0.4 }}>
+                {user.photoURL
+                  ? <Box component="img" src={user.photoURL} alt="" sx={{ width: 36, height: 36, borderRadius: '50%' }} />
+                  : <Box sx={{ width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--grad)', color: '#fff', fontWeight: 800, fontSize: 15 }}>{(user.displayName || user.email || '?')[0].toUpperCase()}</Box>}
+              </IconButton>
+            </Tooltip>
+          ) : isMobile ? (
+            <IconButton component={Link} to="/login" aria-label="Sign in" sx={{ bgcolor: 'action.hover' }}><PersonRoundedIcon /></IconButton>
+          ) : (
+            <Button component={Link} to="/login" variant="contained" sx={{ ml: 0.5, minHeight: 40 }}>Sign in</Button>
+          ))}
         </Stack>
       </Stack>
     </motion.header>

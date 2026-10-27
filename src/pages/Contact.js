@@ -9,9 +9,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import PageHero from '../components/ui/PageHero';
 import { Reveal } from '../components/ui/Motion';
-import { socials } from '../data/studyHub';
-
-const EMAIL = 'ask.iasmentor@gmail.com';
+import { useContent } from '../context/ContentContext';
 
 const Card = ({ icon, title, children, delay }) => (
   <Reveal delay={delay}>
@@ -25,17 +23,19 @@ const Card = ({ icon, title, children, delay }) => (
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
+  const { email: EMAIL, socials } = useContent('site');
+  const c = useContent('contact');
   const copy = () => {
     navigator.clipboard?.writeText(EMAIL).then(() => setCopied(true)).catch(() => {});
   };
 
   return (
     <Box sx={{ pb: 4 }}>
-      <PageHero title="Get in" accent="touch" eyebrow="Contact" subtitle="Questions about preparation, feedback or suggestions — we read every email." />
+      <PageHero title="Get in" accent="touch" eyebrow="Contact" subtitle={c.heroSub} />
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
         <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' } }}>
           <Card icon={<MailRoundedIcon />} title="Email us">
-            <Typography color="text.secondary" variant="body2">For guidance on Civil Services preparation or feedback, write to:</Typography>
+            <Typography color="text.secondary" variant="body2">{c.emailText}</Typography>
             <Stack direction="row" alignItems="center" gap={1} sx={{ mt: 1.5, p: 1, pl: 1.5, borderRadius: '999px', bgcolor: 'action.hover' }}>
               <Typography sx={{ fontWeight: 700, fontSize: 14, flex: 1, wordBreak: 'break-all' }}>{EMAIL}</Typography>
               <IconButton size="small" onClick={copy} aria-label="Copy email"><ContentCopyRoundedIcon fontSize="small" /></IconButton>
@@ -43,13 +43,11 @@ const Contact = () => {
             <Button variant="contained" href={`mailto:${EMAIL}`} fullWidth sx={{ mt: 1.5 }}>Send email</Button>
           </Card>
           <Card icon={<WorkRoundedIcon />} title="Work with us" delay={0.06}>
-            <Typography color="text.secondary" variant="body2">
-              Interested in being part of this growing organisation? Send your resume and a few work samples to {EMAIL}. The team will get back to you soon.
-            </Typography>
+            <Typography color="text.secondary" variant="body2">{c.workText}</Typography>
             <Button variant="outlined" color="inherit" href={`mailto:${EMAIL}?subject=Job%20application`} fullWidth sx={{ mt: 2, borderColor: 'divider' }}>Apply by email</Button>
           </Card>
           <Card icon={<LocationOnRoundedIcon />} title="Head office" delay={0.12}>
-            <Typography color="text.secondary" variant="body2">All email communication is managed and answered by our head office in Dehradun, Uttarakhand.</Typography>
+            <Typography color="text.secondary" variant="body2">{c.officeText}</Typography>
             <Box component="img" loading="lazy" src="/assets/contact.webp" alt="" sx={{ mt: 2, width: '100%', borderRadius: '16px', maxHeight: 180, objectFit: 'contain' }} />
           </Card>
         </Box>

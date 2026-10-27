@@ -7,7 +7,7 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import PageHero from '../../components/ui/PageHero';
 import Section from '../../components/ui/Section';
 import { Reveal, stagger, staggerItem } from '../../components/ui/Motion';
-import { bookCombo, bookList } from '../../data/books';
+import { useContent } from '../../context/ContentContext';
 
 const VIDEO = 'https://book-video.s3.ap-south-1.amazonaws.com/Sajwam+Video+FINAL+For+Amazon.mp4';
 
@@ -33,7 +33,9 @@ const BookTrailer = () => {
   );
 };
 
-const BookPage = () => (
+const BookPage = () => {
+  const { combo: bookCombo, items: bookList } = useContent('books');
+  return (
   <Box>
     <PageHero title="Our" accent="Books" subtitle="The Disha General Studies Compendium series by Shashank Sajwan — NCERT-mapped, PYQ-rich and built for revision." />
 
@@ -51,7 +53,7 @@ const BookPage = () => (
             <Chip label="Best value · Combo" sx={{ background: 'var(--grad)', color: '#fff', mb: 1.5 }} />
             <Typography variant="h2">{bookCombo.title}</Typography>
             <Stack gap={1} sx={{ mt: 2 }}>
-              {bookCombo.points.map((p) => (
+              {(bookCombo.points || []).map((p) => (
                 <Stack key={p} direction="row" gap={1.2}><CheckCircleRoundedIcon sx={{ color: 'secondary.main', mt: 0.2 }} fontSize="small" /><Typography variant="body2">{p}</Typography></Stack>
               ))}
             </Stack>
@@ -80,6 +82,7 @@ const BookPage = () => (
       </motion.div>
     </Section>
   </Box>
-);
+  );
+};
 
 export default BookPage;

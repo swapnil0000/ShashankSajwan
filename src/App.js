@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Box, ThemeProvider } from '@mui/material';
@@ -22,12 +22,17 @@ import Syllabus from './pages/syllabus/Syllabus';
 import Pyqs from './pages/Pyqs/Pyqs';
 import General from './pages/GeneralStudies/General';
 import NewsNotes from './pages/Newspaper/NewsNotes';
-import CourseSection from './pages/CourseSection/CourseSection';
 import FAQs from './pages/FAQs/FAQs';
 import Optional from './pages/optional/Optional';
 import Payment from './pages/Payment';
 import BookPage from './pages/books/BookPage';
 import Optional2025 from './pages/Newspaper/NewsNotes2025';
+import AuthPage from './pages/auth/AuthPage';
+import Account from './pages/auth/Account';
+import Announcement from './components/Announcement';
+import Batch from './pages/Batch/Batch';
+
+const AdminApp = lazy(() => import('./admin/AdminApp'));
 
 // Pages not yet redesigned keep their light styling, even in dark mode.
 const lightTheme = buildTheme('light');
@@ -41,8 +46,9 @@ const routes = [
   ['/about', About], ['/ncert', Material], ['/contact', Contact], ['/videos', Videos],
   ['/faqs', FAQs], ['/syllabus', Syllabus], ['/pyqs', Pyqs], ['/general', General],
   ['/optional', Optional], ['/newsnotes', NewsNotes], ['/newsnotes25', Optional2025], ['/books', BookPage],
+  ['/courses', Batch], ['/batch', Batch],
 ];
-const legacyRoutes = [['/courses', CourseSection], ['/payment', Payment]];
+const legacyRoutes = [['/payment', Payment]];
 const policyRoutes = [
   ['/terms', TermAndCondition, 'Terms &', 'Conditions'],
   ['/refund', Refund, 'Refund', 'Policy'],
@@ -73,11 +79,26 @@ const AnimatedRoutes = () => {
   useEffect(() => { document.documentElement.dataset.mode = mode; }, [mode]);
   useEffect(() => { window.scrollTo(0, 0); }, [location.pathname]);
 
+  // The admin panel has its own nested routes and layout.
+  if (location.pathname.startsWith('/admin')) {
+    return (
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/admin/*" element={<AdminApp />} />
+        </Routes>
+      </Suspense>
+    );
+  }
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/study" element={<PageTransition><StudyHub /></PageTransition>} />
+        <Route path="/login" element={<AuthPage mode="login" />} />
+        <Route path="/signup" element={<AuthPage mode="signup" />} />
+        <Route path="/forgot" element={<AuthPage mode="forgot" />} />
+        <Route path="/account" element={<PageTransition><Account /></PageTransition>} />
         {routes.map(([path, Page]) => (
           <Route key={path} path={path} element={<PageTransition><Page /></PageTransition>} />
         ))}
@@ -92,13 +113,24 @@ const AnimatedRoutes = () => {
   );
 };
 
+const Chrome = () => {
+  const { pathname } = useLocation();
+  const inAdmin = pathname.startsWith('/admin');
+  return (
+    <>
+      <Header />
+      <AnimatedRoutes />
+      {!inAdmin && <Footer />}
+      {!inAdmin && <BottomNav />}
+      {!inAdmin && <Announcement />}
+    </>
+  );
+};
+
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <AnimatedRoutes />
-      <Footer />
-      <BottomNav />
+      <Chrome />
     </BrowserRouter>
   );
 }

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
-import { PRELIMS_DATE } from '../../data/studyHub';
+import { tr, useContent } from '../../context/ContentContext';
 
-const diff = () => {
-  const ms = Math.max(0, new Date(PRELIMS_DATE) - Date.now());
+const diff = (date) => {
+  const ms = Math.max(0, new Date(date) - Date.now()) || 0;
   return {
     days: Math.floor(ms / 864e5),
     hrs: Math.floor((ms / 36e5) % 24),
@@ -29,17 +29,19 @@ const Unit = ({ value, label }) => (
 );
 
 const Countdown = () => {
-  const { t } = useApp();
-  const [left, setLeft] = useState(diff);
+  const { t, lang } = useApp();
+  const { prelimsDate, prelimsLabel } = useContent('site');
+  const [left, setLeft] = useState(() => diff(prelimsDate));
 
   useEffect(() => {
-    const id = setInterval(() => setLeft(diff()), 30000);
+    setLeft(diff(prelimsDate));
+    const id = setInterval(() => setLeft(diff(prelimsDate)), 30000);
     return () => clearInterval(id);
-  }, []);
+  }, [prelimsDate]);
 
   return (
     <Box className="glow-card" sx={{ p: 2, borderRadius: 5, color: '#fff' }}>
-      <Typography sx={{ fontSize: 13, fontWeight: 700, opacity: 0.9 }}>⏳ {t('prelimsIn')}</Typography>
+      <Typography sx={{ fontSize: 13, fontWeight: 700, opacity: 0.9 }}>⏳ {tr(prelimsLabel, lang)}</Typography>
       <Stack direction="row" alignItems="center" gap={1} sx={{ mt: 1 }}>
         <Unit value={left.days} label={t('days')} />
         <Typography sx={{ fontSize: 22, opacity: 0.5 }}>:</Typography>

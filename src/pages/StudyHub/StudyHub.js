@@ -4,7 +4,8 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useApp } from '../../context/AppContext';
-import { studySections, subjects } from '../../data/studyHub';
+import { subjects } from '../../data/studyHub';
+import { tr, useContent } from '../../context/ContentContext';
 import StudyCard from '../../components/ui/StudyCard';
 import { stagger } from '../../components/ui/Motion';
 
@@ -35,6 +36,7 @@ const StudyHub = () => {
   const [query, setQuery] = useState(params.get('q') || '');
   const [filter, setFilter] = useState('all');
   const inputRef = useRef(null);
+  const { items: studySections } = useContent('studySections');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -45,11 +47,11 @@ const StudyHub = () => {
     const q = query.trim().toLowerCase();
     return studySections.filter((s) => {
       if (filter === 'saved' && !bookmarks.includes(s.id)) return false;
-      if (filter !== 'all' && filter !== 'saved' && !s.tags.includes(filter)) return false;
+      if (filter !== 'all' && filter !== 'saved' && !(s.tags || []).includes(filter)) return false;
       if (!q) return true;
-      return [s.title.en, s.title.hi, s.desc.en, s.desc.hi, ...s.tags].join(' ').toLowerCase().includes(q);
+      return [tr(s.title, 'en'), tr(s.title, 'hi'), tr(s.desc, 'en'), tr(s.desc, 'hi'), ...(s.tags || [])].join(' ').toLowerCase().includes(q);
     });
-  }, [query, filter, bookmarks]);
+  }, [query, filter, bookmarks, studySections]);
 
   const recentSections = recent.map((id) => studySections.find((s) => s.id === id)).filter(Boolean);
   const chips = [['all', t('all')], ['saved', `★ ${t('saved')}`], ...subjects.map((s) => [s, s])];
@@ -80,7 +82,7 @@ const StudyHub = () => {
             <Typography variant="h6" sx={{ mb: 1.5 }}>{t('continueReading')}</Typography>
             <Stack direction="row" gap={1} className="no-scrollbar" sx={{ overflowX: 'auto' }}>
               {recentSections.map((s) => (
-                <Chip key={s.id} component={Link} to={s.path} clickable label={`${s.icon} ${s.title[lang]}`} sx={{ height: 40, flexShrink: 0, bgcolor: 'background.paper', border: 1, borderColor: 'divider' }} />
+                <Chip key={s.id} component={Link} to={s.path} clickable label={`${s.icon} ${tr(s.title, lang)}`} sx={{ height: 40, flexShrink: 0, bgcolor: 'background.paper', border: 1, borderColor: 'divider' }} />
               ))}
             </Stack>
           </Box>
