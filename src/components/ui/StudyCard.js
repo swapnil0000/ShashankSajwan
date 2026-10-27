@@ -6,6 +6,7 @@ import BookmarkRoundedIcon from '@mui/icons-material/BookmarkRounded';
 import BookmarkBorderRoundedIcon from '@mui/icons-material/BookmarkBorderRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { useApp } from '../../context/AppContext';
+import { tr } from '../../context/ContentContext';
 import { staggerItem } from './Motion';
 
 const StudyCard = ({ section }) => {
@@ -15,7 +16,7 @@ const StudyCard = ({ section }) => {
 
   const open = () => {
     pushRecent(section.id);
-    navigate(section.path);
+    if (/^https?:\/\//.test(section.path)) window.open(section.path, '_blank', 'noopener'); else navigate(section.path);
   };
 
   return (
@@ -33,8 +34,8 @@ const StudyCard = ({ section }) => {
           <Box sx={{ width: 48, height: 48, borderRadius: '16px', display: 'grid', placeItems: 'center', fontSize: 24, bgcolor: `${section.accent}1a`, mb: 1.5 }}>
             {section.icon}
           </Box>
-          <Typography variant="h6" sx={{ pr: 4 }}>{section.title[lang]}</Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5, minHeight: 40 }}>{section.desc[lang]}</Typography>
+          <Typography variant="h6" sx={{ pr: 4 }}>{tr(section.title, lang)}</Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5, minHeight: 40 }}>{tr(section.desc, lang)}</Typography>
           <Stack direction="row" alignItems="center" gap={0.5} sx={{ mt: 1.5, color: 'primary.main', fontWeight: 700, fontSize: 14 }}>
             {t('open')} <ArrowForwardRoundedIcon sx={{ fontSize: 16 }} />
           </Stack>

@@ -8,7 +8,8 @@ import QuizRoundedIcon from '@mui/icons-material/QuizRounded';
 import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
 import AppsRoundedIcon from '@mui/icons-material/AppsRounded';
 import { useApp } from '../context/AppContext';
-import { socials } from '../data/studyHub';
+import { useAuth } from '../context/AuthContext';
+import { useContent } from '../context/ContentContext';
 
 const tabs = [
   { key: 'home', to: '/', icon: HomeRoundedIcon },
@@ -18,7 +19,7 @@ const tabs = [
   { key: 'more', to: null, icon: AppsRoundedIcon },
 ];
 
-const moreLinks = [
+const buildMoreLinks = (socials) => [
   { label: { en: 'Videos', hi: 'वीडियो' }, to: '/videos', icon: '▶️' },
   { label: { en: 'Syllabus', hi: 'पाठ्यक्रम' }, to: '/syllabus', icon: '🧭' },
   { label: { en: 'NCERT', hi: 'NCERT' }, to: '/ncert', icon: '📘' },
@@ -42,6 +43,17 @@ const BottomNav = () => {
   const navigate = useNavigate();
   const { t, lang } = useApp();
   const [sheet, setSheet] = useState(false);
+  const { user, isAdmin, configured } = useAuth();
+  const { socials } = useContent('site');
+  const batch = useContent('batch');
+  const moreLinks = [
+    ...(configured ? [user
+      ? { label: { en: 'Account', hi: 'खाता' }, to: '/account', icon: '🙂' }
+      : { label: { en: 'Sign in', hi: 'लॉग इन' }, to: '/login', icon: '🔑' }] : []),
+    ...(isAdmin ? [{ label: { en: 'Admin', hi: 'एडमिन' }, to: '/admin', icon: '🛠️' }] : []),
+    ...(batch.enabled === false ? [] : [{ label: { en: batch.navLabel || 'Batch', hi: 'बैच' }, to: '/courses', icon: '🎓' }]),
+    ...buildMoreLinks(socials),
+  ];
 
   if (!isMobile) return null;
 

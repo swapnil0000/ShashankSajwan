@@ -8,33 +8,21 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import PageHero from '../../components/ui/PageHero';
 import Section from '../../components/ui/Section';
 import { Reveal, stagger, staggerItem } from '../../components/ui/Motion';
-import { socials } from '../../data/studyHub';
+import { useContent } from '../../context/ContentContext';
 
-const vision = [
-  ['💸', 'Cost-effectiveness', 'Top-notch education at affordable rates.'],
-  ['🎯', 'Customized Education', 'Guidance that fits where you are in your journey.'],
-  ['🏅', 'Exceptional Instruction', 'Faculty who have faced the UPSC interview themselves.'],
-  ['🤝', 'Needed Mentorship', 'Personal mentorship that consistently helps students.'],
-  ['🧠', 'Smart Study', 'Work on what matters most for the exam.'],
-];
-
-const milestones = [
-  ['1 Lakh+', 'Aspirants mentored'],
-  ['10%+', 'Success ratio'],
-  ['#1', 'Most viewed Josh Talks session'],
-  ['1M+', 'Followers across platforms'],
-];
-
-const About = () => (
+const About = () => {
+  const c = useContent('about');
+  const { socials } = useContent('site');
+  return (
   <Box>
-    <PageHero title="Meet your" accent="mentor" eyebrow="About" subtitle="Shashank Sajwan — UPSC mentor, author and educator helping lakhs of aspirants prepare with clarity." />
+    <PageHero title={c.heroTitle} accent={c.heroAccent} eyebrow="About" subtitle={c.heroSub} />
 
     <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '380px 1fr' }, gap: { xs: 3, md: 6 }, alignItems: 'center' }}>
         <Reveal>
           <Box sx={{ position: 'relative', maxWidth: 380, mx: 'auto' }}>
             <Box sx={{ position: 'absolute', inset: -10, borderRadius: '32px', background: 'var(--grad)', opacity: 0.9, transform: 'rotate(-3deg)' }} />
-            <Box component="img" src="/assets/shashanksajwan2.0.webp" alt="Shashank Sajwan" sx={{ position: 'relative', width: '100%', borderRadius: '28px', display: 'block', bgcolor: 'background.paper' }} />
+            <Box component="img" src={c.photo} alt="Shashank Sajwan" sx={{ position: 'relative', width: '100%', borderRadius: '28px', display: 'block', bgcolor: 'background.paper' }} />
           </Box>
         </Reveal>
         <Box>
@@ -42,11 +30,7 @@ const About = () => (
             <Typography variant="h2">Our <Box component="span" className="text-gradient">Director</Box></Typography>
           </Reveal>
           <Stack gap={1.5} sx={{ mt: 2 }}>
-            {[
-              'Shashank Sajwan, originally from Uttarakhand, pursued Physics Hons. from Delhi University, followed by a Post-Graduation in Public Administration from IGNOU. His passion for UPSC emerged during his undergraduate years, and after post-graduation he dedicated himself to this pursuit.',
-              'Recognising the challenges faced by aspirants lacking proper guidance, he began sharing insights on Instagram — reaching over 1 million followers and subscribers across platforms. Today aspirants find free notes, PYQs and resources right here.',
-              'As Shashank embarks on this new journey, his commitment to empowering aspirants remains unwavering.',
-            ].map((p, i) => (
+            {c.bio.map((p, i) => (
               <Reveal key={i} delay={i * 0.05}><Typography color="text.secondary">{p}</Typography></Reveal>
             ))}
           </Stack>
@@ -61,8 +45,8 @@ const About = () => (
 
     <Section title="Milestones">
       <Box sx={{ display: 'grid', gap: 1.5, gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' } }}>
-        {milestones.map(([n, l], i) => (
-          <Reveal key={l} delay={i * 0.06}>
+        {c.milestones.map(({ value: n, label: l }, i) => (
+          <Reveal key={`${l}-${i}`} delay={i * 0.06}>
             <Box className="glow-card" sx={{ p: { xs: 2, md: 3 }, borderRadius: '24px', color: '#fff', height: '100%' }}>
               <Typography sx={{ fontSize: { xs: 26, md: 36 }, fontWeight: 800, color: 'secondary.main' }}>{n}</Typography>
               <Typography sx={{ opacity: 0.85, fontSize: { xs: 13, md: 15 } }}>{l}</Typography>
@@ -75,8 +59,8 @@ const About = () => (
     <Section title="Our" accent="Vision" subtitle="Our mission has always prioritised delivering top-notch education at affordable rates." sx={{ bgcolor: 'action.hover' }}>
       <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
         <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(5, 1fr)' } }}>
-          {vision.map(([icon, t, d]) => (
-            <motion.div key={t} variants={staggerItem}>
+          {c.vision.map(({ icon, title: t, text: d }, i) => (
+            <motion.div key={`${t}-${i}`} variants={staggerItem}>
               <Box sx={{ p: 2.5, borderRadius: '20px', bgcolor: 'background.paper', border: 1, borderColor: 'divider', height: '100%' }}>
                 <Box sx={{ fontSize: 28 }}>{icon}</Box>
                 <Typography variant="h6" sx={{ mt: 1 }}>{t}</Typography>
@@ -91,12 +75,10 @@ const About = () => (
     <Section title="Our" accent="Team">
       <Box sx={{ display: 'grid', gap: 3, gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' } }}>
         <Reveal>
-          <Typography color="text.secondary">
-            Our team comprises highly educated and experienced professionals, with several faculty members having undergone the interview process themselves. Our collective aim is to deliver the utmost quality education, prioritising excellence in every aspect of our teaching approach.
-          </Typography>
+          <Typography color="text.secondary">{c.team}</Typography>
         </Reveal>
         <Stack gap={1.2}>
-          {['Recognised as one of the most innovative UPSC YouTube channels in India', 'Pioneering mentorship programmes', 'Setting new standards in affordable UPSC education'].map((p, i) => (
+          {c.teamPoints.map((p, i) => (
             <Reveal key={p} delay={i * 0.06}>
               <Stack direction="row" gap={1.2}><CheckCircleRoundedIcon sx={{ color: 'secondary.main' }} /><Typography>{p}</Typography></Stack>
             </Reveal>
@@ -105,6 +87,7 @@ const About = () => (
       </Box>
     </Section>
   </Box>
-);
+  );
+};
 
 export default About;

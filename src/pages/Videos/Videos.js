@@ -1,36 +1,18 @@
 import React, { useMemo, useState } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useContent } from '../../context/ContentContext';
 import PageHero from '../../components/ui/PageHero';
 import LiteYouTube from '../../components/ui/LiteYouTube';
 import { SegmentTabs } from '../../components/ui/ResourceLayout';
 import { stagger, staggerItem } from '../../components/ui/Motion';
 
-const videos = [
-  { id: 'LKDJZ4kgxbA', title: 'NCERTs for IAS exam', cat: 'Strategy' },
-  { id: 'RD5uvkib1EY', title: 'How to start IAS preparation?', cat: 'Beginners' },
-  { id: 'MS_vuWUDRj0', title: 'My UPSC CSE journey mistakes', cat: 'Motivation' },
-  { id: 'mX4nHl2LDmk', title: 'All about CSAT', cat: 'Strategy' },
-  { id: '81Af345gor0', title: 'IAS exam pattern', cat: 'Beginners' },
-  { id: '590IoW54OXU', title: 'Prelims syllabus analysis', cat: 'Strategy' },
-  { id: '4LwUI3_kBtU', title: 'How to read newspaper?', cat: 'Strategy' },
-  { id: 'l3J50LCh31k', title: 'English improvement tips', cat: 'Skills' },
-  { id: 'c1Kj0nvG6n8', title: 'Time management for aspirants', cat: 'Skills' },
-  { id: 'tQMQmtcb1G4', title: 'For school students', cat: 'Beginners' },
-  { id: 'RwkX6ThaM_8', title: 'Optional selection strategy', cat: 'Strategy' },
-  { id: 'zigTkDzCdvo', title: 'How to read NCERTs?', cat: 'Strategy' },
-  { id: 'tI7qhKQGcnE', title: 'Biggest mistake during preparation', cat: 'Motivation' },
-  { id: '_IkGnczXwck', title: 'Important UPSC CSE subjects', cat: 'Beginners' },
-  { id: '0BQPGWAKfNU', title: 'Answer writing tips', cat: 'Skills' },
-  { id: 'HbcHQBsQTAI', title: 'Game changer for UPSC CSE aspirants', cat: 'Motivation' },
-  { id: 'd4aegXqxE-U', title: 'Mistakes during preparation', cat: 'Motivation' },
-  { id: 'vGRYeiFf2YU', title: 'Social media addiction', cat: 'Motivation' },
-];
-const cats = ['All', 'Beginners', 'Strategy', 'Skills', 'Motivation'];
 
 const Videos = () => {
+  const { items: videos, categories = [] } = useContent('videos');
+  const cats = ['All', ...categories];
   const [tab, setTab] = useState(0);
-  const list = useMemo(() => (tab === 0 ? videos : videos.filter((v) => v.cat === cats[tab])), [tab]);
+  const list = useMemo(() => (tab === 0 ? videos : videos.filter((v) => v.cat === cats[tab])), [tab, videos]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Box sx={{ pb: 4 }}>

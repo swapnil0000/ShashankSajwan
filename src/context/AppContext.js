@@ -1,7 +1,10 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { buildTheme } from '../theme/theme';
 import { strings } from '../i18n/strings';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../lib/firebase';
+import { useAuth } from './AuthContext';
 
 const AppContext = createContext(null);
 
@@ -27,6 +30,21 @@ export const AppProvider = ({ children }) => {
   useEffect(() => write('ss-mode', mode), [mode]);
   useEffect(() => write('ss-lang', lang), [lang]);
   useEffect(() => write('ss-bookmarks', bookmarks), [bookmarks]);
+
+  // Signed-in users: merge device bookmarks with the account once, then keep the account updated.
+  const { user } = useAuth() || {};
+  const synced = useRef(null);
+  useEffect(() => {
+    if (!user || !db) { synced.current = null; return; }
+    getDoc(doc(db, 'users', user.uid)).then((snap) => {
+      const remote = snap.data()?.bookmarks || [];
+      setBookmarks((local) => [...new Set([...local, ...remote])]);
+      synced.current = user.uid;
+    }).catch(() => {});
+  }, [user]);
+  useEffect(() => {
+    if (user && db && synced.current === user.uid) updateDoc(doc(db, 'users', user.uid), { bookmarks }).catch(() => {});
+  }, [bookmarks, user]);
   useEffect(() => write('ss-recent', recent), [recent]);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
 

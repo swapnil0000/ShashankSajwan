@@ -7,7 +7,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import XIcon from '@mui/icons-material/X';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useApp } from '../context/AppContext';
-import { socials } from '../data/studyHub';
+import { tr, useContent } from '../context/ContentContext';
 import { tokens } from '../theme/theme';
 
 const FootLink = ({ to, children }) => (
@@ -17,7 +17,8 @@ const FootLink = ({ to, children }) => (
 );
 
 const Footer = () => {
-  const { t } = useApp();
+  const { t, lang } = useApp();
+  const { socials, email, tagline } = useContent('site');
   const icons = [
     [socials.youtube, YouTubeIcon, 'YouTube'],
     [socials.instagram, InstagramIcon, 'Instagram'],
@@ -36,7 +37,7 @@ const Footer = () => {
               <Box component="img" src="/assets/shashank.webp" alt="" sx={{ width: 52, height: 52, borderRadius: '14px' }} />
               <Box>
                 <Typography sx={{ fontWeight: 800, fontSize: 18 }}>SHASHANK SAJWAN</Typography>
-                <Typography sx={{ opacity: 0.7, fontSize: 13 }}>{t('tagline')}</Typography>
+                <Typography sx={{ opacity: 0.7, fontSize: 13 }}>{tr(tagline, lang)}</Typography>
               </Box>
             </Stack>
           </Box>
@@ -63,7 +64,7 @@ const Footer = () => {
               ))}
             </Stack>
             <Typography sx={{ fontSize: 13, opacity: 0.7 }}>{t('careers')}</Typography>
-            <MuiLink href="mailto:ask.iasmentor@gmail.com" sx={{ color: '#fff', fontWeight: 600 }}>ask.iasmentor@gmail.com</MuiLink>
+            <MuiLink href={`mailto:${email}`} sx={{ color: '#fff', fontWeight: 600 }}>{email}</MuiLink>
           </Box>
         </Box>
         <Typography sx={{ mt: 5, pt: 3, borderTop: '1px solid rgba(255,255,255,.1)', fontSize: 13, opacity: 0.6, textAlign: 'center' }}>

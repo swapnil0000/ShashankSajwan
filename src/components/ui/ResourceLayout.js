@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
 import PageHero from './PageHero';
 import { useApp } from '../../context/AppContext';
+import { useContent } from '../../context/ContentContext';
 
 // Segmented tab bar with a sliding gradient pill (scrolls sideways on mobile).
 export const SegmentTabs = ({ tabs, value, onChange, layoutId = 'seg-pill' }) => (
@@ -25,9 +26,10 @@ export const SegmentTabs = ({ tabs, value, onChange, layoutId = 'seg-pill' }) =>
 
 const PdfTile = ({ item, i }) => (
   <motion.a
-    href={item.link}
+    href={item.link || undefined}
     target="_blank"
     rel="noopener noreferrer"
+    aria-disabled={!item.link}
     initial={{ opacity: 0, y: 16 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: Math.min(i * 0.03, 0.4), duration: 0.35 }}
@@ -52,17 +54,18 @@ const PdfTile = ({ item, i }) => (
       </Box>
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1 }}>
         <Typography sx={{ fontSize: 13, fontWeight: 700 }}>{item.title || `Notes ${i + 1}`}</Typography>
-        <OpenInNewRoundedIcon sx={{ fontSize: 16, color: 'primary.main' }} />
+        {item.link ? <OpenInNewRoundedIcon sx={{ fontSize: 16, color: 'primary.main' }} /> : <Typography variant="caption" color="text.secondary">Coming soon</Typography>}
       </Stack>
     </Box>
   </motion.a>
 );
 
 // Shared layout for every PDF resource page (NCERT, PYQs, GS, Optional, Newspaper…).
-const ResourceLayout = ({ sectionId, title, accent, subtitle, tabs }) => {
+const ResourceLayout = ({ sectionId }) => {
   const { pushRecent } = useApp();
+  const { title, accent, subtitle, tabs = [] } = useContent(`resource_${sectionId}`);
   const [value, setValue] = useState(0);
-  const items = tabs[value]?.items || [];
+  const items = tabs[Math.min(value, tabs.length - 1)]?.items || [];
 
   React.useEffect(() => { if (sectionId) pushRecent(sectionId); }, [sectionId]); // eslint-disable-line react-hooks/exhaustive-deps
 

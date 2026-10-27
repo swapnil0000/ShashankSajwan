@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Keep this list in sync with REACT_APP_ADMIN_EMAILS.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email.lower() in ['swapnilsrivastav1999@gmail.com'];
+    }
+
+    // Website content: everyone can read, only the admin can change it.
+    match /content/{block} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Student profiles: each user manages their own, but can never make themselves admin.
+    match /users/{uid} {
+      allow read: if (request.auth != null && request.auth.uid == uid) || isAdmin();
+      allow create: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.role == 'student';
+      allow update: if (request.auth != null && request.auth.uid == uid
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'email', 'createdAt']))
+        || isAdmin();
+      allow delete: if isAdmin();
+    }
+  }
+}
