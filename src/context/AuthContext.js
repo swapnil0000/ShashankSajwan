@@ -11,7 +11,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
-import { ADMIN_EMAILS, auth, db, isFirebaseConfigured } from '../lib/firebase';
+import { ADMIN_EMAILS, OWNER_EMAILS, auth, db, isFirebaseConfigured } from '../lib/firebase';
 
 const AuthContext = createContext(null);
 
@@ -51,10 +51,17 @@ export const friendlyAuthError = (err) => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(isFirebaseConfigured);
+  // Admins added from Admin → Admins (Firestore `admins/{email}`).
+  const [listedAdmin, setListedAdmin] = useState(false);
 
   useEffect(() => {
     if (!auth) return undefined;
-    return onAuthStateChanged(auth, (u) => {
+    return onAuthStateChanged(auth, async (u) => {
+      let listed = false;
+      if (u?.email && u.emailVerified && !ADMIN_EMAILS.includes(u.email.toLowerCase())) {
+        listed = await getDoc(doc(db, 'admins', u.email.toLowerCase())).then((d) => d.exists()).catch(() => false);
+      }
+      setListedAdmin(listed);
       setUser(u);
       setLoading(false);
     });
@@ -63,11 +70,13 @@ export const AuthProvider = ({ children }) => {
   const value = useMemo(() => {
     const email = user?.email?.toLowerCase();
     // Rules also require a verified email, so mirror that here.
-    const isAdmin = Boolean(email && ADMIN_EMAILS.includes(email) && user.emailVerified);
+    const isAdmin = Boolean(email && user.emailVerified && (ADMIN_EMAILS.includes(email) || listedAdmin));
+    const isOwner = Boolean(isAdmin && OWNER_EMAILS.includes(email));
     return {
       user,
       loading,
       isAdmin,
+      isOwner,
       isAdminEmailUnverified: Boolean(email && ADMIN_EMAILS.includes(email) && !user.emailVerified),
       configured: isFirebaseConfigured,
       signup: async ({ name, email: e, password }) => {
@@ -97,7 +106,7 @@ export const AuthProvider = ({ children }) => {
       },
       logout: () => (auth ? signOut(auth) : Promise.resolve()),
     };
-  }, [user, loading]);
+  }, [user, loading, listedAdmin]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

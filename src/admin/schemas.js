@@ -3,6 +3,8 @@
 //        strings (list of text), list (list of objects with `fields`), object (nested `fields`).
 import { HOME_SECTIONS } from '../data/content';
 import { resourcePages } from '../data/resources';
+import { policies } from '../data/policies';
+import { strings } from '../i18n/strings';
 
 const resourceItem = [
   { key: 'title', label: 'Title (optional)', type: 'text' },
@@ -29,6 +31,22 @@ const feedFields = [
   { key: 'items', label: 'Posts', type: 'feed' },
 ];
 
+// Site text: every heading/label/button, grouped for the admin form.
+const humanize = (k) => k.replace(/([A-Z0-9])/g, ' $1').replace(/^./, (c) => c.toUpperCase());
+const TEXT_GROUPS = [
+  ['Menu & general', ['home', 'resources', 'newspaper', 'study', 'pyqs', 'books', 'more', 'videos', 'about', 'contact', 'faqs', 'searchPlaceholder', 'viewAll', 'open', 'all', 'saved', 'noResults', 'continueReading']],
+  ['Home page', ['startStudying', 'exploreBooks', 'heroPillNew', 'heroPillSoon', 'days', 'hrs', 'mins', 'tentative', 'tileNews', 'tileNewsSub', 'tileNewsToday', 'tileCA', 'tileCASub', 'tileMcq', 'tileMcqSub', 'tileBatchSoon', 'updatesTitle', 'updatesAccent', 'allResources', 'whatStudy', 'ourBooks', 'booksSub', 'keyFeatures', 'directorPen', 'batchSoonButton', 'batchLiveButton', 'joshBadge', 'joshFeatured', 'joshTitle', 'joshAccent', 'joshSub', 'watchOnYoutube', 'mostViewed', 'videosSub']],
+  ['Batch banner (bottom of pages)', ['promoSoonTitle', 'promoLiveTitle', 'promoSoonButton', 'promoLiveButton']],
+  ['Books page', ['booksBadge', 'booksTitle', 'booksAccent', 'booksHeroSub', 'booksStat2', 'booksStat2Label', 'booksStat3', 'booksStat3Label', 'buyCombo', 'watchTrailer', 'chooseTitle', 'chooseAccent', 'chooseSub', 'buyNow', 'comboStripText']],
+  ['Other pages', ['studyHub', 'studyHubSub', 'resourcesTitle', 'resourcesAccent', 'resourcesSub', 'videosTitle', 'videosAccent', 'videosPageSub', 'faqTitle', 'faqAccent', 'faqSub', 'contactTitle', 'contactAccent', 'contactSocialTitle', 'contactSocialText']],
+  ['Footer', ['footerAbout', 'footerTgTitle', 'footerTgText', 'footerTgButton', 'footerYtButton', 'footerEmailLabel', 'backToTop']],
+];
+const grouped = new Set(TEXT_GROUPS.flatMap(([, keys]) => keys));
+const textFields = TEXT_GROUPS.flatMap(([title, keys]) => [
+  { key: `__${title}`, label: title, type: 'heading' },
+  ...keys.filter((k) => k in strings.en).map((k) => ({ key: k, label: humanize(k), type: String(strings.en[k]).length > 60 ? 'textarea' : 'text' })),
+]).concat(Object.keys(strings.en).filter((k) => !grouped.has(k) && !['tagline', 'heroBadge', 'heroTitleA', 'heroTitleB', 'heroSub', 'prelimsIn', 'community', 'rights', 'quickLinks', 'policies', 'connect', 'careers'].includes(k)).map((k) => ({ key: k, label: humanize(k), type: 'text' })));
+
 export const adminGroups = [
   {
     title: 'Website',
@@ -51,7 +69,11 @@ export const adminGroups = [
           { key: 'link', label: 'Link (optional)', type: 'url' },
         ] },
         { key: 'footerText', label: 'Footer copyright line', type: 'text' },
+        { key: 'logo', label: 'Logo', type: 'image' },
+        { key: 'nameA', label: 'Site name — first word', type: 'text' },
+        { key: 'nameB', label: 'Site name — second word (gradient)', type: 'text' },
       ] },
+      { key: 'texts', label: 'Site text', icon: '✏️', desc: 'Every heading, label and button text on the website', fields: textFields },
       { key: 'carousel', label: 'Home carousel', icon: '🖼️', desc: 'Top slider on Home: images, links, schedule', fields: [
         { key: 'interval', label: 'Seconds per slide', type: 'number' },
         { key: 'slides', label: 'Slides', type: 'list', itemLabel: (sl, i) => `${sl.enabled === false ? '⏸ ' : ''}${sl.alt || `Slide ${i + 1}`}`, fields: [
@@ -175,6 +197,12 @@ export const adminGroups = [
         { key: 'workText', label: 'Work with us text', type: 'textarea' },
         { key: 'officeText', label: 'Head office text', type: 'textarea' },
       ] },
+      ...Object.entries(policies).map(([key, p]) => ({
+        key: `policy_${key}`, label: p.title, icon: '📜', desc: 'Policy page text', fields: [
+          { key: 'title', label: 'Page title', type: 'text' },
+          { key: 'body', label: 'Text', type: 'textarea', help: 'Blank line = new paragraph. Start a line with "## " to make it a heading.' },
+        ],
+      })),
       { key: 'faqs', label: 'FAQs', icon: '❓', desc: 'Questions and answers', fields: [
         { key: 'items', label: 'Questions', type: 'list', itemLabel: (f) => f.q, fields: [
           { key: 'q', label: 'Question', type: 'text' },
@@ -201,6 +229,7 @@ export const adminGroups = [
         key: `resource_${key}`, label: `${p.title} ${p.accent}`.trim(), icon: '📄', desc: 'Tabs and PDF documents', ...resourceSchema,
       })),
       { key: 'books', label: 'Books', icon: '📚', desc: 'Combo and individual books with buy links', fields: [
+        { key: 'trailerUrl', label: 'Book trailer video (MP4 link)', type: 'url' },
         { key: 'combo', label: 'Combo set', type: 'object', fields: [
           { key: 'title', label: 'Title', type: 'text' },
           { key: 'img', label: 'Image', type: 'image' },

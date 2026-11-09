@@ -31,8 +31,8 @@ const Column = ({ title, children }) => (
 );
 
 const Footer = () => {
-  const { lang } = useApp();
-  const { socials, email, tagline, footerText } = useContent('site');
+  const { lang, t } = useApp();
+  const { socials, email, tagline, footerText, logo, nameA, nameB } = useContent('site');
   const batch = useContent('batch');
   const icons = [
     [socials.youtube, YouTubeIcon, 'YouTube', '#FF0000'],
@@ -53,28 +53,28 @@ const Footer = () => {
         <Box sx={{ display: 'grid', gap: { xs: 3, md: 6 }, gridTemplateColumns: { xs: '1fr', md: '1.1fr 1fr' }, alignItems: 'center', py: { xs: 5, md: 7 }, borderBottom: '1px solid rgba(255,255,255,.08)' }}>
           <Box>
             <Stack direction="row" alignItems="center" gap={1.5}>
-              <Box component="img" src="/assets/shashank.webp" alt="Shashank Sajwan" sx={{ width: 56, height: 56, borderRadius: '16px', bgcolor: '#fff' }} />
+              <Box component="img" src={logo} alt={`${nameA} ${nameB}`} sx={{ width: 56, height: 56, borderRadius: '16px', bgcolor: '#fff' }} />
               <Box>
                 <Typography sx={{ fontWeight: 800, fontSize: 20, letterSpacing: '.02em', lineHeight: 1.2 }}>
-                  SHASHANK <Box component="span" className="text-gradient">SAJWAN</Box>
+                  {nameA} <Box component="span" className="text-gradient">{nameB}</Box>
                 </Typography>
                 <Typography sx={{ color: 'rgba(255,255,255,.6)', fontSize: 13.5 }}>{tr(tagline, lang)}</Typography>
               </Box>
             </Stack>
             <Typography sx={{ mt: 2, color: 'rgba(255,255,255,.65)', fontSize: 15, maxWidth: 440, lineHeight: 1.7 }}>
-              Free NCERT notes, PYQs, daily newspaper notes and NCERT-mapped books — everything a UPSC aspirant needs, in one place.
+              {t('footerAbout')}
             </Typography>
           </Box>
 
           <Box sx={{ p: { xs: 2.5, md: 3 }, borderRadius: '24px', bgcolor: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.1)', backdropFilter: 'blur(10px)' }}>
-            <Typography sx={{ fontWeight: 800, fontSize: 18 }}>Get daily notes on Telegram</Typography>
-            <Typography sx={{ color: 'rgba(255,255,255,.6)', fontSize: 14, mt: 0.5, mb: 2 }}>Newspaper notes, current affairs and strategy — every morning, free.</Typography>
+            <Typography sx={{ fontWeight: 800, fontSize: 18 }}>{t('footerTgTitle')}</Typography>
+            <Typography sx={{ color: 'rgba(255,255,255,.6)', fontSize: 14, mt: 0.5, mb: 2 }}>{t('footerTgText')}</Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} gap={1.2}>
               {socials.telegram && (
-                <Button href={socials.telegram} target="_blank" rel="noopener" variant="contained" startIcon={<TelegramIcon />} sx={{ flex: 1 }}>Join Telegram</Button>
+                <Button href={socials.telegram} target="_blank" rel="noopener" variant="contained" startIcon={<TelegramIcon />} sx={{ flex: 1 }}>{t('footerTgButton')}</Button>
               )}
               {socials.youtube && (
-                <Button href={socials.youtube} target="_blank" rel="noopener" startIcon={<YouTubeIcon />} sx={{ flex: 1, color: '#fff', bgcolor: 'rgba(255,255,255,.1)', '&:hover': { bgcolor: 'rgba(255,255,255,.16)' } }}>Subscribe</Button>
+                <Button href={socials.youtube} target="_blank" rel="noopener" startIcon={<YouTubeIcon />} sx={{ flex: 1, color: '#fff', bgcolor: 'rgba(255,255,255,.1)', '&:hover': { bgcolor: 'rgba(255,255,255,.16)' } }}>{t('footerYtButton')}</Button>
               )}
             </Stack>
           </Box>
@@ -131,7 +131,7 @@ const Footer = () => {
               >
                 <Box sx={{ width: 36, height: 36, flexShrink: 0, borderRadius: '10px', display: 'grid', placeItems: 'center', background: 'var(--grad)' }}><MailRoundedIcon fontSize="small" /></Box>
                 <Box sx={{ minWidth: 0, flex: 1 }}>
-                  <Typography sx={{ fontSize: 11.5, color: 'rgba(255,255,255,.55)' }}>Queries, careers & opportunities</Typography>
+                  <Typography sx={{ fontSize: 11.5, color: 'rgba(255,255,255,.55)' }}>{t('footerEmailLabel')}</Typography>
                   <Typography noWrap sx={{ fontSize: 14, fontWeight: 700 }}>{email}</Typography>
                 </Box>
                 <ArrowForwardRoundedIcon sx={{ fontSize: 18, opacity: 0.6 }} />
@@ -148,7 +148,7 @@ const Footer = () => {
             endIcon={<ArrowUpwardRoundedIcon />}
             sx={{ minHeight: 36, fontSize: 13, color: 'rgba(255,255,255,.7)', '&:hover': { color: '#fff', bgcolor: 'rgba(255,255,255,.06)' } }}
           >
-            Back to top
+            {t('backToTop')}
           </Button>
         </Stack>
       </Container>

@@ -28,7 +28,7 @@ const Header = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { t, mode, toggleMode, lang } = useApp();
   const { user, configured } = useAuth();
-  const { tagline } = useContent('site');
+  const { tagline, logo, nameA, nameB } = useContent('site');
   const batch = useContent('batch');
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -62,10 +62,10 @@ const Header = () => {
     >
       <Stack direction="row" alignItems="center" sx={{ height: { xs: 60, md: 72 }, px: { xs: 2, md: 4 }, maxWidth: 1280, mx: 'auto', gap: 2 }}>
         <Stack component={Link} to="/" direction="row" alignItems="center" gap={1.2} sx={{ textDecoration: 'none', color: 'text.primary', mr: 'auto', flexShrink: 0 }}>
-          <Box component="img" src="/assets/shashank.webp" alt="Shashank Sajwan" sx={{ width: { xs: 38, md: 46 }, height: { xs: 38, md: 46 }, borderRadius: '12px', objectFit: 'cover' }} />
+          <Box component="img" src={logo} alt={`${nameA} ${nameB}`} sx={{ width: { xs: 38, md: 46 }, height: { xs: 38, md: 46 }, borderRadius: '12px', objectFit: 'cover' }} />
           <Box sx={{ lineHeight: 1 }}>
             <Typography sx={{ fontWeight: 800, fontSize: { xs: 15, md: 18 }, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
-              SHASHANK <Box component="span" className="text-gradient">SAJWAN</Box>
+              {nameA} <Box component="span" className="text-gradient">{nameB}</Box>
             </Typography>
             <Typography sx={{ fontSize: { xs: 11, md: 12 }, color: 'text.secondary' }}>{tr(tagline, lang)}</Typography>
           </Box>

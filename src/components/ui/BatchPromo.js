@@ -5,6 +5,7 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import { useContent } from '../../context/ContentContext';
+import { useApp } from '../../context/AppContext';
 import { Reveal } from './Motion';
 
 // Batch call-to-action reused across the site.
@@ -12,6 +13,7 @@ import { Reveal } from './Motion';
 //  banner  — full-width strip placed at the end of study pages
 const BatchPromo = ({ variant = 'banner' }) => {
   const b = useContent('batch');
+  const { t } = useApp();
   const { pathname } = useLocation();
   if (b.enabled === false || pathname.startsWith('/courses') || pathname.startsWith('/batch')) return null;
   const soon = b.status !== 'live';
@@ -56,7 +58,7 @@ const BatchPromo = ({ variant = 'banner' }) => {
                 <Typography sx={{ fontSize: 12, fontWeight: 800, color: 'secondary.main', textTransform: 'uppercase', letterSpacing: '.08em', lineHeight: 1 }}>{badge}</Typography>
               </Stack>
             )}
-            <Typography variant="h3" sx={{ mt: 1 }}>{soon ? `${b.title} ${b.accent} is launching soon` : `Want guided preparation? Join the ${b.title} ${b.accent}`}</Typography>
+            <Typography variant="h3" sx={{ mt: 1 }}>{soon ? `${b.title} ${b.accent} ${t('promoSoonTitle')}` : `${t('promoLiveTitle')} ${b.title} ${b.accent}`}</Typography>
             <Stack direction="row" flexWrap="wrap" gap={1} sx={{ mt: 1.5 }}>
               {(b.highlights || []).slice(0, 3).map((h, i) => (
                 <Stack key={`${h.text}-${i}`} direction="row" alignItems="center" gap={0.6} sx={{ pl: 1, pr: 1.4, py: 0.6, borderRadius: '999px', bgcolor: 'rgba(255,255,255,.1)', fontSize: 13, fontWeight: 600, lineHeight: 1 }}>
@@ -66,7 +68,7 @@ const BatchPromo = ({ variant = 'banner' }) => {
             </Stack>
           </Box>
           <Button component={Link} to="/courses" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0, bgcolor: '#fff', color: '#0B1640', '&:hover': { bgcolor: '#eee' }, alignSelf: { xs: 'stretch', md: 'center' } }}>
-            {soon ? 'Get notified' : 'View batch'}
+            {soon ? t('promoSoonButton') : t('promoLiveButton')}
           </Button>
         </Box>
       </Reveal>

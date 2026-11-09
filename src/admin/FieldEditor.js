@@ -210,8 +210,10 @@ const FeedField = ({ value = [], onChange }) => {
 export const Field = ({ field, value, onChange }) => {
   const common = { size: 'small', fullWidth: true, label: field.label, helperText: field.help };
   switch (field.type) {
+    case 'heading':
+      return <Typography sx={{ fontWeight: 800, fontSize: 13, letterSpacing: '.08em', textTransform: 'uppercase', color: 'primary.main', pt: 2, borderTop: 1, borderColor: 'divider' }}>{field.label}</Typography>;
     case 'textarea':
-      return <TextField {...common} multiline minRows={3} value={value || ''} onChange={(e) => onChange(e.target.value)} />;
+      return <TextField {...common} multiline minRows={field.key === 'body' ? 12 : 3} value={value || ''} onChange={(e) => onChange(e.target.value)} />;
     case 'number':
       return <TextField {...common} type="number" value={value ?? ''} onChange={(e) => onChange(e.target.value === '' ? '' : Number(e.target.value))} />;
     case 'url':

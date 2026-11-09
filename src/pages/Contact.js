@@ -10,6 +10,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import PageHero from '../components/ui/PageHero';
 import { Reveal } from '../components/ui/Motion';
 import { useContent } from '../context/ContentContext';
+import { useApp } from '../context/AppContext';
 
 const Card = ({ icon, title, children, delay }) => (
   <Reveal delay={delay}>
@@ -25,13 +26,14 @@ const Contact = () => {
   const [copied, setCopied] = useState(false);
   const { email: EMAIL, socials } = useContent('site');
   const c = useContent('contact');
+  const { t } = useApp();
   const copy = () => {
     navigator.clipboard?.writeText(EMAIL).then(() => setCopied(true)).catch(() => {});
   };
 
   return (
     <Box sx={{ pb: 4 }}>
-      <PageHero title="Get in" accent="touch" eyebrow="Contact" subtitle={c.heroSub} />
+      <PageHero title={t('contactTitle')} accent={t('contactAccent')} eyebrow={t('contact')} subtitle={c.heroSub} />
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
         <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' } }}>
           <Card icon={<MailRoundedIcon />} title="Email us">
@@ -54,8 +56,8 @@ const Contact = () => {
 
         <Reveal>
           <Box className="glow-card" sx={{ mt: 3, p: { xs: 3, md: 4 }, borderRadius: '28px', color: '#fff' }}>
-            <Typography variant="h3">Fastest replies on social</Typography>
-            <Typography sx={{ opacity: 0.8, mt: 0.5, mb: 2 }}>Join the community for daily updates and doubt discussions.</Typography>
+            <Typography variant="h3">{t('contactSocialTitle')}</Typography>
+            <Typography sx={{ opacity: 0.8, mt: 0.5, mb: 2 }}>{t('contactSocialText')}</Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} gap={1.2}>
               <Button href={socials.telegram} target="_blank" rel="noopener" startIcon={<TelegramIcon />} sx={{ bgcolor: '#fff', color: '#0B1640', '&:hover': { bgcolor: '#eee' } }}>Telegram</Button>
               <Button href={socials.instagram} target="_blank" rel="noopener" startIcon={<InstagramIcon />} sx={{ bgcolor: 'rgba(255,255,255,.14)', color: '#fff' }}>Instagram</Button>
