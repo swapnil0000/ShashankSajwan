@@ -6,6 +6,7 @@ import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import { db } from '../../lib/firebase';
 import { useContent } from '../../context/ContentContext';
+import WhatsAppButton, { useBatchWhatsApp } from '../../components/ui/WhatsAppButton';
 
 const phoneOk = (p) => /^[6-9]\d{9}$/.test(p.replace(/\D/g, '').slice(-10));
 
@@ -14,6 +15,7 @@ const phoneOk = (p) => /^[6-9]\d{9}$/.test(p.replace(/\D/g, '').slice(-10));
 const ComingSoon = () => {
   const b = useContent('batch');
   const { email } = useContent('site');
+  const wa = useBatchWhatsApp();
   const [form, setForm] = useState({ name: '', phone: '' });
   const [state, setState] = useState('idle');
   const [error, setError] = useState('');
@@ -69,6 +71,14 @@ const ComingSoon = () => {
               <Typography color="text.secondary" sx={{ textAlign: 'center' }}>For early enquiries, write to <Box component="a" href={`mailto:${email}`} sx={{ color: 'primary.main', fontWeight: 700 }}>{email}</Box></Typography>
             )}
           </Box>
+
+          {wa && (
+            <Box sx={{ mt: 2, p: { xs: 2, sm: 2.5 }, borderRadius: '24px', bgcolor: 'rgba(37,211,102,.08)', border: '1px solid rgba(37,211,102,.3)' }}>
+              <Typography sx={{ fontWeight: 800 }}>Have a question about the batch?</Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.3, mb: 1.5 }}>Message us on WhatsApp — your enquiry is already typed, just press send.</Typography>
+              <WhatsAppButton fullWidth />
+            </Box>
+          )}
         </motion.div>
       </Container>
     </Box>
