@@ -1,6 +1,8 @@
 export const strings = {
   en: {
     home: 'Home',
+    resources: 'Resources',
+    newspaper: 'Newspaper',
     study: 'Study',
     pyqs: 'PYQs',
     books: 'Books',
@@ -46,6 +48,8 @@ export const strings = {
   },
   hi: {
     home: 'होम',
+    resources: 'संसाधन',
+    newspaper: 'समाचार पत्र',
     study: 'पढ़ाई',
     pyqs: 'PYQs',
     books: 'पुस्तकें',

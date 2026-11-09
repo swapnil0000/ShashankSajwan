@@ -14,7 +14,7 @@ const diff = (date) => {
 };
 
 const Unit = ({ value, label }) => (
-  <Box sx={{ textAlign: 'center', minWidth: 56 }}>
+  <Box sx={{ flex: 1, textAlign: 'center', py: 1, borderRadius: '14px', bgcolor: 'rgba(255,255,255,.08)', border: '1px solid rgba(255,255,255,.12)' }}>
     <Box sx={{ height: 34, overflow: 'hidden', position: 'relative' }}>
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.div key={value} initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -24, opacity: 0 }} transition={{ duration: 0.3 }}>
@@ -40,13 +40,11 @@ const Countdown = () => {
   }, [prelimsDate]);
 
   return (
-    <Box className="glow-card" sx={{ p: 2, borderRadius: 5, color: '#fff' }}>
+    <Box className="glow-card" sx={{ p: { xs: 2, md: 2.5 }, borderRadius: '22px', color: '#fff' }}>
       <Typography sx={{ fontSize: 13, fontWeight: 700, opacity: 0.9 }}>⏳ {tr(prelimsLabel, lang)}</Typography>
-      <Stack direction="row" alignItems="center" gap={1} sx={{ mt: 1 }}>
+      <Stack direction="row" alignItems="stretch" gap={1.2} sx={{ mt: 1.5, position: 'relative', zIndex: 1 }}>
         <Unit value={left.days} label={t('days')} />
-        <Typography sx={{ fontSize: 22, opacity: 0.5 }}>:</Typography>
         <Unit value={left.hrs} label={t('hrs')} />
-        <Typography sx={{ fontSize: 22, opacity: 0.5 }}>:</Typography>
         <Unit value={left.mins} label={t('mins')} />
       </Stack>
       <Typography sx={{ fontSize: 10.5, opacity: 0.6, mt: 0.5 }}>{t('tentative')}</Typography>

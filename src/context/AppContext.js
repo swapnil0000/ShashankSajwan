@@ -21,14 +21,14 @@ const write = (key, value) => {
 };
 
 export const AppProvider = ({ children }) => {
-  const prefersDark = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-  const [mode, setMode] = useState(() => read('ss-mode', prefersDark ? 'dark' : 'light'));
-  const [lang, setLang] = useState(() => read('ss-lang', 'en'));
+  // Light by default (not the device setting); visitors can still switch to dark.
+  const [mode, setMode] = useState(() => read('ss-theme', 'light'));
+  // The site is English-only.
+  const lang = 'en';
   const [bookmarks, setBookmarks] = useState(() => read('ss-bookmarks', []));
   const [recent, setRecent] = useState(() => read('ss-recent', []));
 
-  useEffect(() => write('ss-mode', mode), [mode]);
-  useEffect(() => write('ss-lang', lang), [lang]);
+  useEffect(() => write('ss-theme', mode), [mode]);
   useEffect(() => write('ss-bookmarks', bookmarks), [bookmarks]);
 
   // Signed-in users: merge device bookmarks with the account once, then keep the account updated.
@@ -54,7 +54,6 @@ export const AppProvider = ({ children }) => {
     mode,
     toggleMode: () => setMode((m) => (m === 'dark' ? 'light' : 'dark')),
     lang,
-    toggleLang: () => setLang((l) => (l === 'en' ? 'hi' : 'en')),
     t: (key) => strings[lang]?.[key] ?? strings.en[key] ?? key,
     bookmarks,
     isBookmarked: (id) => bookmarks.includes(id),

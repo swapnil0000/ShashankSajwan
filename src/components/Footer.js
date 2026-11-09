@@ -18,7 +18,8 @@ const FootLink = ({ to, children }) => (
 
 const Footer = () => {
   const { t, lang } = useApp();
-  const { socials, email, tagline } = useContent('site');
+  const { socials, email, tagline, footerText } = useContent('site');
+  const batch = useContent('batch');
   const icons = [
     [socials.youtube, YouTubeIcon, 'YouTube'],
     [socials.instagram, InstagramIcon, 'Instagram'],
@@ -43,6 +44,9 @@ const Footer = () => {
           </Box>
           <Stack>
             <Typography sx={{ fontWeight: 700, mb: 1 }}>{t('quickLinks')}</Typography>
+            {batch.enabled !== false && <FootLink to="/courses">🎓 {batch.navLabel || 'Batch'}</FootLink>}
+            <FootLink to="/resources">{t('resources')}</FootLink>
+            <FootLink to="/newspaper">{t('newspaper')}</FootLink>
             <FootLink to="/study">{t('studyHub')}</FootLink>
             <FootLink to="/books">{t('ourBooks')}</FootLink>
             <FootLink to="/videos">{t('videos')}</FootLink>
@@ -68,7 +72,7 @@ const Footer = () => {
           </Box>
         </Box>
         <Typography sx={{ mt: 5, pt: 3, borderTop: '1px solid rgba(255,255,255,.1)', fontSize: 13, opacity: 0.6, textAlign: 'center' }}>
-          © {new Date().getFullYear()} Shashank Sajwan · {t('rights')}
+          {footerText}
         </Typography>
       </Container>
     </Box>

@@ -3,6 +3,7 @@ import { Box, ButtonBase, Container, Stack, Typography } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
 import PageHero from './PageHero';
+import BatchPromo from './BatchPromo';
 import { useApp } from '../../context/AppContext';
 import { useContent } from '../../context/ContentContext';
 
@@ -87,6 +88,7 @@ const ResourceLayout = ({ sectionId }) => {
           </motion.div>
         </AnimatePresence>
       </Container>
+      <BatchPromo />
     </Box>
   );
 };
