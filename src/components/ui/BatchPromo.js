@@ -7,6 +7,7 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import { useContent } from '../../context/ContentContext';
 import { useApp } from '../../context/AppContext';
 import { Reveal } from './Motion';
+import WhatsAppButton from './WhatsAppButton';
 
 // Batch call-to-action reused across the site.
 //  compact — one tappable row (mobile "More" sheet, hero, small spaces)
@@ -67,9 +68,12 @@ const BatchPromo = ({ variant = 'banner' }) => {
               ))}
             </Stack>
           </Box>
-          <Button component={Link} to="/courses" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0, bgcolor: '#fff', color: '#0B1640', '&:hover': { bgcolor: '#eee' }, alignSelf: { xs: 'stretch', md: 'center' } }}>
-            {soon ? t('promoSoonButton') : t('promoLiveButton')}
-          </Button>
+          <Stack gap={1} sx={{ flexShrink: 0, alignSelf: { xs: 'stretch', md: 'center' } }}>
+            <Button component={Link} to="/courses" endIcon={<ArrowForwardRoundedIcon />} sx={{ bgcolor: '#fff', color: '#0B1640', '&:hover': { bgcolor: '#eee' } }}>
+              {soon ? t('promoSoonButton') : t('promoLiveButton')}
+            </Button>
+            <WhatsAppButton size="medium" />
+          </Stack>
         </Box>
       </Reveal>
     </Container>

@@ -11,6 +11,8 @@ import PageHero from '../components/ui/PageHero';
 import { Reveal } from '../components/ui/Motion';
 import { useContent } from '../context/ContentContext';
 import { useApp } from '../context/AppContext';
+import WhatsAppButton, { useBatchWhatsApp } from '../components/ui/WhatsAppButton';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const Card = ({ icon, title, children, delay }) => (
   <Reveal delay={delay}>
@@ -27,6 +29,8 @@ const Contact = () => {
   const { email: EMAIL, socials } = useContent('site');
   const c = useContent('contact');
   const { t } = useApp();
+  const wa = useBatchWhatsApp();
+  const batch = useContent('batch');
   const copy = () => {
     navigator.clipboard?.writeText(EMAIL).then(() => setCopied(true)).catch(() => {});
   };
@@ -53,6 +57,19 @@ const Contact = () => {
             <Box component="img" loading="lazy" src="/assets/contact.webp" alt="" sx={{ mt: 2, width: '100%', borderRadius: '16px', maxHeight: 180, objectFit: 'contain' }} />
           </Card>
         </Box>
+
+        {wa && batch.enabled !== false && (
+          <Reveal>
+            <Stack direction={{ xs: 'column', sm: 'row' }} alignItems={{ sm: 'center' }} gap={2} sx={{ mt: 3, p: { xs: 2.5, md: 3 }, borderRadius: '24px', bgcolor: 'rgba(37,211,102,.08)', border: '1px solid rgba(37,211,102,.3)' }}>
+              <Box sx={{ width: 48, height: 48, flexShrink: 0, borderRadius: '16px', display: 'grid', placeItems: 'center', bgcolor: '#25D366', color: '#fff' }}><WhatsAppIcon /></Box>
+              <Box sx={{ flex: 1 }}>
+                <Typography variant="h6">Batch enquiry</Typography>
+                <Typography variant="body2" color="text.secondary">For questions about the {batch.title} {batch.accent} only. For anything else, please email us.</Typography>
+              </Box>
+              <WhatsAppButton sx={{ flexShrink: 0 }} />
+            </Stack>
+          </Reveal>
+        )}
 
         <Reveal>
           <Box className="glow-card" sx={{ mt: 3, p: { xs: 3, md: 4 }, borderRadius: '28px', color: '#fff' }}>

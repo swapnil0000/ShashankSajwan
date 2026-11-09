@@ -156,7 +156,10 @@ export const adminGroups = [
         { key: 'image', label: 'Banner image', type: 'image' },
         { key: 'price', label: 'Fee (leave empty to hide)', type: 'text', help: 'e.g. ₹25,000' },
         { key: 'ctaLabel', label: 'Main button text', type: 'text' },
-        { key: 'ctaLink', label: 'Main button link', type: 'url', help: 'Payment / form / WhatsApp link. Empty = email enquiry to the contact email.' },
+        { key: 'ctaLink', label: 'Main button link', type: 'url', help: 'Payment / form link. Empty = WhatsApp enquiry (number below), or email if no number.' },
+        { key: 'whatsapp', label: 'WhatsApp number (batch enquiries only)', type: 'text', help: 'e.g. +91 70607 48896. Empty = hide all WhatsApp buttons.' },
+        { key: 'whatsappLabel', label: 'WhatsApp button text', type: 'text' },
+        { key: 'whatsappMessage', label: 'Pre-filled WhatsApp message', type: 'textarea', help: 'Typed for the student when WhatsApp opens; they just press send.' },
         { key: 'videoUrl', label: 'Intro video (YouTube URL)', type: 'url' },
         { key: 'brochureUrl', label: 'Brochure link', type: 'url' },
         { key: 'highlights', label: 'Highlights', type: 'list', itemLabel: (h) => `${h.icon} ${h.text}`, fields: [

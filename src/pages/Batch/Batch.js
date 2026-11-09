@@ -12,13 +12,15 @@ import FaqList from '../../components/ui/FaqList';
 import { Reveal, stagger, staggerItem } from '../../components/ui/Motion';
 import { useContent } from '../../context/ContentContext';
 import ComingSoon from './ComingSoon';
+import WhatsAppButton, { useBatchWhatsApp } from '../../components/ui/WhatsAppButton';
 
-// Where the main button goes: the admin-set link, or an email enquiry.
+// Where the main button goes: the admin-set link, else WhatsApp, else an email enquiry.
 export const useBatchCta = () => {
   const b = useContent('batch');
   const { email } = useContent('site');
-  const href = b.ctaLink || `mailto:${email}?subject=${encodeURIComponent(`Enquiry: ${b.title} ${b.accent}`)}`;
-  return { href, label: b.ctaLabel || 'Enquire now', external: Boolean(b.ctaLink) };
+  const wa = useBatchWhatsApp();
+  const href = b.ctaLink || wa || `mailto:${email}?subject=${encodeURIComponent(`Enquiry: ${b.title} ${b.accent}`)}`;
+  return { href, label: b.ctaLabel || 'Enquire now', external: Boolean(b.ctaLink || wa), whatsappOnly: !b.ctaLink && Boolean(wa) };
 };
 
 const CtaButton = (props) => {
@@ -28,6 +30,17 @@ const CtaButton = (props) => {
       {label}
     </Button>
   );
+};
+
+// Main button, plus a WhatsApp button when the main one goes somewhere else.
+const HeroButtons = () => {
+  const { whatsappOnly } = useBatchCta();
+  return whatsappOnly ? <WhatsAppButton /> : <><CtaButton /><WhatsAppButton /></>;
+};
+
+const MobileCta = () => {
+  const { whatsappOnly } = useBatchCta();
+  return whatsappOnly ? <WhatsAppButton size="medium" label="Enquire" /> : <CtaButton size="medium" />;
 };
 
 const Batch = () => {
@@ -56,7 +69,7 @@ const Batch = () => {
                   </Typography>
                 )}
                 <Stack direction={{ xs: 'column', sm: 'row' }} gap={1.2} sx={{ mt: 3 }}>
-                  <CtaButton />
+                  <HeroButtons />
                   {b.videoUrl && <Button size="large" variant="outlined" color="inherit" href={b.videoUrl} target="_blank" rel="noopener" startIcon={<PlayCircleRoundedIcon />} sx={{ borderColor: 'divider' }}>Watch intro</Button>}
                   {b.brochureUrl && <Button size="large" variant="outlined" color="inherit" href={b.brochureUrl} target="_blank" rel="noopener" startIcon={<DescriptionRoundedIcon />} sx={{ borderColor: 'divider' }}>Brochure</Button>}
                 </Stack>
@@ -146,7 +159,7 @@ const Batch = () => {
           <Typography noWrap sx={{ fontWeight: 800, fontSize: 14 }}>{b.price || `${b.title} ${b.accent}`}</Typography>
           <Typography noWrap variant="caption" color="text.secondary">{b.badge}</Typography>
         </Box>
-        <CtaButton size="medium" />
+        <MobileCta />
       </Box>
     </Box>
   );
