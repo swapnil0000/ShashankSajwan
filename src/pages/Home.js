@@ -17,6 +17,10 @@ import { Reveal, stagger, staggerItem } from '../components/ui/Motion';
 import { SearchField } from './StudyHub/StudyHub';
 import { useBatchCta } from './Batch/Batch';
 import { HOME_SECTIONS } from '../data/content';
+import HeroCarousel from '../components/ui/HeroCarousel';
+import SlideRow from '../components/ui/SlideRow';
+import { FeedItem, useFeed } from '../components/ui/DailyFeed';
+import { useLatestAcrossFeeds } from './Resources/Resources';
 
 const statIcons = {
   youtube: <YouTubeIcon sx={{ color: '#FF0000' }} />,
@@ -26,8 +30,6 @@ const statIcons = {
   star: <span>⭐</span>,
 };
 
-const isExternal = (href) => /^https?:\/\//.test(href || '');
-const linkProps = (href) => (isExternal(href) ? { component: 'a', href, target: '_blank', rel: 'noopener' } : { component: Link, to: href || '/' });
 
 const CountUp = ({ to, suffix = '' }) => {
   const ref = useRef(null);
@@ -47,7 +49,62 @@ const Rail = ({ children }) => (
   </Stack>
 );
 
-const Hero = ({ c }) => {
+// Small tappable "admissions open" pill at the top of the hero.
+const HeroBatchPill = () => {
+  const b = useContent('batch');
+  if (b.enabled === false) return null;
+  return (
+    <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ marginBottom: 12 }}>
+      <Box component={Link} to="/courses" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, pl: 0.6, pr: 1.5, py: 0.6, minWidth: 0, borderRadius: '999px', bgcolor: 'background.paper', border: 1, borderColor: 'divider', color: 'text.primary', boxShadow: '0 8px 24px -14px rgba(11,22,64,.5)', maxWidth: '100%', '&:hover': { borderColor: 'primary.main' } }}>
+        <Box sx={{ px: 1, py: 0.3, borderRadius: '999px', background: 'var(--grad)', color: '#fff', fontSize: 11, fontWeight: 800, flexShrink: 0 }}>NEW</Box>
+        <Typography noWrap sx={{ fontSize: 13, fontWeight: 700 }}>🎓 {b.status !== 'live' ? 'Coming soon: ' : b.badge ? `${b.badge}: ` : ''}{b.title} {b.accent}</Typography>
+        <ArrowForwardRoundedIcon sx={{ fontSize: 16, color: 'primary.main', flexShrink: 0 }} />
+      </Box>
+    </motion.div>
+  );
+};
+
+// Right side of the hero: Prelims countdown plus one-tap tiles for the daily sections.
+const GlancePanel = () => {
+  const b = useContent('batch');
+  const news = useFeed('feed_newspaper');
+  const comingSoon = b.status !== 'live';
+  const tiles = [
+    { to: '/newspaper', icon: '📰', label: 'Newspaper Notes', sub: news.items[0] ? 'Updated today' : 'Daily notes' },
+    { to: '/resources/current-affairs', icon: '🌏', label: 'Current Affairs', sub: 'Daily' },
+    { to: '/resources/ncert-mcqs', icon: '✅', label: 'NCERT MCQs', sub: 'Practice' },
+    b.enabled === false
+      ? { to: '/books', icon: '📚', label: 'Our Books', sub: 'NCERT-mapped' }
+      : { to: '/courses', icon: '🎓', label: b.navLabel || 'Batch', sub: comingSoon ? 'Coming soon' : (b.badge || 'Join now'), hot: true },
+  ];
+  return (
+    <Stack gap={1.5}>
+      <Countdown />
+      <Box sx={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: 1.5 }}>
+        {tiles.map((tile) => (
+          <Box
+            key={tile.to}
+            component={Link}
+            to={tile.to}
+            sx={{
+              display: 'flex', alignItems: 'center', gap: 1.2, p: 1.5, borderRadius: '18px', color: 'text.primary', bgcolor: 'background.paper', border: 1,
+              borderColor: tile.hot ? 'primary.main' : 'divider', boxShadow: '0 10px 30px -22px rgba(11,22,64,.5)', transition: 'transform .2s, border-color .2s',
+              '&:hover': { transform: 'translateY(-2px)', borderColor: 'primary.main' },
+            }}
+          >
+            <Box sx={{ width: 40, height: 40, flexShrink: 0, borderRadius: '12px', display: 'grid', placeItems: 'center', fontSize: 20, bgcolor: 'action.hover' }}>{tile.icon}</Box>
+            <Box sx={{ minWidth: 0 }}>
+              <Typography noWrap sx={{ fontWeight: 800, fontSize: 14 }}>{tile.label}</Typography>
+              <Typography noWrap variant="caption" sx={{ color: tile.hot ? 'primary.main' : 'text.secondary', fontWeight: tile.hot ? 700 : 400 }}>{tile.sub}</Typography>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+    </Stack>
+  );
+};
+
+const Hero = ({ c, first, bare }) => {
   const { t, lang } = useApp();
   const navigate = useNavigate();
   const [q, setQ] = useState('');
@@ -55,13 +112,14 @@ const Hero = ({ c }) => {
   const orbY = useTransform(scrollY, [0, 500], [0, 120]);
 
   return (
-    <Box component="section" className="grid-bg" sx={{ position: 'relative', overflow: 'hidden', pt: { xs: 11, md: 16 }, pb: { xs: 4, md: 8 } }}>
-      <motion.div className="orb orb-a" style={{ y: orbY }} />
-      <motion.div className="orb orb-b" style={{ y: orbY }} />
+    <Box component="section" className={bare ? undefined : 'grid-bg'} sx={{ position: 'relative', overflow: bare ? 'visible' : 'hidden', pt: first ? { xs: 11, md: 16 } : { xs: 4, md: 6 }, pb: { xs: 4, md: 8 } }}>
+      {!bare && <motion.div className="orb orb-a" style={{ y: orbY }} />}
+      {!bare && <motion.div className="orb orb-b" style={{ y: orbY }} />}
       <Container maxWidth="lg" sx={{ position: 'relative', px: { xs: 2, sm: 3 } }}>
-        <Box sx={{ display: 'grid', gap: { xs: 4, md: 6 }, gridTemplateColumns: { xs: '1fr', md: '1.1fr 0.9fr' }, alignItems: 'center' }}>
-          <Box>
+        <Box sx={{ display: 'grid', gap: { xs: 4, md: 6 }, gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'minmax(0, 1.1fr) minmax(0, 0.9fr)' }, alignItems: 'center' }}>
+          <Box sx={{ minWidth: 0 }}>
             <Reveal>
+              <HeroBatchPill />
               <Chip label={`🇮🇳 ${tr(c.heroBadge, lang)}`} sx={{ bgcolor: 'rgba(255,138,31,.14)', color: 'secondary.dark', fontWeight: 700, mb: 2 }} />
             </Reveal>
             <Reveal delay={0.05}>
@@ -90,20 +148,7 @@ const Hero = ({ c }) => {
           </Box>
 
           <Reveal delay={0.15}>
-            <Box sx={{ position: 'relative' }}>
-              {c.banner?.img && (
-                <motion.div whileHover={{ rotateX: 4, rotateY: -6 }} transition={{ type: 'spring', stiffness: 200, damping: 20 }} style={{ transformPerspective: 1000 }}>
-                  <Box {...linkProps(c.banner.link)} sx={{ display: 'block', borderRadius: '24px', overflow: 'hidden', border: 1, borderColor: 'divider', boxShadow: '0 40px 80px -40px rgba(11,22,64,.55)', bgcolor: 'background.paper' }}>
-                    <Box component="img" src={c.banner.img} alt="" sx={{ width: '100%', display: 'block', height: 'auto' }} />
-                  </Box>
-                </motion.div>
-              )}
-              <Box sx={{ mt: 2, maxWidth: { md: 340 } }}>
-                <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}>
-                  <Countdown />
-                </motion.div>
-              </Box>
-            </Box>
+            <GlancePanel />
           </Reveal>
         </Box>
       </Container>
@@ -172,7 +217,7 @@ const BatchTeaser = () => {
         <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: '28px', border: 1, borderColor: 'divider', bgcolor: 'background.paper', display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1.2fr' } }}>
           {b.image && <Box component="img" loading="lazy" src={b.image} alt="" sx={{ width: '100%', height: '100%', minHeight: { md: 320 }, objectFit: 'cover', display: 'block' }} />}
           <Box sx={{ p: { xs: 2.5, md: 4 } }}>
-            {b.badge && <Chip size="small" label={`🎓 ${b.badge}`} sx={{ bgcolor: 'rgba(255,138,31,.14)', color: 'secondary.dark', fontWeight: 700, mb: 1.5 }} />}
+            {(b.status !== 'live' || b.badge) && <Chip size="small" label={`🎓 ${b.status !== 'live' ? 'Coming soon' : b.badge}`} sx={{ bgcolor: 'rgba(255,138,31,.14)', color: 'secondary.dark', fontWeight: 700, mb: 1.5 }} />}
             <Typography variant="h2">{b.title} <Box component="span" className="text-gradient">{b.accent}</Box></Typography>
             <Typography color="text.secondary" sx={{ mt: 1 }}>{b.subtitle}</Typography>
             <Box sx={{ display: 'grid', gap: 1, gridTemplateColumns: '1fr 1fr', mt: 2 }}>
@@ -184,8 +229,8 @@ const BatchTeaser = () => {
               ))}
             </Box>
             <Stack direction={{ xs: 'column', sm: 'row' }} gap={1.2} sx={{ mt: 3 }}>
-              <Button component={Link} to="/courses" variant="contained" endIcon={<ArrowForwardRoundedIcon />}>View batch details</Button>
-              <Button href={cta.href} target={cta.external ? '_blank' : undefined} rel="noopener" variant="outlined" color="inherit" sx={{ borderColor: 'divider' }}>{cta.label}</Button>
+              <Button component={Link} to="/courses" variant="contained" endIcon={<ArrowForwardRoundedIcon />}>{b.status !== 'live' ? 'Get notified' : 'View batch details'}</Button>
+              {b.status === 'live' && <Button href={cta.href} target={cta.external ? '_blank' : undefined} rel="noopener" variant="outlined" color="inherit" sx={{ borderColor: 'divider' }}>{cta.label}</Button>}
             </Stack>
           </Box>
         </Box>
@@ -263,14 +308,14 @@ const Videos = () => {
   if (!featured.length) return null;
   return (
     <Section title={t('mostViewed')} action={<Button component={Link} to="/videos" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0 }}>{t('viewAll')}</Button>}>
-      <Rail>
+      <SlideRow>
         {featured.map((v) => (
-          <Box key={v.id} className="snap-start" sx={{ flexShrink: 0, width: { xs: '82%', sm: 360 } }}>
+          <Box key={v.id} className="snap-start" sx={{ flexShrink: 0, width: { xs: '82%', sm: 'calc(50% - 8px)', md: 'calc(33.333% - 11px)' } }}>
             <LiteYouTube id={v.id} title={v.title} />
             <Typography sx={{ mt: 1, fontWeight: 600 }}>{v.title}</Typography>
           </Box>
         ))}
-      </Rail>
+      </SlideRow>
     </Section>
   );
 };
@@ -294,7 +339,20 @@ const Community = ({ c }) => {
   );
 };
 
-const blocks = { hero: Hero, stats: Stats, batch: BatchTeaser, study: StudyGrid, books: Books, features: Features, director: Director, josh: JoshTalk, videos: Videos, community: Community };
+// Latest daily posts across Newspaper Notes / Current Affairs / MCQs / PYQs.
+const Updates = () => {
+  const latest = useLatestAcrossFeeds(4);
+  if (!latest.length) return null;
+  return (
+    <Section title="Today's" accent="updates" action={<Button component={Link} to="/resources" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0 }}>All resources</Button>}>
+      <Box sx={{ display: 'grid', gap: 1.2, gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' } }}>
+        {latest.map((item, i) => <FeedItem key={`${item.date}-${i}`} item={item} i={i} compact />)}
+      </Box>
+    </Section>
+  );
+};
+
+const blocks = { carousel: HeroCarousel, hero: Hero, updates: Updates, stats: Stats, batch: BatchTeaser, study: StudyGrid, books: Books, features: Features, director: Director, josh: JoshTalk, videos: Videos, community: Community };
 
 const Home = () => {
   const c = useContent('home');
@@ -305,10 +363,22 @@ const Home = () => {
   const sections = HOME_SECTIONS.reduce((list, h, i) => (known.has(h.id) ? list : [...list.slice(0, i), { id: h.id, visible: true }, ...list.slice(i)]), c.sections);
   const shown = sections.filter((s) => s.visible !== false && blocks[s.id]);
   return (
-    <Box sx={{ pt: shown[0]?.id === 'hero' ? 0 : { xs: 8, md: 10 } }}>
-      {shown.map((s) => {
+    <Box sx={{ pt: ['hero', 'carousel'].includes(shown[0]?.id) ? 0 : { xs: 8, md: 10 } }}>
+      {shown.map((s, i) => {
+        // Carousel directly above the hero: both share one continuous background.
+        if (s.id === 'hero' && shown[i - 1]?.id === 'carousel') return null;
+        if (s.id === 'carousel' && shown[i + 1]?.id === 'hero') {
+          return (
+            <Box key="top" className="grid-bg" sx={{ position: 'relative', overflow: 'hidden' }}>
+              <div className="orb orb-a" style={{ top: 120 }} />
+              <div className="orb orb-b" />
+              <HeroCarousel />
+              <Hero c={c} bare />
+            </Box>
+          );
+        }
         const Block = blocks[s.id];
-        return <Block key={s.id} c={c} />;
+        return <Block key={s.id} c={c} first={i === 0} />;
       })}
     </Box>
   );

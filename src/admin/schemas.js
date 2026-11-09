@@ -22,6 +22,13 @@ const resourceSchema = {
   ],
 };
 
+const feedFields = [
+  { key: 'title', label: 'Page title', type: 'text' },
+  { key: 'accent', label: 'Title accent (gradient word)', type: 'text' },
+  { key: 'subtitle', label: 'Subtitle', type: 'textarea' },
+  { key: 'items', label: 'Posts', type: 'feed' },
+];
+
 export const adminGroups = [
   {
     title: 'Website',
@@ -43,13 +50,51 @@ export const adminGroups = [
           { key: 'text', label: 'Text', type: 'text' },
           { key: 'link', label: 'Link (optional)', type: 'url' },
         ] },
+        { key: 'footerText', label: 'Footer copyright line', type: 'text' },
       ] },
+      { key: 'carousel', label: 'Home carousel', icon: '🖼️', desc: 'Top slider on Home: images, links, schedule', fields: [
+        { key: 'interval', label: 'Seconds per slide', type: 'number' },
+        { key: 'slides', label: 'Slides', type: 'list', itemLabel: (sl, i) => `${sl.enabled === false ? '⏸ ' : ''}${sl.alt || `Slide ${i + 1}`}`, fields: [
+          { key: 'enabled', label: 'Show this slide', type: 'bool', default: true },
+          { key: 'img', label: 'Desktop image (3:1, e.g. 2172×724)', type: 'image' },
+          { key: 'imgMobile', label: 'Mobile image (1080×1080, optional)', type: 'image' },
+          { key: 'link', label: 'Link when tapped (page like /books, or full URL)', type: 'text' },
+          { key: 'alt', label: 'Slide name / description', type: 'text' },
+          { key: 'start', label: 'Show from (optional)', type: 'datetime' },
+          { key: 'end', label: 'Hide after (optional)', type: 'datetime' },
+        ] },
+      ] },
+      { key: 'popups', label: 'Pop-ups', icon: '💬', desc: 'Pop-up offers & announcements with schedule and frequency', fields: [
+        { key: 'items', label: 'Pop-ups', type: 'list', itemLabel: (p, i) => `${p.enabled === false ? '⏸ ' : ''}${p.title || `Pop-up ${i + 1}`}`, fields: [
+          { key: 'enabled', label: 'Active', type: 'bool', default: true },
+          { key: 'id', label: 'ID (change it to show the pop-up again to everyone)', type: 'text' },
+          { key: 'image', label: 'Image (1080×1080)', type: 'image' },
+          { key: 'title', label: 'Title (optional)', type: 'text' },
+          { key: 'text', label: 'Text (optional)', type: 'textarea' },
+          { key: 'ctaLabel', label: 'Button text', type: 'text' },
+          { key: 'ctaLink', label: 'Button / image link (page like /books, or full URL)', type: 'text' },
+          { key: 'pages', label: 'Where to show', type: 'select', options: ['home', 'all'], default: 'home' },
+          { key: 'frequency', label: 'How often', type: 'select', options: ['session', 'day', 'once', 'always'], default: 'session', help: 'session = once per visit · day = once a day · once = only first time' },
+          { key: 'delay', label: 'Delay before showing (seconds)', type: 'number', default: 2 },
+          { key: 'start', label: 'Start (optional)', type: 'datetime' },
+          { key: 'end', label: 'End (optional)', type: 'datetime' },
+        ] },
+      ] },
+    ],
+  },
+  {
+    title: 'Daily posts',
+    blocks: [
+      { key: 'feed_newspaper', label: 'Newspaper Notes (daily)', icon: '📰', desc: 'Post today’s newspaper notes PDF', fields: feedFields },
+      { key: 'feed_ca', label: 'Current Affairs', icon: '🌏', desc: 'Daily current affairs posts', fields: feedFields },
+      { key: 'feed_mcq', label: 'NCERT MCQs', icon: '✅', desc: 'Daily NCERT MCQ sets', fields: feedFields },
+      { key: 'feed_pyq', label: 'PYQs', icon: '🎯', desc: 'PYQ posts with analysis', fields: feedFields },
     ],
   },
   {
     title: 'Pages',
     blocks: [
-      { key: 'home', label: 'Home page', icon: '🏠', desc: 'Every home block: hero, banner, stats, features, director, Josh Talks, community', fields: [
+      { key: 'home', label: 'Home page', icon: '🏠', desc: 'Every home block: section order, hero, stats, features, director, Josh Talks, community', fields: [
         { key: 'sections', label: 'Sections (drag order & visibility)', type: 'list', fixed: true, itemLabel: (s) => HOME_SECTIONS.find((h) => h.id === s.id)?.label || s.id, fields: [
           { key: 'visible', label: 'Visible', type: 'bool' },
         ] },
@@ -58,10 +103,6 @@ export const adminGroups = [
         { key: 'heroTitleB', label: 'Hero title (gradient line 2)', type: 'i18n' },
         { key: 'heroSub', label: 'Hero subtitle', type: 'i18nArea' },
         { key: 'heroChips', label: 'Hero quick-search chips', type: 'strings' },
-        { key: 'banner', label: 'Hero banner', type: 'object', fields: [
-          { key: 'img', label: 'Banner image', type: 'image' },
-          { key: 'link', label: 'Banner link', type: 'url' },
-        ] },
         { key: 'stats', label: 'Stats', type: 'list', itemLabel: (s) => `${s.value}${s.suffix} ${s.label}`, fields: [
           { key: 'value', label: 'Number', type: 'number' },
           { key: 'suffix', label: 'Suffix (e.g. K+)', type: 'text' },
@@ -83,7 +124,11 @@ export const adminGroups = [
       ] },
       { key: 'batch', label: 'Batch / Mentorship', icon: '🎓', desc: 'Full-fledged batch page, Home teaser, menu link, enquiry button', fields: [
         { key: 'enabled', label: 'Show batch (page, Home teaser and menu link)', type: 'bool' },
-        { key: 'navLabel', label: 'Menu label', type: 'text' },
+        { key: 'status', label: 'Status', type: 'select', options: ['coming_soon', 'live'], help: 'coming_soon = only the Coming Soon page with a "Notify me" form · live = full batch page' },
+        { key: 'comingSoonTitle', label: 'Coming Soon heading', type: 'text' },
+        { key: 'comingSoonText', label: 'Coming Soon text', type: 'textarea' },
+        { key: 'navLabel', label: 'Menu label (bottom nav & footer)', type: 'text' },
+        { key: 'ctaNav', label: 'Header button text', type: 'text', help: 'Desktop header button, e.g. Join Batch' },
         { key: 'badge', label: 'Badge (e.g. Admissions open)', type: 'text' },
         { key: 'title', label: 'Title', type: 'text' },
         { key: 'accent', label: 'Title accent (gradient)', type: 'text' },

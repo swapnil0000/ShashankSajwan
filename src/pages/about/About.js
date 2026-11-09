@@ -7,6 +7,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import PageHero from '../../components/ui/PageHero';
 import Section from '../../components/ui/Section';
+import BatchPromo from '../../components/ui/BatchPromo';
 import { Reveal, stagger, staggerItem } from '../../components/ui/Motion';
 import { useContent } from '../../context/ContentContext';
 
@@ -86,6 +87,7 @@ const About = () => {
         </Stack>
       </Box>
     </Section>
+    <BatchPromo />
   </Box>
   );
 };

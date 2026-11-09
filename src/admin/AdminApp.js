@@ -19,7 +19,7 @@ import { Fields } from './FieldEditor';
 // Where each block shows up on the live site (for the "View" button).
 const previewPath = (key) => {
   if (key.startsWith('resource_')) return { ncert: '/ncert', pyqs: '/pyqs', syllabus: '/syllabus', general: '/general', optional: '/optional', news24: '/newsnotes', news25: '/newsnotes25' }[key.slice(9)];
-  return { site: '/', home: '/', about: '/about', contact: '/contact', faqs: '/faqs', batch: '/courses', studySections: '/study', books: '/books', videos: '/videos' }[key];
+  return { site: '/', home: '/', about: '/about', contact: '/contact', faqs: '/faqs', batch: '/courses', carousel: '/', popups: '/', feed_newspaper: '/newspaper', feed_ca: '/resources/current-affairs', feed_mcq: '/resources/ncert-mcqs', feed_pyq: '/resources/pyqs', studySections: '/study', books: '/books', videos: '/videos' }[key];
 };
 
 const Sidebar = ({ onPick }) => {
@@ -33,6 +33,7 @@ const Sidebar = ({ onPick }) => {
       </Stack>
       <ButtonBase component={NavLink} to="/admin" end onClick={onPick} sx={navSx}>📊 Dashboard</ButtonBase>
       <ButtonBase component={NavLink} to="/admin/users" onClick={onPick} sx={navSx}>👥 Users</ButtonBase>
+      <ButtonBase component={NavLink} to="/admin/leads" onClick={onPick} sx={navSx}>📞 Batch leads</ButtonBase>
       {adminGroups.map((g) => {
         const blocks = g.blocks.filter((b) => b.label.toLowerCase().includes(q.toLowerCase()));
         if (!blocks.length) return null;
@@ -210,6 +211,51 @@ const Users = () => {
   );
 };
 
+// "Notify me" sign-ups from the batch Coming Soon page.
+const Leads = () => {
+  const [rows, setRows] = useState(null);
+  const [err, setErr] = useState('');
+  useEffect(() => {
+    getDocs(query(collection(db, 'leads'), orderBy('createdAt', 'desc')))
+      .then((s) => setRows(s.docs.map((d) => ({ id: d.id, ...d.data() }))))
+      .catch((e) => setErr(e.message));
+  }, []);
+  const exportCsv = () => {
+    const csv = ['name,phone,source,date', ...rows.map((r) => [r.name, r.phone, r.source, r.createdAt?.toDate?.().toISOString() || ''].map((v) => `"${String(v || '').replace(/"/g, '""')}"`).join(','))].join('\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+    a.download = 'batch-leads.csv';
+    a.click();
+  };
+  return (
+    <Box>
+      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
+        <Box>
+          <Typography variant="h2">Batch leads</Typography>
+          <Typography color="text.secondary">People who tapped "Notify me" on the Coming Soon page.</Typography>
+        </Box>
+        {rows?.length > 0 && <Button onClick={exportCsv}>Export CSV</Button>}
+      </Stack>
+      {err && <Alert severity="error">{err}</Alert>}
+      {!rows && !err && <CircularProgress />}
+      {rows && rows.length === 0 && <Typography color="text.secondary">No sign-ups yet.</Typography>}
+      <Stack gap={1}>
+        {(rows || []).map((r) => (
+          <Stack key={r.id} direction="row" alignItems="center" gap={1.5} sx={{ p: 1.5, borderRadius: '14px', bgcolor: 'background.paper', border: 1, borderColor: 'divider' }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <Typography noWrap sx={{ fontWeight: 700 }}>{r.name}</Typography>
+              <Typography variant="body2" color="text.secondary">{r.phone}</Typography>
+            </Box>
+            <Button size="small" href={`tel:${r.phone}`}>Call</Button>
+            <Button size="small" href={`https://wa.me/91${r.phone}`} target="_blank" rel="noopener">WhatsApp</Button>
+            <Typography variant="caption" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' } }}>{r.createdAt?.toDate?.().toLocaleDateString() || ''}</Typography>
+          </Stack>
+        ))}
+      </Stack>
+    </Box>
+  );
+};
+
 const AdminApp = () => {
   const { user, isAdmin, isAdminEmailUnverified, loading, configured } = useAuth();
   const theme = useTheme();
@@ -259,6 +305,7 @@ const AdminApp = () => {
           <Routes>
             <Route index element={<Dashboard />} />
             <Route path="users" element={<Users />} />
+            <Route path="leads" element={<Leads />} />
             <Route path="edit/:key" element={<BlockEditor />} />
             <Route path="*" element={<Navigate to="/admin" replace />} />
           </Routes>

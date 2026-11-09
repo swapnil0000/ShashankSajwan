@@ -19,10 +19,11 @@ export const isFirebaseConfigured = Boolean(config.apiKey && config.projectId);
 const app = isFirebaseConfigured ? initializeApp(config) : null;
 export const auth = app ? getAuth(app) : null;
 export const db = app ? getFirestore(app) : null;
-export const storage = app && config.storageBucket ? getStorage(app) : null;
+// Storage needs the Blaze plan, so uploads are opt-in; without it admins paste image links instead.
+export const storage = app && config.storageBucket && process.env.REACT_APP_FIREBASE_STORAGE_ENABLED === 'true' ? getStorage(app) : null;
 
 // Must match the list in firestore.rules and storage.rules.
-export const ADMIN_EMAILS = (process.env.REACT_APP_ADMIN_EMAILS || 'swapnilsrivastav1999@gmail.com')
+export const ADMIN_EMAILS = (process.env.REACT_APP_ADMIN_EMAILS || 'swapnilsrivastava1999@gmail.com')
   .split(',')
   .map((e) => e.trim().toLowerCase())
   .filter(Boolean);

@@ -6,13 +6,22 @@ service cloud.firestore {
     function isAdmin() {
       return request.auth != null
         && request.auth.token.email_verified == true
-        && request.auth.token.email.lower() in ['swapnilsrivastav1999@gmail.com'];
+        && request.auth.token.email.lower() in ['swapnilsrivastava1999@gmail.com'];
     }
 
     // Website content: everyone can read, only the admin can change it.
     match /content/{block} {
       allow read: if true;
       allow write: if isAdmin();
+    }
+
+    // "Notify me" sign-ups from the batch Coming Soon page: anyone can add one, only the admin can read.
+    match /leads/{lead} {
+      allow create: if request.resource.data.keys().hasOnly(['name', 'phone', 'source', 'createdAt'])
+        && request.resource.data.name is string && request.resource.data.name.size() <= 80
+        && request.resource.data.phone is string && request.resource.data.phone.matches('^[6-9][0-9]{9}$')
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if isAdmin();
     }
 
     // Student profiles: each user manages their own, but can never make themselves admin.

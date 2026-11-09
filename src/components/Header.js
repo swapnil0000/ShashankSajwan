@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, IconButton, Stack, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
@@ -10,24 +10,29 @@ import { useAuth } from '../context/AuthContext';
 import { tr, useContent } from '../context/ContentContext';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 
+// `wide` items only fit on extra-large screens; they stay reachable from the footer and the More sheet.
 const navItems = [
-  { to: '/', key: 'home' },
+  { to: '/', key: 'home', exact: true },
+  { to: '/resources', key: 'resources' },
+  { to: '/newspaper', key: 'newspaper' },
   { to: '/study', key: 'study' },
   { to: '/books', key: 'books' },
-  { to: '/videos', key: 'videos' },
-  { to: '/about', key: 'about' },
-  { to: '/contact', key: 'contact' },
+  { to: '/videos', key: 'videos', wide: true },
+  { to: '/about', key: 'about', wide: true },
+  { to: '/contact', key: 'contact', wide: true },
 ];
 
 const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const { t, mode, toggleMode, lang, toggleLang } = useApp();
+  const { t, mode, toggleMode, lang } = useApp();
   const { user, configured } = useAuth();
   const { tagline } = useContent('site');
   const batch = useContent('batch');
-  const links = batch.enabled === false ? navItems : [...navItems.slice(0, 3), { to: '/courses', label: batch.navLabel || 'Batch' }, ...navItems.slice(3)];
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const batchOn = batch.enabled !== false;
+  const inBatch = pathname.startsWith('/courses') || pathname.startsWith('/batch');
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -55,10 +60,10 @@ const Header = () => {
       }}
     >
       <Stack direction="row" alignItems="center" sx={{ height: { xs: 60, md: 72 }, px: { xs: 2, md: 4 }, maxWidth: 1280, mx: 'auto', gap: 2 }}>
-        <Stack component={Link} to="/" direction="row" alignItems="center" gap={1.2} sx={{ textDecoration: 'none', color: 'text.primary', mr: 'auto' }}>
+        <Stack component={Link} to="/" direction="row" alignItems="center" gap={1.2} sx={{ textDecoration: 'none', color: 'text.primary', mr: 'auto', flexShrink: 0 }}>
           <Box component="img" src="/assets/shashank.webp" alt="Shashank Sajwan" sx={{ width: { xs: 38, md: 46 }, height: { xs: 38, md: 46 }, borderRadius: '12px', objectFit: 'cover' }} />
           <Box sx={{ lineHeight: 1 }}>
-            <Typography sx={{ fontWeight: 800, fontSize: { xs: 15, md: 18 }, letterSpacing: '0.02em' }}>
+            <Typography sx={{ fontWeight: 800, fontSize: { xs: 15, md: 18 }, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
               SHASHANK <Box component="span" className="text-gradient">SAJWAN</Box>
             </Typography>
             <Typography sx={{ fontSize: { xs: 11, md: 12 }, color: 'text.secondary' }}>{tr(tagline, lang)}</Typography>
@@ -67,21 +72,33 @@ const Header = () => {
 
         {!isMobile && (
           <Stack direction="row" gap={0.5}>
-            {links.map((n) => (
+            {navItems.map((n) => (
               <Button
                 key={n.to}
                 component={NavLink}
                 to={n.to}
-                end
+                end={n.exact}
                 sx={{
-                  color: 'text.primary', fontWeight: 600, px: 1.6, minHeight: 40,
+                  display: n.wide ? { xs: 'none', xl: 'inline-flex' } : 'inline-flex',
+                  color: 'text.primary', fontWeight: 600, px: { md: 1.1, lg: 1.4 }, minWidth: 0, minHeight: 40, whiteSpace: 'nowrap',
                   '&.active': { color: 'primary.main', bgcolor: 'action.hover' },
                 }}
               >
-                {n.label || t(n.key)}
+                {t(n.key)}
               </Button>
             ))}
           </Stack>
+        )}
+
+        {!isMobile && batchOn && (
+          <Button
+            component={Link}
+            to="/courses"
+            startIcon={<Box component="span" className={inBatch ? undefined : 'pulse'} sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: '#3ddc84', display: 'block' }} />}
+            sx={{ minHeight: 40, px: 2, flexShrink: 0, whiteSpace: 'nowrap', color: '#fff', background: 'var(--grad)', boxShadow: inBatch ? 'none' : '0 8px 20px -8px rgba(224,41,74,.6)', opacity: inBatch ? 0.85 : 1, '&:hover': { background: 'var(--grad)', filter: 'brightness(1.05)' } }}
+          >
+            {batch.status !== 'live' ? `${batch.navLabel || 'Batch'}: Coming soon` : (batch.ctaNav || `Join ${batch.navLabel || 'Batch'}`)}
+          </Button>
         )}
 
         <Stack direction="row" alignItems="center" gap={0.5}>
@@ -90,9 +107,6 @@ const Header = () => {
               <SearchRoundedIcon />
             </IconButton>
           </Tooltip>
-          <Button onClick={toggleLang} aria-label="Switch language" sx={{ minWidth: 0, px: 1.4, minHeight: 40, color: 'text.primary', bgcolor: 'action.hover', fontWeight: 800 }}>
-            {lang === 'en' ? 'हिं' : 'EN'}
-          </Button>
           <IconButton onClick={toggleMode} aria-label="Toggle dark mode" sx={{ bgcolor: 'action.hover' }}>
             {mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
           </IconButton>
@@ -107,7 +121,7 @@ const Header = () => {
           ) : isMobile ? (
             <IconButton component={Link} to="/login" aria-label="Sign in" sx={{ bgcolor: 'action.hover' }}><PersonRoundedIcon /></IconButton>
           ) : (
-            <Button component={Link} to="/login" variant="contained" sx={{ ml: 0.5, minHeight: 40 }}>Sign in</Button>
+            <Button component={Link} to="/login" variant={batchOn ? 'outlined' : 'contained'} color={batchOn ? 'inherit' : 'primary'} sx={{ ml: 0.5, minHeight: 40, ...(batchOn && { borderColor: 'divider' }) }}>Sign in</Button>
           ))}
         </Stack>
       </Stack>

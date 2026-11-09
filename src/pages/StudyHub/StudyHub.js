@@ -1,13 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Box, Chip, Container, InputBase, Stack, Typography } from '@mui/material';
 import { Link, useSearchParams } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useApp } from '../../context/AppContext';
 import { subjects } from '../../data/studyHub';
 import { tr, useContent } from '../../context/ContentContext';
 import StudyCard from '../../components/ui/StudyCard';
 import { stagger } from '../../components/ui/Motion';
+import BatchPromo from '../../components/ui/BatchPromo';
 
 export const SearchField = ({ value, onChange, inputRef, onSubmit }) => {
   const { t } = useApp();
@@ -62,6 +63,7 @@ const StudyHub = () => {
         <Typography variant="h1">{t('studyHub').split(' ')[0]} <Box component="span" className="text-gradient">{t('studyHub').split(' ').slice(1).join(' ')}</Box></Typography>
         <Typography color="text.secondary" sx={{ mt: 1, mb: 3 }}>{t('studyHubSub')}</Typography>
 
+        <Box sx={{ mb: 2 }}><BatchPromo variant="compact" /></Box>
         <SearchField value={query} onChange={setQuery} inputRef={inputRef} />
 
         <Stack direction="row" gap={1} className="no-scrollbar" sx={{ overflowX: 'auto', mx: { xs: -2, sm: 0 }, px: { xs: 2, sm: 0 }, py: 2 }}>
@@ -90,9 +92,7 @@ const StudyHub = () => {
 
         <motion.div variants={stagger} initial="hidden" animate="show" key={filter}>
           <Box sx={{ display: 'grid', gap: { xs: 1.5, md: 2.5 }, gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' } }}>
-            <AnimatePresence>
-              {list.map((s) => <StudyCard key={s.id} section={s} />)}
-            </AnimatePresence>
+            {list.map((s) => <StudyCard key={s.id} section={s} />)}
           </Box>
         </motion.div>
         {list.length === 0 && <Typography color="text.secondary" sx={{ py: 6, textAlign: 'center' }}>{t('noResults')}</Typography>}

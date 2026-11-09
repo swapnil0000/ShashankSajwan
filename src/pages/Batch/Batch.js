@@ -11,6 +11,7 @@ import Section from '../../components/ui/Section';
 import FaqList from '../../components/ui/FaqList';
 import { Reveal, stagger, staggerItem } from '../../components/ui/Motion';
 import { useContent } from '../../context/ContentContext';
+import ComingSoon from './ComingSoon';
 
 // Where the main button goes: the admin-set link, or an email enquiry.
 export const useBatchCta = () => {
@@ -32,6 +33,7 @@ const CtaButton = (props) => {
 const Batch = () => {
   const b = useContent('batch');
   if (b.enabled === false) return <Navigate to="/" replace />;
+  if (b.status !== 'live') return <ComingSoon />;
 
   return (
     <Box sx={{ pb: { xs: 12, md: 4 } }}>

@@ -6,6 +6,7 @@ import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import PageHero from '../../components/ui/PageHero';
 import Section from '../../components/ui/Section';
+import BatchPromo from '../../components/ui/BatchPromo';
 import { Reveal, stagger, staggerItem } from '../../components/ui/Motion';
 import { useContent } from '../../context/ContentContext';
 
@@ -47,7 +48,7 @@ const BookPage = () => {
       <Reveal>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1.2fr' }, gap: { xs: 3, md: 5 }, alignItems: 'center', p: { xs: 2.5, md: 4 }, borderRadius: '28px', bgcolor: 'background.paper', border: 1, borderColor: 'divider' }}>
           <motion.div whileHover={{ scale: 1.03, rotate: -1 }}>
-            <Box component="img" src={bookCombo.img} alt={bookCombo.title} sx={{ width: '100%', display: 'block' }} />
+            <Box component="img" src={bookCombo.img} alt={bookCombo.title} sx={{ width: '100%', maxHeight: { xs: 380, md: 520 }, objectFit: 'contain', display: 'block', mx: 'auto' }} />
           </motion.div>
           <Box>
             <Chip label="Best value · Combo" sx={{ background: 'var(--grad)', color: '#fff', mb: 1.5 }} />
@@ -57,7 +58,7 @@ const BookPage = () => {
                 <Stack key={p} direction="row" gap={1.2}><CheckCircleRoundedIcon sx={{ color: 'secondary.main', mt: 0.2 }} fontSize="small" /><Typography variant="body2">{p}</Typography></Stack>
               ))}
             </Stack>
-            <Button variant="contained" size="large" href={bookCombo.link} target="_blank" rel="noopener" startIcon={<ShoppingBagRoundedIcon />} sx={{ mt: 3 }}>Buy combo on Amazon</Button>
+            {bookCombo.link && <Button variant="contained" size="large" href={bookCombo.link} target="_blank" rel="noopener" startIcon={<ShoppingBagRoundedIcon />} sx={{ mt: 3 }}>Buy combo on Amazon</Button>}
           </Box>
         </Box>
       </Reveal>
@@ -73,7 +74,9 @@ const BookPage = () => {
                 <Box sx={{ p: 1.5, display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>{b.ncert}</Typography>
                   <Typography sx={{ fontWeight: 800, fontSize: { xs: 14, md: 16 }, lineHeight: 1.3, flex: 1 }}>{b.title}</Typography>
-                  <Button variant="contained" size="small" href={b.link} target="_blank" rel="noopener" sx={{ mt: 1.5, minHeight: 38 }}>Buy now</Button>
+                  {b.link
+                    ? <Button variant="contained" size="small" href={b.link} target="_blank" rel="noopener" sx={{ mt: 1.5, minHeight: 38 }}>Buy now</Button>
+                    : <Button variant="outlined" size="small" disabled sx={{ mt: 1.5, minHeight: 38 }}>Coming soon</Button>}
                 </Box>
               </Box>
             </motion.div>
@@ -81,6 +84,7 @@ const BookPage = () => {
         </Box>
       </motion.div>
     </Section>
+    <BatchPromo />
   </Box>
   );
 };

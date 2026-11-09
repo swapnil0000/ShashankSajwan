@@ -28,10 +28,14 @@ const allVideos = [
   { id: 'HbcHQBsQTAI', title: 'Game changer for UPSC CSE aspirants', cat: 'Motivation' },
   { id: 'd4aegXqxE-U', title: 'Mistakes during preparation', cat: 'Motivation' },
   { id: 'vGRYeiFf2YU', title: 'Social media addiction', cat: 'Motivation' },
+  { id: 'gmXMDbwt_so', title: 'UPSC prelims syllabus analysis', cat: 'Strategy' },
+  { id: 'kBnZHlYfhPg', title: 'Important IAS exam books', cat: 'Beginners' },
 ].map((v) => ({ ...v, featured: youtubeVideos.some((y) => y.id === v.id) }));
 
 export const HOME_SECTIONS = [
-  { id: 'hero', label: 'Hero (headline, search, banner, countdown)' },
+  { id: 'carousel', label: 'Top carousel (slides from Admin → Carousel)' },
+  { id: 'hero', label: 'Hero (headline, search, countdown)' },
+  { id: 'updates', label: "Today's updates (latest daily posts)" },
   { id: 'stats', label: 'Stats strip' },
   { id: 'batch', label: 'Batch / mentorship teaser' },
   { id: 'study', label: 'Study sections grid' },
@@ -51,7 +55,30 @@ export const contentDefaults = {
     prelimsDate: PRELIMS_DATE,
     prelimsLabel: both('prelimsIn'),
     announcement: { enabled: false, text: '', link: '' },
+    footerText: '© 2022 · All rights reserved',
   },
+
+  // Home top carousel. Image size: desktop 3:1 (e.g. 2172×724), mobile square (1080×1080).
+  carousel: {
+    interval: 5,
+    slides: [
+      { enabled: true, img: '/assets/2026/carousel-books.jpg', imgMobile: '/assets/2026/carousel-books-mob.jpg', link: '/books', alt: 'Disha General Studies Compendium Series — 7 books', start: '', end: '' },
+      { enabled: true, img: '/assets/2026/carousel-batch.jpg', imgMobile: '/assets/2026/carousel-batch-mob.jpg', link: '/courses', alt: 'UPSC CSE Preparation Batch — CSE 2027', start: '', end: '' },
+    ],
+  },
+
+  // Pop-ups shown over the site. The first active one that matches the page is shown.
+  popups: {
+    items: [
+      { enabled: true, id: 'batch-2026', image: '/assets/2026/popup-batch.jpg', title: '', text: '', ctaLabel: '', ctaLink: '/courses', pages: 'home', frequency: 'session', delay: 3, start: '', end: '' },
+    ],
+  },
+
+  // Daily posts. Each item: { date: 'YYYY-MM-DD', title, link, note }.
+  feed_newspaper: { title: 'Daily Newspaper', accent: 'Notes', subtitle: 'The Hindu & Indian Express analysis for UPSC — posted every day.', items: [] },
+  feed_ca: { title: 'Current', accent: 'Affairs', subtitle: 'Daily current affairs for Prelims & Mains.', items: [] },
+  feed_mcq: { title: 'NCERT', accent: 'MCQs', subtitle: 'Daily NCERT-based practice questions.', items: [] },
+  feed_pyq: { title: 'Previous Year', accent: 'Questions', subtitle: 'UPSC PYQs with analysis.', items: [] },
   home: {
     sections: HOME_SECTIONS.map((s) => ({ id: s.id, visible: true })),
     heroBadge: both('heroBadge'),
@@ -59,11 +86,10 @@ export const contentDefaults = {
     heroTitleB: both('heroTitleB'),
     heroSub: both('heroSub'),
     heroChips: ['Polity', 'Economy', 'History', 'Geography', 'Environment', 'Science'],
-    banner: { img: '/assets/banners/Book.png', link: '/books' },
     stats: [
       { value: 650, suffix: 'K+', label: 'YouTube subscribers', icon: 'youtube' },
-      { value: 200, suffix: 'K+', label: 'Instagram followers', icon: 'instagram' },
-      { value: 128, suffix: 'K+', label: 'Telegram members', icon: 'telegram' },
+      { value: 150, suffix: 'K+', label: 'Instagram followers', icon: 'instagram' },
+      { value: 80, suffix: 'K+', label: 'Telegram members', icon: 'telegram' },
       { value: 7, suffix: '', label: 'NCERT-mapped books', icon: 'books' },
     ],
     featuresTitle: both('keyFeatures'),
@@ -83,12 +109,17 @@ export const contentDefaults = {
   // UPSC Full-Fledged Preparation Batch (/courses). Text from the original course & payment pages.
   batch: {
     enabled: true,
+    // 'coming_soon' shows only a Coming Soon screen; switch to 'live' at launch.
+    status: 'coming_soon',
+    comingSoonTitle: 'Coming Soon',
+    comingSoonText: 'Our UPSC Full-Fledged Preparation Batch is launching soon. Leave your number and we will tell you first.',
     navLabel: 'Batch',
+    ctaNav: 'Join Batch',
     badge: 'Admissions open',
     title: 'UPSC Full-Fledged',
     accent: 'Preparation Batch',
     subtitle: 'Complete preparation with proper mentorship and guidance, all study materials, and direct interaction with Shashank Sir.',
-    image: '/assets/banner2.webp',
+    image: '/assets/2026/batch-ias.jpg',
     videoUrl: 'https://www.youtube.com/watch?v=iMgo6KXEjC8',
     brochureUrl: 'https://drive.google.com/file/d/1uaihxINODY8nbJVZhnNMun-HkYmbg6L2/view?pli=1',
     price: '',

@@ -6,6 +6,7 @@ import PageHero from '../../components/ui/PageHero';
 import LiteYouTube from '../../components/ui/LiteYouTube';
 import { SegmentTabs } from '../../components/ui/ResourceLayout';
 import { stagger, staggerItem } from '../../components/ui/Motion';
+import BatchPromo from '../../components/ui/BatchPromo';
 
 
 const Videos = () => {
@@ -31,6 +32,7 @@ const Videos = () => {
           </Box>
         </motion.div>
       </Container>
+      <BatchPromo />
     </Box>
   );
 };
