@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Box, ButtonBase, Container, Stack, Typography } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
@@ -65,7 +66,17 @@ const PdfTile = ({ item, i }) => (
 const ResourceLayout = ({ sectionId }) => {
   const { pushRecent } = useApp();
   const { title, accent, subtitle, tabs = [] } = useContent(`resource_${sectionId}`);
-  const [value, setValue] = useState(0);
+  const [params, setParams] = useSearchParams();
+  const wanted = (params.get('subject') || '').toLowerCase();
+  // Exact match first, then a prefix match (so ?subject=Economy finds "Economics").
+  const exact = tabs.findIndex((tb) => tb.label.toLowerCase() === wanted);
+  const prefix = wanted ? tabs.findIndex((tb) => tb.label.toLowerCase().startsWith(wanted.slice(0, 5))) : -1;
+  const initial = Math.max(0, exact >= 0 ? exact : prefix);
+  const [value, setTab] = useState(initial);
+  const setValue = (i) => {
+    setTab(i);
+    if (tabs.length > 1) setParams({ subject: tabs[i].label }, { replace: true });
+  };
   const items = tabs[Math.min(value, tabs.length - 1)]?.items || [];
 
   React.useEffect(() => { if (sectionId) pushRecent(sectionId); }, [sectionId]); // eslint-disable-line react-hooks/exhaustive-deps

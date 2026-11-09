@@ -7,6 +7,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useApp } from '../../context/AppContext';
 import { useContent, tr } from '../../context/ContentContext';
 import { Reveal } from '../../components/ui/Motion';
+import UserAvatar from '../../components/ui/UserAvatar';
 
 const Account = () => {
   const { user, loading, isAdmin, logout, resendVerification, refreshUser } = useAuth();
@@ -27,11 +28,9 @@ const Account = () => {
         <Reveal>
           <Box className="glow-card" sx={{ p: { xs: 3, md: 4 }, borderRadius: '28px', color: '#fff' }}>
             <Stack direction="row" alignItems="center" gap={2}>
-              {user.photoURL ? (
-                <Box component="img" src={user.photoURL} alt="" sx={{ width: 64, height: 64, borderRadius: '50%' }} />
-              ) : (
-                <Box sx={{ width: 64, height: 64, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--grad)', fontSize: 28, fontWeight: 800 }}>{name[0].toUpperCase()}</Box>
-              )}
+              <Box sx={{ p: '3px', borderRadius: '50%', background: 'var(--grad)', flexShrink: 0 }}>
+                <Box sx={{ p: '2px', borderRadius: '50%', bgcolor: '#0B1640' }}><UserAvatar user={user} size={64} /></Box>
+              </Box>
               <Box sx={{ minWidth: 0 }}>
                 <Typography variant="h3" noWrap>Hi, {name}</Typography>
                 <Typography noWrap sx={{ opacity: 0.8 }}>{user.email}</Typography>
@@ -61,7 +60,7 @@ const Account = () => {
           <Box sx={{ display: 'grid', gap: 1.5, gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(3, 1fr)' } }}>
             {saved.map((s) => (
               <Button key={s.id} component={Link} to={s.path} variant="outlined" color="inherit" sx={{ justifyContent: 'flex-start', borderRadius: '16px', minHeight: 56, borderColor: 'divider' }}>
-                {s.icon}&nbsp; {tr(s.title, lang)}
+                {tr(s.title, lang)}
               </Button>
             ))}
           </Box>

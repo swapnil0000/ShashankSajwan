@@ -8,6 +8,7 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { useApp } from '../../context/AppContext';
 import { tr } from '../../context/ContentContext';
 import { staggerItem } from './Motion';
+import IconTile from './IconTile';
 
 const StudyCard = ({ section }) => {
   const { lang, isBookmarked, toggleBookmark, pushRecent, t } = useApp();
@@ -31,9 +32,7 @@ const StudyCard = ({ section }) => {
         }}
       >
         <ButtonBase onClick={open} sx={{ display: 'block', textAlign: 'left', width: '100%', height: '100%', p: { xs: 2, md: 2.5 } }}>
-          <Box sx={{ width: 48, height: 48, borderRadius: '16px', display: 'grid', placeItems: 'center', fontSize: 24, bgcolor: `${section.accent}1a`, mb: 1.5 }}>
-            {section.icon}
-          </Box>
+          <Box sx={{ mb: 1.5 }}><IconTile icon={section.icon} color={section.accent} /></Box>
           <Typography variant="h6" sx={{ pr: 4 }}>{tr(section.title, lang)}</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5, minHeight: 40 }}>{tr(section.desc, lang)}</Typography>
           <Stack direction="row" alignItems="center" gap={0.5} sx={{ mt: 1.5, color: 'primary.main', fontWeight: 700, fontSize: 14 }}>

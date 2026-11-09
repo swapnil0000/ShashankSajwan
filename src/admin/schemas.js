@@ -94,7 +94,7 @@ export const adminGroups = [
   {
     title: 'Pages',
     blocks: [
-      { key: 'home', label: 'Home page', icon: '🏠', desc: 'Every home block: section order, hero, stats, features, director, Josh Talks, community', fields: [
+      { key: 'home', label: 'Home page', icon: '🏠', desc: 'Every home block: section order, hero, stats, features, director, Josh Talks', fields: [
         { key: 'sections', label: 'Sections (drag order & visibility)', type: 'list', fixed: true, itemLabel: (s) => HOME_SECTIONS.find((h) => h.id === s.id)?.label || s.id, fields: [
           { key: 'visible', label: 'Visible', type: 'bool' },
         ] },
@@ -102,7 +102,7 @@ export const adminGroups = [
         { key: 'heroTitleA', label: 'Hero title (line 1)', type: 'i18n' },
         { key: 'heroTitleB', label: 'Hero title (gradient line 2)', type: 'i18n' },
         { key: 'heroSub', label: 'Hero subtitle', type: 'i18nArea' },
-        { key: 'heroChips', label: 'Hero quick-search chips', type: 'strings' },
+        { key: 'heroChips', label: 'Hero subject chips (open NCERT notes for that subject)', type: 'strings' },
         { key: 'stats', label: 'Stats', type: 'list', itemLabel: (s) => `${s.value}${s.suffix} ${s.label}`, fields: [
           { key: 'value', label: 'Number', type: 'number' },
           { key: 'suffix', label: 'Suffix (e.g. K+)', type: 'text' },
@@ -119,8 +119,6 @@ export const adminGroups = [
         { key: 'directorQuote', label: "Director's quote", type: 'textarea' },
         { key: 'joshVideoId', label: 'Josh Talks YouTube video ID', type: 'text', help: 'The part after v= in the YouTube URL' },
         { key: 'joshPoints', label: 'Josh Talks points', type: 'strings' },
-        { key: 'communityTitle', label: 'Community banner title', type: 'i18n' },
-        { key: 'communityText', label: 'Community banner text', type: 'text' },
       ] },
       { key: 'batch', label: 'Batch / Mentorship', icon: '🎓', desc: 'Full-fledged batch page, Home teaser, menu link, enquiry button', fields: [
         { key: 'enabled', label: 'Show batch (page, Home teaser and menu link)', type: 'bool' },

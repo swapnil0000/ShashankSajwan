@@ -32,7 +32,7 @@ import Account from './pages/auth/Account';
 import Announcement from './components/Announcement';
 import Batch from './pages/Batch/Batch';
 import PopupManager from './components/PopupManager';
-import Resources, { CurrentAffairs, NcertMcqs, Newspaper, PyqFeed } from './pages/Resources/Resources';
+import Resources, { CurrentAffairs, NcertMcqs, Newspaper, Newspaper2026, PyqFeed } from './pages/Resources/Resources';
 
 const AdminApp = lazy(() => import('./admin/AdminApp'));
 
@@ -50,7 +50,7 @@ const routes = [
   ['/optional', Optional], ['/newsnotes', NewsNotes], ['/newsnotes25', Optional2025], ['/books', BookPage],
   ['/courses', Batch], ['/batch', Batch],
   ['/resources', Resources], ['/resources/current-affairs', CurrentAffairs], ['/resources/ncert-mcqs', NcertMcqs],
-  ['/resources/pyqs', PyqFeed], ['/newspaper', Newspaper],
+  ['/resources/pyqs', PyqFeed], ['/newspaper', Newspaper], ['/newspaper/2026', Newspaper2026],
 ];
 const legacyRoutes = [['/payment', Payment]];
 const policyRoutes = [

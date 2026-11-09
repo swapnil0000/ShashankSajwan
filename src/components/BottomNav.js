@@ -12,6 +12,7 @@ import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import { useContent } from '../context/ContentContext';
 import BatchPromo from './ui/BatchPromo';
+import IconTile from './ui/IconTile';
 
 const buildMoreLinks = (socials, withPyqs) => [
   { label: { en: 'Books', hi: 'पुस्तकें' }, to: '/books', icon: '📚' },
@@ -133,7 +134,7 @@ const BottomNav = () => {
           {moreLinks.map((l, i) => (
             <motion.div key={l.label.en} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.025 }}>
               <ButtonBase onClick={() => go(l)} sx={{ width: '100%', flexDirection: 'column', gap: 0.8, py: 1.5, borderRadius: '16px' }}>
-                <Box sx={{ width: 52, height: 52, borderRadius: '18px', display: 'grid', placeItems: 'center', fontSize: 24, bgcolor: 'action.hover' }}>{l.icon}</Box>
+                <IconTile icon={l.icon} size={52} radius={18} />
                 <Typography sx={{ fontSize: 12, fontWeight: 600, textAlign: 'center' }}>{l.label[lang]}</Typography>
               </ButtonBase>
             </motion.div>

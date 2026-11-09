@@ -44,7 +44,6 @@ export const HOME_SECTIONS = [
   { id: 'director', label: "Director's pen" },
   { id: 'josh', label: 'Josh Talks' },
   { id: 'videos', label: 'Most viewed videos' },
-  { id: 'community', label: 'Community banner' },
 ];
 
 export const contentDefaults = {
@@ -62,8 +61,8 @@ export const contentDefaults = {
   carousel: {
     interval: 5,
     slides: [
-      { enabled: true, img: '/assets/2026/carousel-books.jpg', imgMobile: '/assets/2026/carousel-books-mob.jpg', link: '/books', alt: 'Disha General Studies Compendium Series — 7 books', start: '', end: '' },
       { enabled: true, img: '/assets/2026/carousel-batch.jpg', imgMobile: '/assets/2026/carousel-batch-mob.jpg', link: '/courses', alt: 'UPSC CSE Preparation Batch — CSE 2027', start: '', end: '' },
+      { enabled: true, img: '/assets/2026/carousel-books.jpg', imgMobile: '/assets/2026/carousel-books-mob.jpg', link: '/books', alt: 'Disha General Studies Compendium Series — 7 books', start: '', end: '' },
     ],
   },
 
@@ -85,12 +84,11 @@ export const contentDefaults = {
     heroTitleA: both('heroTitleA'),
     heroTitleB: both('heroTitleB'),
     heroSub: both('heroSub'),
-    heroChips: ['Polity', 'Economy', 'History', 'Geography', 'Environment', 'Science'],
+    heroChips: ['Polity', 'Economics', 'History', 'Geography', 'Art & Culture', 'Science'],
     stats: [
       { value: 650, suffix: 'K+', label: 'YouTube subscribers', icon: 'youtube' },
       { value: 150, suffix: 'K+', label: 'Instagram followers', icon: 'instagram' },
       { value: 80, suffix: 'K+', label: 'Telegram members', icon: 'telegram' },
-      { value: 7, suffix: '', label: 'NCERT-mapped books', icon: 'books' },
     ],
     featuresTitle: both('keyFeatures'),
     features: choosedata.map((f) => ({ img: f.img, title: f.title, text: [f.value, f.value1].filter(Boolean).join(' ').trim() })),
@@ -103,8 +101,6 @@ export const contentDefaults = {
       'Actionable solutions for time management & motivation',
       'Practical advice to overcome preparation obstacles',
     ],
-    communityTitle: both('community'),
-    communityText: 'Daily current affairs, PYQ discussions and strategy — free.',
   },
   // UPSC Full-Fledged Preparation Batch (/courses). Text from the original course & payment pages.
   batch: {
