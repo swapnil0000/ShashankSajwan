@@ -1,14 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Box, Chip, Container, InputBase, Stack, Typography } from '@mui/material';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useApp } from '../../context/AppContext';
-import { subjects } from '../../data/studyHub';
 import { tr, useContent } from '../../context/ContentContext';
 import StudyCard from '../../components/ui/StudyCard';
 import { stagger } from '../../components/ui/Motion';
 import BatchPromo from '../../components/ui/BatchPromo';
+import IconTile from '../../components/ui/IconTile';
 
 export const SearchField = ({ value, onChange, inputRef, onSubmit }) => {
   const { t } = useApp();
@@ -48,14 +48,15 @@ const StudyHub = () => {
     const q = query.trim().toLowerCase();
     return studySections.filter((s) => {
       if (filter === 'saved' && !bookmarks.includes(s.id)) return false;
-      if (filter !== 'all' && filter !== 'saved' && !(s.tags || []).includes(filter)) return false;
       if (!q) return true;
       return [tr(s.title, 'en'), tr(s.title, 'hi'), tr(s.desc, 'en'), tr(s.desc, 'hi'), ...(s.tags || [])].join(' ').toLowerCase().includes(q);
     });
   }, [query, filter, bookmarks, studySections]);
 
   const recentSections = recent.map((id) => studySections.find((s) => s.id === id)).filter(Boolean);
-  const chips = [['all', t('all')], ['saved', `★ ${t('saved')}`], ...subjects.map((s) => [s, s])];
+  const chips = [['all', t('all')], ['saved', `★ ${t('saved')} (${bookmarks.length})`]];
+  const ncertSubjects = (useContent('resource_ncert').tabs || []).map((tab) => tab.label);
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ pt: { xs: 10, md: 13 }, pb: 4 }} className="grid-bg">
@@ -79,12 +80,26 @@ const StudyHub = () => {
           ))}
         </Stack>
 
+        {ncertSubjects.length > 0 && (
+          <Box sx={{ mb: 3, p: { xs: 1.5, md: 2 }, borderRadius: '20px', bgcolor: 'background.paper', border: 1, borderColor: 'divider' }}>
+            <Stack direction="row" alignItems="center" gap={1} sx={{ mb: 1.2 }}>
+              <IconTile icon="📘" size={32} radius={10} />
+              <Typography sx={{ fontWeight: 800 }}>NCERT notes by subject</Typography>
+            </Stack>
+            <Stack direction="row" gap={1} flexWrap="wrap">
+              {ncertSubjects.map((sub) => (
+                <Chip key={sub} label={sub} clickable onClick={() => navigate(`/ncert?subject=${encodeURIComponent(sub)}`)} variant="outlined" sx={{ height: 36, fontWeight: 600, '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }} />
+              ))}
+            </Stack>
+          </Box>
+        )}
+
         {recentSections.length > 0 && !query && filter === 'all' && (
           <Box sx={{ mb: 3 }}>
             <Typography variant="h6" sx={{ mb: 1.5 }}>{t('continueReading')}</Typography>
             <Stack direction="row" gap={1} className="no-scrollbar" sx={{ overflowX: 'auto' }}>
               {recentSections.map((s) => (
-                <Chip key={s.id} component={Link} to={s.path} clickable label={`${s.icon} ${tr(s.title, lang)}`} sx={{ height: 40, flexShrink: 0, bgcolor: 'background.paper', border: 1, borderColor: 'divider' }} />
+                <Chip key={s.id} component={Link} to={s.path} clickable label={tr(s.title, lang)} sx={{ height: 40, flexShrink: 0, bgcolor: 'background.paper', border: 1, borderColor: 'divider' }} />
               ))}
             </Stack>
           </Box>

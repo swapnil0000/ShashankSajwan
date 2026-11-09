@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Box, Button, CircularProgress, Container, Stack, TextField, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import { db } from '../../lib/firebase';
 import { useContent } from '../../context/ContentContext';
@@ -43,7 +44,7 @@ const ComingSoon = () => {
       <Container maxWidth="sm" sx={{ position: 'relative', px: { xs: 2, sm: 3 }, textAlign: 'center' }}>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <motion.div animate={{ rotate: [0, -8, 8, 0] }} transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 1.5 }} style={{ display: 'inline-block' }}>
-            <Box sx={{ width: 84, height: 84, mx: 'auto', borderRadius: '26px', display: 'grid', placeItems: 'center', fontSize: 42, background: 'var(--grad)', boxShadow: '0 20px 40px -16px rgba(224,41,74,.6)' }}>🎓</Box>
+            <Box sx={{ width: 84, height: 84, mx: 'auto', borderRadius: '26px', display: 'grid', placeItems: 'center', fontSize: 42, background: 'var(--grad)', boxShadow: '0 20px 40px -16px rgba(224,41,74,.6)' }}><SchoolRoundedIcon sx={{ fontSize: 44, color: '#fff' }} /></Box>
           </motion.div>
           <Typography sx={{ mt: 3, fontWeight: 800, letterSpacing: '.12em', textTransform: 'uppercase', fontSize: 13, color: 'secondary.main' }}>{b.title} {b.accent}</Typography>
           <Typography variant="h1" sx={{ mt: 1 }}><Box component="span" className="text-gradient">{b.comingSoonTitle || 'Coming Soon'}</Box></Typography>

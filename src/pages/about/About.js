@@ -10,6 +10,7 @@ import Section from '../../components/ui/Section';
 import BatchPromo from '../../components/ui/BatchPromo';
 import { Reveal, stagger, staggerItem } from '../../components/ui/Motion';
 import { useContent } from '../../context/ContentContext';
+import IconTile from '../../components/ui/IconTile';
 
 const About = () => {
   const c = useContent('about');
@@ -63,7 +64,7 @@ const About = () => {
           {c.vision.map(({ icon, title: t, text: d }, i) => (
             <motion.div key={`${t}-${i}`} variants={staggerItem}>
               <Box sx={{ p: 2.5, borderRadius: '20px', bgcolor: 'background.paper', border: 1, borderColor: 'divider', height: '100%' }}>
-                <Box sx={{ fontSize: 28 }}>{icon}</Box>
+                <IconTile icon={icon} size={46} />
                 <Typography variant="h6" sx={{ mt: 1 }}>{t}</Typography>
                 <Typography variant="body2" color="text.secondary">{d}</Typography>
               </Box>

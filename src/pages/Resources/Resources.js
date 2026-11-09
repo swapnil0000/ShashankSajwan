@@ -7,6 +7,7 @@ import PageHero from '../../components/ui/PageHero';
 import BatchPromo from '../../components/ui/BatchPromo';
 import DailyFeed, { FeedItem, useFeed } from '../../components/ui/DailyFeed';
 import { stagger, staggerItem } from '../../components/ui/Motion';
+import IconTile from '../../components/ui/IconTile';
 
 // The Resources section: daily-updated material, each managed from the admin panel.
 export const RESOURCE_SECTIONS = [
@@ -23,7 +24,7 @@ const SectionCard = ({ s }) => {
     <motion.div variants={staggerItem} style={{ height: '100%' }}>
       <ButtonBase component={Link} to={s.to} sx={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'stretch', textAlign: 'left', p: 2.5, borderRadius: '22px', bgcolor: 'background.paper', border: 1, borderColor: 'divider', transition: 'transform .2s, border-color .2s', '&:hover': { transform: 'translateY(-3px)', borderColor: 'primary.main' } }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Box sx={{ width: 52, height: 52, borderRadius: '16px', display: 'grid', placeItems: 'center', fontSize: 26, bgcolor: 'action.hover' }}>{s.icon}</Box>
+          <IconTile icon={s.icon} size={52} />
           {latest && <Typography variant="caption" sx={{ fontWeight: 800, color: 'secondary.main' }}>{items.length} posts</Typography>}
         </Stack>
         <Typography variant="h6" sx={{ mt: 1.5 }}>{s.label}</Typography>
@@ -39,7 +40,7 @@ const SectionCard = ({ s }) => {
 export const useLatestAcrossFeeds = (limit = 6) => {
   const feeds = [useFeed('feed_newspaper'), useFeed('feed_ca'), useFeed('feed_mcq'), useFeed('feed_pyq')];
   return RESOURCE_SECTIONS
-    .flatMap((s, n) => feeds[n].items.slice(0, limit).map((i) => ({ ...i, title: `${s.icon} ${i.title || s.label}`, section: s })))
+    .flatMap((s, n) => feeds[n].items.slice(0, limit).map((i) => ({ ...i, title: i.title || s.label, section: s })))
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
     .slice(0, limit);
 };
@@ -73,11 +74,23 @@ const Resources = () => (
 export const CurrentAffairs = () => <DailyFeed feedKey="feed_ca" eyebrow="Current Affairs" />;
 export const NcertMcqs = () => <DailyFeed feedKey="feed_mcq" eyebrow="NCERT MCQs" archives={[{ to: '/ncert', label: 'NCERT books (PDF)', sub: 'Class 6–12, subject-wise' }]} />;
 export const PyqFeed = () => <DailyFeed feedKey="feed_pyq" eyebrow="PYQs" archives={[{ to: '/pyqs', label: 'PYQ papers (PDF)', sub: 'Prelims & Mains' }]} />;
-export const Newspaper = () => (
+const NEWSPAPER_ARCHIVES = [
+  { to: '/newspaper/2026', label: 'Newspaper Notes 2026', sub: 'From November 2026' },
+  { to: '/newsnotes25', label: 'Newspaper Notes 2025', sub: 'January – July 2025' },
+  { to: '/newsnotes', label: 'Newspaper Notes 2024', sub: 'April – December 2024' },
+];
+
+export const Newspaper = () => <DailyFeed feedKey="feed_newspaper" eyebrow="Newspaper Notes" archives={NEWSPAPER_ARCHIVES} />;
+
+// Daily posts from 2026 (posting started 1 November 2026), month-wise.
+export const Newspaper2026 = () => (
   <DailyFeed
     feedKey="feed_newspaper"
-    eyebrow="Newspaper Notes"
-    archives={[{ to: '/newsnotes25', label: 'Newspaper Notes 2025', sub: 'January – July 2025' }, { to: '/newsnotes', label: 'Newspaper Notes 2024', sub: 'April – December 2024' }]}
+    eyebrow="Newspaper Notes 2026"
+    year="2026"
+    heading={['Newspaper Notes', '2026']}
+    emptyText="Daily notes from November 2026 will appear here."
+    archives={NEWSPAPER_ARCHIVES.filter((a) => a.to !== '/newspaper/2026')}
   />
 );
 

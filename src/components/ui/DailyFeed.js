@@ -8,6 +8,7 @@ import PageHero from './PageHero';
 import BatchPromo from './BatchPromo';
 import { SegmentTabs } from './ResourceLayout';
 import { useContent } from '../../context/ContentContext';
+import IconTile from './IconTile';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -60,8 +61,13 @@ export const FeedItem = ({ item, i = 0, compact }) => {
 };
 
 // Full page for one daily feed: month tabs, newest first, plus optional archive links.
-const DailyFeed = ({ feedKey, eyebrow, archives = [], emptyText = 'New posts start soon. Check back tomorrow!' }) => {
-  const { title, accent, subtitle, items } = useFeed(feedKey);
+// `year` limits the page to one year's posts (e.g. the 2026 archive).
+const DailyFeed = ({ feedKey, eyebrow, year, heading, archives = [], emptyText = 'New posts start soon. Check back tomorrow!' }) => {
+  const feed = useFeed(feedKey);
+  const { subtitle } = feed;
+  const title = heading ? heading[0] : feed.title;
+  const accent = heading ? heading[1] : feed.accent;
+  const items = useMemo(() => (year ? feed.items.filter((i) => i.date.startsWith(`${year}-`)) : feed.items), [feed.items, year]);
   const months = useMemo(() => [...new Set(items.map((i) => i.date.slice(0, 7)))], [items]);
   const [tab, setTab] = useState(0);
   const month = months[Math.min(tab, months.length - 1)];
@@ -75,7 +81,7 @@ const DailyFeed = ({ feedKey, eyebrow, archives = [], emptyText = 'New posts sta
         {months.length > 1 && <Box sx={{ mb: 2 }}><SegmentTabs tabs={months.map(label)} value={Math.min(tab, months.length - 1)} onChange={setTab} layoutId={`feed-${feedKey}`} /></Box>}
         {items.length === 0 ? (
           <Box sx={{ p: 4, textAlign: 'center', borderRadius: '20px', border: 1, borderStyle: 'dashed', borderColor: 'divider' }}>
-            <Typography sx={{ fontSize: 34 }}>🗓️</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 1 }}><IconTile icon="📰" size={56} /></Box>
             <Typography color="text.secondary">{emptyText}</Typography>
           </Box>
         ) : (

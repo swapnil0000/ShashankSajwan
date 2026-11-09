@@ -21,6 +21,7 @@ import HeroCarousel from '../components/ui/HeroCarousel';
 import SlideRow from '../components/ui/SlideRow';
 import { FeedItem, useFeed } from '../components/ui/DailyFeed';
 import { useLatestAcrossFeeds } from './Resources/Resources';
+import IconTile from '../components/ui/IconTile';
 
 const statIcons = {
   youtube: <YouTubeIcon sx={{ color: '#FF0000' }} />,
@@ -57,7 +58,7 @@ const HeroBatchPill = () => {
     <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ marginBottom: 12 }}>
       <Box component={Link} to="/courses" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, pl: 0.6, pr: 1.5, py: 0.6, minWidth: 0, borderRadius: '999px', bgcolor: 'background.paper', border: 1, borderColor: 'divider', color: 'text.primary', boxShadow: '0 8px 24px -14px rgba(11,22,64,.5)', maxWidth: '100%', '&:hover': { borderColor: 'primary.main' } }}>
         <Box sx={{ px: 1, py: 0.3, borderRadius: '999px', background: 'var(--grad)', color: '#fff', fontSize: 11, fontWeight: 800, flexShrink: 0 }}>NEW</Box>
-        <Typography noWrap sx={{ fontSize: 13, fontWeight: 700 }}>🎓 {b.status !== 'live' ? 'Coming soon: ' : b.badge ? `${b.badge}: ` : ''}{b.title} {b.accent}</Typography>
+        <Typography noWrap sx={{ fontSize: 13, fontWeight: 700 }}>{b.status !== 'live' ? 'Coming soon: ' : b.badge ? `${b.badge}: ` : ''}{b.title} {b.accent}</Typography>
         <ArrowForwardRoundedIcon sx={{ fontSize: 16, color: 'primary.main', flexShrink: 0 }} />
       </Box>
     </motion.div>
@@ -92,7 +93,7 @@ const GlancePanel = () => {
               '&:hover': { transform: 'translateY(-2px)', borderColor: 'primary.main' },
             }}
           >
-            <Box sx={{ width: 40, height: 40, flexShrink: 0, borderRadius: '12px', display: 'grid', placeItems: 'center', fontSize: 20, bgcolor: 'action.hover' }}>{tile.icon}</Box>
+            <IconTile icon={tile.icon} size={40} radius={12} solid={tile.hot} />
             <Box sx={{ minWidth: 0 }}>
               <Typography noWrap sx={{ fontWeight: 800, fontSize: 14 }}>{tile.label}</Typography>
               <Typography noWrap variant="caption" sx={{ color: tile.hot ? 'primary.main' : 'text.secondary', fontWeight: tile.hot ? 700 : 400 }}>{tile.sub}</Typography>
@@ -135,7 +136,7 @@ const Hero = ({ c, first, bare }) => {
               <SearchField value={q} onChange={setQ} onSubmit={() => navigate(`/study?q=${encodeURIComponent(q)}`)} />
               <Stack direction="row" gap={1} flexWrap="wrap" sx={{ mt: 1.5 }}>
                 {(c.heroChips || []).map((s) => (
-                  <Chip key={s} label={s} variant="outlined" size="small" onClick={() => navigate(`/study?q=${encodeURIComponent(s)}`)} sx={{ height: 32 }} />
+                  <Chip key={s} label={s} variant="outlined" size="small" onClick={() => navigate(`/ncert?subject=${encodeURIComponent(s)}`)} sx={{ height: 32 }} />
                 ))}
               </Stack>
             </Reveal>
@@ -214,16 +215,20 @@ const BatchTeaser = () => {
   return (
     <Section>
       <Reveal>
-        <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: '28px', border: 1, borderColor: 'divider', bgcolor: 'background.paper', display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1.2fr' } }}>
-          {b.image && <Box component="img" loading="lazy" src={b.image} alt="" sx={{ width: '100%', height: '100%', minHeight: { md: 320 }, objectFit: 'cover', display: 'block' }} />}
+        <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: '28px', border: 1, borderColor: 'divider', bgcolor: 'background.paper', display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1.15fr' }, alignItems: 'center' }}>
+          {b.image && (
+            <Box sx={{ p: { xs: 0, md: 2.5 } }}>
+              <Box component="img" loading="lazy" src={b.image} alt="" sx={{ width: '100%', height: 'auto', display: 'block', borderRadius: { xs: 0, md: '20px' } }} />
+            </Box>
+          )}
           <Box sx={{ p: { xs: 2.5, md: 4 } }}>
-            {(b.status !== 'live' || b.badge) && <Chip size="small" label={`🎓 ${b.status !== 'live' ? 'Coming soon' : b.badge}`} sx={{ bgcolor: 'rgba(255,138,31,.14)', color: 'secondary.dark', fontWeight: 700, mb: 1.5 }} />}
+            {(b.status !== 'live' || b.badge) && <Chip size="small" label={b.status !== 'live' ? 'Coming soon' : b.badge} sx={{ bgcolor: 'rgba(255,138,31,.14)', color: 'secondary.dark', fontWeight: 700, mb: 1.5 }} />}
             <Typography variant="h2">{b.title} <Box component="span" className="text-gradient">{b.accent}</Box></Typography>
             <Typography color="text.secondary" sx={{ mt: 1 }}>{b.subtitle}</Typography>
             <Box sx={{ display: 'grid', gap: 1, gridTemplateColumns: '1fr 1fr', mt: 2 }}>
               {(b.highlights || []).slice(0, 6).map((h, i) => (
-                <Stack key={`${h.text}-${i}`} direction="row" gap={1} alignItems="center">
-                  <span>{h.icon}</span>
+                <Stack key={`${h.text}-${i}`} direction="row" gap={1} alignItems="flex-start">
+                  <CheckCircleRoundedIcon sx={{ fontSize: 18, color: 'secondary.main', mt: '1px' }} />
                   <Typography variant="body2" sx={{ fontWeight: 600, lineHeight: 1.3 }}>{h.text}</Typography>
                 </Stack>
               ))}
@@ -280,26 +285,42 @@ const Director = ({ c }) => {
   );
 };
 
-const JoshTalk = ({ c }) => {
-  const { t } = useApp();
-  return (
-    <Section title={t('joshTalk')}>
-      <Box sx={{ display: 'grid', gap: 3, gridTemplateColumns: { xs: '1fr', md: '1.4fr 1fr' }, alignItems: 'center' }}>
-        <Reveal><LiteYouTube id={c.joshVideoId} title="Josh Talks — Shashank Sajwan" /></Reveal>
-        <Stack gap={1.5}>
-          {c.joshPoints.map((p, i) => (
-            <Reveal key={`${p}-${i}`} delay={i * 0.06}>
-              <Stack direction="row" gap={1.2} alignItems="flex-start">
-                <CheckCircleRoundedIcon sx={{ color: 'secondary.main', mt: 0.2 }} />
-                <Typography>{p}</Typography>
+const JoshTalk = ({ c }) => (
+  <Section>
+    <Reveal>
+      <Box
+        sx={{
+          position: 'relative', overflow: 'hidden', borderRadius: '28px', p: { xs: 1.5, md: 2.5 }, bgcolor: 'background.paper', border: 1, borderColor: 'divider',
+          boxShadow: '0 30px 60px -40px rgba(11,22,64,.45)', display: 'grid', gap: { xs: 2.5, md: 4 }, gridTemplateColumns: { xs: '1fr', md: '1.2fr 1fr' }, alignItems: 'center',
+        }}
+      >
+        <Box sx={{ position: 'absolute', width: 360, height: 360, right: -120, top: -160, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,138,31,.18), transparent 65%)', pointerEvents: 'none' }} />
+        <LiteYouTube id={c.joshVideoId} title="Josh Talks — Shashank Sajwan" />
+        <Box sx={{ position: 'relative', px: { xs: 1, md: 0 }, pb: { xs: 1, md: 0 }, pr: { md: 2 } }}>
+          <Stack direction="row" alignItems="center" gap={1}>
+            <Box sx={{ px: 1.2, py: 0.4, borderRadius: '999px', background: 'var(--grad)', color: '#fff', fontSize: 11.5, fontWeight: 800, letterSpacing: '.06em' }}>JOSH TALKS</Box>
+            <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>Featured session</Typography>
+          </Stack>
+          <Typography variant="h2" sx={{ mt: 1.5, fontSize: { xs: 26, md: 34 } }}>
+            The talk that reached <Box component="span" className="text-gradient">lakhs of aspirants</Box>
+          </Typography>
+          <Typography color="text.secondary" sx={{ mt: 1 }}>Shashank Sir on what it really takes to crack UPSC in one focused year.</Typography>
+          <Box sx={{ display: 'grid', gap: 1.2, gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, mt: 2.5 }}>
+            {c.joshPoints.map((p, i) => (
+              <Stack key={`${p}-${i}`} direction="row" gap={1.2} alignItems="flex-start" sx={{ p: 1.5, borderRadius: '16px', bgcolor: 'action.hover' }}>
+                <CheckCircleRoundedIcon sx={{ color: 'secondary.main', fontSize: 20, mt: '1px' }} />
+                <Typography variant="body2" sx={{ fontWeight: 600, lineHeight: 1.4 }}>{p}</Typography>
               </Stack>
-            </Reveal>
-          ))}
-        </Stack>
+            ))}
+          </Box>
+          <Button href={`https://www.youtube.com/watch?v=${c.joshVideoId}`} target="_blank" rel="noopener" variant="contained" startIcon={<YouTubeIcon />} sx={{ mt: 3 }}>
+            Watch on YouTube
+          </Button>
+        </Box>
       </Box>
-    </Section>
-  );
-};
+    </Reveal>
+  </Section>
+);
 
 const Videos = () => {
   const { t } = useApp();
@@ -307,35 +328,33 @@ const Videos = () => {
   const featured = items.filter((v) => v.featured);
   if (!featured.length) return null;
   return (
-    <Section title={t('mostViewed')} action={<Button component={Link} to="/videos" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0 }}>{t('viewAll')}</Button>}>
+    <Section title={t('mostViewed')} subtitle="Strategy, mistakes to avoid and syllabus breakdowns — straight from Shashank Sir." action={<Button component={Link} to="/videos" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0 }}>{t('viewAll')}</Button>}>
       <SlideRow>
         {featured.map((v) => (
-          <Box key={v.id} className="snap-start" sx={{ flexShrink: 0, width: { xs: '82%', sm: 'calc(50% - 8px)', md: 'calc(33.333% - 11px)' } }}>
+          <Box
+            key={v.id}
+            className="snap-start"
+            sx={{
+              flexShrink: 0, width: { xs: '82%', sm: 'calc(50% - 8px)', md: 'calc(33.333% - 11px)' }, p: 1.2, borderRadius: '22px',
+              bgcolor: 'background.paper', border: 1, borderColor: 'divider', transition: 'transform .25s, box-shadow .25s',
+              '&:hover': { transform: 'translateY(-4px)', boxShadow: '0 20px 40px -24px rgba(11,22,64,.45)' },
+            }}
+          >
             <LiteYouTube id={v.id} title={v.title} />
-            <Typography sx={{ mt: 1, fontWeight: 600 }}>{v.title}</Typography>
+            <Stack direction="row" gap={1.2} alignItems="flex-start" sx={{ px: 0.8, pt: 1.5, pb: 0.8 }}>
+              <Box component="img" src="/assets/shashank.webp" alt="" sx={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0, border: 1, borderColor: 'divider' }} />
+              <Box sx={{ minWidth: 0 }}>
+                <Typography sx={{ fontWeight: 700, fontSize: 15.5, lineHeight: 1.35, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{v.title}</Typography>
+                <Stack direction="row" alignItems="center" gap={0.5} sx={{ mt: 0.3 }}>
+                  <YouTubeIcon sx={{ fontSize: 16, color: '#FF0000' }} />
+                  <Typography variant="caption" color="text.secondary">Shashank Sajwan · YouTube</Typography>
+                </Stack>
+              </Box>
+            </Stack>
           </Box>
         ))}
       </SlideRow>
     </Section>
-  );
-};
-
-const Community = ({ c }) => {
-  const { lang } = useApp();
-  const { socials } = useContent('site');
-  return (
-    <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
-      <Reveal>
-        <Box className="glow-card" sx={{ p: { xs: 3, md: 5 }, borderRadius: '28px', color: '#fff', textAlign: 'center' }}>
-          <Typography variant="h2">{tr(c.communityTitle, lang)}</Typography>
-          <Typography sx={{ opacity: 0.85, mt: 1, mb: 3 }}>{c.communityText}</Typography>
-          <Stack direction={{ xs: 'column', sm: 'row' }} gap={1.5} justifyContent="center">
-            <Button href={socials.telegram} target="_blank" rel="noopener" startIcon={<TelegramIcon />} sx={{ bgcolor: '#fff', color: '#0B1640', '&:hover': { bgcolor: '#f1f1f1' } }}>Telegram</Button>
-            <Button href={socials.youtube} target="_blank" rel="noopener" startIcon={<YouTubeIcon />} sx={{ bgcolor: 'rgba(255,255,255,.14)', color: '#fff' }}>YouTube</Button>
-          </Stack>
-        </Box>
-      </Reveal>
-    </Container>
   );
 };
 
@@ -352,7 +371,7 @@ const Updates = () => {
   );
 };
 
-const blocks = { carousel: HeroCarousel, hero: Hero, updates: Updates, stats: Stats, batch: BatchTeaser, study: StudyGrid, books: Books, features: Features, director: Director, josh: JoshTalk, videos: Videos, community: Community };
+const blocks = { carousel: HeroCarousel, hero: Hero, updates: Updates, stats: Stats, batch: BatchTeaser, study: StudyGrid, books: Books, features: Features, director: Director, josh: JoshTalk, videos: Videos };
 
 const Home = () => {
   const c = useContent('home');

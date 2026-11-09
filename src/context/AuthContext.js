@@ -35,7 +35,7 @@ const ensureProfile = async (user, name) => {
 export const friendlyAuthError = (err) => {
   const code = err?.code || '';
   const map = {
-    'auth/invalid-credential': 'Wrong email or password.',
+    'auth/invalid-credential': 'Wrong email or password. If you created your account with Google, use "Continue with Google" — or tap "Forgot password?" to set a password.',
     'auth/wrong-password': 'Wrong email or password.',
     'auth/user-not-found': 'No account found with this email.',
     'auth/email-already-in-use': 'An account with this email already exists. Try signing in.',

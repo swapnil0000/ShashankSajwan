@@ -9,6 +9,7 @@ import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import { tr, useContent } from '../context/ContentContext';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+import UserAvatar from './ui/UserAvatar';
 
 // `wide` items only fit on extra-large screens; they stay reachable from the footer and the More sheet.
 const navItems = [
@@ -113,9 +114,7 @@ const Header = () => {
           {configured && (user ? (
             <Tooltip title="My account">
               <IconButton component={Link} to="/account" aria-label="My account" sx={{ p: 0.4 }}>
-                {user.photoURL
-                  ? <Box component="img" src={user.photoURL} alt="" sx={{ width: 36, height: 36, borderRadius: '50%' }} />
-                  : <Box sx={{ width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--grad)', color: '#fff', fontWeight: 800, fontSize: 15 }}>{(user.displayName || user.email || '?')[0].toUpperCase()}</Box>}
+                <UserAvatar user={user} size={36} />
               </IconButton>
             </Tooltip>
           ) : isMobile ? (
