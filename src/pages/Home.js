@@ -52,13 +52,14 @@ const Rail = ({ children }) => (
 
 // Small tappable "admissions open" pill at the top of the hero.
 const HeroBatchPill = () => {
+  const { t } = useApp();
   const b = useContent('batch');
   if (b.enabled === false) return null;
   return (
     <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ marginBottom: 12 }}>
       <Box component={Link} to="/courses" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, pl: 0.6, pr: 1.5, py: 0.6, minWidth: 0, borderRadius: '999px', bgcolor: 'background.paper', border: 1, borderColor: 'divider', color: 'text.primary', boxShadow: '0 8px 24px -14px rgba(11,22,64,.5)', maxWidth: '100%', '&:hover': { borderColor: 'primary.main' } }}>
-        <Box sx={{ px: 1, py: 0.3, borderRadius: '999px', background: 'var(--grad)', color: '#fff', fontSize: 11, fontWeight: 800, flexShrink: 0 }}>NEW</Box>
-        <Typography noWrap sx={{ fontSize: 13, fontWeight: 700 }}>{b.status !== 'live' ? 'Coming soon: ' : b.badge ? `${b.badge}: ` : ''}{b.title} {b.accent}</Typography>
+        <Box sx={{ px: 1, py: 0.3, borderRadius: '999px', background: 'var(--grad)', color: '#fff', fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{t('heroPillNew')}</Box>
+        <Typography noWrap sx={{ fontSize: 13, fontWeight: 700 }}>{b.status !== 'live' ? `${t('heroPillSoon')}: ` : b.badge ? `${b.badge}: ` : ''}{b.title} {b.accent}</Typography>
         <ArrowForwardRoundedIcon sx={{ fontSize: 16, color: 'primary.main', flexShrink: 0 }} />
       </Box>
     </motion.div>
@@ -67,16 +68,17 @@ const HeroBatchPill = () => {
 
 // Right side of the hero: Prelims countdown plus one-tap tiles for the daily sections.
 const GlancePanel = () => {
+  const { t } = useApp();
   const b = useContent('batch');
   const news = useFeed('feed_newspaper');
   const comingSoon = b.status !== 'live';
   const tiles = [
-    { to: '/newspaper', icon: '📰', label: 'Newspaper Notes', sub: news.items[0] ? 'Updated today' : 'Daily notes' },
-    { to: '/resources/current-affairs', icon: '🌏', label: 'Current Affairs', sub: 'Daily' },
-    { to: '/resources/ncert-mcqs', icon: '✅', label: 'NCERT MCQs', sub: 'Practice' },
+    { to: '/newspaper', icon: '📰', label: t('tileNews'), sub: news.items[0] ? t('tileNewsToday') : t('tileNewsSub') },
+    { to: '/resources/current-affairs', icon: '🌏', label: t('tileCA'), sub: t('tileCASub') },
+    { to: '/resources/ncert-mcqs', icon: '✅', label: t('tileMcq'), sub: t('tileMcqSub') },
     b.enabled === false
       ? { to: '/books', icon: '📚', label: 'Our Books', sub: 'NCERT-mapped' }
-      : { to: '/courses', icon: '🎓', label: b.navLabel || 'Batch', sub: comingSoon ? 'Coming soon' : (b.badge || 'Join now'), hot: true },
+      : { to: '/courses', icon: '🎓', label: b.navLabel || 'Batch', sub: comingSoon ? t('tileBatchSoon') : (b.badge || 'Join now'), hot: true },
   ];
   return (
     <Stack gap={1.5}>
@@ -209,6 +211,7 @@ const Books = () => {
 };
 
 const BatchTeaser = () => {
+  const { t } = useApp();
   const b = useContent('batch');
   const cta = useBatchCta();
   if (b.enabled === false) return null;
@@ -234,7 +237,7 @@ const BatchTeaser = () => {
               ))}
             </Box>
             <Stack direction={{ xs: 'column', sm: 'row' }} gap={1.2} sx={{ mt: 3 }}>
-              <Button component={Link} to="/courses" variant="contained" endIcon={<ArrowForwardRoundedIcon />}>{b.status !== 'live' ? 'Get notified' : 'View batch details'}</Button>
+              <Button component={Link} to="/courses" variant="contained" endIcon={<ArrowForwardRoundedIcon />}>{b.status !== 'live' ? t('batchSoonButton') : t('batchLiveButton')}</Button>
               {b.status === 'live' && <Button href={cta.href} target={cta.external ? '_blank' : undefined} rel="noopener" variant="outlined" color="inherit" sx={{ borderColor: 'divider' }}>{cta.label}</Button>}
             </Stack>
           </Box>
@@ -285,7 +288,9 @@ const Director = ({ c }) => {
   );
 };
 
-const JoshTalk = ({ c }) => (
+const JoshTalk = ({ c }) => {
+  const { t } = useApp();
+  return (
   <Section>
     <Reveal>
       <Box
@@ -298,13 +303,13 @@ const JoshTalk = ({ c }) => (
         <LiteYouTube id={c.joshVideoId} title="Josh Talks — Shashank Sajwan" />
         <Box sx={{ position: 'relative', px: { xs: 1, md: 0 }, pb: { xs: 1, md: 0 }, pr: { md: 2 } }}>
           <Stack direction="row" alignItems="center" gap={1}>
-            <Box sx={{ px: 1.2, py: 0.4, borderRadius: '999px', background: 'var(--grad)', color: '#fff', fontSize: 11.5, fontWeight: 800, letterSpacing: '.06em' }}>JOSH TALKS</Box>
-            <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>Featured session</Typography>
+            <Box sx={{ px: 1.2, py: 0.4, borderRadius: '999px', background: 'var(--grad)', color: '#fff', fontSize: 11.5, fontWeight: 800, letterSpacing: '.06em' }}>{t('joshBadge')}</Box>
+            <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>{t('joshFeatured')}</Typography>
           </Stack>
           <Typography variant="h2" sx={{ mt: 1.5, fontSize: { xs: 26, md: 34 } }}>
-            The talk that reached <Box component="span" className="text-gradient">lakhs of aspirants</Box>
+            {t('joshTitle')} <Box component="span" className="text-gradient">{t('joshAccent')}</Box>
           </Typography>
-          <Typography color="text.secondary" sx={{ mt: 1 }}>Shashank Sir on what it really takes to crack UPSC in one focused year.</Typography>
+          <Typography color="text.secondary" sx={{ mt: 1 }}>{t('joshSub')}</Typography>
           <Box sx={{ display: 'grid', gap: 1.2, gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, mt: 2.5 }}>
             {c.joshPoints.map((p, i) => (
               <Stack key={`${p}-${i}`} direction="row" gap={1.2} alignItems="flex-start" sx={{ p: 1.5, borderRadius: '16px', bgcolor: 'action.hover' }}>
@@ -314,13 +319,14 @@ const JoshTalk = ({ c }) => (
             ))}
           </Box>
           <Button href={`https://www.youtube.com/watch?v=${c.joshVideoId}`} target="_blank" rel="noopener" variant="contained" startIcon={<YouTubeIcon />} sx={{ mt: 3 }}>
-            Watch on YouTube
+            {t('watchOnYoutube')}
           </Button>
         </Box>
       </Box>
     </Reveal>
   </Section>
-);
+  );
+};
 
 const Videos = () => {
   const { t } = useApp();
@@ -328,7 +334,7 @@ const Videos = () => {
   const featured = items.filter((v) => v.featured);
   if (!featured.length) return null;
   return (
-    <Section title={t('mostViewed')} subtitle="Strategy, mistakes to avoid and syllabus breakdowns — straight from Shashank Sir." action={<Button component={Link} to="/videos" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0 }}>{t('viewAll')}</Button>}>
+    <Section title={t('mostViewed')} subtitle={t('videosSub')} action={<Button component={Link} to="/videos" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0 }}>{t('viewAll')}</Button>}>
       <SlideRow>
         {featured.map((v) => (
           <Box
@@ -360,10 +366,11 @@ const Videos = () => {
 
 // Latest daily posts across Newspaper Notes / Current Affairs / MCQs / PYQs.
 const Updates = () => {
+  const { t } = useApp();
   const latest = useLatestAcrossFeeds(4);
   if (!latest.length) return null;
   return (
-    <Section title="Today's" accent="updates" action={<Button component={Link} to="/resources" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0 }}>All resources</Button>}>
+    <Section title={t('updatesTitle')} accent={t('updatesAccent')} action={<Button component={Link} to="/resources" endIcon={<ArrowForwardRoundedIcon />} sx={{ flexShrink: 0 }}>{t('allResources')}</Button>}>
       <Box sx={{ display: 'grid', gap: 1.2, gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' } }}>
         {latest.map((item, i) => <FeedItem key={`${item.date}-${i}`} item={item} i={i} compact />)}
       </Box>

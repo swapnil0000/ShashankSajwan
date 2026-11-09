@@ -5,6 +5,7 @@ import { strings } from '../i18n/strings';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { useAuth } from './AuthContext';
+import { useContent } from './ContentContext';
 
 const AppContext = createContext(null);
 
@@ -33,6 +34,7 @@ export const AppProvider = ({ children }) => {
 
   // Signed-in users: merge device bookmarks with the account once, then keep the account updated.
   const { user } = useAuth() || {};
+  const texts = useContent('texts');
   const synced = useRef(null);
   useEffect(() => {
     if (!user || !db) { synced.current = null; return; }
@@ -54,13 +56,14 @@ export const AppProvider = ({ children }) => {
     mode,
     toggleMode: () => setMode((m) => (m === 'dark' ? 'light' : 'dark')),
     lang,
-    t: (key) => strings[lang]?.[key] ?? strings.en[key] ?? key,
+    // Any text can be overridden from Admin → Site text.
+    t: (key) => (texts[key] !== undefined && texts[key] !== '' ? texts[key] : strings.en[key] ?? key),
     bookmarks,
     isBookmarked: (id) => bookmarks.includes(id),
     toggleBookmark: (id) => setBookmarks((b) => (b.includes(id) ? b.filter((x) => x !== id) : [id, ...b])),
     recent,
     pushRecent: (id) => setRecent((r) => [id, ...r.filter((x) => x !== id)].slice(0, 8)),
-  }), [mode, lang, bookmarks, recent]);
+  }), [mode, lang, bookmarks, recent, texts]);
 
   return (
     <AppContext.Provider value={value}>

@@ -7,17 +7,19 @@ import LiteYouTube from '../../components/ui/LiteYouTube';
 import { SegmentTabs } from '../../components/ui/ResourceLayout';
 import { stagger, staggerItem } from '../../components/ui/Motion';
 import BatchPromo from '../../components/ui/BatchPromo';
+import { useApp } from '../../context/AppContext';
 
 
 const Videos = () => {
   const { items: videos, categories = [] } = useContent('videos');
+  const { t } = useApp();
   const cats = ['All', ...categories];
   const [tab, setTab] = useState(0);
   const list = useMemo(() => (tab === 0 ? videos : videos.filter((v) => v.cat === cats[tab])), [tab, videos]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Box sx={{ pb: 4 }}>
-      <PageHero title="Video" accent="Lectures" eyebrow="Videos" subtitle="Hand-picked strategy, concept and motivation videos. Videos load only when you tap — easy on mobile data." />
+      <PageHero title={t('videosTitle')} accent={t('videosAccent')} eyebrow={t('videos')} subtitle={t('videosPageSub')} />
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
         <Box sx={{ mb: 2.5 }}><SegmentTabs tabs={cats} value={tab} onChange={setTab} layoutId="video-pill" /></Box>
         <motion.div key={tab} variants={stagger} initial="hidden" animate="show">

@@ -6,6 +6,7 @@ import { bookCombo, bookList } from './books';
 import { faqs } from './faqs';
 import { choosedata } from './data';
 import { resourcePages } from './resources';
+import { policies } from './policies';
 
 const both = (key) => ({ en: strings.en[key], hi: strings.hi[key] });
 
@@ -55,7 +56,13 @@ export const contentDefaults = {
     prelimsLabel: both('prelimsIn'),
     announcement: { enabled: false, text: '', link: '' },
     footerText: '© 2022 · All rights reserved',
+    logo: '/assets/shashank.webp',
+    nameA: 'SHASHANK',
+    nameB: 'SAJWAN',
   },
+
+  // Every heading, label and button text on the site (Admin → Site text).
+  texts: { ...strings.en },
 
   // Home top carousel. Image size: desktop 3:1 (e.g. 2172×724), mobile square (1080×1080).
   carousel: {
@@ -159,7 +166,7 @@ export const contentDefaults = {
     ],
   },
   studySections: { items: studySections },
-  books: { combo: bookCombo, items: bookList },
+  books: { combo: bookCombo, items: bookList, trailerUrl: 'https://book-video.s3.ap-south-1.amazonaws.com/Sajwam+Video+FINAL+For+Amazon.mp4' },
   videos: { categories: ['Beginners', 'Strategy', 'Skills', 'Motivation'], items: allVideos },
   faqs: { items: faqs },
   about: {
@@ -199,6 +206,10 @@ export const contentDefaults = {
     officeText: 'All email communication is managed and answered by our head office in Dehradun, Uttarakhand.',
   },
 };
+
+Object.entries(policies).forEach(([key, page]) => {
+  contentDefaults[`policy_${key}`] = page;
+});
 
 Object.entries(resourcePages).forEach(([key, page]) => {
   contentDefaults[`resource_${key}`] = page;

@@ -4,7 +4,7 @@ service firebase.storage {
     function isAdmin() {
       return request.auth != null
         && request.auth.token.email_verified == true
-        && request.auth.token.email.lower() in ['swapnilsrivastava1999@gmail.com'];
+        && request.auth.token.email.lower() in ['swapnilsrivastava1999@gmail.com', 'actsswork@gmail.com'];
     }
 
     // Images uploaded from the admin panel.

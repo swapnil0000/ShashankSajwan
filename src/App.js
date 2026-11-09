@@ -6,16 +6,12 @@ import Header from './components/Header';
 import BottomNav from './components/BottomNav';
 import Footer from './components/Footer';
 import { PageTransition } from './components/ui/Motion';
-import PageHero from './components/ui/PageHero';
 import { useApp } from './context/AppContext';
 import { buildTheme } from './theme/theme';
 import Home from './pages/Home';
 import StudyHub from './pages/StudyHub/StudyHub';
 import Contact from './pages/Contact';
 import About from './pages/about/About';
-import TermAndCondition from './pages/Policy/TermAndCondition';
-import Refund from './pages/Policy/Refund';
-import Private from './pages/Policy/Private';
 import Material from './pages/Materials/Material';
 import Videos from './pages/Videos/Videos';
 import Syllabus from './pages/syllabus/Syllabus';
@@ -31,6 +27,7 @@ import AuthPage from './pages/auth/AuthPage';
 import Account from './pages/auth/Account';
 import Announcement from './components/Announcement';
 import Batch from './pages/Batch/Batch';
+import PolicyPage from './pages/Policy/PolicyPage';
 import PopupManager from './components/PopupManager';
 import Resources, { CurrentAffairs, NcertMcqs, Newspaper, Newspaper2026, PyqFeed } from './pages/Resources/Resources';
 
@@ -53,28 +50,7 @@ const routes = [
   ['/resources/pyqs', PyqFeed], ['/newspaper', Newspaper], ['/newspaper/2026', Newspaper2026],
 ];
 const legacyRoutes = [['/payment', Payment]];
-const policyRoutes = [
-  ['/terms', TermAndCondition, 'Terms &', 'Conditions'],
-  ['/refund', Refund, 'Refund', 'Policy'],
-  ['/private', Private, 'Privacy', 'Policy'],
-];
-
-// Policy pages keep their text; this strips their old top margin and restyles the typography.
-const Policy = ({ title, accent, children }) => (
-  <Box sx={{ pb: 4 }}>
-    <PageHero title={title} accent={accent} />
-    <Box
-      sx={{
-        '& .MuiContainer-root': { mt: '0 !important', maxWidth: 860 },
-        '& .MuiContainer-root > .MuiBox-root > .MuiTypography-h2:first-of-type': { display: 'none' },
-        '& .MuiTypography-root': { fontFamily: 'inherit', fontWeight: 400, color: 'text.secondary', fontSize: { xs: 15, md: 16 }, lineHeight: 1.7 },
-        '& .MuiTypography-h2, & .MuiTypography-h4, & .MuiTypography-h3': { color: 'text.primary', fontWeight: 800, fontSize: { xs: 20, md: 24 }, mt: 3 },
-      }}
-    >
-      {children}
-    </Box>
-  </Box>
-);
+const policyRoutes = [['/terms', 'terms'], ['/refund', 'refund'], ['/private', 'privacy']];
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -106,8 +82,8 @@ const AnimatedRoutes = () => {
         {routes.map(([path, Page]) => (
           <Route key={path} path={path} element={<PageTransition><Page /></PageTransition>} />
         ))}
-        {policyRoutes.map(([path, Page, title, accent]) => (
-          <Route key={path} path={path} element={<PageTransition><Policy title={title} accent={accent}><Page /></Policy></PageTransition>} />
+        {policyRoutes.map(([path, id]) => (
+          <Route key={path} path={path} element={<PageTransition><PolicyPage id={id} /></PageTransition>} />
         ))}
         {legacyRoutes.map(([path, Page]) => (
           <Route key={path} path={path} element={<PageTransition><Legacy><Page /></Legacy></PageTransition>} />

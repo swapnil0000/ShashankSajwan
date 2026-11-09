@@ -8,6 +8,7 @@ import BatchPromo from '../../components/ui/BatchPromo';
 import DailyFeed, { FeedItem, useFeed } from '../../components/ui/DailyFeed';
 import { stagger, staggerItem } from '../../components/ui/Motion';
 import IconTile from '../../components/ui/IconTile';
+import { useApp } from '../../context/AppContext';
 
 // The Resources section: daily-updated material, each managed from the admin panel.
 export const RESOURCE_SECTIONS = [
@@ -56,9 +57,11 @@ const Latest = () => {
   );
 };
 
-const Resources = () => (
+const Resources = () => {
+  const { t } = useApp();
+  return (
   <Box sx={{ pb: 4 }}>
-    <PageHero title="Daily" accent="Resources" eyebrow="Resources" subtitle="Fresh material every day — newspaper notes, current affairs, NCERT MCQs and PYQs." />
+    <PageHero title={t('resourcesTitle')} accent={t('resourcesAccent')} eyebrow={t('resources')} subtitle={t('resourcesSub')} />
     <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
       <motion.div variants={stagger} initial="hidden" animate="show">
         <Box sx={{ display: 'grid', gap: { xs: 1.5, md: 2 }, gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' } }}>
@@ -69,7 +72,8 @@ const Resources = () => (
     </Container>
     <BatchPromo />
   </Box>
-);
+  );
+};
 
 export const CurrentAffairs = () => <DailyFeed feedKey="feed_ca" eyebrow="Current Affairs" />;
 export const NcertMcqs = () => <DailyFeed feedKey="feed_mcq" eyebrow="NCERT MCQs" archives={[{ to: '/ncert', label: 'NCERT books (PDF)', sub: 'Class 6–12, subject-wise' }]} />;

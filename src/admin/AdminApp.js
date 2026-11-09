@@ -8,18 +8,19 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import RestartAltRoundedIcon from '@mui/icons-material/RestartAltRounded';
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs, orderBy, query, serverTimestamp, setDoc } from 'firebase/firestore';
+import { TextField } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
 import { resetContent, saveContent, useContent, useContentMeta } from '../context/ContentContext';
 import { contentDefaults } from '../data/content';
-import { db } from '../lib/firebase';
+import { ADMIN_EMAILS, OWNER_EMAILS, db } from '../lib/firebase';
 import { adminGroups, allBlocks } from './schemas';
 import { Fields } from './FieldEditor';
 
 // Where each block shows up on the live site (for the "View" button).
 const previewPath = (key) => {
   if (key.startsWith('resource_')) return { ncert: '/ncert', pyqs: '/pyqs', syllabus: '/syllabus', general: '/general', optional: '/optional', news24: '/newsnotes', news25: '/newsnotes25' }[key.slice(9)];
-  return { site: '/', home: '/', about: '/about', contact: '/contact', faqs: '/faqs', batch: '/courses', carousel: '/', popups: '/', feed_newspaper: '/newspaper', feed_ca: '/resources/current-affairs', feed_mcq: '/resources/ncert-mcqs', feed_pyq: '/resources/pyqs', studySections: '/study', books: '/books', videos: '/videos' }[key];
+  return { site: '/', home: '/', about: '/about', contact: '/contact', faqs: '/faqs', batch: '/courses', texts: '/', policy_privacy: '/private', policy_terms: '/terms', policy_refund: '/refund', carousel: '/', popups: '/', feed_newspaper: '/newspaper', feed_ca: '/resources/current-affairs', feed_mcq: '/resources/ncert-mcqs', feed_pyq: '/resources/pyqs', studySections: '/study', books: '/books', videos: '/videos' }[key];
 };
 
 const Sidebar = ({ onPick }) => {
@@ -34,6 +35,7 @@ const Sidebar = ({ onPick }) => {
       <ButtonBase component={NavLink} to="/admin" end onClick={onPick} sx={navSx}>📊 Dashboard</ButtonBase>
       <ButtonBase component={NavLink} to="/admin/users" onClick={onPick} sx={navSx}>👥 Users</ButtonBase>
       <ButtonBase component={NavLink} to="/admin/leads" onClick={onPick} sx={navSx}>📞 Batch leads</ButtonBase>
+      <ButtonBase component={NavLink} to="/admin/admins" onClick={onPick} sx={navSx}>🔐 Admins</ButtonBase>
       {adminGroups.map((g) => {
         const blocks = g.blocks.filter((b) => b.label.toLowerCase().includes(q.toLowerCase()));
         if (!blocks.length) return null;
@@ -211,6 +213,59 @@ const Users = () => {
   );
 };
 
+// Who can open the admin panel. Built-in emails are fixed in code; owners can add more here.
+const Admins = () => {
+  const { isOwner, user } = useAuth();
+  const [rows, setRows] = useState(null);
+  const [email, setEmail] = useState('');
+  const [msg, setMsg] = useState('');
+  const load = () => getDocs(collection(db, 'admins')).then((s) => setRows(s.docs.map((d) => ({ email: d.id, ...d.data() })))).catch((e) => setMsg(e.message));
+  useEffect(() => { load(); }, []);
+
+  const add = async () => {
+    const e = email.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { setMsg('Enter a valid email'); return; }
+    try {
+      await setDoc(doc(db, 'admins', e), { addedBy: user.email, addedAt: serverTimestamp() });
+      setEmail(''); setMsg(`${e} can now open the admin panel (after signing in with that email).`); load();
+    } catch (err) { setMsg(err.message); }
+  };
+  const remove = async (e) => {
+    if (!window.confirm(`Remove admin access for ${e}?`)) return;
+    try { await deleteDoc(doc(db, 'admins', e)); load(); } catch (err) { setMsg(err.message); }
+  };
+
+  const builtIn = ADMIN_EMAILS.map((e) => ({ email: e, role: OWNER_EMAILS.includes(e) ? 'Owner' : 'Admin', fixed: true }));
+  const list = [...builtIn, ...(rows || []).filter((r) => !ADMIN_EMAILS.includes(r.email)).map((r) => ({ ...r, role: 'Admin' }))];
+
+  return (
+    <Box>
+      <Typography variant="h2">Admins</Typography>
+      <Typography color="text.secondary" sx={{ mb: 3 }}>People who can edit the website. They sign in with Google (or a verified email) using the address listed here.</Typography>
+      {msg && <Alert severity="info" sx={{ mb: 2 }} onClose={() => setMsg('')}>{msg}</Alert>}
+      {isOwner ? (
+        <Stack direction={{ xs: 'column', sm: 'row' }} gap={1} sx={{ mb: 3 }}>
+          <TextField size="small" label="Email to give admin access" value={email} onChange={(e) => setEmail(e.target.value)} sx={{ flex: 1 }} />
+          <Button variant="contained" onClick={add}>Add admin</Button>
+        </Stack>
+      ) : (
+        <Alert severity="warning" sx={{ mb: 3 }}>Only the owner can add or remove admins.</Alert>
+      )}
+      <Stack gap={1}>
+        {list.map((a) => (
+          <Stack key={a.email} direction="row" alignItems="center" gap={1.5} sx={{ p: 1.5, borderRadius: '14px', bgcolor: 'background.paper', border: 1, borderColor: 'divider' }}>
+            <Box sx={{ width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--grad)', color: '#fff', fontWeight: 800 }}>{a.email[0].toUpperCase()}</Box>
+            <Typography sx={{ flex: 1, fontWeight: 600, minWidth: 0 }} noWrap>{a.email}</Typography>
+            <Chip size="small" label={a.role} color={a.role === 'Owner' ? 'primary' : 'default'} />
+            {a.fixed ? <Typography variant="caption" color="text.secondary">built-in</Typography>
+              : isOwner && <Button size="small" color="error" onClick={() => remove(a.email)}>Remove</Button>}
+          </Stack>
+        ))}
+      </Stack>
+    </Box>
+  );
+};
+
 // "Notify me" sign-ups from the batch Coming Soon page.
 const Leads = () => {
   const [rows, setRows] = useState(null);
@@ -306,6 +361,7 @@ const AdminApp = () => {
             <Route index element={<Dashboard />} />
             <Route path="users" element={<Users />} />
             <Route path="leads" element={<Leads />} />
+            <Route path="admins" element={<Admins />} />
             <Route path="edit/:key" element={<BlockEditor />} />
             <Route path="*" element={<Navigate to="/admin" replace />} />
           </Routes>

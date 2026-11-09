@@ -2,11 +2,25 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Keep this list in sync with REACT_APP_ADMIN_EMAILS.
+    // Owners can manage admins. Built-in admins match REACT_APP_OWNER_EMAILS / REACT_APP_ADMIN_EMAILS;
+    // anyone else becomes an admin when an owner adds their email to the `admins` collection.
+    function signedInVerified() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+    function isOwner() {
+      return signedInVerified() && request.auth.token.email.lower() in ['swapnilsrivastava1999@gmail.com'];
+    }
     function isAdmin() {
-      return request.auth != null
-        && request.auth.token.email_verified == true
-        && request.auth.token.email.lower() in ['swapnilsrivastava1999@gmail.com'];
+      return signedInVerified() && (
+        request.auth.token.email.lower() in ['swapnilsrivastava1999@gmail.com', 'actsswork@gmail.com']
+        || exists(/databases/$(database)/documents/admins/$(request.auth.token.email.lower()))
+      );
+    }
+
+    match /admins/{email} {
+      allow get: if signedInVerified() && request.auth.token.email.lower() == email;
+      allow list, get: if isAdmin();
+      allow write: if isOwner();
     }
 
     // Website content: everyone can read, only the admin can change it.
