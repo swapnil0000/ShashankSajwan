@@ -4,15 +4,17 @@ service firebase.storage {
     function isAdmin() {
       return request.auth != null
         && request.auth.token.email_verified == true
-        && request.auth.token.email.lower() in ['swapnilsrivastava1999@gmail.com', 'actsswork@gmail.com'];
+        && (request.auth.token.email.lower() in ['swapnilsrivastava1999@gmail.com', 'actsswork@gmail.com']
+          || firestore.exists(/databases/(default)/documents/admins/$(request.auth.token.email.lower())));
     }
 
-    // Images uploaded from the admin panel.
+    // Images (≤ 5 MB) and PDFs / documents (≤ 25 MB) uploaded from the admin panel.
     match /uploads/{file} {
       allow read: if true;
-      allow write: if isAdmin()
-        && request.resource.size < 5 * 1024 * 1024
-        && request.resource.contentType.matches('image/.*');
+      allow write: if isAdmin() && (
+        (request.resource.size < 5 * 1024 * 1024 && request.resource.contentType.matches('image/.*'))
+        || (request.resource.size < 25 * 1024 * 1024 && request.resource.contentType.matches('application/.*'))
+      );
     }
   }
 }

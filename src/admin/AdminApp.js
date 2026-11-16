@@ -11,11 +11,11 @@ import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
 import { collection, deleteDoc, doc, getDocs, orderBy, query, serverTimestamp, setDoc } from 'firebase/firestore';
 import { TextField } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
-import { resetContent, saveContent, useContent, useContentMeta } from '../context/ContentContext';
+import { resetContent, saveContent, useContentMeta, useRawContent } from '../context/ContentContext';
 import { contentDefaults } from '../data/content';
 import { ADMIN_EMAILS, OWNER_EMAILS, db } from '../lib/firebase';
 import { adminGroups, allBlocks } from './schemas';
-import { Fields } from './FieldEditor';
+import { AutoSaveContext, Fields } from './FieldEditor';
 
 // Where each block shows up on the live site (for the "View" button).
 const previewPath = (key) => {
@@ -105,7 +105,7 @@ const Dashboard = () => {
 const BlockEditor = () => {
   const { key } = useParams();
   const block = allBlocks.find((b) => b.key === key);
-  const live = useContent(key);
+  const live = useRawContent(key);
   const { remote } = useContentMeta();
   const [draft, setDraft] = useState(live);
   const [saving, setSaving] = useState(false);
@@ -126,13 +126,20 @@ const BlockEditor = () => {
     return () => window.removeEventListener('beforeunload', warn);
   }, [dirty]);
 
+  // Uploads and "Publish post" save straight away so they show on the site immediately.
+  const [publishSoon, setPublishSoon] = useState(0);
+  const saveRef = React.useRef(null);
+  const autoSave = React.useMemo(() => ({ publish: () => setPublishSoon((n) => n + 1) }), []);
+  useEffect(() => { if (publishSoon) saveRef.current?.('Published — live on the website now'); }, [publishSoon]);
+
   if (!block) return <Alert severity="error">Unknown block.</Alert>;
 
-  const save = async () => {
+  const save = async (msg = 'Saved — live on the website now') => {
     setSaving(true);
-    try { await saveContent(key, draft); touched.current = false; setToast('Saved — live on the website now'); } catch (e) { setToast(`Save failed: ${e.message}`); }
+    try { await saveContent(key, draft); touched.current = false; setToast(msg); } catch (e) { setToast(`Save failed: ${e.message}`); }
     setSaving(false);
   };
+  saveRef.current = save;
   const reset = async () => {
     if (!window.confirm('Reset this block to the original website content? Your edits to it will be removed.')) return;
     try { await resetContent(key); touched.current = false; setDraft(contentDefaults[key]); setToast('Reset to default'); } catch (e) { setToast(`Reset failed: ${e.message}`); }
@@ -148,7 +155,9 @@ const BlockEditor = () => {
         {previewPath(key) && <Button component={Link} to={previewPath(key)} target="_blank" endIcon={<OpenInNewRoundedIcon />}>View on site</Button>}
       </Stack>
       <Box sx={{ p: { xs: 1.5, md: 3 }, borderRadius: '20px', bgcolor: 'background.paper', border: 1, borderColor: 'divider' }}>
-        <Fields fields={block.fields} value={draft} onChange={edit} />
+        <AutoSaveContext.Provider value={autoSave}>
+          <Fields fields={block.fields} value={draft} onChange={edit} />
+        </AutoSaveContext.Provider>
       </Box>
 
       <Box className="glass" sx={{ position: 'fixed', left: { xs: 0, md: 280 }, right: 0, bottom: 0, zIndex: 1200, borderTop: 1, borderColor: 'divider', px: 2, py: 1.5, pb: 'calc(12px + env(safe-area-inset-bottom))' }}>
@@ -156,7 +165,7 @@ const BlockEditor = () => {
           <Typography variant="body2" color="text.secondary" sx={{ mr: 'auto' }}>{dirty ? 'Unsaved changes' : remote[key] ? 'Customised · saved' : 'Showing default content'}</Typography>
           {remote[key] && <Button color="inherit" onClick={reset} startIcon={<RestartAltRoundedIcon />}>Reset</Button>}
           <Button variant="outlined" color="inherit" disabled={!dirty} onClick={() => { touched.current = false; setDraft(JSON.parse(liveJson)); }}>Discard</Button>
-          <Button variant="contained" disabled={!dirty || saving} onClick={save} startIcon={saving ? <CircularProgress size={16} color="inherit" /> : <SaveRoundedIcon />}>Save</Button>
+          <Button variant="contained" disabled={!dirty || saving} onClick={() => save()} startIcon={saving ? <CircularProgress size={16} color="inherit" /> : <SaveRoundedIcon />}>Save</Button>
         </Stack>
       </Box>
       <Snackbar open={Boolean(toast)} autoHideDuration={2500} onClose={() => setToast('')} message={toast} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} />

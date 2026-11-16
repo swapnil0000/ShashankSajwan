@@ -6,7 +6,9 @@ import { useContent } from '../context/ContentContext';
 import { isScheduledNow } from './ui/HeroCarousel';
 
 // Remembers when each pop-up was last shown so it respects its frequency.
-const seenKey = (p) => `ss-popup-${p.id || p.title || p.image}`;
+// Uploaded images are long data URLs, so the fallback key is a short hash of the image.
+const hash = (str = '') => { let h = 0; for (let i = 0; i < str.length; i += 1) h = (h * 31 + str.charCodeAt(i)) | 0; return (h >>> 0).toString(36); };
+const seenKey = (p) => `ss-popup-${p.id || p.title || hash(p.image)}`;
 const readSeen = (k) => { try { return Number(localStorage.getItem(k)) || Number(sessionStorage.getItem(k)) || 0; } catch { return 0; } };
 const markSeen = (k, frequency) => {
   try {
