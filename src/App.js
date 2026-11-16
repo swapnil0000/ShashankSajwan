@@ -28,6 +28,7 @@ import Account from './pages/auth/Account';
 import Announcement from './components/Announcement';
 import Batch from './pages/Batch/Batch';
 import PolicyPage from './pages/Policy/PolicyPage';
+import FileViewer from './pages/File/FileViewer';
 import PopupManager from './components/PopupManager';
 import Resources, { CurrentAffairs, NcertMcqs, Newspaper, Newspaper2026, PyqFeed } from './pages/Resources/Resources';
 
@@ -79,6 +80,7 @@ const AnimatedRoutes = () => {
         <Route path="/signup" element={<AuthPage mode="signup" />} />
         <Route path="/forgot" element={<AuthPage mode="forgot" />} />
         <Route path="/account" element={<PageTransition><Account /></PageTransition>} />
+        <Route path="/file/:id" element={<FileViewer />} />
         {routes.map(([path, Page]) => (
           <Route key={path} path={path} element={<PageTransition><Page /></PageTransition>} />
         ))}

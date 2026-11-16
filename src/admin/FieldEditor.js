@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import {
-  Box, Button, ButtonBase, Collapse, IconButton, MenuItem, Stack, Switch, TextField, Tooltip, Typography,
+  Box, Button, ButtonBase, Collapse, IconButton, LinearProgress, MenuItem, Stack, Switch, TextField, Tooltip, Typography,
 } from '@mui/material';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
@@ -9,8 +9,71 @@ import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
 import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { storage } from '../lib/firebase';
+import PictureAsPdfRoundedIcon from '@mui/icons-material/PictureAsPdfRounded';
+import { FILE_PATH_PREFIX, MAX_FILE_MB, isMediaRef, mediaId, resolveImage, uploadFile, uploadImage } from '../lib/media';
+
+// BlockEditor provides `publish()` so an upload goes live without pressing Save.
+export const AutoSaveContext = createContext({ publish: () => {} });
+
+// Shows "media:<id>" images inside the admin (the stored value stays the short reference).
+const useMediaSrc = (value) => {
+  const [src, setSrc] = useState(isMediaRef(value) ? '' : value);
+  useEffect(() => {
+    let alive = true;
+    if (!isMediaRef(value)) { setSrc(value); return undefined; }
+    setSrc('');
+    resolveImage(mediaId(value)).then((u) => { if (alive) setSrc(u || ''); });
+    return () => { alive = false; };
+  }, [value]);
+  return src;
+};
+const Thumb = ({ value, sx }) => {
+  const src = useMediaSrc(value);
+  return src ? <Box component="img" src={src} alt="" sx={sx} /> : null;
+};
+
+// Drag & drop + click-to-pick upload area with progress.
+const UploadButton = ({ accept, label, onFile, busy, progress }) => {
+  const [over, setOver] = useState(false);
+  return (
+    <Box
+      component="label"
+      onDragOver={(e) => { e.preventDefault(); setOver(true); }}
+      onDragLeave={() => setOver(false)}
+      onDrop={(e) => { e.preventDefault(); setOver(false); if (!busy) onFile(e.dataTransfer.files?.[0]); }}
+      sx={{
+        display: 'flex', alignItems: 'center', gap: 1, mt: 0.8, px: 1.5, py: 1, borderRadius: '12px', cursor: busy ? 'default' : 'pointer',
+        border: '1.5px dashed', borderColor: over ? 'primary.main' : 'divider', bgcolor: over ? 'rgba(224,41,74,.06)' : 'transparent',
+        fontSize: 13.5, fontWeight: 700, color: 'primary.main', '&:hover': { borderColor: 'primary.main' },
+      }}
+    >
+      <CloudUploadRoundedIcon fontSize="small" />
+      <Box sx={{ flex: 1 }}>
+        {busy ? `Uploading… ${Math.round((progress || 0) * 100)}%` : label}
+        {busy && <LinearProgress variant="determinate" value={Math.round((progress || 0) * 100)} sx={{ mt: 0.5, borderRadius: 4 }} />}
+      </Box>
+      <input hidden type="file" accept={accept} disabled={busy} onChange={(e) => { onFile(e.target.files?.[0]); e.target.value = ''; }} />
+    </Box>
+  );
+};
+
+const useUploader = (uploader, onDone) => {
+  const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [err, setErr] = useState('');
+  const run = async (file) => {
+    if (!file) return;
+    setBusy(true); setErr(''); setProgress(0);
+    try {
+      onDone(await uploader(file, setProgress), file);
+    } catch (e) {
+      setErr(e.message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return { busy, progress, err, run };
+};
 
 const blankFor = (fields) => Object.fromEntries(fields.map((f) => [f.key, f.default !== undefined ? f.default : f.type === 'list' || f.type === 'strings' || f.type === 'feed' ? [] : f.type === 'bool' ? false : f.type === 'i18n' || f.type === 'i18nArea' ? { en: '', hi: '' } : f.type === 'object' ? blankFor(f.fields) : f.type === 'number' ? 0 : '']));
 
@@ -30,37 +93,51 @@ const toLocalInput = (iso) => {
 };
 
 const ImageField = ({ label, value, onChange }) => {
-  const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState('');
-  const upload = async (file) => {
-    if (!file) return;
-    if (file.size > 5 * 1024 * 1024) { setErr('Image must be under 5 MB'); return; }
-    setBusy(true); setErr('');
-    try {
-      const r = ref(storage, `uploads/${Date.now()}-${file.name.replace(/[^\w.-]/g, '_')}`);
-      await uploadBytes(r, file, { contentType: file.type });
-      onChange(await getDownloadURL(r));
-    } catch (e) {
-      setErr(e.message);
-    } finally {
-      setBusy(false);
-    }
-  };
+  const { publish } = useContext(AutoSaveContext);
+  const src = useMediaSrc(value);
+  const up = useUploader(uploadImage, (url) => { onChange(url); publish(); });
+  const uploaded = isMediaRef(value);
   return (
     <Stack direction="row" gap={1.5} alignItems="flex-start">
       <Box sx={{ width: 72, height: 72, flexShrink: 0, borderRadius: '12px', bgcolor: 'action.hover', overflow: 'hidden', border: 1, borderColor: 'divider' }}>
-        {value && <Box component="img" src={value} alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+        {src && <Box component="img" src={src} alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
       </Box>
-      <Box sx={{ flex: 1 }}>
-        <TextField size="small" fullWidth label={label} value={value || ''} onChange={(e) => onChange(e.target.value)} helperText={err || 'Paste an image URL / site path, or upload'} error={Boolean(err)} />
-        {storage && (
-          <Button component="label" size="small" startIcon={<CloudUploadRoundedIcon />} disabled={busy} sx={{ mt: 0.5, minHeight: 32 }}>
-            {busy ? 'Uploading…' : 'Upload image'}
-            <input hidden type="file" accept="image/*" onChange={(e) => upload(e.target.files?.[0])} />
-          </Button>
+      <Box sx={{ flex: 1, minWidth: 0 }}>
+        {uploaded ? (
+          <Stack direction="row" alignItems="center" gap={1} sx={{ minHeight: 40 }}>
+            <Typography variant="body2" sx={{ fontWeight: 700, flex: 1 }}>{label}: <Box component="span" sx={{ color: 'success.main' }}>uploaded ✓</Box></Typography>
+            <Button size="small" color="error" onClick={() => onChange('')}>Remove</Button>
+          </Stack>
+        ) : (
+          <TextField size="small" fullWidth label={label} value={value || ''} onChange={(e) => onChange(e.target.value)} placeholder="Upload below, or paste an image link" error={Boolean(up.err)} helperText={up.err || undefined} />
         )}
+        {uploaded && up.err && <Typography variant="caption" color="error">{up.err}</Typography>}
+        <UploadButton accept="image/*" label={uploaded || value ? 'Replace image — click or drop a file' : 'Upload image — click or drop a file'} onFile={up.run} busy={up.busy} progress={up.progress} />
       </Box>
     </Stack>
+  );
+};
+
+// A link that can also be an uploaded PDF / document.
+const FileLinkField = ({ label, value, onChange, help }) => {
+  const { publish } = useContext(AutoSaveContext);
+  const up = useUploader(uploadFile, (url) => { onChange(url); publish(); });
+  const uploaded = typeof value === 'string' && value.startsWith(FILE_PATH_PREFIX);
+  return (
+    <Box>
+      {uploaded ? (
+        <Stack direction="row" alignItems="center" gap={1} sx={{ minHeight: 40, px: 1.5, borderRadius: '10px', border: 1, borderColor: 'divider' }}>
+          <PictureAsPdfRoundedIcon fontSize="small" color="primary" />
+          <Typography variant="body2" sx={{ flex: 1, fontWeight: 700 }}>{label}: <Box component="span" sx={{ color: 'success.main' }}>file uploaded ✓</Box></Typography>
+          <Button size="small" component="a" href={value} target="_blank" rel="noopener">Open</Button>
+          <Button size="small" color="error" onClick={() => onChange('')}>Remove</Button>
+        </Stack>
+      ) : (
+        <TextField size="small" fullWidth label={label} value={value || ''} onChange={(e) => onChange(e.target.value)} placeholder="Upload a PDF below, or paste a Drive link" error={Boolean(up.err)} helperText={up.err || help} />
+      )}
+      {uploaded && up.err && <Typography variant="caption" color="error">{up.err}</Typography>}
+      <UploadButton accept="application/pdf,image/*,.doc,.docx,.ppt,.pptx" label={`${uploaded ? 'Replace' : 'Upload'} PDF — click or drop (max ${MAX_FILE_MB} MB)`} onFile={up.run} busy={up.busy} progress={up.progress} />
+    </Box>
   );
 };
 
@@ -94,7 +171,7 @@ const ListField = ({ field, value = [], onChange }) => {
             <Stack direction="row" alignItems="center" sx={{ pl: 1.5, pr: 0.5 }}>
               <ButtonBase onClick={() => setOpen(open === i ? null : i)} sx={{ flex: 1, justifyContent: 'flex-start', py: 1.2, gap: 1, textAlign: 'left', minWidth: 0 }}>
                 <ExpandMoreRoundedIcon fontSize="small" sx={{ transform: open === i ? 'rotate(180deg)' : 'none', transition: '.2s' }} />
-                {item?.img && <Box component="img" src={item.img} alt="" sx={{ width: 28, height: 28, borderRadius: '6px', objectFit: 'cover' }} />}
+                {(item?.img || item?.image) && <Thumb value={item.img || item.image} sx={{ width: 28, height: 28, borderRadius: '6px', objectFit: 'cover' }} />}
                 <Typography noWrap sx={{ fontSize: 14, fontWeight: 600 }}>{label(item, i) || `Item ${i + 1}`}</Typography>
                 {item?.visible === false && <Typography variant="caption" color="text.secondary">(hidden)</Typography>}
               </ButtonBase>
@@ -133,8 +210,12 @@ const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'Ju
 const emptyPost = () => ({ date: todayISO(), title: '', link: '', note: '' });
 
 // Daily posts: a quick "add" form on top, then posts grouped by month (newest first).
+const isLink = (l) => /^https?:\/\//.test(l) || l.startsWith(FILE_PATH_PREFIX);
+
 const FeedField = ({ value = [], onChange }) => {
+  const { publish } = useContext(AutoSaveContext);
   const [draft, setDraft] = useState(emptyPost);
+  const up = useUploader(uploadFile, (url, file) => setDraft((d) => ({ ...d, link: url, title: d.title || file.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ') })));
   const [editing, setEditing] = useState(null);
   const [err, setErr] = useState('');
   const sorted = value.map((p, i) => ({ ...p, _i: i })).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
@@ -143,9 +224,11 @@ const FeedField = ({ value = [], onChange }) => {
   const add = () => {
     if (!draft.date) { setErr('Pick a date'); return; }
     if (!draft.title.trim() && !draft.link.trim()) { setErr('Add a title or a link'); return; }
-    if (draft.link && !/^https?:\/\//.test(draft.link.trim())) { setErr('Link must start with https://'); return; }
+    if (draft.link && !isLink(draft.link.trim())) { setErr('Upload a PDF, or paste a link starting with https://'); return; }
+    if (up.busy) { setErr('Wait for the upload to finish'); return; }
     setErr('');
     onChange([{ ...draft, title: draft.title.trim(), link: draft.link.trim() }, ...value]);
+    publish();
     setDraft({ ...emptyPost(), date: draft.date });
   };
   const update = (i, patch) => onChange(value.map((p, j) => (j === i ? { ...p, ...patch } : p)));
@@ -158,13 +241,25 @@ const FeedField = ({ value = [], onChange }) => {
         <Box sx={{ display: 'grid', gap: 1.2, gridTemplateColumns: { xs: '1fr', sm: '160px 1fr' } }}>
           <TextField size="small" type="date" label="Date" InputLabelProps={{ shrink: true }} value={draft.date} onChange={(e) => setDraft({ ...draft, date: e.target.value })} />
           <TextField size="small" label="Title (e.g. The Hindu analysis – 9 Nov)" value={draft.title} onChange={(e) => setDraft({ ...draft, title: e.target.value })} />
-          <TextField size="small" label="PDF / Drive link" placeholder="https://drive.google.com/…" value={draft.link} onChange={(e) => setDraft({ ...draft, link: e.target.value })} sx={{ gridColumn: { sm: '1 / -1' } }} />
+          <Box sx={{ gridColumn: { sm: '1 / -1' } }}>
+            {draft.link.startsWith(FILE_PATH_PREFIX) ? (
+              <Stack direction="row" alignItems="center" gap={1} sx={{ minHeight: 40, px: 1.5, borderRadius: '10px', border: 1, borderColor: 'success.main' }}>
+                <PictureAsPdfRoundedIcon fontSize="small" color="primary" />
+                <Typography variant="body2" sx={{ flex: 1, fontWeight: 700, color: 'success.main' }}>PDF uploaded ✓</Typography>
+                <Button size="small" color="error" onClick={() => setDraft({ ...draft, link: '' })}>Remove</Button>
+              </Stack>
+            ) : (
+              <TextField size="small" fullWidth label="PDF / Drive link (or upload below)" placeholder="https://drive.google.com/…" value={draft.link} onChange={(e) => setDraft({ ...draft, link: e.target.value })} />
+            )}
+            {up.err && <Typography variant="caption" color="error">{up.err}</Typography>}
+            <UploadButton accept="application/pdf,image/*" label={`Upload notes PDF — click or drop (max ${MAX_FILE_MB} MB)`} onFile={up.run} busy={up.busy} progress={up.progress} />
+          </Box>
           <TextField size="small" label="Short note (optional)" value={draft.note} onChange={(e) => setDraft({ ...draft, note: e.target.value })} sx={{ gridColumn: { sm: '1 / -1' } }} />
         </Box>
         {err && <Typography variant="caption" color="error">{err}</Typography>}
         <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mt: 1.5 }}>
-          <Typography variant="caption" color="text.secondary">Future dates go live automatically on that day. Remember to press Save below.</Typography>
-          <Button variant="contained" size="small" onClick={add} startIcon={<AddRoundedIcon />}>Add post</Button>
+          <Typography variant="caption" color="text.secondary">Publishes instantly. Future dates go live automatically on that day.</Typography>
+          <Button variant="contained" size="small" onClick={add} disabled={up.busy} startIcon={<AddRoundedIcon />}>Publish post</Button>
         </Stack>
       </Box>
 
@@ -189,7 +284,7 @@ const FeedField = ({ value = [], onChange }) => {
                     <Box sx={{ display: 'grid', gap: 1.2, p: 1.5, pt: 0.5, gridTemplateColumns: { xs: '1fr', sm: '160px 1fr' } }}>
                       <TextField size="small" type="date" label="Date" InputLabelProps={{ shrink: true }} value={p.date || ''} onChange={(e) => update(p._i, { date: e.target.value })} />
                       <TextField size="small" label="Title" value={p.title || ''} onChange={(e) => update(p._i, { title: e.target.value })} />
-                      <TextField size="small" label="PDF / Drive link" value={p.link || ''} onChange={(e) => update(p._i, { link: e.target.value })} sx={{ gridColumn: { sm: '1 / -1' } }} />
+                      <Box sx={{ gridColumn: { sm: '1 / -1' } }}><FileLinkField label="PDF / Drive link" value={p.link || ''} onChange={(v) => update(p._i, { link: v })} /></Box>
                       <TextField size="small" label="Short note" value={p.note || ''} onChange={(e) => update(p._i, { note: e.target.value })} sx={{ gridColumn: { sm: '1 / -1' } }} />
                       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ gridColumn: { sm: '1 / -1' } }}>
                         <Typography variant="body2">Hide from website</Typography>
@@ -226,6 +321,8 @@ export const Field = ({ field, value, onChange }) => {
       return <TextField {...common} select value={value || ''} onChange={(e) => onChange(e.target.value)}>{field.options.map((o) => <MenuItem key={o} value={o}>{o}</MenuItem>)}</TextField>;
     case 'image':
       return <ImageField label={field.label} value={value} onChange={onChange} />;
+    case 'file':
+      return <FileLinkField label={field.label} value={value} onChange={onChange} help={field.help} />;
     case 'i18n':
     case 'i18nArea': {
       const v = value && typeof value === 'object' ? value : { en: value || '', hi: '' };

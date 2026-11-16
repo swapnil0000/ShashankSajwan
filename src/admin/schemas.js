@@ -1,5 +1,5 @@
 // Field definitions for every editable block. The admin form is generated from these.
-// Types: text, textarea, url, image, number, bool, datetime, i18n, i18nArea, select,
+// Types: text, textarea, url, file (link or uploaded PDF), image, number, bool, datetime, i18n, i18nArea, select,
 //        strings (list of text), list (list of objects with `fields`), object (nested `fields`).
 import { HOME_SECTIONS } from '../data/content';
 import { resourcePages } from '../data/resources';
@@ -9,7 +9,7 @@ import { strings } from '../i18n/strings';
 const resourceItem = [
   { key: 'title', label: 'Title (optional)', type: 'text' },
   { key: 'img', label: 'Thumbnail', type: 'image' },
-  { key: 'link', label: 'PDF / Drive link', type: 'url' },
+  { key: 'link', label: 'PDF / Drive link', type: 'file' },
 ];
 
 const resourceSchema = {

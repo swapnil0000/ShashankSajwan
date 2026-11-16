@@ -91,7 +91,7 @@ const HeroCarousel = () => {
               <Box sx={{ position: 'absolute', bottom: 10, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 0.8 }}>
                 {live.map((s, i) => (
                   <ButtonBase
-                    key={`${s.img}-${i}`}
+                    key={i}
                     aria-label={`Go to slide ${i + 1}`}
                     onClick={() => setState([i, i > current ? 1 : -1])}
                     sx={{ height: 8, width: i === current ? 24 : 8, borderRadius: 9, bgcolor: i === current ? '#fff' : 'rgba(255,255,255,.55)', transition: 'width .3s', boxShadow: '0 1px 4px rgba(0,0,0,.3)' }}
