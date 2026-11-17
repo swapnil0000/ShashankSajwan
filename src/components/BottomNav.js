@@ -17,7 +17,7 @@ import IconTile from './ui/IconTile';
 const buildMoreLinks = (socials, withPyqs) => [
   { label: { en: 'Books', hi: 'पुस्तकें' }, to: '/books', icon: '📚' },
   { label: { en: 'Newspaper', hi: 'समाचार पत्र' }, to: '/newspaper', icon: '📰' },
-  { label: { en: 'Study Hub', hi: 'स्टडी हब' }, to: '/study', icon: '🗂️' },
+  { label: { en: 'Resource Hub', hi: 'संसाधन हब' }, to: '/study', icon: '🗂️' },
   ...(withPyqs ? [{ label: { en: 'PYQs', hi: 'PYQs' }, to: '/pyqs', icon: '🎯' }] : []),
   { label: { en: 'Videos', hi: 'वीडियो' }, to: '/videos', icon: '▶️' },
   { label: { en: 'Syllabus', hi: 'पाठ्यक्रम' }, to: '/syllabus', icon: '🧭' },
@@ -88,9 +88,8 @@ const BottomNav = () => {
   const batch = useContent('batch');
   const batchOn = batch.enabled !== false;
   const moreLinks = [
-    ...(configured ? [user
-      ? { label: { en: 'Account', hi: 'खाता' }, to: '/account', icon: '🙂' }
-      : { label: { en: 'Sign in', hi: 'लॉग इन' }, to: '/login', icon: '🔑' }] : []),
+    // Sign in is hidden from the site (still reachable at /login); signed-in users keep their Account link.
+    ...(configured && user ? [{ label: { en: 'Account', hi: 'खाता' }, to: '/account', icon: '🙂' }] : []),
     ...(isAdmin ? [{ label: { en: 'Admin', hi: 'एडमिन' }, to: '/admin', icon: '🛠️' }] : []),
     // PYQs gives its tab slot to the batch button, so it moves in here.
     ...buildMoreLinks(socials, batchOn),
