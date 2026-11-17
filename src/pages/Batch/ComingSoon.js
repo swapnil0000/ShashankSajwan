@@ -6,7 +6,8 @@ import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import { db } from '../../lib/firebase';
 import { useContent } from '../../context/ContentContext';
-import WhatsAppButton, { useBatchWhatsApp } from '../../components/ui/WhatsAppButton';
+import { useBatchWhatsApp } from '../../components/ui/WhatsAppButton';
+import WhatsAppEnquiry, { WhatsAppFab } from '../../components/ui/WhatsAppEnquiry';
 
 const phoneOk = (p) => /^[6-9]\d{9}$/.test(p.replace(/\D/g, '').slice(-10));
 
@@ -72,15 +73,10 @@ const ComingSoon = () => {
             )}
           </Box>
 
-          {wa && (
-            <Box sx={{ mt: 2, p: { xs: 2, sm: 2.5 }, borderRadius: '24px', bgcolor: 'rgba(37,211,102,.08)', border: '1px solid rgba(37,211,102,.3)' }}>
-              <Typography sx={{ fontWeight: 800 }}>Have a question about the batch?</Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.3, mb: 1.5 }}>Message us on WhatsApp — your enquiry is already typed, just press send.</Typography>
-              <WhatsAppButton fullWidth />
-            </Box>
-          )}
+          {wa && <WhatsAppEnquiry sx={{ mt: 2 }} />}
         </motion.div>
       </Container>
+      <WhatsAppFab />
     </Box>
   );
 };

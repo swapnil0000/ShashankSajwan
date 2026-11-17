@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { Alert, Box, Button, CircularProgress, Container, Stack, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Container, Stack, Typography } from '@mui/material';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSettingsRounded';
 import { useAuth } from '../../context/AuthContext';
@@ -10,11 +10,10 @@ import { Reveal } from '../../components/ui/Motion';
 import UserAvatar from '../../components/ui/UserAvatar';
 
 const Account = () => {
-  const { user, loading, isAdmin, logout, resendVerification, refreshUser } = useAuth();
+  const { user, loading, isAdmin, logout } = useAuth();
   const { bookmarks, lang } = useApp();
   const { items: sections } = useContent('studySections');
   const navigate = useNavigate();
-  const [msg, setMsg] = useState('');
 
   if (loading) return <Box sx={{ pt: 16, display: 'grid', placeItems: 'center' }}><CircularProgress /></Box>;
   if (!user) return <Navigate to="/login?next=/account" replace />;
@@ -43,19 +42,9 @@ const Account = () => {
           </Box>
         </Reveal>
 
-        {!user.emailVerified && (
-          <Alert
-            severity="info"
-            sx={{ mt: 2 }}
-            action={<Stack direction="row"><Button color="inherit" size="small" onClick={async () => { await resendVerification(); setMsg('Verification email sent'); }}>Resend</Button><Button color="inherit" size="small" onClick={refreshUser}>I've verified</Button></Stack>}
-          >
-            {msg || 'Please verify your email — we sent you a link.'}
-          </Alert>
-        )}
-
         <Typography variant="h6" sx={{ mt: 4, mb: 1.5 }}>Saved sections</Typography>
         {saved.length === 0 ? (
-          <Typography color="text.secondary">Nothing saved yet. Tap the bookmark on any card in the <Link to="/study">Study Hub</Link>.</Typography>
+          <Typography color="text.secondary">Nothing saved yet. Tap the bookmark on any card in the <Link to="/study">Resource Hub</Link>.</Typography>
         ) : (
           <Box sx={{ display: 'grid', gap: 1.5, gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(3, 1fr)' } }}>
             {saved.map((s) => (

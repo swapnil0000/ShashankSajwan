@@ -3,7 +3,6 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -69,7 +68,8 @@ export const AuthProvider = ({ children }) => {
 
   const value = useMemo(() => {
     const email = user?.email?.toLowerCase();
-    // Rules also require a verified email, so mirror that here.
+    // Students need no email verification. Admin access still needs a Google-verified email
+    // (matches firestore.rules), so nobody can claim an admin's address with a password sign-up.
     const isAdmin = Boolean(email && user.emailVerified && (ADMIN_EMAILS.includes(email) || listedAdmin));
     const isOwner = Boolean(isAdmin && OWNER_EMAILS.includes(email));
     return {
@@ -84,7 +84,6 @@ export const AuthProvider = ({ children }) => {
         const cred = await createUserWithEmailAndPassword(auth, e, password);
         if (name) await updateProfile(cred.user, { displayName: name });
         await ensureProfile(cred.user, name);
-        await sendEmailVerification(cred.user);
         return cred.user;
       },
       login: async ({ email: e, password }) => {
@@ -99,7 +98,6 @@ export const AuthProvider = ({ children }) => {
         return cred.user;
       },
       resetPassword: (e) => (auth ? sendPasswordResetEmail(auth, e) : notConfigured()),
-      resendVerification: () => (auth?.currentUser ? sendEmailVerification(auth.currentUser) : notConfigured()),
       refreshUser: async () => {
         await auth?.currentUser?.reload();
         setUser(auth?.currentUser ? { ...auth.currentUser } : null);

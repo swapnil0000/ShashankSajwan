@@ -160,6 +160,9 @@ export const adminGroups = [
         { key: 'whatsapp', label: 'WhatsApp number (batch enquiries only)', type: 'text', help: 'e.g. +91 70607 48896. Empty = hide all WhatsApp buttons.' },
         { key: 'whatsappLabel', label: 'WhatsApp button text', type: 'text' },
         { key: 'whatsappMessage', label: 'Pre-filled WhatsApp message', type: 'textarea', help: 'Typed for the student when WhatsApp opens; they just press send.' },
+        { key: 'enquiryTitle', label: 'Enquiry form heading', type: 'text' },
+        { key: 'enquiryText', label: 'Enquiry form sub-text', type: 'text' },
+        { key: 'enquiryTypes', label: 'Enquiry types (students pick one)', type: 'strings' },
         { key: 'videoUrl', label: 'Intro video (YouTube URL)', type: 'url' },
         { key: 'brochureUrl', label: 'Brochure link', type: 'url' },
         { key: 'highlights', label: 'Highlights', type: 'list', itemLabel: (h) => `${h.icon} ${h.text}`, fields: [
@@ -217,7 +220,7 @@ export const adminGroups = [
   {
     title: 'Study material',
     blocks: [
-      { key: 'studySections', label: 'Study Hub cards', icon: '🗂️', desc: 'Cards on Home & Study Hub, their links and search tags', fields: [
+      { key: 'studySections', label: 'Resource Hub cards', icon: '🗂️', desc: 'Cards on Home & Resource Hub, their links and search tags', fields: [
         { key: 'items', label: 'Cards', type: 'list', itemLabel: (s) => s.title?.en, fields: [
           { key: 'id', label: 'ID (unique, no spaces)', type: 'text' },
           { key: 'icon', label: 'Emoji', type: 'text' },

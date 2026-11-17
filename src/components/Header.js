@@ -8,7 +8,6 @@ import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import { tr, useContent } from '../context/ContentContext';
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import UserAvatar from './ui/UserAvatar';
 
 // `wide` items only fit on extra-large screens; they stay reachable from the footer and the More sheet.
@@ -111,17 +110,14 @@ const Header = () => {
           <IconButton onClick={toggleMode} aria-label="Toggle dark mode" sx={{ bgcolor: 'action.hover' }}>
             {mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
           </IconButton>
-          {configured && (user ? (
+          {/* Sign in / Sign up are hidden from the site; they still work at /login and /signup. */}
+          {configured && user && (
             <Tooltip title="My account">
               <IconButton component={Link} to="/account" aria-label="My account" sx={{ p: 0.4 }}>
                 <UserAvatar user={user} size={36} />
               </IconButton>
             </Tooltip>
-          ) : isMobile ? (
-            <IconButton component={Link} to="/login" aria-label="Sign in" sx={{ bgcolor: 'action.hover' }}><PersonRoundedIcon /></IconButton>
-          ) : (
-            <Button component={Link} to="/login" variant={batchOn ? 'outlined' : 'contained'} color={batchOn ? 'inherit' : 'primary'} sx={{ ml: 0.5, minHeight: 40, ...(batchOn && { borderColor: 'divider' }) }}>Sign in</Button>
-          ))}
+          )}
         </Stack>
       </Stack>
     </motion.header>

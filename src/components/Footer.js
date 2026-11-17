@@ -83,7 +83,7 @@ const Footer = () => {
         {/* Link columns */}
         <Box sx={{ display: 'grid', gap: { xs: 4, md: 3 }, gridTemplateColumns: { xs: '1fr 1fr', md: '1fr 1fr 1fr 1.3fr' }, py: { xs: 4, md: 6 } }}>
           <Column title="Study">
-            <FootLink to="/resources">Resources</FootLink>
+            <FootLink to="/resources">Practice</FootLink>
             <FootLink to="/newspaper">Newspaper Notes</FootLink>
             <FootLink to="/ncert">NCERT Notes</FootLink>
             <FootLink to="/pyqs">PYQs</FootLink>
@@ -98,7 +98,7 @@ const Footer = () => {
             )}
             <FootLink to="/books">Our Books</FootLink>
             <FootLink to="/videos">Videos</FootLink>
-            <FootLink to="/study">Study Hub</FootLink>
+            <FootLink to="/study">Resource Hub</FootLink>
             <FootLink to="/about">About</FootLink>
           </Column>
           <Column title="Support">

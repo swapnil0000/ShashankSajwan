@@ -13,6 +13,7 @@ import { Reveal, stagger, staggerItem } from '../../components/ui/Motion';
 import { useContent } from '../../context/ContentContext';
 import ComingSoon from './ComingSoon';
 import WhatsAppButton, { useBatchWhatsApp } from '../../components/ui/WhatsAppButton';
+import WhatsAppEnquiry, { WhatsAppFab } from '../../components/ui/WhatsAppEnquiry';
 
 // Where the main button goes: the admin-set link, else WhatsApp, else an email enquiry.
 export const useBatchCta = () => {
@@ -131,6 +132,9 @@ const Batch = () => {
             <CtaButton sx={{ bgcolor: '#fff', color: '#0B1640', background: '#fff', flexShrink: 0, '&:hover': { bgcolor: '#eee' } }} />
           </Box>
         </Reveal>
+        <Reveal>
+          <WhatsAppEnquiry sx={{ mt: 2.5, maxWidth: 720, mx: 'auto' }} />
+        </Reveal>
       </Container>
 
       {/* FAQs + terms */}
@@ -161,6 +165,7 @@ const Batch = () => {
         </Box>
         <MobileCta />
       </Box>
+      <WhatsAppFab raised />
     </Box>
   );
 };

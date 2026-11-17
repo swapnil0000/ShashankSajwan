@@ -250,7 +250,7 @@ const Admins = () => {
   return (
     <Box>
       <Typography variant="h2">Admins</Typography>
-      <Typography color="text.secondary" sx={{ mb: 3 }}>People who can edit the website. They sign in with Google (or a verified email) using the address listed here.</Typography>
+      <Typography color="text.secondary" sx={{ mb: 3 }}>People who can edit the website. They sign in with Google using the address listed here.</Typography>
       {msg && <Alert severity="info" sx={{ mb: 2 }} onClose={() => setMsg('')}>{msg}</Alert>}
       {isOwner ? (
         <Stack direction={{ xs: 'column', sm: 'row' }} gap={1} sx={{ mb: 3 }}>
@@ -341,7 +341,7 @@ const AdminApp = () => {
       <Container maxWidth="sm" sx={{ pt: 14, pb: 6 }}>
         <Alert severity={isAdminEmailUnverified ? 'info' : 'error'}>
           {isAdminEmailUnverified
-            ? 'Please verify your email first — open the verification link we emailed you, then sign out and sign in again.'
+            ? 'Admins must sign in with Google. Log out, then use "Continue with Google" with this email.'
             : `${user.email} does not have admin access.`}
         </Alert>
         <Button sx={{ mt: 2 }} onClick={() => navigate('/')}>Back to website</Button>

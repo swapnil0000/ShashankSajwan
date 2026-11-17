@@ -132,6 +132,9 @@ export const contentDefaults = {
     whatsapp: '+91 70607 48896',
     whatsappLabel: 'Batch enquiry on WhatsApp',
     whatsappMessage: 'Hi! I want to know about the UPSC Full-Fledged Preparation Batch by Shashank Sajwan. Please share the fees, schedule and admission details.',
+    enquiryTitle: 'Enquire on WhatsApp',
+    enquiryText: 'Choose what you want to know — we reply on WhatsApp.',
+    enquiryTypes: ['Admission & fees', 'Batch schedule & timings', 'Study material & notes', 'Books', 'Other'],
     highlights: [
       { icon: '📅', text: '2 Years Access' },
       { icon: '🧭', text: 'Proper Mentorship/Guidance' },
