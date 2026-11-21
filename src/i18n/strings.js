@@ -116,6 +116,7 @@ export const strings = {
     footerTgButton: 'Join Telegram',
     footerYtButton: 'Subscribe',
     footerEmailLabel: 'Queries, careers & opportunities',
+    footerPhoneLabel: 'Call us',
     backToTop: 'Back to top',
   },
   hi: {

@@ -52,6 +52,8 @@ export const contentDefaults = {
   site: {
     tagline: both('tagline'),
     email: 'ask.iasmentor@gmail.com',
+    // General contact number shown in the footer (tap to call).
+    phone: '+91 70607 48896',
     socials,
     prelimsDate: PRELIMS_DATE,
     prelimsLabel: both('prelimsIn'),

@@ -7,6 +7,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import XIcon from '@mui/icons-material/X';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
+import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
 import { useApp } from '../context/AppContext';
@@ -30,9 +31,26 @@ const Column = ({ title, children }) => (
   </Stack>
 );
 
+// Tappable contact row (email / phone) in the Connect column.
+const ContactCard = ({ href, Icon, label, value }) => (
+  <Box
+    component="a"
+    href={href}
+    sx={{ display: 'flex', alignItems: 'center', gap: 1.2, p: 1.2, pr: 1.5, borderRadius: '14px', bgcolor: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.08)', color: '#fff', '&:hover': { bgcolor: 'rgba(255,255,255,.09)' } }}
+  >
+    <Box sx={{ width: 36, height: 36, flexShrink: 0, borderRadius: '10px', display: 'grid', placeItems: 'center', background: 'var(--grad)' }}><Icon fontSize="small" /></Box>
+    <Box sx={{ minWidth: 0, flex: 1 }}>
+      <Typography sx={{ fontSize: 11.5, color: 'rgba(255,255,255,.55)' }}>{label}</Typography>
+      <Typography noWrap sx={{ fontSize: 14, fontWeight: 700 }}>{value}</Typography>
+    </Box>
+    <ArrowForwardRoundedIcon sx={{ fontSize: 18, opacity: 0.6 }} />
+  </Box>
+);
+
 const Footer = () => {
   const { lang, t } = useApp();
-  const { socials, email, tagline, footerText, logo, nameA, nameB } = useContent('site');
+  const { socials, email, phone, tagline, footerText, logo, nameA, nameB } = useContent('site');
+  const tel = String(phone || '').replace(/[^\d+]/g, '');
   const batch = useContent('batch');
   const icons = [
     [socials.youtube, YouTubeIcon, 'YouTube', '#FF0000'],
@@ -124,18 +142,10 @@ const Footer = () => {
                   </IconButton>
                 ))}
               </Stack>
-              <Box
-                component="a"
-                href={`mailto:${email}`}
-                sx={{ mt: 1, display: 'flex', alignItems: 'center', gap: 1.2, p: 1.2, pr: 1.5, borderRadius: '14px', bgcolor: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.08)', color: '#fff', '&:hover': { bgcolor: 'rgba(255,255,255,.09)' } }}
-              >
-                <Box sx={{ width: 36, height: 36, flexShrink: 0, borderRadius: '10px', display: 'grid', placeItems: 'center', background: 'var(--grad)' }}><MailRoundedIcon fontSize="small" /></Box>
-                <Box sx={{ minWidth: 0, flex: 1 }}>
-                  <Typography sx={{ fontSize: 11.5, color: 'rgba(255,255,255,.55)' }}>{t('footerEmailLabel')}</Typography>
-                  <Typography noWrap sx={{ fontSize: 14, fontWeight: 700 }}>{email}</Typography>
-                </Box>
-                <ArrowForwardRoundedIcon sx={{ fontSize: 18, opacity: 0.6 }} />
-              </Box>
+              <Stack gap={1} sx={{ mt: 1 }}>
+                <ContactCard href={`mailto:${email}`} Icon={MailRoundedIcon} label={t('footerEmailLabel')} value={email} />
+                {tel && <ContactCard href={`tel:${tel}`} Icon={PhoneRoundedIcon} label={t('footerPhoneLabel')} value={phone} />}
+              </Stack>
             </Column>
           </Box>
         </Box>
