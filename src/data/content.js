@@ -35,6 +35,7 @@ const allVideos = [
 
 export const HOME_SECTIONS = [
   { id: 'carousel', label: 'Top carousel (slides from Admin → Carousel)' },
+  { id: 'offers', label: 'Batch + 1:1 Mentorship cards (right below the banner)' },
   { id: 'hero', label: 'Hero (headline, search, countdown)' },
   { id: 'updates', label: "Today's updates (latest daily posts)" },
   { id: 'stats', label: 'Stats strip' },
@@ -129,8 +130,12 @@ export const contentDefaults = {
     ctaLabel: 'Enquire now',
     ctaLink: '',
     // Batch enquiries open WhatsApp with this message already typed.
+    shortTitle: 'UPSC Prep Batch',
     whatsapp: '+91 70607 48896',
     whatsappLabel: 'Batch enquiry on WhatsApp',
+    whatsappHeader: true,
+    whatsappHeaderLabel: 'Batch Enquiry',
+    whatsappHeaderShort: 'Enquire',
     whatsappMessage: 'Hi! I want to know about the UPSC Full-Fledged Preparation Batch by Shashank Sajwan. Please share the fees, schedule and admission details.',
     enquiryTitle: 'Enquire on WhatsApp',
     enquiryText: 'Choose what you want to know — we reply on WhatsApp.',
@@ -176,6 +181,20 @@ export const contentDefaults = {
   books: { combo: bookCombo, items: bookList, trailerUrl: 'https://book-video.s3.ap-south-1.amazonaws.com/Sajwam+Video+FINAL+For+Amazon.mp4' },
   videos: { categories: ['Beginners', 'Strategy', 'Skills', 'Motivation'], items: allVideos },
   faqs: { items: faqs },
+  // One-to-One Mentorship: shown as a card below the Home banner and in the header enquiry chooser.
+  mentorship: {
+    enabled: true,
+    badge: '1:1 with Shashank Sir',
+    title: 'One-to-One',
+    accent: 'Mentorship',
+    shortTitle: '1:1 Mentorship',
+    subtitle: 'Personal guidance for your UPSC journey, with a plan made for you and direct interaction with Shashank Sir.',
+    points: ['Personal study plan', 'Direct interaction with Shashank Sir', 'Regular progress check-ins'],
+    link: '',
+    whatsapp: '',
+    whatsappMessage: 'Hi! I want to know about the One-to-One Mentorship with Shashank Sajwan sir. Please share the fees, duration and how it works.',
+  },
+
   about: {
     heroTitle: 'Meet your',
     heroAccent: 'mentor',

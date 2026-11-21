@@ -4,7 +4,7 @@ import { Box, ButtonBase, Container, IconButton } from '@mui/material';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import { useContent } from '../../context/ContentContext';
+import { useContent, useContentReady, useRawContent } from '../../context/ContentContext';
 
 // A slide is live when enabled and today falls inside its optional start/end window.
 export const isScheduledNow = (item, now = new Date()) => {
@@ -21,10 +21,56 @@ const SlideLink = ({ link, children }) => {
   return <Box component={Link} to={link} sx={sx}>{children}</Box>;
 };
 
+// Image that fades in once loaded, so a slide never paints half-drawn.
+const FadeImg = ({ src, alt }) => {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => setLoaded(false), [src]);
+  return (
+    <Box
+      component="img"
+      src={src}
+      alt={alt}
+      draggable={false}
+      ref={(el) => { if (el?.complete && el.naturalWidth && !loaded) setLoaded(true); }}
+      onLoad={() => setLoaded(true)}
+      sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', userSelect: 'none', opacity: loaded ? 1 : 0, transition: 'opacity .35s ease' }}
+    />
+  );
+};
+
+const frameSx = (square) => ({
+  position: 'relative', overflow: 'hidden', borderRadius: { xs: '18px', md: '24px' }, bgcolor: 'action.hover',
+  aspectRatio: { xs: square ? '1 / 1' : '3 / 1', md: '3 / 1' },
+  boxShadow: '0 30px 60px -36px rgba(11,22,64,.55)',
+});
+
+// `aside` (large screens only) sits to the right of the slider at the same height.
+const Shell = ({ children, aside }) => (
+  <Box component="section" sx={{ position: 'relative', zIndex: 1, pt: { xs: '72px', md: '88px' } }}>
+    <Container maxWidth={false} sx={{ maxWidth: 1440, px: { xs: 1.5, sm: 3, lg: 4 } }}>
+      {aside ? (
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'minmax(0, 1fr)', lg: 'minmax(0, 1fr) 320px', xl: 'minmax(0, 1fr) 360px' }, gap: 2, alignItems: 'stretch' }}>
+          <Box sx={{ minWidth: 0 }}>{children}</Box>
+          {aside}
+        </Box>
+      ) : children}
+    </Container>
+  </Box>
+);
+
 // Full-width slider at the top of Home; slides come from Admin → Carousel.
-const HeroCarousel = () => {
+// Until the admin's slides are known it shows an empty frame of the same size, so the
+// built-in default banners never flash first and the page below doesn't jump.
+const HeroCarousel = ({ aside, fallback = null }) => {
+  const ready = useContentReady();
   const { slides = [], interval = 5 } = useContent('carousel');
-  const live = useMemo(() => slides.filter((s) => s.img && isScheduledNow(s)), [slides]);
+  const { slides: rawSlides = [] } = useRawContent('carousel');
+  // Decide which slides are live from the stored data: an uploaded image is '' while it
+  // loads, and dropping it then would make the slider change size and jump.
+  const live = useMemo(
+    () => rawSlides.map((raw, i) => ({ raw, slide: slides[i] || raw })).filter(({ raw }) => raw.img && isScheduledNow(raw)).map(({ slide }) => slide),
+    [rawSlides, slides],
+  );
   const [[index, dir], setState] = useState([0, 1]);
   const [paused, setPaused] = useState(false);
   const reduce = useReducedMotion();
@@ -39,20 +85,17 @@ const HeroCarousel = () => {
     return () => clearInterval(id);
   }, [count, paused, interval, go]);
 
-  if (!count) return null;
+  if (!ready) return <Shell aside={aside}><Box className="shimmer" sx={frameSx(true)} aria-hidden /></Shell>;
+  if (!count) return fallback;
   const slide = live[current];
 
   return (
-    <Box component="section" sx={{ position: 'relative', zIndex: 1, pt: { xs: '72px', md: '88px' } }}>
-      <Container maxWidth={false} sx={{ maxWidth: 1440, px: { xs: 1.5, sm: 3, lg: 4 } }}>
+    <Shell aside={aside}>
         <Box
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
-          sx={{
-            position: 'relative', overflow: 'hidden', borderRadius: { xs: '18px', md: '24px' }, bgcolor: 'action.hover',
-            aspectRatio: { xs: slide.imgMobile ? '1 / 1' : '3 / 1', md: '3 / 1' },
-            boxShadow: '0 30px 60px -36px rgba(11,22,64,.55)',
-          }}
+          className={slide.img ? undefined : 'shimmer'}
+          sx={frameSx(Boolean(slide.imgMobile || rawSlides.find((r) => r.img && isScheduledNow(r))?.imgMobile))}
         >
           <AnimatePresence initial={false} custom={dir}>
             <motion.div
@@ -74,7 +117,7 @@ const HeroCarousel = () => {
               <SlideLink link={slide.link}>
                 <picture style={{ display: 'block', width: '100%', height: '100%' }}>
                   {slide.imgMobile && <source media="(max-width: 899px)" srcSet={slide.imgMobile} />}
-                  <Box component="img" src={slide.img} alt={slide.alt || ''} draggable={false} sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', userSelect: 'none' }} />
+                  {slide.img && <FadeImg src={slide.img} alt={slide.alt || ''} />}
                 </picture>
               </SlideLink>
             </motion.div>
@@ -101,8 +144,7 @@ const HeroCarousel = () => {
             </>
           )}
         </Box>
-      </Container>
-    </Box>
+    </Shell>
   );
 };
 

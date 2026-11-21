@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, ButtonBase, Drawer, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, ButtonBase, Drawer, Stack, Switch, Typography, useMediaQuery, useTheme } from '@mui/material';
+import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
@@ -81,7 +82,7 @@ const BottomNav = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { t, lang } = useApp();
+  const { t, lang, mode, toggleMode } = useApp();
   const [sheet, setSheet] = useState(false);
   const { user, isAdmin, configured } = useAuth();
   const { socials } = useContent('site');
@@ -139,6 +140,12 @@ const BottomNav = () => {
             </motion.div>
           ))}
         </Box>
+        {/* On phones the theme switch lives here, leaving the header room for the WhatsApp enquiry button */}
+        <Stack component="label" direction="row" alignItems="center" gap={1.5} sx={{ mx: 2, mt: 1.5, p: 1.2, pl: 1.5, borderRadius: '16px', bgcolor: 'action.hover', cursor: 'pointer' }}>
+          <DarkModeRoundedIcon fontSize="small" />
+          <Typography sx={{ flex: 1, fontWeight: 600, fontSize: 14 }}>Dark mode</Typography>
+          <Switch checked={mode === 'dark'} onChange={toggleMode} inputProps={{ 'aria-label': 'Dark mode' }} />
+        </Stack>
       </Drawer>
     </>
   );

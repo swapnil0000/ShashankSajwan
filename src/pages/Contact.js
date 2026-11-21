@@ -66,7 +66,7 @@ const Contact = () => {
                 <Typography variant="h6">Batch enquiry</Typography>
                 <Typography variant="body2" color="text.secondary">For questions about the {batch.title} {batch.accent} only. For anything else, please email us.</Typography>
               </Box>
-              <WhatsAppButton sx={{ flexShrink: 0 }} />
+              <WhatsAppButton placement="contact" sx={{ flexShrink: 0 }} />
             </Stack>
           </Reveal>
         )}

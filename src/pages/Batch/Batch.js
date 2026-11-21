@@ -36,12 +36,12 @@ const CtaButton = (props) => {
 // Main button, plus a WhatsApp button when the main one goes somewhere else.
 const HeroButtons = () => {
   const { whatsappOnly } = useBatchCta();
-  return whatsappOnly ? <WhatsAppButton /> : <><CtaButton /><WhatsAppButton /></>;
+  return whatsappOnly ? <WhatsAppButton placement="batch-hero" /> : <><CtaButton /><WhatsAppButton placement="batch-hero" /></>;
 };
 
 const MobileCta = () => {
   const { whatsappOnly } = useBatchCta();
-  return whatsappOnly ? <WhatsAppButton size="medium" label="Enquire" /> : <CtaButton size="medium" />;
+  return whatsappOnly ? <WhatsAppButton placement="batch-sticky" size="medium" label="Enquire" /> : <CtaButton size="medium" />;
 };
 
 const Batch = () => {

@@ -90,3 +90,21 @@ img { max-width: 100%; }
 
 .announcement { bottom: calc(80px + env(safe-area-inset-bottom)); }
 @media (min-width: 900px) { .announcement { bottom: 24px; } }
+
+/* WhatsApp header button: green ring that pulses every few seconds */
+.wa-ring::after { content: ''; position: absolute; inset: 0; border-radius: 50%; animation: wa-ring 2.8s ease-out infinite; }
+@keyframes wa-ring {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.65); }
+  70%, 100% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .wa-ring::after { animation: none; } }
+
+/* Loading placeholder: a soft light sweep across the box */
+.shimmer { position: relative; overflow: hidden; }
+.shimmer::after {
+  content: ''; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+@keyframes shimmer { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .shimmer::after { animation: none; } }

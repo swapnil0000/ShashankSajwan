@@ -24,23 +24,40 @@ const swapMedia = (v, urls) => {
 
 // Live-subscribes to the `content` collection. Every block falls back to
 // the defaults in data/content.js, so the site works with no database at all.
+// The last content from the database is kept in the browser, so returning visitors see
+// the admin's banners, texts and pop-ups straight away instead of the built-in defaults
+// for a moment (that swap looked like a flicker).
+const CACHE_KEY = 'ss-content-v1';
+const readCache = () => {
+  try { return JSON.parse(localStorage.getItem(CACHE_KEY)) || null; } catch { return null; }
+};
+const writeCache = (value) => {
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify(value)); } catch { /* storage full or blocked: just no cache */ }
+};
+// If the database doesn't answer in time (slow network), fall back to the defaults.
+const READY_TIMEOUT_MS = 8000;
+
 export const ContentProvider = ({ children }) => {
-  const [remote, setRemote] = useState({});
+  const [remote, setRemote] = useState(() => (db && readCache()) || {});
   const [urls, setUrls] = useState({});
-  const [ready, setReady] = useState(!db);
+  // `ready` = the content on screen is the admin's (from the database or the browser copy).
+  const [ready, setReady] = useState(() => !db || Boolean(readCache()));
 
   useEffect(() => {
     if (!db) return undefined;
-    return onSnapshot(
+    const timer = setTimeout(() => setReady(true), READY_TIMEOUT_MS);
+    const stop = onSnapshot(
       collection(db, 'content'),
       (snap) => {
         const next = {};
         snap.forEach((d) => { next[d.id] = d.data(); });
         setRemote(next);
         setReady(true);
+        writeCache(next);
       },
       () => setReady(true),
     );
+    return () => { clearTimeout(timer); stop(); };
   }, []);
 
   // Load any uploaded images the content points to.
@@ -62,6 +79,10 @@ export const useContent = (key) => {
   const { resolved } = useContext(ContentContext);
   return { ...contentDefaults[key], ...(resolved[key] || {}) };
 };
+
+// True once the content on screen is the admin's — used to hold back banners and pop-ups
+// so the built-in defaults never flash first.
+export const useContentReady = () => useContext(ContentContext).ready;
 
 // Content exactly as stored — used by the admin editor so saves keep the small "media:<id>" references.
 export const useRawContent = (key) => {
