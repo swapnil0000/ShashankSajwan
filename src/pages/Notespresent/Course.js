@@ -30,7 +30,7 @@ const data=[
   {
     id:3,
     img:'/assets/noteshome/homenotes6.webp',
-    path:'/newsnotes',
+    path:'/newspaper',
   },
 
 ]

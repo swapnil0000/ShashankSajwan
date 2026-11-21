@@ -19,7 +19,7 @@ import { AutoSaveContext, Fields } from './FieldEditor';
 
 // Where each block shows up on the live site (for the "View" button).
 const previewPath = (key) => {
-  if (key.startsWith('resource_')) return { ncert: '/ncert', pyqs: '/pyqs', syllabus: '/syllabus', general: '/general', optional: '/optional', news24: '/newsnotes', news25: '/newsnotes25' }[key.slice(9)];
+  if (key.startsWith('resource_')) return { ncert: '/ncert', pyqs: '/pyqs', syllabus: '/syllabus', general: '/general', optional: '/optional' }[key.slice(9)];
   return { site: '/', home: '/', about: '/about', contact: '/contact', faqs: '/faqs', batch: '/courses', texts: '/', policy_privacy: '/private', policy_terms: '/terms', policy_refund: '/refund', carousel: '/', popups: '/', feed_newspaper: '/newspaper', feed_ca: '/resources/current-affairs', feed_mcq: '/resources/ncert-mcqs', feed_pyq: '/resources/pyqs', studySections: '/study', books: '/books', videos: '/videos' }[key];
 };
 

@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Box, ThemeProvider } from '@mui/material';
 import Header from './components/Header';
@@ -17,12 +17,10 @@ import Videos from './pages/Videos/Videos';
 import Syllabus from './pages/syllabus/Syllabus';
 import Pyqs from './pages/Pyqs/Pyqs';
 import General from './pages/GeneralStudies/General';
-import NewsNotes from './pages/Newspaper/NewsNotes';
 import FAQs from './pages/FAQs/FAQs';
 import Optional from './pages/optional/Optional';
 import Payment from './pages/Payment';
 import BookPage from './pages/books/BookPage';
-import Optional2025 from './pages/Newspaper/NewsNotes2025';
 import AuthPage from './pages/auth/AuthPage';
 import Account from './pages/auth/Account';
 import Announcement from './components/Announcement';
@@ -45,7 +43,7 @@ const Legacy = ({ children }) => (
 const routes = [
   ['/about', About], ['/ncert', Material], ['/contact', Contact], ['/videos', Videos],
   ['/faqs', FAQs], ['/syllabus', Syllabus], ['/pyqs', Pyqs], ['/general', General],
-  ['/optional', Optional], ['/newsnotes', NewsNotes], ['/newsnotes25', Optional2025], ['/books', BookPage],
+  ['/optional', Optional], ['/books', BookPage],
   ['/courses', Batch], ['/batch', Batch],
   ['/resources', Resources], ['/resources/current-affairs', CurrentAffairs], ['/resources/ncert-mcqs', NcertMcqs],
   ['/resources/pyqs', PyqFeed], ['/newspaper', Newspaper], ['/newspaper/2026', Newspaper2026],
@@ -81,6 +79,9 @@ const AnimatedRoutes = () => {
         <Route path="/forgot" element={<AuthPage mode="forgot" />} />
         <Route path="/account" element={<PageTransition><Account /></PageTransition>} />
         <Route path="/file/:id" element={<FileViewer />} />
+        {/* 2024 / 2025 newspaper notes were removed; old links land on the current Newspaper page */}
+        <Route path="/newsnotes" element={<Navigate to="/newspaper" replace />} />
+        <Route path="/newsnotes25" element={<Navigate to="/newspaper" replace />} />
         {routes.map(([path, Page]) => (
           <Route key={path} path={path} element={<PageTransition><Page /></PageTransition>} />
         ))}

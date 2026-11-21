@@ -54,7 +54,7 @@ export const studySections = [
     icon: '📰',
     accent: '#FF8A1F',
     title: { en: 'Newspaper Notes', hi: 'समाचार पत्र नोट्स' },
-    desc: { en: 'Daily notes · 2026, 2025 & 2024', hi: 'दैनिक नोट्स' },
+    desc: { en: 'Daily notes · 2026', hi: 'दैनिक नोट्स' },
     tags: ['Current Affairs', 'Economy', 'Environment'],
   },
   {

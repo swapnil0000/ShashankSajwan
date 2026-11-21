@@ -25,8 +25,6 @@ const buildMoreLinks = (socials, withPyqs) => [
   { label: { en: 'NCERT', hi: 'NCERT' }, to: '/ncert', icon: '📘' },
   { label: { en: 'GS Notes', hi: 'GS नोट्स' }, to: '/general', icon: '🏛️' },
   { label: { en: 'Optional', hi: 'वैकल्पिक' }, to: '/optional', icon: '📚' },
-  { label: { en: 'News 2025', hi: 'समाचार 2025' }, to: '/newsnotes25', icon: '📰' },
-  { label: { en: 'News 2024', hi: 'समाचार 2024' }, to: '/newsnotes', icon: '🗞️' },
   { label: { en: 'About', hi: 'परिचय' }, to: '/about', icon: '👤' },
   { label: { en: 'Contact', hi: 'संपर्क' }, to: '/contact', icon: '✉️' },
   { label: { en: 'FAQs', hi: 'प्रश्न' }, to: '/faqs', icon: '❓' },
