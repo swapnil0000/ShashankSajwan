@@ -80,8 +80,6 @@ export const NcertMcqs = () => <DailyFeed feedKey="feed_mcq" eyebrow="NCERT MCQs
 export const PyqFeed = () => <DailyFeed feedKey="feed_pyq" eyebrow="PYQs" archives={[{ to: '/pyqs', label: 'PYQ papers (PDF)', sub: 'Prelims & Mains' }]} />;
 const NEWSPAPER_ARCHIVES = [
   { to: '/newspaper/2026', label: 'Newspaper Notes 2026', sub: 'From November 2026' },
-  { to: '/newsnotes25', label: 'Newspaper Notes 2025', sub: 'January – July 2025' },
-  { to: '/newsnotes', label: 'Newspaper Notes 2024', sub: 'April – December 2024' },
 ];
 
 export const Newspaper = () => <DailyFeed feedKey="feed_newspaper" eyebrow="Newspaper Notes" archives={NEWSPAPER_ARCHIVES} />;
