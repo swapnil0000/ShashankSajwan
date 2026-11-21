@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, Button, Chip, Container, Stack, Typography } from '@mui/material';
+import { Box, Button, Chip, Container, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { animate, motion, useInView, useScroll, useTransform } from 'framer-motion';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
@@ -18,6 +18,7 @@ import { SearchField } from './StudyHub/StudyHub';
 import { useBatchCta } from './Batch/Batch';
 import { HOME_SECTIONS } from '../data/content';
 import HeroCarousel from '../components/ui/HeroCarousel';
+import OfferCards from '../components/ui/OfferCards';
 import SlideRow from '../components/ui/SlideRow';
 import { FeedItem, useFeed } from '../components/ui/DailyFeed';
 import { useLatestAcrossFeeds } from './Resources/Resources';
@@ -378,33 +379,50 @@ const Updates = () => {
   );
 };
 
-const blocks = { carousel: HeroCarousel, hero: Hero, updates: Updates, stats: Stats, batch: BatchTeaser, study: StudyGrid, books: Books, features: Features, director: Director, josh: JoshTalk, videos: Videos };
+const TOP_BLOCKS = ['carousel', 'offers', 'hero'];
+const blocks = { carousel: HeroCarousel, offers: OfferCards, hero: Hero, updates: Updates, stats: Stats, batch: BatchTeaser, study: StudyGrid, books: Books, features: Features, director: Director, josh: JoshTalk, videos: Videos };
 
 const Home = () => {
   const c = useContent('home');
+  const theme = useTheme();
+  // Large screens: offer cards beside the banner instead of below it (else they fall below the fold).
+  const wide = useMediaQuery(theme.breakpoints.up('lg'), { noSsr: true });
   useEffect(() => { window.scrollTo(0, 0); }, []);
   // Order and visibility of every block come from Admin → Home page → Sections.
   // Blocks added after an admin saved their order are slotted in at their default position.
   const known = new Set(c.sections.map((s) => s.id));
   const sections = HOME_SECTIONS.reduce((list, h, i) => (known.has(h.id) ? list : [...list.slice(0, i), { id: h.id, visible: true }, ...list.slice(i)]), c.sections);
   const shown = sections.filter((s) => s.visible !== false && blocks[s.id]);
+  // The opening run of carousel / offer cards / hero shares one continuous background.
+  let top = 0;
+  while (top < shown.length && TOP_BLOCKS.includes(shown[top].id)) top += 1;
+  const opening = shown.slice(0, top);
+  const grouped = opening.length > 1 && opening.some((s) => s.id === 'hero') && opening[0].id !== 'hero';
+  const rest = grouped ? shown.slice(top) : shown;
   return (
-    <Box sx={{ pt: ['hero', 'carousel'].includes(shown[0]?.id) ? 0 : { xs: 8, md: 10 } }}>
-      {shown.map((s, i) => {
-        // Carousel directly above the hero: both share one continuous background.
-        if (s.id === 'hero' && shown[i - 1]?.id === 'carousel') return null;
-        if (s.id === 'carousel' && shown[i + 1]?.id === 'hero') {
-          return (
-            <Box key="top" className="grid-bg" sx={{ position: 'relative', overflow: 'hidden' }}>
-              <div className="orb orb-a" style={{ top: 120 }} />
-              <div className="orb orb-b" />
-              <HeroCarousel />
-              <Hero c={c} bare />
-            </Box>
-          );
-        }
+    <Box sx={{ pt: ['hero', 'carousel', 'offers'].includes(shown[0]?.id) ? 0 : { xs: 8, md: 10 } }}>
+      {grouped && (
+        <Box key="top" className="grid-bg" sx={{ position: 'relative', overflow: 'hidden' }}>
+          <div className="orb orb-a" style={{ top: 120 }} />
+          <div className="orb orb-b" />
+          {opening.map((s, i) => {
+            if (s.id === 'hero') return <Hero key="hero" c={c} bare />;
+            const offersNext = opening[i + 1]?.id === 'offers';
+            if (s.id === 'carousel') {
+              return wide && offersNext
+                ? <HeroCarousel key="carousel" aside={<OfferCards variant="side" />} fallback={<Box sx={{ pt: '80px' }}><OfferCards /></Box>} />
+                : <HeroCarousel key="carousel" />;
+            }
+            if (wide && opening[i - 1]?.id === 'carousel') return null; // already beside the banner
+            // Offer cards placed first (carousel hidden): leave room for the fixed header.
+            return <Box key="offers" sx={{ pt: i === 0 ? { xs: '64px', md: '80px' } : 0 }}><OfferCards /></Box>;
+          })}
+        </Box>
+      )}
+      {rest.map((s, i) => {
         const Block = blocks[s.id];
-        return <Block key={s.id} c={c} first={i === 0} />;
+        if (s.id === 'offers') return <Box key="offers" sx={{ pt: !grouped && i === 0 ? { xs: '64px', md: '80px' } : 0 }}><OfferCards /></Box>;
+        return <Block key={s.id} c={c} first={!grouped && i === 0} />;
       })}
     </Box>
   );

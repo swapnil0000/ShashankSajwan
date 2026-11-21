@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Box, Button, Dialog, IconButton, Typography } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { useContent } from '../context/ContentContext';
+import { useContent, useContentReady } from '../context/ContentContext';
 import { isScheduledNow } from './ui/HeroCarousel';
 
 // Remembers when each pop-up was last shown so it respects its frequency.
@@ -33,6 +33,7 @@ const matchesPage = (p, pathname) => {
 // Shows the first live pop-up from Admin → Pop-ups that matches this page.
 const PopupManager = () => {
   const { items = [] } = useContent('popups');
+  const ready = useContentReady();
   const { pathname } = useLocation();
   const [open, setOpen] = useState(null);
 
@@ -42,13 +43,14 @@ const PopupManager = () => {
   );
 
   useEffect(() => {
-    if (!candidate || pathname.startsWith('/admin')) return undefined;
+    // Wait for the admin's pop-ups, so a built-in default never opens first.
+    if (!ready || !candidate || pathname.startsWith('/admin')) return undefined;
     const id = setTimeout(() => {
       setOpen(candidate);
       markSeen(seenKey(candidate), candidate.frequency || 'session');
     }, (Number(candidate.delay) || 2) * 1000);
     return () => clearTimeout(id);
-  }, [candidate, pathname]);
+  }, [ready, candidate, pathname]);
 
   if (!open) return null;
   const close = () => setOpen(null);

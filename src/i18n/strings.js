@@ -47,6 +47,12 @@ export const strings = {
     careers: 'For career and opportunities',
     // Home
     heroPillNew: 'NEW',
+    offersEyebrow: 'Learn directly with Shashank Sir',
+    offersEnquire: 'Enquire',
+    offersEnquireLong: 'Enquire on WhatsApp',
+    offersDetails: 'View details',
+    chooserTitle: 'What would you like to ask about?',
+    chooserSub: 'WhatsApp opens with your question already typed. Just press send.',
     heroPillSoon: 'Coming soon',
     tileNews: 'Newspaper Notes',
     tileNewsSub: 'Daily notes',

@@ -9,6 +9,7 @@ import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import { tr, useContent } from '../context/ContentContext';
 import UserAvatar from './ui/UserAvatar';
+import HeaderWhatsApp from './ui/HeaderWhatsApp';
 
 // `wide` items only fit on extra-large screens; they stay reachable from the footer and the More sheet.
 const navItems = [
@@ -59,11 +60,11 @@ const Header = () => {
         borderBottom: scrolled ? `1px solid ${theme.palette.divider}` : '1px solid transparent',
       }}
     >
-      <Stack direction="row" alignItems="center" sx={{ height: { xs: 60, md: 72 }, px: { xs: 2, md: 4 }, maxWidth: 1280, mx: 'auto', gap: 2 }}>
+      <Stack direction="row" alignItems="center" sx={{ height: { xs: 60, md: 72 }, px: { xs: 2, md: 3, lg: 4 }, maxWidth: { xs: 1280, xl: 1480 }, mx: 'auto', gap: { xs: 1, md: 1, lg: 2 } }}>
         <Stack component={Link} to="/" direction="row" alignItems="center" gap={1.2} sx={{ textDecoration: 'none', color: 'text.primary', mr: 'auto', flexShrink: 0 }}>
           <Box component="img" src={logo} alt={`${nameA} ${nameB}`} sx={{ width: { xs: 38, md: 46 }, height: { xs: 38, md: 46 }, borderRadius: '12px', objectFit: 'cover' }} />
           <Box sx={{ lineHeight: 1 }}>
-            <Typography sx={{ fontWeight: 800, fontSize: { xs: 15, md: 18 }, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
+            <Typography sx={{ fontWeight: 800, fontSize: { xs: 15, md: 16, lg: 18 }, letterSpacing: '0.02em', whiteSpace: 'nowrap', '@media (max-width:379px)': { fontSize: 13.5, letterSpacing: 0 } }}>
               {nameA} <Box component="span" className="text-gradient">{nameB}</Box>
             </Typography>
             <Typography sx={{ fontSize: { xs: 11, md: 12 }, color: 'text.secondary' }}>{tr(tagline, lang)}</Typography>
@@ -80,7 +81,7 @@ const Header = () => {
                 end={n.exact}
                 sx={{
                   display: n.wide ? { xs: 'none', xl: 'inline-flex' } : 'inline-flex',
-                  color: 'text.primary', fontWeight: 600, px: { md: 1.1, lg: 1.4 }, minWidth: 0, minHeight: 40, whiteSpace: 'nowrap',
+                  color: 'text.primary', fontWeight: 600, px: { md: 0.8, lg: 1.4 }, minWidth: 0, minHeight: 40, whiteSpace: 'nowrap',
                   '&.active': { color: 'primary.main', bgcolor: 'action.hover' },
                 }}
               >
@@ -97,17 +98,21 @@ const Header = () => {
             startIcon={<Box component="span" className={inBatch ? undefined : 'pulse'} sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: '#3ddc84', display: 'block' }} />}
             sx={{ minHeight: 40, px: 2, flexShrink: 0, whiteSpace: 'nowrap', color: '#fff', background: 'var(--grad)', boxShadow: inBatch ? 'none' : '0 8px 20px -8px rgba(224,41,74,.6)', opacity: inBatch ? 0.85 : 1, '&:hover': { background: 'var(--grad)', filter: 'brightness(1.05)' } }}
           >
-            {batch.status !== 'live' ? `${batch.navLabel || 'Batch'}: Coming soon` : (batch.ctaNav || `Join ${batch.navLabel || 'Batch'}`)}
+            {batch.status !== 'live'
+              ? <>{batch.navLabel || 'Batch'}<Box component="span" sx={{ display: { md: 'none', lg: 'inline' } }}>: Coming soon</Box><Box component="span" sx={{ display: { md: 'inline', lg: 'none' } }}>: Soon</Box></>
+              : (batch.ctaNav || `Join ${batch.navLabel || 'Batch'}`)}
           </Button>
         )}
 
-        <Stack direction="row" alignItems="center" gap={0.5}>
+        <Stack direction="row" alignItems="center" gap={{ xs: 0.6, md: 0.8 }}>
+          <HeaderWhatsApp />
           <Tooltip title="Search">
             <IconButton onClick={() => navigate('/study?focus=1')} sx={{ bgcolor: 'action.hover' }} aria-label="Search">
               <SearchRoundedIcon />
             </IconButton>
           </Tooltip>
-          <IconButton onClick={toggleMode} aria-label="Toggle dark mode" sx={{ bgcolor: 'action.hover' }}>
+          {/* Phones: theme switch is in the More sheet, so the header has room for the WhatsApp button */}
+          <IconButton onClick={toggleMode} aria-label="Toggle dark mode" sx={{ bgcolor: 'action.hover', display: { xs: 'none', md: 'inline-flex' } }}>
             {mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
           </IconButton>
           {/* Sign in / Sign up are hidden from the site; they still work at /login and /signup. */}

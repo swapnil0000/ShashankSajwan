@@ -72,7 +72,7 @@ const BatchPromo = ({ variant = 'banner' }) => {
             <Button component={Link} to="/courses" endIcon={<ArrowForwardRoundedIcon />} sx={{ bgcolor: '#fff', color: '#0B1640', '&:hover': { bgcolor: '#eee' } }}>
               {soon ? t('promoSoonButton') : t('promoLiveButton')}
             </Button>
-            <WhatsAppButton size="medium" />
+            <WhatsAppButton placement="promo-banner" size="medium" />
           </Stack>
         </Box>
       </Reveal>
