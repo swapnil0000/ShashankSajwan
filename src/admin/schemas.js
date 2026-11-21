@@ -39,7 +39,7 @@ const TEXT_GROUPS = [
   ['Batch banner (bottom of pages)', ['promoSoonTitle', 'promoLiveTitle', 'promoSoonButton', 'promoLiveButton']],
   ['Books page', ['booksBadge', 'booksTitle', 'booksAccent', 'booksHeroSub', 'booksStat2', 'booksStat2Label', 'booksStat3', 'booksStat3Label', 'buyCombo', 'watchTrailer', 'chooseTitle', 'chooseAccent', 'chooseSub', 'buyNow', 'comboStripText']],
   ['Other pages', ['studyHub', 'studyHubSub', 'resourcesTitle', 'resourcesAccent', 'resourcesSub', 'videosTitle', 'videosAccent', 'videosPageSub', 'faqTitle', 'faqAccent', 'faqSub', 'contactTitle', 'contactAccent', 'contactSocialTitle', 'contactSocialText']],
-  ['Footer', ['footerAbout', 'footerTgTitle', 'footerTgText', 'footerTgButton', 'footerYtButton', 'footerEmailLabel', 'backToTop']],
+  ['Footer', ['footerAbout', 'footerTgTitle', 'footerTgText', 'footerTgButton', 'footerYtButton', 'footerEmailLabel', 'footerPhoneLabel', 'backToTop']],
 ];
 const grouped = new Set(TEXT_GROUPS.flatMap(([, keys]) => keys));
 const textFields = TEXT_GROUPS.flatMap(([title, keys]) => [
@@ -54,6 +54,7 @@ export const adminGroups = [
       { key: 'site', label: 'Site settings', icon: '⚙️', desc: 'Tagline, contact email, social links, Prelims countdown, announcement bar', fields: [
         { key: 'tagline', label: 'Tagline', type: 'i18n' },
         { key: 'email', label: 'Contact email', type: 'text' },
+        { key: 'phone', label: 'Contact mobile number (footer)', type: 'text', help: 'e.g. +91 70607 48896. Empty = hide it.' },
         { key: 'prelimsDate', label: 'Prelims date & time', type: 'datetime' },
         { key: 'prelimsLabel', label: 'Countdown label', type: 'i18n' },
         { key: 'socials', label: 'Social links', type: 'object', fields: [
